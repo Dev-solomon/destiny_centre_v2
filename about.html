@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellowship Church - Life Together in Christ</title>
+    <Link href="/assets/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8B5CF6;
+            --primary-blue: #3B82F6;
+            --dark-bg: #1a1a1a;
+            --text-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding-bottom: 70px; /* Add bottom padding to body to account for bottom navigation */
+        }
+
+        /* Header Styles */
+        .navbar-custom {
+            background-color: var(--dark-bg);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-toggler {
+            display: none;
+        }
+
+        /* Desktop navigation - horizontal top menu for laptop screens */
+        @media (min-width: 992px) {
+            body {
+                padding-bottom: 0;
+            }
+            
+            .navbar-collapse {
+                position: static;
+                background: transparent;
+                border: none;
+                padding: 0;
+                display: flex !important;
+                justify-content: flex-end;
+            }
+
+            .navbar-nav {
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .navbar-nav .nav-item {
+                flex: none;
+                text-align: left;
+            }
+
+            .navbar-nav .nav-link {
+                color: #ccc !important;
+                font-size: 1rem;
+                padding: 0.5rem 0;
+                display: block;
+                flex-direction: row;
+                gap: 0;
+            }
+
+            .navbar-nav .nav-link::before {
+                display: none;
+            }
+        }
+
+        /* Mobile and tablet navigation - bottom bar with icons */
+        @media (max-width: 991px) {
+            body {
+                padding-bottom: 80px;
+            }
+
+            .navbar-brand {
+                position: fixed;
+                top: 0.5rem;
+                left: 1rem;
+                z-index: 1031;
+            }
+
+            .navbar-collapse {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: var(--dark-bg);
+                border-top: 1px solid #333;
+                padding: 0.5rem 0;
+                z-index: 1030;
+                display: block !important;
+            }
+
+            .navbar-nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                margin: 0;
+                padding: 0 0.5rem;
+            }
+
+            .navbar-nav .nav-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .navbar-nav .nav-link {
+                color: #ccc !important;
+                margin: 0;
+                padding: 0.5rem 0.25rem;
+                font-size: 0.75rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+            .navbar-nav .nav-link::before {
+                content: '';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                font-size: 1rem;
+            }
+
+            .nav-link[href="#home"]::before { content: '\f015'; }
+            .nav-link[href="#about"]::before { content: '\f007'; }
+            .nav-link[href="#sermons"]::before { content: '\f130'; }
+            .nav-link[href="#prayers"]::before { content: '\f684'; }
+            .nav-link[href="#give"]::before { content: '\f004'; }
+            .nav-link[href="#gallery"]::before { content: '\f03e'; }
+            .nav-link[href="#events"]::before { content: '\f073'; }
+            .nav-link[href="#community"]::before { content: '\f0c0'; }
+
+            .navbar-nav .nav-link:hover {
+                color: white !important;
+            }
+        }
+
+        /* Extra small mobile screens adjustments */
+        @media (max-width: 576px) {
+            .navbar-nav .nav-link {
+                font-size: 0.65rem;
+                padding: 0.4rem 0.1rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8)), 
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .get-involved-badge {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Partner Organizations */
+        .partners-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-logo i {
+            font-size: 2rem;
+            color: #666;
+        }
+
+        /* Faith & Community Section */
+        .faith-section {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .scripture-ref {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .faith-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+        }
+
+        .faith-title .blue-text {
+            color: var(--primary-blue);
+        }
+
+        .community-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scrolling Banner */
+        .scrolling-banner {
+            background: var(--dark-bg);
+            padding: 2rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .scrolling-text {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Mission Groups */
+        .mission-section {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 5rem 0;
+        }
+
+        .get-involved-label {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .mission-card {
+            background: #2a2a2a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .mission-content {
+            padding: 1.5rem;
+        }
+
+        .mission-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .mission-description {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-cross"></i>
+            </a>
+            <div class="c" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sermons">Sermons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prayers">Prayers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#give">Give</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="fellowship-badge">
+               <img src="/assets/icons/emoji _sparkles.svg" class="sparkle-emoji">  FELLOWSHIP
+            </div>
+            <h1 class="hero-title">LIFE TOGETHER<br>IN CHRIST.</h1>
+            <p class="hero-subtitle">
+                We believe church is more than a place — It's a community where we 
+                share life, grow in faith, and serve together.
+            </p>
+        </div>
+        <div class="get-involved-badge">
+            Get Involved
+        </div>
+    </section>
+
+    <!-- Partner Organizations -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Meet Our Partner Organizations</h2>
+                <p class="section-subtitle">Working hand-in-hand with those who share our mission and values.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="partner-logo">
+                        <i class="fas fa-lightbulb"></i>
+                        <span class="ms-2">Imagine AI</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="partner-logo">
+                        <i class="fas fa-star"></i>
+                        <span class="ms-2">Astra</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="partner-logo">
+                        <i class="fas fa-globe"></i>
+                        <span class="ms-2">Atlas</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="partner-logo">
+                        <i class="fas fa-headphones"></i>
+                        <span class="ms-2">Audion</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="partner-logo">
+                        <i class="fas fa-users"></i>
+                        <span class="ms-2">Queue</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="partner-logo">
+                        <i class="fas fa-layer-group"></i>
+                        <span class="ms-2">Laver</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faith & Community Section -->
+    <section class="faith-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="scripture-ref">
+                        <i class="fas fa-book"></i> Hebrews 10: 24-25
+                    </div>
+                    <h2 class="faith-title">
+                        GROW YOUR FAITH.<br>
+                        <span class="blue-text">BUILD YOUR COMMUNITY.</span>
+                    </h2>
+                    <p class="mb-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum 
+                        est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin 
+                        lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet 
+                        feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per 
+                        inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante 
+                        pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur 
+                        vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Community Fellowship" class="community-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrolling Banner -->
+    <div class="scrolling-banner">
+        <div class="scrolling-text">
+            FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp; FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp; FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+
+    <!-- Mission Groups -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="get-involved-label">
+                <i class="fas fa-heart"></i> GET INVOLVED
+            </div>
+            <h2 class="section-title text-white mb-3">MISSION GROUPS</h2>
+            <p class="section-subtitle text-light mb-5">
+                Find a group to grow in faith, serve with purpose, and connect with others in Christ.
+            </p>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="mission-card">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Music Ministry" class="mission-image">
+                        <div class="mission-content">
+                            <h4 class="mission-title">Music Ministry</h4>
+                            <p class="mission-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="mission-card">
+                        <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Youth & Teens" class="mission-image">
+                        <div class="mission-content">
+                            <h4 class="mission-title">Youth & Teens</h4>
+                            <p class="mission-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="mission-card">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Outreach Teams" class="mission-image">
+                        <div class="mission-content">
+                            <h4 class="mission-title">Outreach Teams</h4>
+                            <p class="mission-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="mission-card">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Adult Fellowship" class="mission-image">
+                        <div class="mission-content">
+                            <h4 class="mission-title">Adult Fellowship</h4>
+                            <p class="mission-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec 
+                                fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. 
+                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac 
+                                scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. 
+                                Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar-custom');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.backgroundColor = 'var(--dark-bg)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate mission cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.mission-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

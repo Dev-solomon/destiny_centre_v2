@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellowship Church - Life Together in Christ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8B5CF6;
+            --primary-blue: #3B82F6;
+            --dark-bg: #1a1a1a;
+            --text-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Desktop Navigation - Top Bar */
+        @media (min-width: 992px) {
+            body {
+                padding-top: 80px;
+                padding-bottom: 0;
+            }
+
+            .navbar-custom {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-bg);
+                padding: 1rem 0;
+                z-index: 1030;
+                border-bottom: 1px solid #333;
+            }
+
+            .navbar-brand {
+                color: white !important;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+
+            .navbar-nav {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                margin-left: auto;
+            }
+
+            .navbar-nav .nav-item {
+                list-style: none;
+            }
+
+            .navbar-nav .nav-link {
+                color: #ccc !important;
+                font-size: 1rem;
+                padding: 0.5rem 0;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .navbar-nav .nav-link:hover {
+                color: var(--primary-blue) !important;
+            }
+
+            .bottom-nav {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        /* Mobile and Tablet Navigation - Bottom Bar */
+        @media (max-width: 991px) {
+            body {
+                padding-top: 0;
+                padding-bottom: 140px;
+            }
+
+            .navbar-custom {
+                display: none;
+            }
+
+            .navbar-nav {
+                display: none;
+            }
+
+            /* Bottom Navigation */
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-bg);
+                border-top: 1px solid #333;
+                z-index: 1030;
+                padding: 0;/* padding: 0.5rem 0;  */
+            }
+
+            /* added */
+            .nav-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 0.5rem 0.5rem;
+                position: relative;
+                transition: transform 0.3s ease;
+            }
+
+            .nav-item-mobile {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: #ccc;
+                text-decoration: none;
+                padding: 0.5rem 0.25rem;
+                font-size: 0.7rem;
+                min-width: 0;
+                flex: 1;
+                max-width: 80px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-item-mobile:hover {
+                color: var(--primary-blue);
+                text-decoration: none;
+            }
+
+            .nav-item-mobile i {
+                font-size: 1.2rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .nav-item-mobile span {
+                font-size: 0.65rem;
+                text-align: center;
+                line-height: 1;
+                word-wrap: break-word;
+            }
+
+            /* More Toggle Button */
+            .nav-toggle {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: #ccc;
+                background: none;
+                border: none;
+                padding: 0.5rem 0.25rem;
+                font-size: 0.7rem;
+                cursor: pointer;
+                min-width: 0;
+                flex: 1;
+                max-width: 80px;
+                transition: color 0.3s ease;
+            }
+
+            .nav-toggle:hover {
+                color: var(--primary-blue);
+            }
+
+            .nav-toggle i {
+                font-size: 1.2rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .nav-toggle span {
+                font-size: 0.65rem;
+                text-align: center;
+                line-height: 1;
+            }
+
+            /* Extended Navigation */
+            .nav-extended {
+                position: absolute;
+                bottom: 100%;
+                max-height: 0;
+                overflow: hidden;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-bg);
+                border-top: 1px solid #333;
+                padding: 0.5rem 0;
+                transform: translateY(100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-extended.show {
+                /* Js will set max-height dynamic */
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-extended-container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: 0 0.5rem;
+            }
+
+            /* Hide extra items initially */
+            .nav-item-hidden {
+                display: none;
+            }
+
+            /* Show primary items and toggle button */
+            .nav-primary {
+                display: flex;
+            }
+        }
+
+        /* Extra small screens adjustments */
+        @media (max-width: 576px) {
+            body {
+                padding-bottom: 120px;
+            }
+
+            .nav-item-mobile span,
+            .nav-toggle span {
+                font-size: 0.6rem;
+            }
+
+            .nav-item-mobile,
+            .nav-toggle {
+                padding: 0.4rem 0.1rem;
+                max-width: 70px;
+            }
+        }
+
+        /* Content Sections */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8)), 
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 5rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation (Desktop) -->
+    <nav class="navbar-custom" role="navigation" aria-label="Main Navigation">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a class="navbar-brand" href="#home">
+                    <i class="fas fa-cross"></i> Fellowship Church
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sermons">Sermons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prayers">Prayers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#give">Give</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#chatroom">Chatroom</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bottom Navigation (Mobile/Tablet) -->
+    <div class="bottom-nav" role="navigation" aria-label="Mobile Navigation">
+        <!-- Extended Navigation Panel -->
+        <div class="nav-wrapper"> </div>
+        <div class="nav-extended" id="navExtended">
+            <div class="nav-extended-container">
+                
+                <a href="#give" class="nav-item-mobile">
+                    <i class="fas fa-heart"></i>
+                    <span>Give</span>
+                </a>
+                <a href="#gallery" class="nav-item-mobile">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="#events" class="nav-item-mobile">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Events</span>
+                </a>
+                <a href="#community" class="nav-item-mobile">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="#prayers" class="nav-item-mobile">
+                    <i class="fas fa-praying-hands"></i>
+                    <span>Chatroom</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Navigation Container -->
+        <div class="nav-container" id="navContainer">
+            <a href="#home" class="nav-item-mobile nav-primary">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#about" class="nav-item-mobile nav-primary">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="#sermons" class="nav-item-mobile nav-primary">
+                <i class="fas fa-book-open"></i>
+                <span>Sermons</span>
+            </a>
+            <a href="#prayers" class="nav-item-mobile">
+                    <i class="fas fa-praying-hands"></i>
+                    <span>Prayers</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navExtended" aria-label="Toggle navigation menu">
+                <i class="fas fa-ellipsis-h" id="toggleIcon"></i>
+                <span id="toggleText">More</span>
+            </button>
+        </div>
+        
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">LIFE TOGETHER<br>IN CHRIST.</h1>
+            <p class="hero-subtitle">
+                We believe church is more than a place — It's a community where we 
+                share life, grow in faith, and serve together.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sample Sections -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p class="text-center">Learn more about our church community and values.</p>
+        </div>
+    </section>
+
+    <section id="sermons" class="section">
+        <div class="container">
+            <h2>Sermons</h2>
+            <p class="text-center">Listen to our latest messages and teachings.</p>
+        </div>
+    </section>
+
+    <section id="prayers" class="section">
+        <div class="container">
+            <h2>Prayers</h2>
+            <p class="text-center">Join us in prayer and submit your prayer requests.</p>
+        </div>
+    </section>
+
+    <section id="give" class="section">
+        <div class="container">
+            <h2>Give</h2>
+            <p class="text-center">Support our mission through your generous giving.</p>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>Gallery</h2>
+            <p class="text-center">View photos from our church events and activities.</p>
+        </div>
+    </section>
+
+    <section id="events" class="section">
+        <div class="container">
+            <h2>Events</h2>
+            <p class="text-center">Stay updated with our upcoming events and activities.</p>
+        </div>
+    </section>
+
+    <section id="community" class="section">
+        <div class="container">
+            <h2>Community</h2>
+            <p class="text-center">Connect with our church community and small groups.</p>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/navbar.js"></script>
+    <!-- <script>
+        // Mobile navigation toggle functionality
+        let isExpanded = false;
+        const navToggle = document.getElementById('navToggle');
+        const navExtended = document.getElementById('navExtended');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const toggleText = document.getElementById('toggleText');
+
+        navToggle.addEventListener('click', function() {
+            isExpanded = !isExpanded;
+            
+            if (isExpanded) {
+                navExtended.classList.add('show');
+                toggleIcon.className = 'fas fa-times';
+                toggleText.textContent = 'Close';
+            } else {
+                navExtended.classList.remove('show');
+                toggleIcon.className = 'fas fa-ellipsis-h';
+                toggleText.textContent = 'More';
+            }
+        });
+
+        // Close extended nav when clicking on extended nav items
+        document.querySelectorAll('.nav-extended .nav-item-mobile').forEach(item => {
+            item.addEventListener('click', function() {
+                isExpanded = false;
+                navExtended.classList.remove('show');
+                toggleIcon.className = 'fas fa-ellipsis-h';
+                toggleText.textContent = 'More';
+            });
+        });
+
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed header
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to top navbar (desktop)
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar-custom');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.backgroundColor = 'var(--dark-bg)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Close extended nav when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.bottom-nav') && isExpanded) {
+                isExpanded = false;
+                navExtended.classList.remove('show');
+                toggleIcon.className = 'fas fa-ellipsis-h';
+                toggleText.textContent = 'More';
+            }
+        });
+    </script> -->
+</body>
+</html>
