@@ -13,7 +13,7 @@
 <body>
 
     <!-- Top Navigation (Desktop) -->
-    <nav class=" navbar-custom navbar-expand-lg fixed-top" role="navigation" aria-label="Main Navigation">
+    <nav class=" d-flex navbar-custom navbar-expand-lg fixed-top" role="navigation" aria-label="Main Navigation">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center w-100 ">
                 <a class="navbar-brand" href="#home">
@@ -174,6 +174,42 @@
                 dictum est a, mattis tellus. Sed dignissim, metus
             </p>
             <div class="services-grid">
+
+                <div class="services-grid-1">
+                    <div class="service-box  ">
+                        <h3>Music Ministry</h3>
+                        <p>We give thanks to God as we honor Him with our music. Inspiring joy and devotion through
+                            worship.
+                        </p>
+                    </div>
+                    <div class="service-box  ">
+                        <h3>Youth & Teens</h3>
+                        <p>We prepare the next generation to know and serve God with passion, mentoring, and guidance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="services-grid-2">
+
+                    <div class="service-box ">
+                        <h3>Outreach Teams</h3>
+                        <p>We spread God’s love to those in need through service, missions, and practical support.</p>
+                    </div>
+                    <div class="service-box  ">
+                        <h3>Adult Fellowship</h3>
+                        <p>We gather adults for fellowship, Bible study, and support, building strong relationships in
+                            Christ.</p>
+                    </div>
+                    <div class="service-box  ">
+                        <h3>Music Ministry</h3>
+                        <p>Our music team uplifts the congregation with songs of praise and heartfelt worship to God.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tablet and mobile grid -->
+            <div class="services-grid-mobile">
                 <div class="service-box  ">
                     <h3>Music Ministry</h3>
                     <p>We give thanks to God as we honor Him with our music. Inspiring joy and devotion through worship.
@@ -183,6 +219,8 @@
                     <h3>Youth & Teens</h3>
                     <p>We prepare the next generation to know and serve God with passion, mentoring, and guidance.</p>
                 </div>
+
+
                 <div class="service-box ">
                     <h3>Outreach Teams</h3>
                     <p>We spread God’s love to those in need through service, missions, and practical support.</p>
@@ -196,16 +234,14 @@
                     <h3>Music Ministry</h3>
                     <p>Our music team uplifts the congregation with songs of praise and heartfelt worship to God.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Geet Connected section -->
-    <section>
-
-    </section>
     <section class="dedication-section">
-        <div class="container">
+        <div class="container mt-8 mb-8">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="fade-in">
@@ -229,6 +265,7 @@
                 </div>
             </div>
         </div>
+    
     </section>
 
     <!-- Sermons Section -->
@@ -300,7 +337,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="">
                     <div class="sermon-card fade-in">
                         <div class="sermon">
@@ -317,7 +354,7 @@
                                 <a href="#" class="about-button-text"> Watch Now</a></button>
                         </div>
                     </div>
-                
+
                 </div>
 
                 <div class="">
@@ -336,7 +373,7 @@
                                 <a href="#" class="about-button-text"> Watch Now</a></button>
                         </div>
                     </div>
-                
+
                 </div>
 
                 <div class="">
@@ -355,7 +392,7 @@
                                 <a href="#" class="about-button-text"> Watch Now</a></button>
                         </div>
                     </div>
-                
+
                 </div>
 
             </div>
@@ -363,28 +400,118 @@
     </section>
 
     <!-- Testimonies Section -->
-     <section class="testimonies-section">
-         <div class="section-container">
-            <div class="testimonies-title-box">
-                <h2 class="welcome-title ">
+
+    <div class="section-container">
+        <div class="testimonies-title-box">
+            <h2 class="welcome-title ">
                 TESTIMONIES
-               </h2>
-               <img src="/assets/icons/testimonies-speaker-icon.svg" alt="testimonies-speaker-icon">
+            </h2>
+            <img src="/assets/icons/testimonies-speaker-icon.svg" alt="testimonies-speaker-icon">
+        </div>
+
+        <p class="mb-6 testimonies-para">
+            Stories of faith, answered prayers, and God’s hand at work among us
+        </p>
+
+        <!-- testimony carousel -->
+
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <p>After months of illness in our home, we turned to prayer. Today, we are all healthy
+                                    and filled with gratitude for His healing touch.</p>
+                                <h6>Alex Carter</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <p>After nearly a year of job rejections, I asked my church family to pray with me.
+                                    Weeks later, I received an unexpected offer with better pay, benefits, and balance
+                                    than I ever imagined.</p>
+                                <h6>Daniel White</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <p>This year brought challenges in my finances, health, and relationships, and I often
+                                    felt like giving up. Through prayer, God gave me unexplainable peace that carried me
+                                    through each day.</p>
+                                <h6>Samantha Lee</h6>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Slide 2 (example, add more) -->
+                <div class="carousel-item">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <p>I found hope through this ministry. It changed my perspective completely.</p>
+                                <h6>Maria Gomez</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <p>The sermons helped me reconnect with my faith and grow stronger spiritually.</p>
+                                <h6>James Smith</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <p>Prayers from the community brought comfort during my hardest times.</p>
+                                <h6>Linda Johnson</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            
-            <p class="mb-6 testimonies-para" >
-                Stories of faith, answered prayers, and God’s hand at work among us
-            </p>
 
-             <!-- testimony carousel -->
-              
+            <!-- Controls -->
+            <div class="carousel-controls  mt-3">
+                <button class="btn btn-light me-2" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <img src="/assets/icons/next-icon.svg" alt="previous">
+                </button>
+                <button class="btn btn-light" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <img src="/assets/icons/previous-icon.svg" alt="next">
+                </button>
+            </div>
+        </div>
 
-         </div>
-     </section>
 
-    <script src="include.js"></script>
-    <script src="/assets/js/navbar.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    </div>
+    </section>
+
+    <!-- Footer section -->
+    <section class="footer-section">
+        <div class="section-container text-center">
+            <div class="footer-section-inner">
+                <div class="scripture-ref">
+                    <img src="assets/icons/emojis_open-book.svg">
+                    2 Corinthians 9 :15
+                </div>
+                <h2 class="footer-section-title">Your Giving Changes Lives</h2>
+                <p class="mb-0 footer-text">Your generosity helps us spread the Gospel and serve our community.</p>
+
+                <button class="button footer-button">
+                    <a href="#">
+                        Give Now
+                    </a>
+                </button>
+            </div>
+        </div>
+
+        <script src="include.js"></script>
+        <script src="/assets/js/navbar.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
