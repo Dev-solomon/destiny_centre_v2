@@ -1,35 +1,317 @@
-infinite scroll banner
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scrolling Text - GET INVOLVED</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html 
-<!-- Scrolling Banner -->
-    <div class="scrolling-banner">
-        <div class="scrolling-text">
-            FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp; FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp; FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp;
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Scrolling Banner Container */
+        .scrolling-banner {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 2rem 0;
+            position: relative;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Scrolling Text Container */
+        .scrolling-text-container {
+            display: flex;
+            align-items: center;
+            animation: scroll-left 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        /* Individual Text Item */
+        .scrolling-text {
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            font-weight: 400;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-right: 4rem;
+            flex-shrink: 0;
+            
+            /* Text-shadow outline method */
+            text-shadow: 
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                -2px 0 0 #000,
+                2px 0 0 #000,
+                0 -2px 0 #000,
+                0 2px 0 #000,
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                3px 3px 0 #000,
+                0 0 10px rgba(0,0,0,0.5),
+                0 0 20px rgba(0,0,0,0.3);
+                
+            /* Smooth rendering */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Separator Icons */
+        .separator {
+            font-size: 2rem;
+            color: #fff;
+            margin-right: 4rem;
+            flex-shrink: 0;
+            text-shadow: 
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+        }
+
+        /* Scroll Animation */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Alternative slower scroll */
+        .slow-scroll {
+            animation: scroll-left 25s linear infinite;
+        }
+
+        /* Alternative faster scroll */
+        .fast-scroll {
+            animation: scroll-left 8s linear infinite;
+        }
+
+        /* Reverse scroll direction */
+        .reverse-scroll {
+            animation: scroll-right 15s linear infinite;
+        }
+
+        @keyframes scroll-right {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .page-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+
+        /* Multiple Banner Variations */
+        .banner-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .banner-middle {
+            margin: 4rem 0;
+        }
+
+        .banner-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .scrolling-text {
+                font-size: 2.5rem;
+                margin-right: 3rem;
+            }
+            
+            .separator {
+                font-size: 1.5rem;
+                margin-right: 3rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .page-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scrolling-text {
+                font-size: 2rem;
+                margin-right: 2rem;
+            }
+            
+            .separator {
+                margin-right: 2rem;
+            }
+            
+            .scrolling-banner {
+                padding: 1rem 0;
+            }
+        }
+
+        /* Pause on hover */
+        .scrolling-text-container:hover {
+            animation-play-state: paused;
+        }
+
+        /* Add some visual effects */
+        .scrolling-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0) 100%);
+            animation: shimmer 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Fixed Banner -->
+    <div class="scrolling-banner banner-top">
+        <div class="scrolling-text-container fast-scroll">
+            <span class="scrolling-text">GET INVOLVED</span>
+            <span class="separator">★</span>
+            <span class="scrolling-text">JOIN US</span>
+            <span class="separator">★</span>
+            <span class="scrolling-text">MAKE A DIFFERENCE</span>
+            <span class="separator">★</span>
+            <span class="scrolling-text">SERVE TOGETHER</span>
+            <span class="separator">★</span>
+            <span class="scrolling-text">GET INVOLVED</span>
+            <span class="separator">★</span>
+            <span class="scrolling-text">JOIN US</span>
+            <span class="separator">★</span>
+            <span class="scrolling-text">MAKE A DIFFERENCE</span>
+            <span class="separator">★</span>
         </div>
     </div>
 
-css
+    <!-- Page Content -->
+    <div class="page-content" style="margin-top: 120px; margin-bottom: 120px;">
+        <h1 class="page-title">Welcome to Fellowship Church</h1>
+        <p class="page-description">
+            Experience the power of community and faith. Our church is more than just a place of worship—
+            it's a family where everyone belongs. Join us as we grow together in Christ and serve our community 
+            with love and purpose.
+        </p>
+        <p class="page-description">
+            Whether you're looking to deepen your faith, connect with others, or find ways to make a 
+            positive impact, there's a place for you here. Scroll through our various ministry opportunities 
+            and discover how you can get involved today.
+        </p>
+    </div>
 
-/* Scrolling Banner */
-.scrolling-banner {
-    background: var(--dark-bg);
-    padding: 2rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-}
+    <!-- Middle Banner (Different Direction) -->
+    <div class="scrolling-banner banner-middle">
+        <div class="scrolling-text-container reverse-scroll">
+            <span class="scrolling-text">GROW IN FAITH</span>
+            <span class="separator">✦</span>
+            <span class="scrolling-text">BUILD COMMUNITY</span>
+            <span class="separator">✦</span>
+            <span class="scrolling-text">SERVE OTHERS</span>
+            <span class="separator">✦</span>
+            <span class="scrolling-text">GET INVOLVED</span>
+            <span class="separator">✦</span>
+            <span class="scrolling-text">GROW IN FAITH</span>
+            <span class="separator">✦</span>
+            <span class="scrolling-text">BUILD COMMUNITY</span>
+            <span class="separator">✦</span>
+        </div>
+    </div>
 
-.scrolling-text {
-    display: inline-block;
-    animation: scroll 20s linear infinite;
-    font-size: 2rem;
-    font-weight: 900;
-    color: #333;
-    text-transform: uppercase;
-}
+    <!-- More Content -->
+    <div class="page-content">
+        <h2 class="page-title" style="font-size: 2.5rem;">Ministry Opportunities</h2>
+        <p class="page-description">
+            From worship teams to community outreach, from children's ministry to senior care, 
+            we have numerous ways for you to share your talents and passion. Every gift matters, 
+            and every person has a unique role to play in God's kingdom.
+        </p>
+    </div>
 
-@keyframes scroll {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
+    <!-- Bottom Fixed Banner (Slower) -->
+    <div class="scrolling-banner banner-bottom">
+        <div class="scrolling-text-container slow-scroll">
+            <span class="scrolling-text">FELLOWSHIP</span>
+            <span class="separator">♦</span>
+            <span class="scrolling-text">WORSHIP</span>
+            <span class="separator">♦</span>
+            <span class="scrolling-text">SERVE</span>
+            <span class="separator">♦</span>
+            <span class="scrolling-text">GET INVOLVED</span>
+            <span class="separator">♦</span>
+            <span class="scrolling-text">FELLOWSHIP</span>
+            <span class="separator">♦</span>
+            <span class="scrolling-text">WORSHIP</span>
+            <span class="separator">♦</span>
+            <span class="scrolling-text">SERVE</span>
+            <span class="separator">♦</span>
+        </div>
+    </div>
+</body>
+</html>
