@@ -1,19 +1,19 @@
 /* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 /* Root Variables */
 :root {
-    --primary-bg: #1B1C1E;
-    --primary-purple: #8B5CF6;
-    --primary-blue: #0F6AD9;
-    --secondary-blue: #001A5B80;
+    --primary-bg: #1b1c1e;
+    --primary-purple: #8b5cf6;
+    --primary-blue: #0f6ad9;
+    --secondary-blue: #001a5b80;
     --dark-bg: #1a1a1a;
     --text-light: #f8f9fa;
-    --dark-green: #4F8D3680;
-    --dark-teal: #019EB880;
-    --dark-orange: #E7572B80;
-    --button-blue: #0F6AD9;
-    --scripture-background: #F2F2F2;
+    --dark-green: #4f8d3680;
+    --dark-teal: #019eb880;
+    --dark-orange: #e7572b80;
+    --button-blue: #0f6ad9;
+    --scripture-background: #f2f2f2;
     --hero-badge-color: #00000080;
     --white: rgba(255, 255, 255, 1);
     --service-grid-bg-1: rgba(0, 26, 91, 0.5);
@@ -27,23 +27,26 @@
 
 /* Base Styles */
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     background: var(--primary-bg);
     margin: 0;
     padding: 0;
-
 }
 
 /* Typography */
 .h1 {
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     font-size: 92px;
     font-weight: 400;
     text-transform: uppercase;
 }
 
+a {
+    text-decoration: none;
+}
+
 .badge-font {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 700;
     font-size: 18px;
     text-align: center;
@@ -60,6 +63,161 @@ body {
     gap: 12px;
     margin-bottom: 2rem;
     display: inline-flex;
+}
+
+/* Input Field */
+.form-container {
+    background: rgba(249, 249, 249, 0.1);
+    color: #fff;
+    border-radius: 22px;
+    padding: 12px;
+    width: 100%;
+    display: flex;
+
+}
+
+/* Container center alignment */
+form {
+    width: 100%;
+}
+
+/* Input wrapper */
+.input-wrapper {
+    position: relative;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+/* Input field */
+.input-wrapper input {
+    width: 100%;
+    padding: 1.75rem 1rem 0.75rem 2.5rem;
+    /* left space for icon */
+    border: 2px solid rgba(27, 28, 30, 1);
+    /* gray-500 */
+    border-radius: 12px;
+    background: rgba(27, 28, 30, 1);
+    outline: none;
+    transition: border 0.3s ease;
+    color: rgba(140, 140, 140, 1);
+    font-size: 16px;
+}
+
+.input-wrapper input:focus {
+    border-color: rgba(15, 106, 217, 1);
+    /* purple-500 */
+    color: #fff;
+}
+
+/* Floating label */
+.floating-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 2.5rem;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-family: "Lato", sans-serif;
+    color: #fff;
+    pointer-events: none;
+    /* transition: all 0.2s ease; */
+}
+
+/* Float label on focus or when text entered */
+.input-wrapper input:focus+.floating-label,
+.input-wrapper input:not(:placeholder-shown)+.floating-label {
+    /* transform: translateY(-0.5rem); */
+    font-size: 0.85rem;
+    color: rgba(15, 106, 217, 1);
+    margin-bottom: 1rem;
+}
+
+.input-wrapper input:not(:focus):not(:placeholder-shown)+.floating-label {
+    color: #fff;
+}
+
+/* Input icon */
+.input-icon {
+    position: absolute;
+    top: 1.5rem;
+    left: 0.75rem;
+}
+
+/* Message Input */
+.input-message-wrapper {
+    position: relative;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+/* Textarea (message input) */
+.input-message-wrapper textarea {
+    width: 100%;
+    min-height: 304px;
+    padding: 2.4rem 0.5rem 0.75rem 1rem;
+    /* left space for icon */
+    border: 2px solid rgba(27, 28, 30, 1);
+    /* gray-500 */
+    border-radius: 12px;
+    background: rgba(27, 28, 30, 1);
+    outline: none;
+    transition: border 0.3s ease;
+    color: rgba(140, 140, 140, 1);
+    font-size: 16px;
+    resize: vertical;
+}
+
+.input-message-wrapper textarea:focus {
+    border-color: rgba(15, 106, 217, 1);
+    /* purple-500 */
+    color: #fff;
+}
+
+.input-message-wrapper textarea:focus+.message-label {
+    border-color: rgba(15, 106, 217, 1);
+    /* purple-500 */
+    color: #0f6ad9;
+}
+
+.input-message-wrapper textarea:not(:focus):not(:placeholder-shown)+.message-label {
+    color: #fff;
+}
+
+/* message label */
+.message-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-family: "Lato", sans-serif;
+    color: #fff;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.section-container {
+    background: none;
+    padding: 80px 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.form-button {
+    background: var(--primary-blue);
+    color: var(--white);
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+.form-button:hover {
+    background: var(--white);
+    color: #0f6ad9;
 }
 
 /* Mobile Navbar */
@@ -168,11 +326,10 @@ body {
 
 /* Mobile Navbar */
 
-
 /* Hero Section */
 .hero-section {
     height: 100vh;
-    background: url('/images/bg-image.png');
+    background: url("/images/bg-image.png");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -184,7 +341,7 @@ body {
 }
 
 .hero-title {
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     font-weight: 400;
     font-style: bold;
     max-width: 80%;
@@ -221,45 +378,6 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* Partners Section */
-.partners-section {
-    padding: 5rem 0;
-    background: white;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.section-subtitle {
-    color: #666;
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-}
-
-.partner-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease;
-}
-
-.partner-logo:hover {
-    transform: translateY(-5px);
-}
-
-.partner-logo i {
-    font-size: 2rem;
-    color: #666;
-}
-
 /* Who we are section */
 .welcome-section {
     background: var(--primary-bg);
@@ -281,7 +399,7 @@ body {
 }
 
 .welcome-title {
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     font-weight: 400;
     font-size: 48px;
     line-height: 140%;
@@ -289,7 +407,7 @@ body {
 }
 
 .main-title {
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     font-weight: 900;
 }
 
@@ -326,7 +444,6 @@ body {
     object-fit: cover;
     border: 5px solid rgba(255, 255, 255, 0.1);
 }
-
 
 /* Mission Groups */
 .mission-section {
@@ -400,7 +517,6 @@ body {
 
 /* services section */
 
-
 /* Dedication section */
 .dedication-section {
     background: var(--white);
@@ -422,7 +538,7 @@ body {
 }
 
 .dedication-title {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 700;
 }
 
@@ -431,7 +547,7 @@ body {
     line-height: 140%;
     max-width: 100%;
     font-weight: 400;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 /* sermons section */
@@ -492,7 +608,7 @@ body {
     color: var(--white);
     font-weight: 400;
     background: rgba(242, 242, 242, 0.2);
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     border-radius: 100px;
     z-index: 2;
 }
@@ -502,7 +618,7 @@ body {
 }
 
 .sermon-content h5 {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-style: bold;
     font-weight: 700;
     font-size: 20px;
@@ -511,7 +627,7 @@ body {
 }
 
 .sermon-content p {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
@@ -527,7 +643,6 @@ body {
 .testimonies-title-box {
     display: inline-flex;
     align-items: center;
-
 }
 
 .testimonies-title-box img {
@@ -542,7 +657,7 @@ body {
     line-height: 140%;
     max-width: 100%;
     font-weight: 400;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     color: rgba(102, 112, 133, 1);
 }
 
@@ -611,7 +726,7 @@ body {
 }
 
 .footer-section-title {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     color: var(--white);
     line-height: 140%;
     font-weight: 700;
@@ -619,7 +734,7 @@ body {
 }
 
 .footer-text {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     color: rgba(255, 255, 255, 0.6);
     font-weight: 400;
 }
@@ -629,7 +744,7 @@ body {
 }
 
 .footer-button a {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     text-decoration: none;
     font-size: 18px;
     padding: 0 40px;
@@ -640,7 +755,7 @@ body {
 
 .button {
     border-radius: 100px;
-    padding: 12px 24px;
+    padding: 8px 16px;
     border: none;
     cursor: pointer;
 }
@@ -698,19 +813,18 @@ body {
 .globe {
     width: 120%;
     height: 120%;
-    background: url('/images/hero-blue-globe-1.png') no-repeat center;
+    background: url("/images/hero-blue-globe-1.png") no-repeat center;
     /* background: radial-gradient(circle at 30% 30%, #4facfe 0%, #00f2fe 100%); */
     border-radius: 50%;
     position: relative;
     transform: rotateZ(23.5deg);
     animation: spin 40s linear infinite;
-    box-shadow:
-        0 0 50px rgba(0, 43, 255, 0.8),
+    box-shadow: 0 0 50px rgba(0, 43, 255, 0.8),
         inset -20px -20px 50px rgba(0, 34, 204, 1);
 }
 
 .globe::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 10%;
     left: 15%;
@@ -723,7 +837,6 @@ body {
 
 .globe-scripture-1 {
     background: rgba(0, 0, 0, 0.7);
-
 }
 
 .globe-scriptures {
@@ -756,7 +869,6 @@ body {
         }
        } */
 
-
 /* About page css */
 
 /* mission grid */
@@ -781,7 +893,7 @@ body {
 }
 
 .mission-card h3 {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 700;
     font-style: bold;
     font-size: 28px;
@@ -790,7 +902,7 @@ body {
 }
 
 .mission-card p {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
@@ -857,7 +969,6 @@ body {
     border-radius: 8px;
     color: var(--scripture-background);
     margin-bottom: 16px;
-
 }
 
 .core-belief-number {
@@ -872,14 +983,14 @@ body {
 }
 
 .core-belief-number span {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 500;
     font-style: medium;
     font-size: large;
 }
 
 .core-belief-text {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 .core-belief-text h3 {
@@ -913,7 +1024,7 @@ body {
 }
 
 .leadership-text h2 {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     color: rgba(27, 28, 30, 1);
     font-size: 16px;
     font-weight: 400;
@@ -924,9 +1035,7 @@ body {
 .leadership-text h6 {
     font-size: 12px;
     color: rgba(124, 124, 124, 1);
-
 }
-
 
 /* Scrolling Banner */
 .scrolling-banner {
@@ -939,90 +1048,77 @@ body {
 }
 
 /* Scrolling Text Container */
-        .scrolling-text-container {
-            display: flex;
-            align-items: center;
-            animation: scroll-left 15s linear infinite;
-            white-space: nowrap;
-        }
+.scrolling-text-container {
+    display: flex;
+    align-items: center;
+    animation: scroll-left 15s linear infinite;
+    white-space: nowrap;
+}
 
-        /* Individual Text Item */
-        .scrolling-text {
-            font-family: 'Anton', sans-serif;
-            font-size: 32px;
-            font-weight: 400;
-            color: #333;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            flex-shrink: 0;
-            
-            /* Text-shadow outline method */
-            text-shadow: 
-                -2px -2px 0 #fff,
-                2px -2px 0 #fff,
-                -2px 2px 0 #fff,
-                2px 2px 0 #fff,
-                -2px 0 0 #fff,
-                2px 0 0 #fff,
-                0 -2px 0 #fff,
-                0 2px 0 #fff,
-                -3px -3px 0 #fff,
-                3px -3px 0 #fff,
-                -3px 3px 0 #fff,
-                3px 3px 0 #fff,
-                0 0 10px rgba(255,255,255,0.5),
-                0 0 20px rgba(255,255,255,0.3);
+/* Individual Text Item */
+.scrolling-text {
+    font-family: "Anton", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
 
-            /* Smooth rendering */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    /* Text-shadow outline method */
+    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff,
+        2px 2px 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, 0 -2px 0 #fff, 0 2px 0 #fff,
+        -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff,
+        0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
 
- /* Separator Icons */
-        .separator {
-            font-size: 2rem;
-            color: #fff;
-            margin-right: 28px;
-            margin-left: 28px;
-            flex-shrink: 0;
-            text-shadow: 
-                -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000;
-        }
+    /* Smooth rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-        /* Scroll Animation */
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-        
-        /* Alternative faster scroll */
-        .fast-scroll {
-            animation: scroll-left 8s linear infinite;
-        }
+/* Separator Icons */
+.separator {
+    font-size: 2rem;
+    color: #fff;
+    margin-right: 28px;
+    margin-left: 28px;
+    flex-shrink: 0;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
 
-        /* Pause on hover */
-        .scrolling-text-container:hover {
-            animation-play-state: paused;
-        }
+/* Scroll Animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
 
-        /* Add some visual effects */
-        .scrolling-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            animation: shimmer 3s ease-in-out infinite;
-            pointer-events: none;
-        }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Alternative faster scroll */
+.fast-scroll {
+    animation: scroll-left 8s linear infinite;
+}
+
+/* Pause on hover */
+.scrolling-text-container:hover {
+    animation-play-state: paused;
+}
+
+/* Add some visual effects */
+.scrolling-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
 
 .scrolling-text img {
     background-repeat: repeat-x;
@@ -1062,7 +1158,7 @@ body {
 }
 
 .mission-card-text h2 {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     text-transform: capitalize;
     font-size: 20px;
     font-weight: 400;
@@ -1071,7 +1167,7 @@ body {
 }
 
 .mission-card-text p {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
@@ -1081,16 +1177,17 @@ body {
 /* About page css ending */
 
 /* Give page css */
+
+/* WHY WE GIVE SECTION */
 .why-we-give-section {
     background: var(--primary-bg);
 }
 
-.why-we-give-cards {
-    justify-content: space-between;
-
-}
-
 .why-we-give-card {
+    position: relative;
+    height: 184px;
+    overflow: hidden;
+    padding: 1.5rem;
     background: rgba(246, 242, 255, 0.1);
     padding: 16px;
     width: 100%;
@@ -1098,8 +1195,13 @@ body {
     margin-bottom: 16px;
 }
 
+.why-we-give-text {
+    position: relative;
+    z-index: 2;
+}
+
 .why-we-give-text h2 {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 700;
     font-style: bold;
     text-transform: uppercase;
@@ -1108,321 +1210,546 @@ body {
 }
 
 .why-we-give-text p {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-style: Regular;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0px;
 }
 
 .why-we-give-image {
-    right: 20px;
-    left: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 40%;
+    z-index: 1;
 }
 
 .why-we-give-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
     opacity: 10%;
     overflow: hidden;
 }
 
+/* WAYS TO GIVE SECTION */
+.ways-to-give-section {
+    background: var(--primary-bg);
+}
+
+/* Tabs */
+.give-tabs-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    gap: 10px;
+    padding: 10px 0 10px 0;
+    margin-bottom: 1.5rem;
+    background: rgba(249, 249, 249, 0.1);
+}
+
+.give-tabs-header button {
+    background: none;
+    color: #fff;
+    border: none;
+    font-weight: 400;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.give-tabs-header button.active,
+.give-tabs-header button:hover {
+    background: #0f6ad9;
+}
+
+/* Bank Cards */
+.give-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    background: rgba(249, 249, 249, 0.1);
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.give-cards.hidden {
+    display: none;
+    /* only hidden ones collapse */
+}
+
+.give-card {
+    background: rgba(27, 28, 30, 1);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.give-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.give-card-bank {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+}
+
+.give-card-bank-info {
+    width: 100%;
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.give-card-bank-details h6 {
+    text-transform: uppercase;
+    padding: 0;
+    color: rgba(140, 140, 140, 1);
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+.give-card-bank-details h2 {
+    font-family: Lato;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+.give-card-details-copy button {
+    background: none;
+    border: none;
+}
+
+/* pay with cards */
+.pay-cards-details h2 {
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+.pay-cards-details button {
+    background: var(--button-blue);
+    font-family: Lato;
+    font-weight: 600;
+    border-radius: 100px;
+    font-size: 18px;
+    color: var(--white);
+    line-height: 24px;
+    letter-spacing: 0px;
+    padding: 12px 20px;
+    margin-top: 32px;
+}
+
+.pay-cards-details button:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+/* pay with crypto */
+.pay-with-crypto-details {
+    max-width: 100%;
+    width: 254px;
+}
+
+.pay-with-crypto-details h6 {
+    text-transform: uppercase;
+    padding: 0;
+    color: rgba(140, 140, 140, 1);
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+.pay-with-crypto-details h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 22px;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+/* specific-payment-section */
+.specific-payment-section {
+    background: var(--primary-bg);
+}
+
+/* Flip Cards for Specific Payment */
+.specific-payment-cards {
+    display: grid;
+    width: 100%;
+    gap: 16px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.payment-card {
+    perspective: 1000px;
+    height: 156px;
+    width: 100%;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.payment-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(95, 95, 95, 1);
+}
+
+.card-front {
+    background: none;
+    color: #fff;
+    padding-top: 12px;
+}
+
+.card-front h5 {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 20px;
+    letter-spacing: 0%;
+}
+
+.card-front p {
+    color: rgba(146, 146, 146, 1);
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 12px;
+}
+
+.card-back {
+    background: rgba(95, 95, 95, 1);
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+.card-back-bank {
+    display: inline-flex;
+    gap: 12px;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+}
+
+/* Success Message */
+.success-message {
+    display: inline-block;
+    position: fixed;
+    visibility: hidden;
+    text-align: center;
+    bottom: 80px;
+    right: 20px;
+    background: var(--dark-green);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.success-message.show {
+    transform: translateY(20%);
+    visibility: visible;
+}
+
+/* Loading animation for flip */
+.card-inner.loading {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* get-involved-in-doing-good-section */
+.get-involved-in-doing-good-section {
+    background: var(--primary-bg);
+}
+
 /* Give page css */
 
-/* Navigation Styles */
-/* Desktop Navigation */
-@media (min-width: 992px) {
-    body {
-        padding-top: 80px;
-        padding-bottom: 0;
-    }
+/* Sermons page css */
 
-    .hero-title {
-        font-size: 92px;
-    }
 
-    .section-container {
-        background: none;
-        padding: 120px 80px;
-        align-items: center;
-        justify-content: center;
-    }
+/* Hero Section */
+.sermons-page-hero-section {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    background: url('/images/sermons-hero-image.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
 
-    .navbar-custom {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background-color: var(--dark-bg);
-        padding: 22.5px 0;
-        z-index: 1030;
-        gap: 2rem;
-        border-bottom: 1px solid #333;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.sermons-page-hero-title {
+    position: absolute;
+    top: 8rem;
+    left: 2rem;
+}
 
-    .navbar-brand {
-        color: white !important;
-        font-size: 1.5rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-    }
+.sermons-page-hero-content h1 {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 2px;
+    font-size: 19.92px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: rgba(191, 194, 133, 1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
-    .navbar-nav .navbar-expand-lg {
-        display: flex;
-        flex-direction: row;
-        margin-left: auto;
-        align-items: center;
-        justify-content: center;
-    }
+.sermons-page-hero-content .pastor-name {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 10px;
+    color: var(--white);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
 
-    .navbar-nav .nav-item {
-        list-style: none;
-        padding: 0 24px;
-    }
+.listen-btn {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+}
 
-    .navbar-nav .nav-link {
-        color: #ccc !important;
-        font-size: 1rem;
-        padding: 0.5rem 0;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
+.listen-btn:hover {
+    background-color: #0056b3;
+    color: var(--white);
+    transform: translateY(-2px);
+}
 
-    .navbar-nav .nav-link:hover {
-        color: var(--white) !important;
-    }
+/* Sermons page seacrh section */
+.sermons-page-search-section {
+    background: var(--primary-bg);
+}
 
-    .navbar-nav .nav-link:active {
-        border-bottom: 1px solid #fff;
-    }
+.sermons-cards-spacing {
+    margin: 32px 0;
+}
 
-    .bottom-nav,
-    .nav-toggle {
-        display: none;
-    }
+/* SERMONS REELS SECTION */
+.reels-section {
+    background: var(--primary-bg);
+    color: var(--white);
+    padding-bottom: 72px;
+}
 
-    .welcome-title {
-        font-family: 'Anton', sans-serif;
-        font-size: 72px;
-    }
-
-    .services-grid {
-        display: inline-block;
-        grid-gap: 1.5rem;
-        width: 100%;
-    }
-
-    .services-grid-mobile {
-        display: none;
-    }
-
-    .services-grid-1 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .services-grid-1 .service-box:nth-child(1) {
-        height: 342px;
-    }
-
-    .services-grid-1 .service-box:nth-child(2) {
-        height: 342px;
-    }
-
-    .services-grid-2 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .services-grid-2 .service-box:nth-child(1) {
-        height: 342px;
-        background: var(--service-grid-bg-3)
-    }
-
-    .services-grid-2 .service-box:nth-child(2) {
-        height: 342px;
-        background: var(--service-grid-bg-4);
-    }
-
-    .services-grid-2 .service-box:nth-child(3) {
-        height: 342px;
-        background: var(--service-grid-bg-5);
-    }
-
-    .service-box {
-        padding: 32px;
-    }
-
-    .dedication-section {
-        padding: 126px 0;
-    }
-
-    .dedication-title {
-        font-family: 'Lato', sans-serif;
-        font-weight: 700;
-        font-size: 48px;
-        margin-top: 40px;
-    }
-
-    .sermons-cards {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        width: 100%;
-    }
-
-    .sermon-image {
-        border-radius: 12px;
-    }
-
-    .video-hours {
-        right: 20px;
-    }
-
-    .footer-section-inner {
-        border-radius: 12px;
-        padding: 64px 224px;
-    }
-
-    .footer-section-title {
-        font-family: 'Lato', sans-serif;
-        font-size: 40px;
-        font-weight: 700;
-        font-style: bold;
-
-    }
-
-    .footer-text {
-        font-size: 22px;
-    }
-
-    /* About css */
-    .mission-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 equal columns */
-        grid-auto-rows: auto;
-        /* rows adjust to content */
-
-    }
-
-    .mission-card {
-        padding: 28px;
-        height: 417px;
-        max-height: 100%;
-    }
-
-    .mission-card h3 {
-        font-size: 32px;
-        padding-bottom: 0;
-        text-transform: uppercase;
-    }
-
-    .mission-card p {
-        font-family: 'Lato', sans-serif;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 140%;
-    }
-
-    .desktop-mission-card-image {
-        display: block;
-        position: absolute;
-        overflow: hidden;
-        left: 15px;
-        right: 15px;
-        bottom: 2px;
-    }
-
-    .deskop-mission-card-image img {
-        object-fit: contain;
-        object-position: center;
-        overflow: hidden;
-    }
-
-    .mobile-image {
-        visibility: hidden;
-    }
-
-    .desktop-image {
-        visibility: visible;
-    }
-
-    /* core-belief -section */
-    .core-belief-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .core-belief-title {
-        width: 411px;
-    }
-
-    .core-belief-title h2 {
-        width: 242px;
-    }
-
-    .core-belief-box {
-        width: 410px;
-    }
-
-    /* Leadership section */
-    .leadership-image-grid {
-        gap: 20px;
-    }
-
-    .leadership-text h2 {
-        font-size: 18px;
-    }
-
-    .leadership-section {
-
-        margin: auto;
-        justify-content: center;
-        align-items: center;
-    }
-    .scrolling-text {
-        font-size: 60px;
-    }
-    .separator {
-        width: 104px;
-        margin-left: 40px;
-        margin-right: 40px;
-    }
-    .separator img {
-        width: 100%;
-    }
-    /* mission group cards */
-    
-    .mission-group-card {
-        margin-top: 20px;
-    }
-
-    .mission-card-text h2 {
-        font-size: 28px;
-        color: var(--white);
-    }
-
-    .mission-card-text p {
-        font-size: 18px;
-        width: 302px;
-    }
-
+.reels-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 12px;
 
 }
 
+.reel-card {
+    max-width: 100%;
+    width: 166px;
+    height: 282px;
+}
+
+.reel-img-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    background: url("/images/sermons-image4.png") no-repeat center;
+}
+
+.reel-card h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0%;
+
+}
+
+/* Sermons page css */
+
+/* Community page css */
+
+
+/* Partners Section */
+.partners-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.partner-title-header {
+    text-align: center;
+}
+
+.partner-title-header h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 28px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.partner-title-header p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: center;
+
+}
+
+/* .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+} */
+.logo {
+    display: inline-block;
+    background: rgba(250, 250, 250, 1);
+    opacity: 1;
+    border-radius: 20px;
+    padding: 21px 16.7px;
+
+}
+
+.logo img {
+    width: 54px;
+    height: 13px;
+
+}
+
+.partner-logo {
+
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px);
+}
+
+.partner-logo i {
+    font-size: 2rem;
+    color: #666;
+}
+
+/* Partner section */
+
+/* Grow your faith section */
+.grow-your-faith-section {
+    background: var(--primary-bg);
+}
+
+.grow-your-faith-section-header p {
+    font-family: "Lato", sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+    text-align: start;
+    line-height: 140%;
+    font-size: 16px;
+}
+
+.sermons-mission-group-para {
+    display: none;
+}
+
+/* Community page css */
+
+/* Navigation Styles */
+
+/* Responsiveness */
+
 /* Tablet Navigation */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
     body {
         padding-top: 0;
         padding-bottom: 140px;
+    }
+
+    .button {
+        border-radius: 100px;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
     }
 
     .navbar {
@@ -1551,7 +1878,6 @@ body {
         font-family: "Lato", sans-serif;
         font-size: 20px;
         margin-top: 1.5rem;
-
     }
 
     .badge-font {
@@ -1577,7 +1903,6 @@ body {
     .dedication-title {
         font-size: 36px;
         margin-top: 32px;
-
     }
 
     /* .sermons-cards {
@@ -1590,7 +1915,7 @@ body {
     }
 
     .footer-section-title {
-        font-family: 'Lato', sans-serif;
+        font-family: "Lato", sans-serif;
         font-size: 36px;
         font-weight: 700;
         font-style: bold;
@@ -1606,7 +1931,6 @@ body {
         /* 2 equal columns */
         grid-auto-rows: auto;
         /* rows adjust to content */
-
     }
 
     .mission-card {
@@ -1624,6 +1948,10 @@ body {
         gap: 1.5rem;
         width: 100%;
         margin-bottom: 1.5rem;
+    }
+
+    .scrolling-text {
+        font-size: 48px;
     }
 
     /* Core Beliefs */
@@ -1649,10 +1977,1304 @@ body {
 
     /* mission group cards*/
 
+    /* About page ends here */
+
+    /* Why we give cards */
+    .why-we-give-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .why-we-give-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        max-width: 81px;
+        z-index: 1;
+    }
+
+    .why-we-give-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        opacity: 10%;
+        overflow: hidden;
+    }
+
+    /* Ways to give */
+
+    /* Bank cards */
+    .give-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .give-tabs-header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .give-tabs-header button {
+        background: none;
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        font-style: bold;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+
+    .pay-with-crypto-details {
+        max-width: 100%;
+        width: 224px;
+    }
+
+    .pay-with-crypto-details h2 {
+        font-size: 20px;
+    }
+
+    /* Sermons page */
+    /* hero sermons page */
+    .sermons-page-hero-content h1 {
+        font-family: 'Anton', sans-serif;
+        letter-spacing: 2px;
+        font-size: 31.54px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: rgba(191, 194, 133, 1);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .sermons-page-hero-content .pastor-name {
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-style: bold;
+        font-size: 14px;
+        color: var(--white);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    /* Community page cass */
+    .grow-your-faith-section-header p {
+        font-family: "Lato", sans-serif;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4px;
+        text-align: start;
+        line-height: 140%;
+        font-size: 22px;
+    }
+
+    .sermons-mission-group-para {
+        display: flex;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        margin-top: 56px;
+
+    }
+
+    /* Community page css */
+}
+
+/* Laptop Navigation */
+@media (min-width: 992px) and (max-width: 1199px) {
+    body {
+        padding-top: 80px;
+        padding-bottom: 0;
+    }
+
+    .hero-title {
+        font-size: 92px;
+    }
+
+    /* Form container */
+    .input-wrapper-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .button {
+        border-radius: 100px;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+
+    .section-container {
+        background: none;
+        padding: 120px 80px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-custom {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--dark-bg);
+        padding: 22.5px 0;
+        z-index: 1030;
+        gap: 2rem;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-brand {
+        color: white !important;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-nav .navbar-expand-lg {
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-nav .nav-item {
+        list-style: none;
+        padding: 0 24px;
+    }
+
+    .navbar-nav .nav-link {
+        color: #ccc !important;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: var(--white) !important;
+    }
+
+    .navbar-nav .nav-link:active {
+        border-bottom: 1px solid #fff;
+    }
+
+    .bottom-nav,
+    .nav-toggle {
+        display: none;
+    }
+
+    .welcome-title {
+        font-family: "Anton", sans-serif;
+        font-size: 72px;
+    }
+
+    .services-grid {
+        display: inline-block;
+        grid-gap: 1.5rem;
+        width: 100%;
+    }
+
+    .services-grid-mobile {
+        display: none;
+    }
+
+    .services-grid-1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .services-grid-1 .service-box:nth-child(1) {
+        height: 342px;
+    }
+
+    .services-grid-1 .service-box:nth-child(2) {
+        height: 342px;
+    }
+
+    .services-grid-2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .services-grid-2 .service-box:nth-child(1) {
+        height: 342px;
+        background: var(--service-grid-bg-3);
+    }
+
+    .services-grid-2 .service-box:nth-child(2) {
+        height: 342px;
+        background: var(--service-grid-bg-4);
+    }
+
+    .services-grid-2 .service-box:nth-child(3) {
+        height: 342px;
+        background: var(--service-grid-bg-5);
+    }
+
+    .service-box {
+        padding: 32px;
+    }
+
+    .dedication-section {
+        padding: 126px 0;
+    }
+
+    .dedication-title {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        margin-top: 40px;
+    }
+
+    .sermons-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .sermon-image {
+        border-radius: 12px;
+    }
+
+    .video-hours {
+        right: 20px;
+    }
+
+    .footer-section-inner {
+        border-radius: 12px;
+        padding: 64px 224px;
+    }
+
+    .footer-section-title {
+        font-family: "Lato", sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+        font-style: bold;
+    }
+
+    .footer-text {
+        font-size: 22px;
+    }
+
+    /* About page css */
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 equal columns */
+        grid-auto-rows: auto;
+        /* rows adjust to content */
+    }
+
+    .mission-card {
+        padding: 28px;
+        height: 417px;
+        max-height: 100%;
+    }
+
+    .mission-card h3 {
+        font-size: 32px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+    }
+
+    .mission-card p {
+        font-family: "Lato", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+    }
+
+    .desktop-mission-card-image {
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        left: 15px;
+        right: 15px;
+        bottom: 2px;
+    }
+
+    .deskop-mission-card-image img {
+        object-fit: contain;
+        object-position: center;
+        overflow: hidden;
+    }
+
+    .mobile-image {
+        visibility: hidden;
+    }
+
+    .desktop-image {
+        visibility: visible;
+    }
+
+    /* core-belief -section */
+
+    .core-belief-box {
+        width: 410px;
+    }
+
+    .core-belief-boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Leadership section */
+    .leadership-image-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .leadership-text h2 {
+        font-size: 18px;
+    }
+
+    .leadership-section {
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scrolling-text {
+        font-size: 48px;
+    }
+
+    .separator {
+        width: 104px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .separator img {
+        width: 100%;
+    }
+
+    /* mission group cards */
+
+    .mission-group-card {
+        margin-top: 20px;
+    }
+
+    .mission-card-text {
+        width: 200px;
+        resize: vertical;
+    }
+
+    .mission-card-text h2 {
+        font-size: 20px;
+        color: var(--white);
+    }
+
+    .mission-card-text p {
+        font-size: 16px;
+    }
+
+    /* About page css ends */
+
+    /* Ways to give section */
+    .give-tabs-header button {
+        background: none;
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        font-style: bold;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+
+    /* Why we give section */
+    .give-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    /* Why we give cards */
+    .why-we-give-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .why-we-give-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        max-width: 123px;
+        z-index: 1;
+    }
+
+    .why-we-give-image img {
+        width: 123px;
+        height: 123px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        opacity: 10%;
+        overflow: hidden;
+    }
+
+    .pay-with-crypto-details {
+        max-width: 100%;
+        width: 424px;
+    }
+
+    .pay-with-crypto-details h2 {
+        font-size: 20px;
+    }
+
+    .give-tabs-header {
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .give-tabs-header button {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-style: Bold;
+        line-height: 24px;
+        padding: 12px 20px;
+        letter-spacing: 0px;
+    }
+
+    .specific-payment-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+
+    /* Sermons page */
+    /* hero sermons page */
+    .sermons-page-hero-content h1 {
+        letter-spacing: 2px;
+        font-size: 31.54px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: rgba(191, 194, 133, 1);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .sermons-page-hero-content .pastor-name {
+        font-weight: 700;
+        font-style: bold;
+        font-size: 14px;
+        color: var(--white);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    /* Community page cass */
+    .grow-your-faith-section-header p {
+        font-family: "Lato", sans-serif;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4px;
+        text-align: start;
+        line-height: 140%;
+        font-size: 22px;
+    }
+
+    .sermons-mission-group-para {
+        display: flex;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        margin-top: 56px;
+
+    }
+
+    /* Community page css */
+}
+
+/* Desktops: xl (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .section-container {
+        background: none;
+        padding: 120px 80px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button {
+        border-radius: 100px;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Form container */
+    .input-wrapper-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .navbar-custom {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--dark-bg);
+        padding: 22.5px 0;
+        z-index: 1030;
+        gap: 2rem;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-brand {
+        color: white !important;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-nav .navbar-expand-lg {
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-nav .nav-item {
+        list-style: none;
+        padding: 0 24px;
+    }
+
+    .navbar-nav .nav-link {
+        color: #ccc !important;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: var(--white) !important;
+    }
+
+    .navbar-nav .nav-link:active {
+        border-bottom: 1px solid #fff;
+    }
+
+    .bottom-nav,
+    .nav-toggle {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 5rem;
+    }
+
+    .welcome-title {
+        font-size: 3.5rem;
+    }
+
+    /* Dedication section */
+    .dedication-section {
+        padding: 126px 0;
+    }
+
+    .dedication-badge {
+        margin-bottom: 40px;
+    }
+
+    .dedication-title {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 140%;
+    }
+
+    .about-button {
+        margin-top: 40px;
+    }
+
+    /* Dedication section ends here */
+
+    /* A place for you section */
+    .services-grid {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .services-grid-1 {
+        display: flex;
+        width: 100%;
+        gap: 24px;
+        height: 342px;
+    }
+
+    .services-grid-2 {
+        display: flex;
+        gap: 24px;
+        width: 100%;
+        height: 342px;
+        margin-top: 24px;
+    }
+
+    .services-grid-mobile {
+        display: none;
+    }
+
+    /* a place for you section */
+
+    .mission-grid,
+    .services-grid,
+    .sermons-cards,
+    .give-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-section-inner {
+        padding: 5rem 12rem;
+    }
+
+    .footer-section-title {
+        font-size: 3rem;
+    }
+
+    .footer-text {
+        font-size: 1.3rem;
+    }
+
+    /* About page css */
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 equal columns */
+        grid-auto-rows: auto;
+        /* rows adjust to content */
+    }
+
+    .mission-card {
+        padding: 28px;
+        height: 417px;
+        max-height: 100%;
+    }
+
+    .mission-card h3 {
+        font-size: 32px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+    }
+
+    .mission-card p {
+        font-family: "Lato", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+    }
+
+    .desktop-mission-card-image {
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        left: 15px;
+        right: 15px;
+        bottom: 2px;
+    }
+
+    .deskop-mission-card-image img {
+        object-fit: contain;
+        object-position: center;
+        overflow: hidden;
+    }
+
+    .mobile-image {
+        visibility: hidden;
+    }
+
+    .desktop-image {
+        visibility: visible;
+    }
+
+    /* core-belief -section */
+
+    .core-belief-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .core-belief-box {
+        width: 410px;
+    }
+
+    .core-belief-boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Leadership section */
+    .leadership-image-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .leadership-text h2 {
+        font-size: 18px;
+    }
+
+    .leadership-section {
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scrolling-text {
+        font-size: 48px;
+    }
+
+    .separator {
+        width: 104px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .separator img {
+        width: 100%;
+    }
+
+    /* mission group cards */
+
+    .mission-group-card {
+        margin-top: 20px;
+    }
+
+    .mission-card-text {
+        width: 100%;
+        resize: vertical;
+    }
+
+    .mission-card-text h2 {
+        font-size: 20px;
+        color: var(--white);
+    }
+
+    .mission-card-text p {
+        font-size: 16px;
+    }
+
+    /* About page css ends */
+
+    /* Ways to give */
+    .give-tabs-header button {
+        background: none;
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        font-style: bold;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+
+    .give-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    /* why we give */
+    .why-we-give-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .why-we-give-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        max-width: 123px;
+        z-index: 1;
+    }
+
+    .why-we-give-image img {
+        width: 123px;
+        height: 123px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        opacity: 10%;
+        overflow: hidden;
+    }
+
+    .pay-with-crypto-details {
+        max-width: 100%;
+        width: 524px;
+    }
+
+    /* Sermons page */
+    /* hero sermons page */
+    .sermons-page-hero-content h1 {
+        letter-spacing: 2px;
+        font-size: 52.74px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: rgba(191, 194, 133, 1);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .sermons-page-hero-content .pastor-name {
+        font-weight: 700;
+        font-style: bold;
+        font-size: 18px;
+        color: var(--white);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    /* Community page cass */
+    .grow-your-faith-section-header p {
+        font-family: "Lato", sans-serif;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4px;
+        text-align: start;
+        line-height: 140%;
+        font-size: 22px;
+    }
+
+    .sermons-mission-group-para {
+        display: flex;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        margin-top: 56px;
+
+    }
+
+    /* Community page css */
+}
+
+/* Large Desktops: xxl (1400px and up) */
+@media (min-width: 1400px) {
+
+    /* Form container */
+    .input-wrapper-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .button {
+        border-radius: 100px;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .section-container {
+        background: none;
+        padding: 120px 80px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-custom {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--dark-bg);
+        padding: 22.5px 0;
+        z-index: 1030;
+        gap: 2rem;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-brand {
+        color: white !important;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-nav .navbar-expand-lg {
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-nav .nav-item {
+        list-style: none;
+        padding: 0 24px;
+    }
+
+    .navbar-nav .nav-link {
+        color: #ccc !important;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: var(--white) !important;
+    }
+
+    .navbar-nav .nav-link.active {
+        color: var(--white) !important;
+        border-bottom: 1px solid #fff;
+    }
+
+    .bottom-nav,
+    .nav-toggle {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 6rem;
+    }
+
+    .welcome-title {
+        font-size: 4rem;
+    }
+
+    /* Home page starts here */
+
+    /* A place for you section */
+    .services-grid {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .services-grid-1 {
+        display: flex;
+        width: 100%;
+        gap: 24px;
+        height: 342px;
+    }
+
+    .services-grid-2 {
+        display: flex;
+        gap: 24px;
+        width: 100%;
+        height: 342px;
+        margin-top: 24px;
+    }
+
+    .services-grid-mobile {
+        display: none;
+    }
+
+    /* a place for you section */
+
+    /* Dedication section */
+    .dedication-section {
+        padding: 126px 0;
+    }
+
+    .dedication-badge {
+        margin-bottom: 40px;
+    }
+
+    .dedication-title {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 140%;
+    }
+
+    .about-button {
+        margin-top: 40px;
+    }
+
+    /* Dedication section ends here */
+
+    /* Sermons section  starts here*/
+    .sermons-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        width: 100%;
+    }
+
+    .sermon-image {
+        border-radius: 12px;
+    }
+
+    /* Semons section ends here */
+
+    .services-grid,
+    .services-grid-mobile,
+    .give-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-section-inner {
+        padding: 6rem 16rem;
+    }
+
+    .footer-section-title {
+        font-size: 3.5rem;
+    }
+
+    .footer-text {
+        font-size: 1.5rem;
+    }
+
+    /* About page css */
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 equal columns */
+        grid-auto-rows: auto;
+        /* rows adjust to content */
+    }
+
+    .mission-card {
+        padding: 28px;
+        height: 417px;
+        max-height: 100%;
+    }
+
+    .mission-card h3 {
+        font-size: 32px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+    }
+
+    .mission-card p {
+        font-family: "Lato", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+    }
+
+    .desktop-mission-card-image {
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        left: 15px;
+        right: 15px;
+        bottom: 2px;
+    }
+
+    .deskop-mission-card-image img {
+        object-fit: contain;
+        object-position: center;
+        overflow: hidden;
+    }
+
+    .mobile-image {
+        visibility: hidden;
+    }
+
+    .desktop-image {
+        visibility: visible;
+    }
+
+    /* core-belief -section */
+    .core-belief-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .core-belief-title {
+        width: 411px;
+    }
+
+    .core-belief-title h2 {
+        width: 242px;
+    }
+
+    .core-belief-boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .core-belief-box {
+        width: 410px;
+    }
+
+    /* Core belief section ednds here */
+
+    /* Leadership section */
+
+    .leadership-image-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .leadership-text h2 {
+        font-size: 18px;
+    }
+
+    .leadership-section {
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scrolling-text {
+        font-size: 60px;
+    }
+
+    .separator {
+        width: 104px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .separator img {
+        width: 100%;
+    }
+
+    /* About page css */
+    .give-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .give-tabs-header button {
+        background: none;
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        font-style: bold;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+
+    .why-we-give-cards-desktop-layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    .why-we-give-cards-desktop-layout:nth-child(1) {
+        padding-left: 569px;
+    }
+
+    .why-we-give-cards-desktop-layout:nth-child(2) {
+        padding-left: 243px;
+    }
+
+    .why-we-give-card {
+        width: 302px;
+        height: 254px;
+    }
+
+    .why-we-give-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        max-width: 123px;
+        z-index: 1;
+    }
+
+    .why-we-give-image img {
+        width: 123px;
+        height: 123px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        opacity: 10%;
+        overflow: hidden;
+    }
+
+    .pay-with-crypto-details {
+        max-width: 100%;
+        width: 524px;
+    }
+
+    /* Get involved section */
+    .get-involved-in-doing-good-grid {
+        display: flex;
+    }
+
+    /* Sermons page */
+    /* hero sermons page */
+    .sermons-page-hero-content h1 {
+        letter-spacing: 2px;
+        font-size: 52.74px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: rgba(191, 194, 133, 1);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .sermons-page-hero-content .pastor-name {
+        font-weight: 700;
+        font-style: bold;
+        font-size: 18px;
+        color: var(--white);
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    /* Community page css */
+    .grow-your-faith-section-header p {
+        font-family: "Lato", sans-serif;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4px;
+        text-align: start;
+        line-height: 140%;
+        font-size: 22px;
+    }
+
+    .sermons-mission-group-para {
+        display: flex;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 22px;
+        line-height: 140%;
+        letter-spacing: 0%;
+        margin-top: 72px;
+
+    }
+
+    /* Community page css */
+
 }
 
 /* Extra Small Screens */
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
     body {
         padding-bottom: 120px;
     }
@@ -1717,10 +3339,8 @@ body {
     }
 
     .mission-grid {
-        grid-template-columns: repeat(1fr);
-        /* 2 equal columns */
+        grid-template-columns: repeat(1, 1fr);
         grid-auto-rows: auto;
-        /* rows adjust to content */
-
     }
-}
+
+} */

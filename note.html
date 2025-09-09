@@ -3,586 +3,671 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fellowship Church - Life Together in Christ</title>
-    <Link href="/assets/css/styles.css" rel="stylesheet">
+    <title>Sermons - Church Website</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-purple: #8B5CF6;
-            --primary-blue: #3B82F6;
+            --primary-color: #007bff;
             --dark-bg: #1a1a1a;
-            --text-light: #f8f9fa;
+            --darker-bg: #0d1117;
+            --text-light: #ffffff;
+            --text-muted: #8b949e;
+            --card-bg: #21262d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--darker-bg);
+            color: var(--text-light);
             line-height: 1.6;
-            padding-bottom: 70px; /* Add bottom padding to body to account for bottom navigation */
         }
 
-        /* Header Styles */
-        .navbar-custom {
-            background-color: var(--dark-bg);
+        /* Navigation */
+        .navbar {
+            background-color: var(--dark-bg) !important;
             padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1030;
+            border-bottom: 1px solid #30363d;
         }
 
         .navbar-brand {
-            color: white !important;
+            color: var(--text-light) !important;
             font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        .navbar-toggler {
-            display: none;
+        .navbar-nav .nav-link {
+            color: var(--text-muted) !important;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
         }
 
-        /* Desktop navigation - horizontal top menu for laptop screens */
-        @media (min-width: 992px) {
-            body {
-                padding-bottom: 0;
-            }
-            
-            .navbar-collapse {
-                position: static;
-                background: transparent;
-                border: none;
-                padding: 0;
-                display: flex !important;
-                justify-content: flex-end;
-            }
-
-            .navbar-nav {
-                flex-direction: row;
-                justify-content: flex-end;
-                align-items: center;
-                gap: 2rem;
-            }
-
-            .navbar-nav .nav-item {
-                flex: none;
-                text-align: left;
-            }
-
-            .navbar-nav .nav-link {
-                color: #ccc !important;
-                font-size: 1rem;
-                padding: 0.5rem 0;
-                display: block;
-                flex-direction: row;
-                gap: 0;
-            }
-
-            .navbar-nav .nav-link::before {
-                display: none;
-            }
-        }
-
-        /* Mobile and tablet navigation - bottom bar with icons */
-        @media (max-width: 991px) {
-            body {
-                padding-bottom: 80px;
-            }
-
-            .navbar-brand {
-                position: fixed;
-                top: 0.5rem;
-                left: 1rem;
-                z-index: 1031;
-            }
-
-            .navbar-collapse {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: var(--dark-bg);
-                border-top: 1px solid #333;
-                padding: 0.5rem 0;
-                z-index: 1030;
-                display: block !important;
-            }
-
-            .navbar-nav {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                margin: 0;
-                padding: 0 0.5rem;
-            }
-
-            .navbar-nav .nav-item {
-                flex: 1;
-                text-align: center;
-            }
-
-            .navbar-nav .nav-link {
-                color: #ccc !important;
-                margin: 0;
-                padding: 0.5rem 0.25rem;
-                font-size: 0.75rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.25rem;
-            }
-
-            .navbar-nav .nav-link::before {
-                content: '';
-                font-family: 'Font Awesome 6 Free';
-                font-weight: 900;
-                font-size: 1rem;
-            }
-
-            .nav-link[href="#home"]::before { content: '\f015'; }
-            .nav-link[href="#about"]::before { content: '\f007'; }
-            .nav-link[href="#sermons"]::before { content: '\f130'; }
-            .nav-link[href="#prayers"]::before { content: '\f684'; }
-            .nav-link[href="#give"]::before { content: '\f004'; }
-            .nav-link[href="#gallery"]::before { content: '\f03e'; }
-            .nav-link[href="#events"]::before { content: '\f073'; }
-            .nav-link[href="#community"]::before { content: '\f0c0'; }
-
-            .navbar-nav .nav-link:hover {
-                color: white !important;
-            }
-        }
-
-        /* Extra small mobile screens adjustments */
-        @media (max-width: 576px) {
-            .navbar-nav .nav-link {
-                font-size: 0.65rem;
-                padding: 0.4rem 0.1rem;
-            }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--text-light) !important;
         }
 
         /* Hero Section */
         .hero-section {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8)), 
-                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(0,123,255,0.8), rgba(0,86,179,0.9)),
+                        url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            position: relative;
         }
 
-        
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .hero-subtitle {
+        .hero-content .pastor-name {
             font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
 
-        .get-involved-badge {
+        .hero-content .scripture-ref {
             position: absolute;
-            bottom: 50px;
-            right: 50px;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(0,0,0,0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             font-size: 0.9rem;
-            font-weight: 600;
-            text-align: center;
-            backdrop-filter: blur(10px);
         }
 
-        /* Partner Organizations */
-        .partners-section {
-            padding: 5rem 0;
-            background: white;
+        .listen-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+        }
+
+        .listen-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
+            font-size: 3rem;
+            font-weight: bold;
             margin-bottom: 1rem;
         }
 
         .section-subtitle {
-            color: #666;
-            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
             margin-bottom: 3rem;
         }
 
-        .partner-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 80px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 3rem;
         }
 
-        .partner-logo:hover {
-            transform: translateY(-5px);
-        }
-
-        .partner-logo i {
-            font-size: 2rem;
-            color: #666;
-        }
-
-        /* Faith & Community Section */
-        .faith-section {
-            background: var(--dark-bg);
+        .search-input {
+            background-color: var(--card-bg);
+            border: 1px solid #30363d;
             color: var(--text-light);
-            padding: 5rem 0;
-            position: relative;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            width: 100%;
+            max-width: 600px;
         }
 
-        .scripture-ref {
-            color: var(--primary-blue);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+        .search-input::placeholder {
+            color: var(--text-muted);
         }
 
-        .faith-title {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 2rem;
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
         }
 
-        .faith-title .blue-text {
-            color: var(--primary-blue);
-        }
-
-        .community-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Scrolling Banner */
-        .scrolling-banner {
-            background: var(--dark-bg);
-            padding: 2rem 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
-        }
-
-        .scrolling-text {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
-            font-size: 2rem;
-            font-weight: 900;
-            color: #333;
-            text-transform: uppercase;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Mission Groups */
-        .mission-section {
-            background: var(--dark-bg);
-            color: var(--text-light);
-            padding: 5rem 0;
-        }
-
-        .get-involved-label {
-            color: var(--primary-blue);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .mission-card {
-            background: #2a2a2a;
+        /* Sermon Cards */
+        .sermon-card {
+            background-color: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             margin-bottom: 2rem;
+            border: 1px solid #30363d;
         }
 
-        .mission-card:hover {
-            transform: translateY(-10px);
+        .sermon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .mission-image {
-            width: 100%;
+        .sermon-thumbnail {
+            position: relative;
             height: 200px;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
         }
 
-        .mission-content {
+        .sermon-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .sermon-info {
             padding: 1.5rem;
         }
 
-        .mission-title {
+        .sermon-title {
             font-size: 1.3rem;
-            font-weight: 700;
+            font-weight: bold;
             margin-bottom: 0.5rem;
+            color: var(--text-light);
         }
 
-        .mission-description {
-            color: #ccc;
+        .sermon-pastor {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .sermon-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .sermon-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Reels Section */
+        .reels-section {
+            margin-top: 4rem;
+        }
+
+        .reel-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid #30363d;
+            transition: all 0.3s ease;
+        }
+
+        .reel-card:hover {
+            transform: scale(1.02);
+        }
+
+        .reel-thumbnail {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .reel-title {
+            padding: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Load More Button */
+        .load-more-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            margin-top: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-content .scripture-ref,
+            .listen-btn {
+                position: static;
+                margin-top: 1rem;
+            }
+
+            .sermon-thumbnail {
+                height: 150px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-cross"></i>
             </a>
-            <div class="c" id="navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sermons">Sermons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#prayers">Prayers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#give">Give</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Sermons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Prayers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Give</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Community</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="fellowship-badge">
-               <img src="/assets/icons/emoji _sparkles.svg" class="sparkle-emoji">  FELLOWSHIP
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>NOT AS LONG<br>AS MY SONG!</h1>
+            <p class="pastor-name">• Pastor Nathan James</p>
+            <div class="scripture-ref">
+                <i class="fas fa-book"></i> Romans 10:17
             </div>
-            <h1 class="hero-title">LIFE TOGETHER<br>IN CHRIST.</h1>
-            <p class="hero-subtitle">
-                We believe church is more than a place — It's a community where we 
-                share life, grow in faith, and serve together.
-            </p>
-        </div>
-        <div class="get-involved-badge">
-            Get Involved
+            <button class="listen-btn">
+                <i class="fas fa-play"></i> Listen to Sermon
+            </button>
         </div>
     </section>
 
-    <!-- Partner Organizations -->
-    <section class="partners-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Meet Our Partner Organizations</h2>
-                <p class="section-subtitle">Working hand-in-hand with those who share our mission and values.</p>
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Sermons Section -->
+        <section>
+            <h2 class="section-title">SERMONS</h2>
+            <p class="section-subtitle">Biblical teachings to inspire, challenge, and equip you for daily living.</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <input type="text" class="search-input" placeholder="What sermons are you looking for?" id="searchInput">
+                    </div>
+                </div>
             </div>
+
+            <!-- Sermon Grid -->
+            <div class="row" id="sermonGrid">
+                <!-- Sermon Card 1 -->
+                <div class="col-lg-4 col-md-6 sermon-item">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">The Power to Change Your Mind</h3>
+                            <p class="sermon-pastor">Bishop T.D. Jakes</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon Card 2 -->
+                <div class="col-lg-4 col-md-6 sermon-item">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616c27b1e2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">14 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">While You Were Waiting</h3>
+                            <p class="sermon-pastor">Pastor Victoria Flemings</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon Card 3 -->
+                <div class="col-lg-4 col-md-6 sermon-item">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">The Weapons Are In The House</h3>
+                            <p class="sermon-pastor">Pastor Robert Madu</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon Card 4 -->
+                <div class="col-lg-4 col-md-6 sermon-item">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">All Those Times You Didn't See</h3>
+                            <p class="sermon-pastor">Pastor Steven Furtick</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon Card 5 -->
+                <div class="col-lg-4 col-md-6 sermon-item">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">14 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">This Is My Bible</h3>
+                            <p class="sermon-pastor">Bishop Benjamin Timothy</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon Card 6 -->
+                <div class="col-lg-4 col-md-6 sermon-item">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">This Might Be My God Moment</h3>
+                            <p class="sermon-pastor">Pastor Steven Furtick</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reels Section -->
+        <section class="reels-section">
+            <h2 class="section-title">REELS</h2>
             <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="partner-logo">
-                        <i class="fas fa-lightbulb"></i>
-                        <span class="ms-2">Imagine AI</span>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="reel-card">
+                        <div class="reel-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=150&fit=crop')">
+                            <div class="sermon-duration">2 mins</div>
+                        </div>
+                        <div class="reel-title">The Power to Change Your Mind</div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="partner-logo">
-                        <i class="fas fa-star"></i>
-                        <span class="ms-2">Astra</span>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="reel-card">
+                        <div class="reel-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=150&fit=crop')">
+                            <div class="sermon-duration">1 min</div>
+                        </div>
+                        <div class="reel-title">The Power to Change Your Mind</div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="partner-logo">
-                        <i class="fas fa-globe"></i>
-                        <span class="ms-2">Atlas</span>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="reel-card">
+                        <div class="reel-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=150&fit=crop')">
+                            <div class="sermon-duration">3 mins</div>
+                        </div>
+                        <div class="reel-title">The Power to Change Your Mind</div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="partner-logo">
-                        <i class="fas fa-headphones"></i>
-                        <span class="ms-2">Audion</span>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="reel-card">
+                        <div class="reel-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=150&fit=crop')">
+                            <div class="sermon-duration">2 mins</div>
+                        </div>
+                        <div class="reel-title">The Power to Change Your Mind</div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="partner-logo">
-                        <i class="fas fa-users"></i>
-                        <span class="ms-2">Queue</span>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="reel-card">
+                        <div class="reel-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=150&fit=crop')">
+                            <div class="sermon-duration">1 min</div>
+                        </div>
+                        <div class="reel-title">The Power to Change Your Mind</div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="partner-logo">
-                        <i class="fas fa-layer-group"></i>
-                        <span class="ms-2">Laver</span>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="reel-card">
+                        <div class="reel-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=150&fit=crop')">
+                            <div class="sermon-duration">2 mins</div>
+                        </div>
+                        <div class="reel-title">The Power to Change Your Mind</div>
+                    </div>
+                </div>
+            </div>c
+
+            <!-- Second Row of Reels -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616c27b1e2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">14 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">While You Were Waiting</h3>
+                            <p class="sermon-pastor">Pastor Victoria Flemings</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">The Weapons Are In The House</h3>
+                            <p class="sermon-pastor">Pastor Robert Madu</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">The Power to Change Your Mind</h3>
+                            <p class="sermon-pastor">Bishop T.D. Jakes</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Faith & Community Section -->
-    <section class="faith-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="scripture-ref">
-                        <i class="fas fa-book"></i> Hebrews 10: 24-25
+            <!-- Third Row -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">14 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">This Is My Bible</h3>
+                            <p class="sermon-pastor">Bishop Benjamin Timothy</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
                     </div>
-                    <h2 class="faith-title">
-                        GROW YOUR FAITH.<br>
-                        <span class="blue-text">BUILD YOUR COMMUNITY.</span>
-                    </h2>
-                    <p class="mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum 
-                        est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin 
-                        lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet 
-                        feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per 
-                        inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante 
-                        pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur 
-                        vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia.
-                    </p>
                 </div>
-                <div class="col-lg-4 text-center">
-                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                         alt="Community Fellowship" class="community-image">
+                <div class="col-lg-4 col-md-6">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">This Might Be My God Moment</h3>
+                            <p class="sermon-pastor">Pastor Steven Furtick</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="sermon-card">
+                        <div class="sermon-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop')">
+                            <div class="sermon-duration">16 mins</div>
+                        </div>
+                        <div class="sermon-info">
+                            <h3 class="sermon-title">All Those Times You Didn't See</h3>
+                            <p class="sermon-pastor">Pastor Steven Furtick</p>
+                            <button class="sermon-btn">
+                                <i class="fas fa-play"></i> Listen Now
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Scrolling Banner -->
-    <div class="scrolling-banner">
-        <div class="scrolling-text">
-            FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp; FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp; FOLLOW YOUR JOURNEY &nbsp;&nbsp;&nbsp; ✦ ✦ &nbsp;&nbsp;&nbsp;
+        <!-- Load More Button -->
+        <div class="text-center">
+            <button class="load-more-btn" id="loadMoreBtn">
+                Load More
+            </button>
         </div>
     </div>
 
-    <!-- Mission Groups -->
-    <section class="mission-section">
-        <div class="container">
-            <div class="get-involved-label">
-                <i class="fas fa-heart"></i> GET INVOLVED
-            </div>
-            <h2 class="section-title text-white mb-3">MISSION GROUPS</h2>
-            <p class="section-subtitle text-light mb-5">
-                Find a group to grow in faith, serve with purpose, and connect with others in Christ.
-            </p>
-            
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="mission-card">
-                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Music Ministry" class="mission-image">
-                        <div class="mission-content">
-                            <h4 class="mission-title">Music Ministry</h4>
-                            <p class="mission-description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="mission-card">
-                        <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Youth & Teens" class="mission-image">
-                        <div class="mission-content">
-                            <h4 class="mission-title">Youth & Teens</h4>
-                            <p class="mission-description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="mission-card">
-                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Outreach Teams" class="mission-image">
-                        <div class="mission-content">
-                            <h4 class="mission-title">Outreach Teams</h4>
-                            <p class="mission-description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="mission-card">
-                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Adult Fellowship" class="mission-image">
-                        <div class="mission-content">
-                            <h4 class="mission-title">Adult Fellowship</h4>
-                            <p class="mission-description">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec 
-                                fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. 
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac 
-                                scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. 
-                                Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Smooth scrolling for navigation links
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const sermonItems = document.querySelectorAll('.sermon-item');
+            
+            sermonItems.forEach(item => {
+                const title = item.querySelector('.sermon-title').textContent.toLowerCase();
+                const pastor = item.querySelector('.sermon-pastor').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || pastor.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Load more functionality
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+            // Simulate loading more content
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            
+            setTimeout(() => {
+                this.innerHTML = 'Load More';
+                // Here you would typically load more sermon cards
+                console.log('[v0] Load more sermons functionality triggered');
+            }, 1500);
+        });
+
+        // Play button functionality
+        document.querySelectorAll('.sermon-btn, .listen-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('[v0] Playing sermon:', this.closest('.sermon-card, .hero-content'));
+                // Here you would implement actual audio/video playback
+            });
+        });
+
+        // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar-custom');
-            if (window.scrollY > 50) {
-                navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
-                navbar.style.backdropFilter = 'blur(10px)';
-            } else {
-                navbar.style.backgroundColor = 'var(--dark-bg)';
-                navbar.style.backdropFilter = 'none';
-            }
-        });
-
-        // Animate mission cards on scroll
+        // Add scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
@@ -591,9 +676,10 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.mission-card').forEach(card => {
+        // Observe sermon cards for animation
+        document.querySelectorAll('.sermon-card, .reel-card').forEach(card => {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
+            card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
         });

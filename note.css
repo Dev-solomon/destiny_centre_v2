@@ -1,0 +1,2038 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* Root Variables */
+:root {
+    --primary-bg: #1B1C1E;
+    --primary-purple: #8B5CF6;
+    --primary-blue: #0F6AD9;
+    --secondary-blue: #001A5B80;
+    --dark-bg: #1a1a1a;
+    --text-light: #f8f9fa;
+    --dark-green: #4F8D3680;
+    --dark-teal: #019EB880;
+    --dark-orange: #E7572B80;
+    --button-blue: #0F6AD9;
+    --scripture-background: #F2F2F2;
+    --hero-badge-color: #00000080;
+    --white: rgba(255, 255, 255, 1);
+    --service-grid-bg-1: rgba(0, 26, 91, 0.5);
+    --service-grid-bg-2: rgba(79, 141, 54, 0.5);
+    --service-grid-bg-3: rgba(1, 158, 184, 0.5);
+    --service-grid-bg-4: rgba(0, 0, 0, 1);
+    --service-grid-bg-5: rgba(231, 87, 43, 0.5);
+    --service-text: rgba(255, 255, 255, 0.8);
+    --text-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Lato', sans-serif;
+    background: var(--primary-bg);
+    margin: 0;
+    padding: 0;
+
+}
+
+/* Typography */
+.h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 92px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.badge-font {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+/* Fellowship Badge */
+.fellowship-badge-bg {
+    background: var(--hero-badge-color);
+    color: white;
+    padding: 0.4rem 1.4rem;
+    border-radius: 25px;
+    gap: 12px;
+    margin-bottom: 2rem;
+    display: inline-flex;
+}
+
+/* Mobile Navbar */
+.navbar-custom,
+.navbar-nav {
+    display: none;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-bg);
+    border-top: 1px solid #333;
+    z-index: 1030;
+    padding: 0;
+    /* padding: 0.5rem 0;  */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 0.5rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.nav-item-mobile,
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+    text-decoration: none;
+    padding: 0.5rem 0.25rem;
+    font-size: 0.7rem;
+    min-width: 0;
+    flex: 1;
+    max-width: 80px;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-item-mobile:hover,
+.nav-toggle:hover {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.nav-item-mobile i,
+.nav-toggle i {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.nav-item-mobile span,
+.nav-toggle span {
+    font-size: 0.65rem;
+    text-align: center;
+    line-height: 1;
+    word-wrap: break-word;
+}
+
+.nav-extended {
+    position: absolute;
+    bottom: 100%;
+    max-height: 0;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-bg);
+    border-top: 1px solid #333;
+    padding: 0.5rem 0;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav-extended.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-extended-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+.nav-item-hidden {
+    display: none;
+}
+
+.nav-primary {
+    display: flex;
+}
+
+/* Mobile Navbar */
+
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: url('/images/bg-image.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-style: bold;
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.get-involved-badge {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* Partners Section */
+.partners-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px);
+}
+
+.partner-logo i {
+    font-size: 2rem;
+    color: #666;
+}
+
+/* Who we are section */
+.welcome-section {
+    background: var(--primary-bg);
+    color: var(--text-light);
+    padding: 5rem 0;
+    position: relative;
+}
+
+.scripture-ref {
+    font-family: "Lato", sans-serif;
+    background: rgba(242, 242, 242, 0.1);
+    display: inline-flex;
+    padding: 7px 14px;
+    color: var(--white);
+    gap: 10px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 140%;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: 900;
+}
+
+.blue-highlight {
+    color: var(--primary-blue);
+}
+
+.welcome-title .blue-highlight {
+    color: var(--primary-blue);
+}
+
+.welcome-subtitle {
+    font-family: "Lato", sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+    text-align: start;
+    font-size: 22px;
+}
+
+.welcome-text {
+    font-family: "Lato", sans-serif;
+    color: var(--text-color);
+    margin-top: 28px;
+    font-weight: 400;
+    text-align: start;
+    font-size: 22px;
+    line-height: 140%;
+}
+
+.community-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* Mission Groups */
+.mission-section {
+    background: var(--primary-bg);
+    color: var(--text-light);
+    padding: 5rem 0;
+}
+
+/* services */
+
+.services-grid {
+    display: none;
+}
+
+.services-grid-mobile {
+    display: grid;
+    grid-template-columns: repeat(300px, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.service-box {
+    max-width: 100%;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.service-box h3 {
+    font-family: "Lato", sans-serif;
+    color: var(--service-text);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.service-box p {
+    font-family: "Lato", sans-serif;
+    color: var(--service-text);
+    font-size: 0.9rem;
+    line-height: 24px;
+}
+
+.service-box:nth-child(1) {
+    background: var(--service-grid-bg-1);
+}
+
+.service-box:nth-child(2) {
+    background: var(--service-grid-bg-2);
+}
+
+.service-box:nth-child(3) {
+    background: var(--service-grid-bg-3);
+}
+
+.service-box:nth-child(4) {
+    background: var(--service-grid-bg-4);
+}
+
+.service-box:nth-child(5) {
+    background: var(--service-grid-bg-5);
+}
+
+/* services section */
+
+
+/* Dedication section */
+.dedication-section {
+    background: var(--white);
+    /* padding-top: 66px; */
+    text-align: center;
+    align-items: center;
+}
+
+.dedication-badge {
+    padding: 6px 14px;
+    background: rgba(242, 242, 242, 1);
+    text-align: center;
+    display: inline-block;
+    color: rgba(27, 28, 30, 1);
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Lato", sans-serif;
+}
+
+.dedication-title {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+.dedication-para {
+    font-size: 18px;
+    line-height: 140%;
+    max-width: 100%;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+}
+
+/* sermons section */
+.sermons-section {
+    background: var(--primary-bg);
+}
+
+.sermons-section h2 {
+    color: var(--white);
+}
+
+.sermons-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.sermon-card {
+    background: none;
+    border-radius: 25px;
+    overflow: hidden;
+    color: white;
+    text-align: start;
+    padding: 0px;
+    max-width: 100%;
+    margin-bottom: 0.9rem;
+}
+
+.sermon {
+    position: relative;
+}
+
+/* .sermon-card:hover {
+            transform: translateY(-5px);
+        } */
+
+/* Make sermon-image and its img responsive */
+.sermon-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    font-size: 3rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.sermon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-hours {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    text-align: center;
+    padding: 4px 10px;
+    color: var(--white);
+    font-weight: 400;
+    background: rgba(242, 242, 242, 0.2);
+    font-family: 'Lato', sans-serif;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+.sermon-content {
+    padding: 16px 0px;
+}
+
+.sermon-content h5 {
+    font-family: 'Lato', sans-serif;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.sermon-content p {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(140, 140, 140, 1);
+}
+
+/* Testimonies section*/
+
+.testimonies-title-box h2 {
+    letter-spacing: 3px;
+}
+
+.testimonies-title-box {
+    display: inline-flex;
+    align-items: center;
+
+}
+
+.testimonies-title-box img {
+    margin-right: 8px;
+    margin-left: 18px;
+    margin-top: -4rem;
+    bottom: 8px;
+}
+
+.testimonies-para {
+    font-size: 22px;
+    line-height: 140%;
+    max-width: 100%;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+    color: rgba(102, 112, 133, 1);
+}
+
+/* testimonies carousel section */
+.carousel-inner {
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background: rgba(250, 250, 250, 1);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 16px 0;
+    height: 20rem;
+    /* ensures card stretches full column height */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.testimonial-card p {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    /* pushes name to bottom */
+}
+
+.testimonial-card h6 {
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+}
+
+/* Carousel row equal heights */
+.sermons-section .row {
+    display: flex;
+    align-items: stretch;
+    /* all cards in row same height */
+}
+
+/* Move controls to left */
+.carousel-controls {
+    text-align: left;
+    /* align to left side */
+}
+
+.carousel-controls button {
+    border-radius: 100%;
+}
+
+/* footer section */
+.footer-section {
+    background: var(--primary-bg);
+    color: var(--text-light);
+    /* padding: 3rem 0; */
+    text-align: center;
+}
+
+.footer-section-inner {
+    background: rgba(0, 0, 0, 1);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-section-title {
+    font-family: 'Lato', sans-serif;
+    color: var(--white);
+    line-height: 140%;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.footer-text {
+    font-family: 'Lato', sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+.footer-button {
+    margin: 24px 0;
+}
+
+.footer-button a {
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 0 40px;
+    text-transform: capitalize;
+}
+
+/* Buttons */
+
+.button {
+    border-radius: 100px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-button {
+    background: var(--white);
+    color: var(--primary-blue);
+    margin-top: 50px;
+    text-align: center;
+}
+
+.hero-button-text {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-style: normal;
+}
+
+.hero-button:hover {
+    background: var(--primary-blue);
+    color: var(--text-white);
+}
+
+.about-button {
+    background: var(--button-blue);
+    text-align: center;
+}
+
+.about-button-text {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-style: normal;
+}
+
+.about-button:hover {
+    background: var(--text-white);
+}
+
+.about-button-text:hover {
+    color: var(--primary-blue);
+}
+
+/* hero Rotating Globe */
+.globe-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.globe {
+    width: 120%;
+    height: 120%;
+    background: url('/images/hero-blue-globe-1.png') no-repeat center;
+    /* background: radial-gradient(circle at 30% 30%, #4facfe 0%, #00f2fe 100%); */
+    border-radius: 50%;
+    position: relative;
+    transform: rotateZ(23.5deg);
+    animation: spin 40s linear infinite;
+    box-shadow:
+        0 0 50px rgba(0, 43, 255, 0.8),
+        inset -20px -20px 50px rgba(0, 34, 204, 1);
+}
+
+.globe::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    /* background: url('/images/hero-blue-globe-1.png') no-repeat center; */
+    background-size: contain;
+    animation: rotateGlobeContent 25s linear infinite reverse;
+}
+
+.globe-scripture-1 {
+    background: rgba(0, 0, 0, 0.7);
+
+}
+
+.globe-scriptures {
+    width: 100%;
+    position: absolute;
+    top: 10%;
+    left: -20%;
+}
+
+.globe-scriptures-1 {
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: 80%;
+}
+
+.globe-scriptures-2 {
+    width: 100%;
+    position: absolute;
+    top: 110%;
+    left: 70%;
+}
+
+/* @keyframes spin {
+        from {
+            transform: rotateZ(23.5deg) rotateY(0deg);
+        }
+        to {
+            transform: rotateZ(23.5deg) rotateY(360deg);
+        }
+       } */
+
+
+/* About page css */
+
+/* mission grid */
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+}
+
+.mission-card {
+    opacity: 20;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    height: 304px;
+    max-height: 100%;
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+    padding: 16px;
+    max-width: 100%;
+}
+
+.mission-card h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 28px;
+    padding-bottom: 0;
+    text-transform: uppercase;
+}
+
+.mission-card p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.mission-card-container {
+    position: relative;
+    background-color: rgba(246, 242, 255, 0.1);
+    border-radius: 16px;
+}
+
+.mission-card-image {
+    position: absolute;
+    right: 9px;
+    bottom: 8px;
+    overflow: hidden;
+}
+
+.mission-card-image img {
+    object-fit: contain;
+    overflow: hidden;
+    opacity: 20%;
+}
+
+.mission-card:hover {
+    transform: translateY(-10px);
+}
+
+.mission-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.mission-content {
+    padding: 1.5rem;
+}
+
+.desktop-image {
+    visibility: hidden;
+}
+
+.mobile-image {
+    visibility: visible;
+}
+
+.desktop-mission-card-image {
+    display: none;
+}
+
+.navbar {
+    display: none;
+}
+
+/* core-belief -section */
+.core-belief-section {
+    background: var(--primary-bg);
+}
+
+.core-belief-box {
+    background: rgba(246, 242, 255, 0.1);
+    padding: 16px;
+    border-radius: 8px;
+    color: var(--scripture-background);
+    margin-bottom: 16px;
+
+}
+
+.core-belief-number {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(64, 64, 64, 1);
+    padding: 8px 15px;
+    border-radius: 12px;
+    margin-bottom: 36px;
+}
+
+.core-belief-number span {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-style: medium;
+    font-size: large;
+}
+
+.core-belief-text {
+    font-family: 'Lato', sans-serif;
+}
+
+.core-belief-text h3 {
+    font-weight: 500;
+    font-style: medium;
+    font-size: large;
+    line-height: 140%;
+}
+
+.core-belief-text p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Leadership section */
+.leadership-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.leadership-image {
+    text-align: start;
+    width: 100%;
+}
+
+.leadership-image img {
+    width: 100%;
+}
+
+.leadership-text h2 {
+    font-family: 'Lato', sans-serif;
+    color: rgba(27, 28, 30, 1);
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 8px;
+    text-transform: capitalize;
+}
+
+.leadership-text h6 {
+    font-size: 12px;
+    color: rgba(124, 124, 124, 1);
+
+}
+
+
+/* Scrolling Banner */
+.scrolling-banner {
+    width: 100%;
+    background: var(--primary-bg);
+    padding: 2rem 0;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+/* Scrolling Text Container */
+        .scrolling-text-container {
+            display: flex;
+            align-items: center;
+            animation: scroll-left 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        /* Individual Text Item */
+        .scrolling-text {
+            font-family: 'Anton', sans-serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            flex-shrink: 0;
+            
+            /* Text-shadow outline method */
+            text-shadow: 
+                -2px -2px 0 #fff,
+                2px -2px 0 #fff,
+                -2px 2px 0 #fff,
+                2px 2px 0 #fff,
+                -2px 0 0 #fff,
+                2px 0 0 #fff,
+                0 -2px 0 #fff,
+                0 2px 0 #fff,
+                -3px -3px 0 #fff,
+                3px -3px 0 #fff,
+                -3px 3px 0 #fff,
+                3px 3px 0 #fff,
+                0 0 10px rgba(255,255,255,0.5),
+                0 0 20px rgba(255,255,255,0.3);
+
+            /* Smooth rendering */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+ /* Separator Icons */
+        .separator {
+            font-size: 2rem;
+            color: #fff;
+            margin-right: 28px;
+            margin-left: 28px;
+            flex-shrink: 0;
+            text-shadow: 
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+        }
+
+        /* Scroll Animation */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* Alternative faster scroll */
+        .fast-scroll {
+            animation: scroll-left 8s linear infinite;
+        }
+
+        /* Pause on hover */
+        .scrolling-text-container:hover {
+            animation-play-state: paused;
+        }
+
+        /* Add some visual effects */
+        .scrolling-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            animation: shimmer 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+.scrolling-text img {
+    background-repeat: repeat-x;
+}
+
+/* 
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+} */
+
+/* mission group */
+.mission-group-section {
+    background: var(--primary-bg);
+}
+
+.mission-group-cards {
+    width: 100%;
+}
+
+.mission-group-card {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.mission-group-card img {
+    width: 100%;
+}
+
+.mission-card-text {
+    margin-top: 14px;
+}
+
+.mission-card-text h2 {
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
+    color: var(--white);
+}
+
+.mission-card-text p {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* About page css ending */
+
+/* Give page css */
+
+/* WHY WE GIVE SECTION */
+.why-we-give-section {
+    background: var(--primary-bg);
+}
+
+.why-we-give-card {
+    position: relative;
+    height: 184px;
+    overflow: hidden;
+    padding: 1.5rem;
+    background: rgba(246, 242, 255, 0.1);
+    padding: 16px;
+    width: 100%;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+.why-we-give-text {
+    position: relative;
+    z-index: 2;
+}
+
+.why-we-give-text h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.why-we-give-text p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.why-we-give-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 40%;
+    z-index: 1;
+}
+
+.why-we-give-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    opacity: 10%;
+    overflow: hidden;
+}
+
+/* WAYS TO GIVE SECTION */
+.ways-to-give-section {
+    background: var(--primary-bg);
+}
+/* Tabs */
+.give-tabs-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 1.5rem;
+    background: rgba(249, 249, 249, 0.1);
+    font-size: 13px;
+
+}
+.give-tabs-header button {
+    background: none;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.give-tabs-header button.active,
+.give-tabs-header button:hover {
+  background: #0F6AD9;
+}
+
+/* Bank Cards */
+.give-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  background: rgba(249, 249, 249, 0.1);
+  border-radius: 16px;
+  padding: 10px;
+}
+
+
+.give-cards.hidden {
+  display: none; /* only hidden ones collapse */
+}
+
+.give-card {
+  background: rgba(27, 28, 30, 1);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.give-card.full-width {
+  grid-column: 1 / -1; /* span across all columns */
+}
+
+.give-card-bank {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
+.give-card-bank-info {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+.give-card-bank-details h6 {
+    text-transform: uppercase;
+    padding: 0;
+    color: rgba(140, 140, 140, 1);
+    font-family: Lato;
+font-weight: 400;
+font-size: 14px;
+line-height: 140%;
+letter-spacing: 0%;
+}
+
+.give-card-bank-details h2 {
+    font-family: Lato;
+font-weight: 700;
+font-style: Bold;
+font-size: 22px;
+line-height: 140%;
+letter-spacing: 0%;
+
+}
+.give-card-details-copy button {
+    background: none;
+    border: none;
+}
+
+/* pay with cards */
+.pay-cards-details h2 {
+    font-family: Lato;
+font-weight: 400;
+font-size: 18px;
+line-height: 140%;
+letter-spacing: 0%;
+}
+.pay-cards-details button {
+    background: var(--button-blue);
+    font-family: Lato;
+font-weight: 600;
+border-radius: 100px;
+font-size: 18px;
+color: var(--white);
+line-height: 24px;
+letter-spacing: 0px;
+padding: 12px 20px;
+margin-top: 32px;
+}
+.pay-cards-details button:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+/* pay with crypto */
+.pay-with-crypto-details {
+    max-width: 100%;
+    width: 324px;
+}
+.pay-with-crypto-details h6 {
+    text-transform: uppercase;
+    padding: 0;
+    color: rgba(140, 140, 140, 1);
+    font-family: Lato;
+font-weight: 400;
+font-size: 14px;
+line-height: 140%;
+letter-spacing: 0%;
+}
+.pay-with-crypto-details h2 {
+     font-family: 'Lato', sans-serif;
+font-weight: 700;
+font-style: Bold;
+font-size: 22px;
+white-space: normal;
+word-wrap: break-word;
+line-height: 140%;
+letter-spacing: 0%;
+}
+
+/* specific-payment-section */
+.specific-payment-section {
+    background: var(--primary-bg);
+}
+
+/* Flip Cards for Specific Payment */
+.specific-payment-cards {
+  display: grid;
+  width: 100%;
+  gap: 16px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.payment-card {
+  perspective: 1000px;
+  height: 156px;
+  width: 100%;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.payment-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(95, 95, 95, 1);
+}
+
+.card-front {
+  background: none;
+  color: #fff;
+}
+.card-front h5 {
+    font-family: 'Lato', sans-serif;
+font-weight: 700;
+font-style: bold;
+font-size: 20px;
+line-height: 140%;
+letter-spacing: 0%;
+
+}
+.card-front p {
+    color: rgba(146, 146, 146, 1);
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 12px;
+}
+
+.card-back {
+  background: rgba(95, 95, 95, 1);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+.card-back-bank {
+    display: inline-flex;
+    gap: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
+
+        /* Success Message */
+        .success-message {
+            display: inline-block;
+            position: fixed;
+            visibility: hidden;
+            text-align: center;
+            bottom: 80px;
+            right: 20px;   
+            background: var(--dark-green);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .success-message.show {
+            transform: translateY(20%);
+            visibility: visible;
+        }
+
+        /* Loading animation for flip */
+        .card-inner.loading {
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+/* get-involved-in-doing-good-section */
+.get-involved-in-doing-good-section {
+    background: var(--primary-bg);
+}
+/* Give page css */
+
+/* Navigation Styles */
+/* Desktop Navigation */
+@media (min-width: 992px) {
+    body {
+        padding-top: 80px;
+        padding-bottom: 0;
+    }
+
+    .hero-title {
+        font-size: 92px;
+    }
+
+    .section-container {
+        background: none;
+        padding: 120px 80px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-custom {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--dark-bg);
+        padding: 22.5px 0;
+        z-index: 1030;
+        gap: 2rem;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-brand {
+        color: white !important;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-nav .navbar-expand-lg {
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-nav .nav-item {
+        list-style: none;
+        padding: 0 24px;
+    }
+
+    .navbar-nav .nav-link {
+        color: #ccc !important;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: var(--white) !important;
+    }
+
+    .navbar-nav .nav-link:active {
+        border-bottom: 1px solid #fff;
+    }
+
+    .bottom-nav,
+    .nav-toggle {
+        display: none;
+    }
+
+    .welcome-title {
+        font-family: 'Anton', sans-serif;
+        font-size: 72px;
+    }
+
+    .services-grid {
+        display: inline-block;
+        grid-gap: 1.5rem;
+        width: 100%;
+    }
+
+    .services-grid-mobile {
+        display: none;
+    }
+
+    .services-grid-1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .services-grid-1 .service-box:nth-child(1) {
+        height: 342px;
+    }
+
+    .services-grid-1 .service-box:nth-child(2) {
+        height: 342px;
+    }
+
+    .services-grid-2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .services-grid-2 .service-box:nth-child(1) {
+        height: 342px;
+        background: var(--service-grid-bg-3)
+    }
+
+    .services-grid-2 .service-box:nth-child(2) {
+        height: 342px;
+        background: var(--service-grid-bg-4);
+    }
+
+    .services-grid-2 .service-box:nth-child(3) {
+        height: 342px;
+        background: var(--service-grid-bg-5);
+    }
+
+    .service-box {
+        padding: 32px;
+    }
+
+    .dedication-section {
+        padding: 120px 0;
+    }
+
+    .dedication-title {
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        margin-top: 40px;
+    }
+
+    .sermons-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .sermon-image {
+        border-radius: 12px;
+    }
+
+    .video-hours {
+        right: 20px;
+    }
+
+    .footer-section-inner {
+        border-radius: 12px;
+        padding: 64px 224px;
+    }
+
+    .footer-section-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+        font-style: bold;
+
+    }
+
+    .footer-text {
+        font-size: 22px;
+    }
+
+    /* About css */
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 equal columns */
+        grid-auto-rows: auto;
+        /* rows adjust to content */
+
+    }
+
+    .mission-card {
+        padding: 28px;
+        height: 417px;
+        max-height: 100%;
+    }
+
+    .mission-card h3 {
+        font-size: 32px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+    }
+
+    .mission-card p {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+    }
+
+    .desktop-mission-card-image {
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        left: 15px;
+        right: 15px;
+        bottom: 2px;
+    }
+
+    .deskop-mission-card-image img {
+        object-fit: contain;
+        object-position: center;
+        overflow: hidden;
+    }
+
+    .mobile-image {
+        visibility: hidden;
+    }
+
+    .desktop-image {
+        visibility: visible;
+    }
+
+    /* core-belief -section */
+    .core-belief-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .core-belief-title {
+        width: 411px;
+    }
+
+    .core-belief-title h2 {
+        width: 242px;
+    }
+
+    .core-belief-box {
+        width: 410px;
+    }
+
+    /* Leadership section */
+    .leadership-image-grid {
+        gap: 20px;
+    }
+
+    .leadership-text h2 {
+        font-size: 18px;
+    }
+
+    .leadership-section {
+
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    .scrolling-text {
+        font-size: 60px;
+    }
+    .separator {
+        width: 104px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    .separator img {
+        width: 100%;
+    }
+    /* mission group cards */
+    
+    .mission-group-card {
+        margin-top: 20px;
+    }
+
+    .mission-card-text h2 {
+        font-size: 28px;
+        color: var(--white);
+    }
+
+    .mission-card-text p {
+        font-size: 18px;
+        width: 302px;
+    }
+
+    /* Why we give section */
+    .give-tabs-header {
+        
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .give-tabs-header button {
+        font-family: 'Lato', sans-serif;
+font-weight: 700;
+font-style: Bold;
+line-height: 24px;
+padding: 12px 20px;
+letter-spacing: 0px;
+
+    }
+    .specific-payment-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    }
+        
+
+}
+
+/* Tablet Navigation */
+@media (min-width: 768px) {
+    body {
+        padding-top: 0;
+        padding-bottom: 140px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .section-container {
+        background: none;
+        padding: 104px 60px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-custom,
+    .navbar-nav {
+        display: none;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--dark-bg);
+        border-top: 1px solid #333;
+        z-index: 1030;
+        padding: 0;
+        /* padding: 0.5rem 0;  */
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0.5rem 0.5rem;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-item-mobile,
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ccc;
+        text-decoration: none;
+        padding: 0.5rem 0.25rem;
+        font-size: 0.7rem;
+        min-width: 0;
+        flex: 1;
+        max-width: 80px;
+        transition: color 0.3s ease;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nav-item-mobile:hover,
+    .nav-toggle:hover {
+        color: var(--primary-blue);
+        text-decoration: none;
+    }
+
+    .nav-item-mobile i,
+    .nav-toggle i {
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .nav-item-mobile span,
+    .nav-toggle span {
+        font-size: 0.65rem;
+        text-align: center;
+        line-height: 1;
+        word-wrap: break-word;
+    }
+
+    .nav-extended {
+        position: absolute;
+        bottom: 100%;
+        max-height: 0;
+        overflow: hidden;
+        left: 0;
+        right: 0;
+        background-color: var(--dark-bg);
+        border-top: 1px solid #333;
+        padding: 0.5rem 0;
+        transform: translateY(100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-extended.show {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-extended-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 0.5rem;
+    }
+
+    .nav-item-hidden {
+        display: none;
+    }
+
+    .nav-primary {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 72px;
+        font-style: bold;
+        max-width: 85%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-family: "Lato", sans-serif;
+        font-size: 20px;
+        margin-top: 1.5rem;
+
+    }
+
+    .badge-font {
+        font-size: 16px;
+    }
+
+    .welcome-title {
+        font-size: 60px;
+    }
+
+    .welcome-subtitle {
+        font-size: 22px;
+    }
+
+    .globe-container {
+        margin-top: 64px;
+    }
+
+    .dedication-section {
+        padding: 60px 0;
+    }
+
+    .dedication-title {
+        font-size: 36px;
+        margin-top: 32px;
+
+    }
+
+    /* .sermons-cards {
+        grid-template-columns: repeat(2, 1fr);
+    } */
+
+    .footer-section-inner {
+        border-radius: 12px;
+        padding: 64px;
+    }
+
+    .footer-section-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        font-style: bold;
+    }
+
+    .footer-text {
+        font-size: 18px;
+    }
+
+    /* About page css */
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 equal columns */
+        grid-auto-rows: auto;
+        /* rows adjust to content */
+
+    }
+
+    .mission-card {
+        height: 380px;
+        max-height: 100%;
+    }
+
+    .services-grid {
+        display: none;
+    }
+
+    .services-grid-mobile {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Core Beliefs */
+    .core-belief-boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .core-belief-number {
+        margin-bottom: 56px;
+    }
+
+    .core-belief-box {
+        border-radius: 16px;
+    }
+
+    /* Leadership section */
+    .leadership-image-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* mission group cards*/
+
+    /* Ways to give */
+
+    /* Bank cards */
+    .give-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pay-with-crypto-details {
+    max-width: 100%;
+    width: 524px;
+}
+    
+}
+
+/* Extra Small Screens */
+@media (max-width: 576px) {
+    body {
+        padding-bottom: 120px;
+    }
+
+    .section-container {
+        background: none;
+        padding: 80px 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-nav .navbar-custom {
+        display: none;
+    }
+
+    .nav-item-mobile span,
+    .nav-toggle span {
+        font-size: 0.6rem;
+    }
+
+    .nav-item-mobile,
+    .nav-toggle {
+        padding: 0.4rem 0.1rem;
+        max-width: 70px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .get-involved-badge {
+        width: 80px;
+        height: 80px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 0.7rem;
+    }
+
+    .badge-font {
+        font-size: 14px;
+    }
+
+    .globe-container {
+        margin-top: 50px;
+    }
+
+    .dedication-section {
+        padding: 20px 0;
+    }
+
+    .dedication-title {
+        font-size: 28px
+    }
+
+
+    .footer-section-inner {
+        padding: 34px;
+    }
+
+    .footer-text {
+        font-size: 16px;
+    }
+
+    .mission-grid {
+        grid-template-columns: repeat(1fr);
+        /* 2 equal columns */
+        grid-auto-rows: auto;
+        /* rows adjust to content */
+
+    }
+}

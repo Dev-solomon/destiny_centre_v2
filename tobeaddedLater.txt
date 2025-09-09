@@ -315,3 +315,1053 @@
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ways-to-give-tabs row justify-content-center">
+                <div class="give-tabs-header col-lg-6">
+                    <button class="active" href="#bank-transfers" id="">Bank Transfers</button>
+                    <button>Pay with Card</button>
+                    <button>PayPal</button>
+                    <button>Pay with Crypto</button>
+                </div>
+
+                <!-- Bank Transfer Note: update with other payment information-->
+                <div class="give-cards" >
+                    <!-- Access bank -->
+                    <div class="give-card">
+                        <span class="give-card-bank">
+                            <img src="/images/ACCESSCORP.png" alt="Access bank"> Access Bank 
+                        </span>
+
+                        <div class="give-card-bank-info">
+                            <div class="give-card-bank-details">
+                                <h6>ACCOUNT NUMBER</h6>
+                                <h2>0023243435</h2>
+                            </div>
+                            <div class="give-card-details-copy">
+                                <button>
+                                    <img src="/assets/icons/copy-icon/copy.svg">
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Access bank -->
+                    <div class="give-card">
+                        <span class="give-card-bank">
+                            <img src="/images/ACCESSCORP.png" alt="Fidelity bank"> Fidelity Bank 
+                        </span>
+
+                        <div class="give-card-bank-info">
+                            <div class="give-card-bank-details">
+                                <h6>ACCOUNT NUMBER</h6>
+                                <h2>0023243435</h2>
+                            </div>
+                            <div class="give-card-details-copy">
+                                <button>
+                                    <img src="/assets/icons/copy-icon/copy.svg">
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Access bank -->
+                    <div class="give-card">
+                        <span class="give-card-bank">
+                            <img src="/images/ACCESSCORP.png" alt="Wema bank"> Wema Bank 
+                        </span>
+
+                        <div class="give-card-bank-info">
+                            <div class="give-card-bank-details">
+                                <h6>ACCOUNT NUMBER</h6>
+                                <h2>0023243435</h2>
+                            </div>
+                            <div class="give-card-details-copy">
+                                <button>
+                                    <img src="/assets/icons/copy-icon/copy.svg">
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Access bank -->
+                    <div class="give-card">
+                        <span class="give-card-bank">
+                            <img src="/images/ACCESSCORP.png" alt="UBA bank"> UBA Bank 
+                        </span>
+
+                        <div class="give-card-bank-info">
+                            <div class="give-card-bank-details">
+                                <h6>ACCOUNT NUMBER</h6>
+                                <h2>0023243435</h2>
+                            </div>
+                            <div class="give-card-details-copy">
+                                <button>
+                                    <img src="/assets/icons/copy-icon/copy.svg">
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   1. Base Styles (Mobile First)
+   ========================= */
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* Root Variables */
+:root {
+    --primary-bg: #1B1C1E;
+    --primary-purple: #8B5CF6;
+    --primary-blue: #0F6AD9;
+    --secondary-blue: #001A5B80;
+    --dark-bg: #1a1a1a;
+    --text-light: #f8f9fa;
+    --dark-green: #4F8D3680;
+    --dark-teal: #019EB880;
+    --dark-orange: #E7572B80;
+    --button-blue: #0F6AD9;
+    --scripture-background: #F2F2F2;
+    --hero-badge-color: #00000080;
+    --white: #fff;
+    --service-grid-bg-1: rgba(0, 26, 91, 0.5);
+    --service-grid-bg-2: rgba(79, 141, 54, 0.5);
+    --service-grid-bg-3: rgba(1, 158, 184, 0.5);
+    --service-grid-bg-4: rgba(0, 0, 0, 1);
+    --service-grid-bg-5: rgba(231, 87, 43, 0.5);
+    --service-text: rgba(255, 255, 255, 0.8);
+    --text-color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   Base/Reset
+   ========================= */
+body {
+    font-family: 'Lato', sans-serif;
+    background: var(--primary-bg);
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================
+   Typography
+   ========================= */
+.h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.badge-font {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+/* =========================
+   Navigation
+   ========================= */
+.navbar-custom,
+.navbar-nav {
+    display: none;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-bg);
+    border-top: 1px solid #333;
+    z-index: 1030;
+    padding: 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 0.5rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.nav-item-mobile,
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+    text-decoration: none;
+    padding: 0.5rem 0.25rem;
+    font-size: 0.7rem;
+    min-width: 0;
+    flex: 1;
+    max-width: 80px;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-item-mobile:hover,
+.nav-toggle:hover {
+    color: var(--primary-blue);
+}
+
+.nav-item-mobile i,
+.nav-toggle i {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.nav-item-mobile span,
+.nav-toggle span {
+    font-size: 0.65rem;
+    text-align: center;
+    line-height: 1;
+    word-wrap: break-word;
+}
+
+.nav-extended {
+    position: absolute;
+    bottom: 100%;
+    max-height: 0;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-bg);
+    border-top: 1px solid #333;
+    padding: 0.5rem 0;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav-extended.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-extended-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+.nav-item-hidden {
+    display: none;
+}
+
+.nav-primary {
+    display: flex;
+}
+
+/* =========================
+   Hero Section
+   ========================= */
+.hero-section {
+    height: 100vh;
+    background: url('/images/bg-image.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin: 0 auto 1.5rem auto;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.get-involved-badge {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* =========================
+   Partners Section
+   ========================= */
+.partners-section {
+    padding: 3rem 0;
+    background: white;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px);
+}
+
+.partner-logo i {
+    font-size: 2rem;
+    color: #666;
+}
+
+/* =========================
+   Welcome/Who We Are Section
+   ========================= */
+.welcome-section {
+    background: var(--primary-bg);
+    color: var(--text-light);
+    padding: 3rem 0;
+    position: relative;
+}
+
+.scripture-ref {
+    font-family: "Lato", sans-serif;
+    background: rgba(242, 242, 242, 0.1);
+    display: inline-flex;
+    padding: 7px 14px;
+    color: var(--white);
+    gap: 10px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 140%;
+    text-transform: uppercase;
+}
+
+.blue-highlight {
+    color: var(--primary-blue);
+}
+
+.welcome-subtitle {
+    font-family: "Lato", sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+    text-align: start;
+    font-size: 1.1rem;
+}
+
+.welcome-text {
+    font-family: "Lato", sans-serif;
+    color: var(--text-color);
+    margin-top: 28px;
+    font-weight: 400;
+    text-align: start;
+    font-size: 1.1rem;
+    line-height: 140%;
+}
+
+.community-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =========================
+   Mission Groups
+   ========================= */
+.mission-section {
+    background: var(--primary-bg);
+    color: var(--text-light);
+    padding: 3rem 0;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+}
+
+.mission-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    height: 304px;
+    max-height: 100%;
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+    padding: 16px;
+    max-width: 100%;
+}
+
+.mission-card h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding-bottom: 0;
+    text-transform: uppercase;
+}
+
+.mission-card p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 140%;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   Services Section
+   ========================= */
+.services-grid,
+.services-grid-mobile {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.service-box {
+    max-width: 100%;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.service-box h3 {
+    font-family: "Lato", sans-serif;
+    color: var(--service-text);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.service-box p {
+    font-family: "Lato", sans-serif;
+    color: var(--service-text);
+    font-size: 0.9rem;
+    line-height: 24px;
+}
+
+.service-box:nth-child(1) { background: var(--service-grid-bg-1);}
+.service-box:nth-child(2) { background: var(--service-grid-bg-2);}
+.service-box:nth-child(3) { background: var(--service-grid-bg-3);}
+.service-box:nth-child(4) { background: var(--service-grid-bg-4);}
+.service-box:nth-child(5) { background: var(--service-grid-bg-5);}
+
+/* =========================
+   Dedication Section
+   ========================= */
+.dedication-section {
+    background: var(--white);
+    text-align: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.dedication-badge {
+    padding: 6px 14px;
+    background: rgba(242, 242, 242, 1);
+    text-align: center;
+    display: inline-block;
+    color: rgba(27, 28, 30, 1);
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Lato", sans-serif;
+}
+
+.dedication-title {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.dedication-para {
+    font-size: 1rem;
+    line-height: 140%;
+    max-width: 100%;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+}
+
+/* =========================
+   Sermons Section
+   ========================= */
+.sermons-section {
+    background: var(--primary-bg);
+}
+
+.sermons-section h2 {
+    color: var(--white);
+}
+
+.sermons-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+.sermon-card {
+    background: none;
+    border-radius: 25px;
+    overflow: hidden;
+    color: white;
+    text-align: start;
+    padding: 0px;
+    max-width: 100%;
+    margin-bottom: 0.9rem;
+}
+
+.sermon {
+    position: relative;
+}
+
+.sermon-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    font-size: 3rem;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.sermon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-hours {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    text-align: center;
+    padding: 4px 10px;
+    color: var(--white);
+    font-weight: 400;
+    background: rgba(242, 242, 242, 0.2);
+    font-family: 'Lato', sans-serif;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+.sermon-content {
+    padding: 16px 0px;
+}
+
+.sermon-content h5 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.sermon-content p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(140, 140, 140, 1);
+}
+
+/* =========================
+   Footer Section
+   ========================= */
+.footer-section {
+    background: var(--primary-bg);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.footer-section-inner {
+    background: rgba(0, 0, 0, 1);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.footer-section-title {
+    font-family: 'Lato', sans-serif;
+    color: var(--white);
+    line-height: 140%;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}
+
+.footer-text {
+    font-family: 'Lato', sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.footer-button {
+    margin: 24px 0;
+}
+
+.footer-button a {
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0 40px;
+    text-transform: capitalize;
+}
+
+/* =========================
+   Give Page (Tabs & Cards)
+   ========================= */
+.give-tabs-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 1.5rem;
+    background: rgba(249, 249, 249, 0.1);
+    font-size: 13px;
+}
+
+.give-tabs-header button {
+    background: none;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.give-tabs-header button.active,
+.give-tabs-header button:hover {
+    background: #0F6AD9;
+}
+
+.give-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    background: rgba(249, 249, 249, 0.1);
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.give-cards.hidden {
+    display: none;
+}
+
+.give-card {
+    background: rgba(27, 28, 30, 1);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.give-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.give-card-bank {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
+
+.give-card-bank-info {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.give-card-bank-details h6 {
+    text-transform: uppercase;
+    padding: 0;
+    color: rgba(140, 140, 140, 1);
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+.give-card-bank-details h2 {
+    font-family: Lato;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+}
+
+.give-card-details-copy button {
+    background: none;
+    border: none;
+}
+
+/* =========================
+   Media Queries
+   ========================= */
+
+/* Tablets: md (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Navigation */
+    .navbar-custom,
+    .navbar-nav {
+        display: none;
+    }
+    .bottom-nav {
+        display: block;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 3rem;
+    }
+    .get-involved-badge {
+        width: 100px;
+        height: 100px;
+        bottom: 40px;
+        right: 40px;
+    }
+
+    /* Welcome */
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+    .community-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    /* Mission */
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Services */
+    .services-grid,
+    .services-grid-mobile {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Sermons */
+    .sermons-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Give Cards */
+    .give-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Footer */
+    .footer-section-inner {
+        padding: 3rem;
+    }
+    .footer-section-title {
+        font-size: 2rem;
+    }
+    .footer-text {
+        font-size: 1.1rem;
+    }           
+}
+/* Laptops: lg (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* Navigation */
+    .navbar-custom {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--dark-bg);
+        padding: 22.5px 0;
+        z-index: 1030;
+        gap: 2rem;
+        border-bottom: 1px solid #333;
+        align-items: center;
+        justify-content: center;
+    }
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+    }
+    .bottom-nav,
+    .nav-toggle {
+        display: none;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 4rem;
+    }
+    .get-involved-badge {
+        width: 120px;
+        height: 120px;
+        bottom: 50px;
+        right: 50px;
+    }
+
+    /* Welcome */
+    .welcome-title {
+        font-size: 3rem;
+    }
+    .community-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* Mission */
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Services */
+    .services-grid,
+    .services-grid-mobile {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Sermons */
+    .sermons-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Give Cards */
+    .give-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Footer */
+    .footer-section-inner {
+        padding: 4rem 8rem;
+    }
+    .footer-section-title {
+        font-size: 2.5rem;
+    }
+    .footer-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Desktops: xl (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .navbar-custom {
+        padding: 32px 0;
+    }
+    .hero-title {
+        font-size: 5rem;
+    }
+    .welcome-title {
+        font-size: 3.5rem;
+    }
+    .mission-grid,
+    .services-grid,
+    .services-grid-mobile,
+    .sermons-cards,
+    .give-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .footer-section-inner {
+        padding: 5rem 12rem;
+    }
+    .footer-section-title {
+        font-size: 3rem;
+    }
+    .footer-text {
+        font-size: 1.3rem;
+    }
+}
+
+/* Large Desktops: xxl (1400px and up) */
+@media (min-width: 1400px) {
+    .navbar-custom {
+        padding: 40px 0;
+    }
+    .hero-title {
+        font-size: 6rem;
+    }
+    .welcome-title {
+        font-size: 4rem;
+    }
+    .mission-grid,
+    .services-grid,
+    .services-grid-mobile,
+    .sermons-cards,
+    .give-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .footer-section-inner {
+        padding: 6rem 16rem;
+    }
+    .footer-section-title {
+        font-size: 3.5rem;
+    }
+    .footer-text {
+        font-size: 1.5rem;
+    }
+}
