@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons Details</title>
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body style="background: #1b1c1e;">
+    
+    <!-- Hero Video Section -->
+    <section class="section-container">
+        <div class="video-section">
+            <div class="video-container">
+                <div class="video-overlay" id="videoOverlay">
+                    <button class="play-button" id="playButton">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+
+                <div class="video-player" id="videoPlayer">
+                    <video id="sermonVideo" preload="metadata">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <div class="video-controls" id="videoControls">
+                        <button class="control-btn" id="playPauseBtn">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="control-btn" id="downloadBtn" title="Download Video">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <div class="progress-container" id="progressContainer">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+                        <select class="speed-selector" id="speedSelector">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2x</option>
+                        </select>
+                        <button class="control-btn" id="fullscreenBtn">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Sermon Details -->
+        <section class="sermon-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2 class="sermon-title">The Power to Change Your Mind</h2>
+
+                        <div class="sermon-meta">
+                            <h5>Bishop T.D Jakes</h5>
+                            <div class="sermon-date">
+                               <img src="/assets/icons/navicons-calendar.svg">
+                                <span>August 12, 2023</span>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn-custom btn-primary-custom" id="downloadBtn">
+                                Download <img src="/assets/icons/downlaod-button/document-download.svg">
+                            </button>
+                            <button class="btn-custom btn-outline-custom" href="/give.html">
+                                Give <img src="/assets/icons/give-button/money.svg">
+                            </button>
+                            <button class="btn-custom btn-outline-custom" id="shareBtn">
+                                Share <img src="/assets/icons/share-button/send-2.svg">
+                            </button>
+                        </div>
+
+                        <div class="sermon-description">
+                            <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Etiam eu turpis molestie, dictum est a, mattis tellus.
+                                Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus,
+                                ut interdum tellus elit sed risus. Maecenas eget condimentum velit,
+                                sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent
+                                per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus
+                                enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
+                                Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
+                                lorem.
+                                Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="chatroom-section">
+                            <div class="chatroom-icon">
+                                <img src="/images/chatroom-image.png" loading="lazy" alt="chatroom-image">
+                            </div>
+                            <h3 class="chatroom-title">Chatroom</h3>
+                            <p class="chatroom-description">
+                                Dorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                 Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, 
+                                metus nec fringilla accumsan, risus sem sollicitudin lacus, 
+                            </p>
+                            <a href="#" class="btn-chatroom button ">
+                                Join Chatroom <img src="/assets/icons/navicon_chatroom.svg">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <!-- Reels Section -->
+    <section class="reels-section">
+        <div class=" section-container">
+            <div class="reel-title">
+                <h2 class="welcome-title text-white">
+                    REELS
+                </h2>
+            </div>
+
+
+            <div class="image-gallery" id="imageGallery">
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 1" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 2" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 3" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 4" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 5" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 6" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 7" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+
+                <div class="image-container">
+                    <img src="/images/sermons-image4.png" alt="Gallery Image 8" class="gallery-image">
+                    <div class="image-title">The power to Change your mind</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcement section -->
+    <section class="announcement-section">
+        <div class="section-container">
+            <div class="announcement-title">
+                <h2 class="welcome-title text-white">
+                    ANNOUNCEMENT
+                </h2>
+            </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="announcement-card">
+                            <div class="announcement-title">
+                                <h3 class="announcement-h3">Guest speaker - </h3>
+                                <h3 class="announcement-date"> This Sunday</h3>
+                            </div>
+                            <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a
+                                message on "Faith in Action"</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="announcement-card">
+                            <div class="announcement-title">
+                                <h3 class="announcement-h3">Food Drive - </h3>
+                                <h3 class="announcement-date">Ongoing</h3>
+                            </div>
+                            <div class="announcement-description">We're collecting non-perishable food items for local
+                                families in need. Drop off in the church lobby.</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="announcement-card">
+                            <div class="announcement-title">
+                                <h3 class="announcement-h3">Youth Conference - </h3>
+                                <h3 class="announcement-date">Sept 15-17</h3>
+                            </div>                            
+                            <div class="announcement-description">Join us for 3 days of worship, teaching, and
+                                fellowship.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="announcement-card">
+                            <div class="announcement-title">
+                                <h3 class="announcement-h3">Women's Love Feast - </h3>
+                                <h3 class="announcement-date">Aug 21</h3>
+                            </div>
+                            <div class="announcement-description">Come with a heart filled with love as we dine, laugh
+                                and converse over the word of God.</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">    
+                        <div class="announcement-card">
+                            <div class="announcement-title">
+                                <h3 class="announcement-h3">Youth Conference - </h3>
+                                <h3 class="announcement-date">Sept 15-17</h3>
+                            </div>
+                        
+                           <div class="announcement-description">Join us for 3 days of worship, teaching, and
+                                fellowship.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="announcement-card">
+                            <div class="announcement-title">
+                                <h3 class="announcement-h3">Guest speaker - </h3>
+                                <h3 class="announcement-date">This Sunday</h3>
+                            </div>
+                            <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a
+                                message on "Faith in Action"</div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+     <!-- Sermons Section -->
+    <section class="sermons-section">
+        <div class="section-container">
+            <h2 class="welcome-title ">
+                RECENT SERMONS
+            </h2>
+
+            <div class="sermons-cards">
+                <div class="">
+                    <div class="sermon-card fade-in">
+                        <div class="sermon">
+                            <div class="sermon-image">
+                                <a href="#"><img src="/images/sermons-image1.png"></a>
+                            </div>
+                            <div class="video-hours">1hr 3mins</div>
+                        </div>
+
+                        <div class="sermon-content">
+                            <h5>The Power to Change Your Mind</h5>
+                            <p>Bishop T.D Jakes</p>
+                            <button class="button about-button">
+                                <a href="#" class="about-button-text"> Watch Now</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="sermon-card fade-in">
+                        <div class="sermon">
+                            <div class="sermon-image">
+                                <a href="#"><img src="/images/sermons-image2.png"></a>
+                            </div>
+                            <div class="video-hours">1hr 3mins</div>
+                        </div>
+
+                        <div class="sermon-content">
+                            <h5>The Power to Change Your Mind</h5>
+                            <p>Pastor Victoria Flemmings</p>
+                            <button class="button about-button">
+                                <a href="#" class="about-button-text"> Watch Now</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="sermon-card fade-in">
+                        <div class="sermon">
+                            <div class="sermon-image">
+                                <a href="#"><img src="/images/sermons-image3.png"></a>
+                            </div>
+                            <div class="video-hours">1hr 3mins</div>
+                        </div>
+
+                        <div class="sermon-content">
+                            <h5>The Power to Change Your Mind</h5>
+                            <p>Pastor Robert Madu</p>
+                            <button class="button about-button">
+                                <a href="#" class="about-button-text"> Watch Now</a></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="sermon-card fade-in">
+                        <div class="sermon">
+                            <div class="sermon-image">
+                                <a href="#"><img src="/images/sermons-image4.png"></a>
+                            </div>
+                            <div class="video-hours">1hr 3mins</div>
+                        </div>
+
+                        <div class="sermon-content">
+                            <h5>The Power to Change Your Mind</h5>
+                            <p>Pastor Robert Madu</p>
+                            <button class="button about-button">
+                                <a href="#" class="about-button-text"> Watch Now</a></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="">
+                    <div class="sermon-card fade-in">
+                        <div class="sermon">
+                            <div class="sermon-image">
+                                <a href="#"><img src="/images/sermons-image5.png"></a>
+                            </div>
+                            <div class="video-hours">1hr 3mins</div>
+                        </div>
+
+                        <div class="sermon-content">
+                            <h5>The Power to Change Your Mind</h5>
+                            <p>Pastor Robert Madu</p>
+                            <button class="button about-button">
+                                <a href="#" class="about-button-text"> Watch Now</a></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="">
+                    <div class="sermon-card fade-in">
+                        <div class="sermon">
+                            <div class="sermon-image">
+                                <a href="#"><img src="/images/sermons-image6.png"></a>
+                            </div>
+                            <div class="video-hours">1hr 3mins</div>
+                        </div>
+
+                        <div class="sermon-content">
+                            <h5>The Power to Change Your Mind</h5>
+                            <p>Pastor Robert Madu</p>
+                            <button class="button about-button">
+                                <a href="#" class="about-button-text"> Watch Now</a></button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/sermondetails.js"></script>
+    <script src="/assets/js/reel.js"></script>
+    <script src="/assets/js/include.js"> </script>
+    <script src="/assets/js/navbar.js"></script>
+</body>
+
+</html>

@@ -26,9 +26,13 @@
 }
 
 /* Base Styles */
+html {
+    background-color: var(--primary-bg);
+}
+
 body {
     font-family: "Lato", sans-serif;
-    background: var(--primary-bg);
+    background-color: #1b1c1e;
     margin: 0;
     padding: 0;
 }
@@ -43,6 +47,7 @@ body {
 
 a {
     text-decoration: none;
+    color: rgba(255, 255, 255, 1);
 }
 
 .badge-font {
@@ -73,7 +78,6 @@ a {
     padding: 12px;
     width: 100%;
     display: flex;
-
 }
 
 /* Container center alignment */
@@ -93,9 +97,7 @@ form {
 .input-wrapper input {
     width: 100%;
     padding: 1.75rem 1rem 0.75rem 2.5rem;
-    /* left space for icon */
     border: 2px solid rgba(27, 28, 30, 1);
-    /* gray-500 */
     border-radius: 12px;
     background: rgba(27, 28, 30, 1);
     outline: none;
@@ -204,7 +206,6 @@ form {
     justify-content: center;
 }
 
-
 .form-button {
     background: var(--primary-blue);
     color: var(--white);
@@ -219,6 +220,111 @@ form {
     background: var(--white);
     color: #0f6ad9;
 }
+
+/* Pagination */
+.custom-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.pagination-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 0.5rem;
+}
+
+.page-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    color: #6c757d;
+    background-color: #fff;
+    transition: all 0.15s ease-in-out;
+    font-weight: 500;
+}
+
+.page-number.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+
+.page-number:hover:not(.active) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    color: #6c757d;
+    background-color: #fff;
+    transition: all 0.15s ease-in-out;
+    font-weight: 500;
+    min-width: 80px;
+}
+
+.nav-button:hover:not(.disabled) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.nav-button.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* Animation for number appearance */
+.page-number {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Demo content styling */
+.content-area {
+    min-height: 300px;
+    margin-bottom: 56px;
+    color: #6c757d;
+}
+
+.sermons-pagination {
+    background: var(--primary-bg);
+}
+
+/* Pagination css ends here */
 
 /* Mobile Navbar */
 .navbar-custom,
@@ -359,25 +465,6 @@ form {
     opacity: 0.9;
 }
 
-.get-involved-badge {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    backdrop-filter: blur(10px);
-}
-
 /* Who we are section */
 .welcome-section {
     background: var(--primary-bg);
@@ -435,14 +522,6 @@ form {
     text-align: start;
     font-size: 22px;
     line-height: 140%;
-}
-
-.community-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Mission Groups */
@@ -672,7 +751,6 @@ form {
     padding: 16px;
     margin: 16px 0;
     height: 20rem;
-    /* ensures card stretches full column height */
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -1525,13 +1603,12 @@ form {
 
 /* Sermons page css */
 
-
 /* Hero Section */
 .sermons-page-hero-section {
     position: relative;
     height: 60vh;
     width: 100%;
-    background: url('/images/sermons-hero-image.png') center/cover no-repeat;
+    background: url("/images/sermons-hero-image.png") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1545,7 +1622,7 @@ form {
 }
 
 .sermons-page-hero-content h1 {
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     letter-spacing: 2px;
     font-size: 19.92px;
     font-weight: bold;
@@ -1555,7 +1632,7 @@ form {
 }
 
 .sermons-page-hero-content .pastor-name {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 700;
     font-style: bold;
     font-size: 10px;
@@ -1592,50 +1669,133 @@ form {
 }
 
 /* SERMONS REELS SECTION */
-.reels-section {
-    background: var(--primary-bg);
-    color: var(--white);
-    padding-bottom: 72px;
+.image-gallery {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 2rem 0;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
 }
 
-.reels-card {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    gap: 12px;
-
+/* Hide scrollbar */
+.image-gallery::-webkit-scrollbar {
+    display: none;
 }
 
-.reel-card {
-    max-width: 100%;
+.image-gallery {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.image-container {
     width: 166px;
-    height: 282px;
+    display: inline-block;
+    margin-right: 1rem;
+    vertical-align: top;
+    white-space: normal;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reel-img-card {
+.image-container.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.gallery-image {
     width: 100%;
-    height: 100%;
+    height: 224px;
+    object-fit: cover;
     border-radius: 6px;
-    background: url("/images/sermons-image4.png") no-repeat center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.reel-card h2 {
-    font-family: 'Lato', sans-serif;
+.gallery-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.image-title {
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    font-family: "Lato", sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     letter-spacing: 0%;
-
 }
+
+
+/* Fade in animation delay */
+.image-container:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.image-container:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.image-container:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.image-container:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.image-container:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.image-container:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.image-container:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.image-container:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+.reels-section {
+    background: var(--primary-bg);
+    color: var(--white);
+}
+
 
 /* Sermons page css */
 
 /* Community page css */
+.get-involved-badge {
+    flex-direction: column;
+    position: absolute;
+    bottom: -60px;
 
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: spin 5s linear infinite;
+}
+
+.get-involved-badge-upper,
+.get-involved-badge-lower {
+    width: 88px;
+    height: 87px;
+    opacity: 1;
+}
 
 /* Partners Section */
 .partners-section {
-    padding: 5rem 0;
     background: white;
 }
 
@@ -1644,7 +1804,7 @@ form {
 }
 
 .partner-title-header h2 {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 700;
     font-style: Bold;
     font-size: 28px;
@@ -1654,52 +1814,38 @@ form {
 }
 
 .partner-title-header p {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: Regular;
     font-size: 16px;
     line-height: 140%;
     letter-spacing: 0%;
     text-align: center;
-
 }
 
-/* .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.section-subtitle {
-    color: #666;
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-} */
 .logo {
     display: inline-block;
     background: rgba(250, 250, 250, 1);
     opacity: 1;
     border-radius: 20px;
     padding: 21px 16.7px;
-
 }
 
 .logo img {
     width: 54px;
     height: 13px;
-
 }
 
 .partner-logo {
-
-    display: inline-flex;
-    gap: 12px;
+    display: flex;
+    /* instead of inline-flex */
+    flex-wrap: wrap;
+    /* allows wrapping on smaller screens */
+    gap: 20px;
+    /* add spacing between logos */
     align-items: center;
     justify-content: center;
-    background: #f8f9fa;
     border-radius: 10px;
-    margin-bottom: 2rem;
     transition: transform 0.3s ease;
 }
 
@@ -1728,11 +1874,756 @@ form {
     font-size: 16px;
 }
 
+.circular-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 72px;
+    flex-wrap: wrap;
+}
+
+.community-image-desktop {
+    display: none;
+}
+
+/* Grow your faith section ends  here*/
+
 .sermons-mission-group-para {
     display: none;
 }
 
 /* Community page css */
+
+/* Prayer and Testimony Page */
+.prayer-request-section {
+    background: var(--primary-bg);
+}
+
+.prayer-request-cards {
+    display: grid;
+    width: 100%;
+    gap: 16px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.prayer-request-card {
+    font-family: 'Lato', sans-serif;
+    padding: 28px;
+    border-radius: 12px;
+    background: rgba(249, 249, 249, 0.05);
+}
+
+.active {
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
+button {
+    background: none;
+}
+
+.prayer-request-card h2 {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    margin-top: 12px;
+}
+
+.prayer-request-card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0%;
+
+}
+
+.prayer-request-title {
+    font-weight: 700;
+    font-style: bold;
+    font-size: 18px;
+    line-height: 140%;
+    color: var(--white);
+    padding-top: 32px;
+    padding-bottom: 16px;
+}
+
+.prayer-request-input-wrapper-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Sermons Details page css */
+
+       /* Hero Video Section */
+        .video-section {
+            position: relative;
+            height: 220px;
+            background: var(--primary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url('/images/sermons-image1.png') center/cover no-repeat;
+            border-radius: 8px;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+
+        .sermon-speaker {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .play-button {
+
+            padding: 6.5px 29px;
+            background-color: #dc2626;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background-color: #b91c1c;
+        }
+
+        .play-button i {
+            color: white;
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+
+        /* Video Player */
+        .video-player {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+
+        .video-player video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-container {
+            flex: 1;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .time-display {
+            color: white;
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+
+        .speed-selector {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Sermon Details */
+        .sermon-details {
+            padding: 3rem 0;
+        }
+
+        .sermon-details h2 {
+            font-family: 'Lato', sans-serif;
+            color: #ffffff;
+            background: var(-);
+            font-weight: 700;
+            font-style: bold;
+            font-size: 24px;
+            line-height: 140%;
+        }
+
+        .sermon-meta {
+            align-items: center;
+            gap: 3rem;
+            color: rgba(140, 140, 140, 1);
+            margin-bottom: 2rem;
+        }
+        .sermon-meta h5 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 140%;
+            letter-spacing: 0%;
+        }
+
+        .sermon-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-buttons button {
+            display: inline;
+            justify-content: space-around;
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-style: bold;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0px;
+        }
+
+        .action-buttons img {
+            padding-left: 8px;
+        }
+
+        .action-buttons .active {
+            background: var(--button-blue);
+            border: none;
+        }
+
+        .btn-custom {
+            display: inline;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--button-blue);
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-custom {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid #ffffff;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .sermon-description {
+            font-family: 'Lato', sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Chatroom Section */
+        .chatroom-section {
+            background: rgba(249, 249, 249, 0.1);
+            padding: 40px 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 56px;
+        }
+
+        .chatroom-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .chatroom-title {
+            color: rgba(242, 242, 242, 1);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-family: 'Lato', sans-serif;
+font-weight: 700;
+font-size: 22px;
+line-height: 140%;
+
+        }
+
+        .chatroom-description {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+          font-family: 'Lato', sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+text-align: center;
+
+        }
+
+        .btn-chatroom {
+            font-family: 'Lato', sans-serif;
+            font-style: bold;
+            font-size: 16px;
+            line-height: 24px;
+            padding: 12px 16px;
+            background-color: var(--button-blue);
+            color: var(--text-light);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-chatroom img {
+            padding-left: 8px;
+        }
+        .btn-chatroom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+                /* Announcements */
+        .announcements-section {
+            padding: 3rem 0;
+        }
+
+        .announcement-card {
+            min-height: 113px;
+            height: 100%;
+            background-color: rgba(249, 249, 249, 0.1);
+            padding: 20px 12px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            color: rgba(242, 242, 242, 1);
+            cursor: pointer;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .announcement-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .announcement-title {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+        .announcement-title h3 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 140%;
+        }
+
+        .announcement-date {
+            color: var(--text-light);
+            padding-left: 2px;
+            font-size: 0.9rem;
+        }
+
+        .announcement-description {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            line-height: 140%;
+        }
+
+        /* Events page Css */
+        .event-list {
+            background: rgba(0, 4, 9, 1);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 8px;
+            width: 100%;
+        }
+        .event-list-title h2 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            vertical-align: middle;
+            color: rgba(242, 242, 242, 1);
+
+        }
+
+        .event-list-title {
+            justify-content: center;
+            padding: 18px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+        .event-list-item {
+            display: grid;
+    width: 100%;
+    gap: 16px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            padding: 16px;
+        }
+        .event-list-card {
+            width: 100%;
+             border: 1px solid rgba(255, 255, 255, 0.16);
+              border-radius: 12px;
+            padding: 12px;
+        }
+        .event-list-card img {
+            width: 100%;
+            border-radius: 12px;
+            height: 136px;
+        }
+        .event-list-inner {
+            margin-top: 16px;
+        }
+        .event-list-inner h6 {
+            color: rgba(152, 162, 179, 1);
+            font-size: 12px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            line-height: 140%;
+        }
+        .event-list-inner h2 {
+            font-family: 'Lato', sans-serif;
+font-weight: 400;
+color: rgba(255, 255, 255, 1);
+font-size: 18px;
+line-height: 140%;
+letter-spacing: 0%;
+
+        }
+        .event-list-inner p {
+            font-family: 'Lato', sans-serif;
+font-weight: 400;
+font-size: 14px;
+color: rgba(255, 255, 255, 0.6);
+line-height: 140%;
+letter-spacing: 0%;
+
+        }
+  .event-button {
+    padding: 2px 10px;
+    background: var(--button-blue);
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 100px;
+}
+.event-button:hover {
+    color: #0f6ad9;
+    background: #ffffff;
+}
+.event-button a {
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+        .google-calendar-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .google-calendar-btn:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        /* Calendar Widget */
+        .calendar-widget {
+            background: rgba(0, 4, 9, 1);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            width: 100%;
+            border-radius: 12px;
+            padding: 18px 35px;
+            height: fit-content;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(242, 242, 242, 0.16);
+        }
+        .calendar-header-line {
+            border: 1px solid rgba(242, 242, 242, 0.16);
+            width: 100%;
+            height: 1px;
+        }
+
+        .calendar-title {
+            color: rgba(255, 255, 255, 1);
+            font-family: Lato;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 140%;
+
+        }
+        .calendar-title h6 {
+            color: rgba(152, 162, 179, 1);
+            font-size: 12px;
+        }
+        .calendar-title-circle {
+            background: rgba(15, 106, 217, 1);
+            border-radius: 100px;
+            width: 4px;
+            height: 4px;
+            padding: 2px;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .calendar-nav:hover {
+            background-color: var(--border-color);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            padding: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            color: rgba(255, 255, 255, 1);
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background-color: var(--button-blue);
+        }
+
+        .calendar-day.has-event {
+            font-weight: bold;
+        }
+
+        .calendar-day.has-event::after {
+            content: '.';
+            position: absolute;
+            bottom: 2px;
+            color: rgba(15, 106, 217, 1);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .calendar-day.other-month {
+            color: var(--text-light);
+            opacity: 0.5;
+        }
+
+        .calendar-day.today {
+            background-color: rgba(15, 106, 217, 0.2);
+            color: rgba(15, 106, 217, 1);
+            border-radius: 50%;
+        }
+
+        /* Event Details Panel */
+        .event-details {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .event-details h4 {
+            color: rgba(152, 162, 179, 1);
+            font-size: 12px;
+        }
+        .event-details h6 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            font-style: medium;
+            font-size: 14px;
+            line-height: 140%;
+            color: rgba(255, 255, 255, 1);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-item-title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            font-style: medium;
+            font-size: 14px;
+            line-height: 140%;
+            color: rgba(255, 255, 255, 1);
+            margin-bottom: 0.25rem;
+        }
+
+        .event-item-time {
+            font-family: 'Lato', sans-serif;
+            color: rgba(152, 162, 179, 1);
+            font-size: 12px;
+        }
+
+        .dayEvents {
+            border-left: 5px solid rgba(15, 106, 217, 1);
+            padding-left: 12px;
+            margin-top: 2px;
+        }
+
+        .calendar-event {
+            gap: 16px;
+        }
+
+        /* Past Events */
+        .past-events {
+            margin-top: 3rem;
+        }
+
+        .past-event-card {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .past-event-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .past-event-image {
+            width: 100%;
+            height: 193px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .past-event-date {
+            display: none;
+        }
+
+        .past-event-content {
+            padding-top: 1rem;
+            padding-right: 1.5rem;
+        }
+
+        .past-event-description {
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: 0%;
+        }
+
+        /* Past event css */
+
+
+        /* Gallery page */
+
 
 /* Navigation Styles */
 
@@ -1747,9 +2638,13 @@ form {
 
     .button {
         border-radius: 100px;
-        padding: 12px 20px;
+        padding: 12px 49px;
         border: none;
         cursor: pointer;
+    }
+
+    .form-button {
+        padding: 12px 69px;
     }
 
     .navbar {
@@ -2041,7 +2936,7 @@ form {
     /* Sermons page */
     /* hero sermons page */
     .sermons-page-hero-content h1 {
-        font-family: 'Anton', sans-serif;
+        font-family: "Anton", sans-serif;
         letter-spacing: 2px;
         font-size: 31.54px;
         font-weight: bold;
@@ -2051,7 +2946,7 @@ form {
     }
 
     .sermons-page-hero-content .pastor-name {
-        font-family: 'Lato', sans-serif;
+        font-family: "Lato", sans-serif;
         font-weight: 700;
         font-style: bold;
         font-size: 14px;
@@ -2060,7 +2955,51 @@ form {
         opacity: 0.9;
     }
 
-    /* Community page cass */
+    /* REELS  SECTION */
+    .image-gallery {
+        overflow: visible;
+        white-space: normal;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+
+    }
+
+    .image-container {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    /* .gallery-image {
+                width: 166px;
+                height: 224px;
+            } */
+    /* Sermons page */
+
+    /* Community page css */
+    .get-involved-badge {
+        flex-direction: column;
+        position: absolute;
+        bottom: -60px;
+        right: 90px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        animation: spin 5s linear infinite;
+    }
+
+    .get-involved-badge-upper,
+    .get-involved-badge-lower {
+        width: 139px;
+        height: 138px;
+        opacity: 1;
+    }
+
     .grow-your-faith-section-header p {
         font-family: "Lato", sans-serif;
         color: rgba(255, 255, 255, 0.6);
@@ -2072,17 +3011,176 @@ form {
 
     .sermons-mission-group-para {
         display: flex;
-        font-family: 'Lato', sans-serif;
+        font-family: "Lato", sans-serif;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.6);
         font-size: 22px;
         line-height: 140%;
         letter-spacing: 0%;
         margin-top: 56px;
+    }
+
+    /* Partners Section */
+    .partners-section {
+        /* padding: 117px 0; */
+        background: white;
+    }
+
+    .partner-title-header {
+        text-align: center;
+    }
+
+    .partner-title-header h2 {
+        font-size: 36px;
+    }
+
+    .partner-title-header p {
+        font-size: 18px;
+    }
+
+    .logo {
+        display: inline-block;
+        background: rgba(250, 250, 250, 1);
+        opacity: 1;
+        border-radius: 20px;
+        padding: 28px 19.2px;
+    }
+
+    .logo img {
+        width: 131px;
+        height: 31px;
+    }
+
+    .partner-logo {
+        display: flex;
+        /* instead of inline-flex */
+        flex-wrap: wrap;
+        /* allows wrapping on smaller screens */
+        gap: 20px;
+        /* add spacing between logos */
+    }
+
+    .partner-logo:hover {
+        transform: translateY(-5px);
+    }
+
+    .partner-logo i {
+        font-size: 2rem;
+        color: #666;
+    }
+
+    /* Partner section */
+
+    /* Grow your faith section */
+    .grow-your-faith-section {
+        background: var(--primary-bg);
+    }
+
+    .circular-image-container {
+        margin-top: 46px;
+    }
+
+    .community-image-mobile {
+        display: none;
+    }
+
+    .community-image-desktop {
+        display: flex;
+    }
+
+    /* Grow your faith section ends  here*/
+
+    /* Community page css */
+
+    /* Prayer page CSS */
+    .prayer-request-title {
+        font-size: 24px;
+    }
+
+    .prayer-request-input-wrapper-grid {
+        grid-template-columns: 1fr 1fr;
+        /* two columns */
+        grid-template-areas:
+            "firstname lastname"
+            "email email";
 
     }
 
-    /* Community page css */
+    .firstname {
+        grid-area: firstname;
+    }
+
+    .lastname {
+        grid-area: lastname;
+    }
+
+    .email {
+        grid-area: email;
+    }
+
+    /* Sermons Details page */
+    .video-section {
+        height: 35vh;
+        /* 581p */
+    }
+    .sermon-description {
+        font-size: 18px;
+    }
+    .action-buttons button {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .sermon-details h2 {
+        font-size: 32px;
+        font-weight: 700;
+        font-style: bold;
+    }
+    .chatroom-title {
+        font-size: 28px;
+    }
+    .chatroom-description {
+        font-size: 18px;
+    }
+    .btn-chatroom {
+        font-size: 18px;
+    }
+    .chatroom-icon img {
+        width: 204px;
+        height: 204px;
+    }
+    .sermons-cards {
+        margin-top: 45px;
+    }
+    .play-button {
+        padding: 6.5px 29.5px;
+        border-radius: 5.25px;
+    }
+
+    /* Events page css */
+    .calendar-event {
+        gap: 20px;
+    }
+    .calendar-widget {
+         display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        
+    }
+    .event-details {
+        margin-top: 0px;
+    }
+    .past-event-date {
+        display: none;
+    }
+    .event-list-inner h2 {
+        font-size: 22px;
+    }
+    .event-list-inner p {
+        font-size: 16px;
+    }
+    .past-event-content {
+        margin-top: 20px;
+    }
 }
 
 /* Laptop Navigation */
@@ -2105,11 +3203,10 @@ form {
 
     .button {
         border-radius: 100px;
-        padding: 12px 20px;
+        padding: 12px 49px;
         border: none;
         cursor: pointer;
     }
-
 
     .section-container {
         background: none;
@@ -2231,6 +3328,17 @@ form {
 
     .service-box {
         padding: 32px;
+    }
+
+    /* Testimonial section */
+    .testimonial-card {
+        border-radius: 34px;
+        padding: 30px;
+        height: 420px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .dedication-section {
@@ -2367,6 +3475,9 @@ form {
     }
 
     /* mission group cards */
+    .mission-group-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .mission-group-card {
         margin-top: 20px;
@@ -2482,29 +3593,253 @@ form {
         opacity: 0.9;
     }
 
+    /* REELS SECTION */
+    .image-container {
+        width: 193px;
+    }
+
+    .gallery-image {
+        width: 100%;
+        height: 280px;
+
+    }
+
+    /* REELS SECTION */
+
     /* Community page cass */
+    .get-involved-badge {
+        flex-direction: column;
+        position: absolute;
+        bottom: -60px;
+        right: 90px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        animation: spin 5s linear infinite;
+    }
+
+    .get-involved-badge-upper,
+    .get-involved-badge-lower {
+        width: 139px;
+        height: 138px;
+        opacity: 1;
+    }
+
     .grow-your-faith-section-header p {
-        font-family: "Lato", sans-serif;
-        color: rgba(255, 255, 255, 0.6);
-        margin-top: 4px;
-        text-align: start;
-        line-height: 140%;
         font-size: 22px;
     }
 
     .sermons-mission-group-para {
         display: flex;
-        font-family: 'Lato', sans-serif;
+        font-family: "Lato", sans-serif;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.6);
         font-size: 22px;
         line-height: 140%;
         letter-spacing: 0%;
         margin-top: 56px;
-
     }
 
+    /* Partners Section */
+    .partners-section {
+        /* padding: 117px 0; */
+        background: white;
+    }
+
+    .partner-title-header {
+        text-align: center;
+    }
+
+    .partner-title-header h2 {
+        font-size: 36px;
+    }
+
+    .partner-title-header p {
+        font-size: 18px;
+    }
+
+    .logo {
+        display: inline-block;
+        background: rgba(250, 250, 250, 1);
+        opacity: 1;
+        border-radius: 20px;
+        padding: 28px 19.2px;
+    }
+
+    .logo img {
+        width: 131px;
+        height: 31px;
+    }
+
+    .partner-logo {
+        display: flex;
+        /* instead of inline-flex */
+        flex-wrap: wrap;
+        /* allows wrapping on smaller screens */
+        gap: 20px;
+        /* add spacing between logos */
+    }
+
+    .partner-logo:hover {
+        transform: translateY(-5px);
+    }
+
+    .partner-logo i {
+        font-size: 2rem;
+        color: #666;
+    }
+
+    /* Partner section */
+
+    /* Grow your faith section */
+    .grow-your-faith-section {
+        background: var(--primary-bg);
+    }
+
+    .grow-your-faith-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .community-image-mobile {
+        display: none;
+    }
+
+    .community-image-desktop {
+        display: flex;
+        margin-top: 80px;
+    }
+
+    .community-image-mobile {
+        display: none;
+    }
+
+    /* Grow your faith section ends  here*/
+
     /* Community page css */
+
+    /* Prayer page */
+    .form-button {
+        padding: 12px 69px;
+    }
+
+    .prayer-request-title {
+        font-size: 32px;
+    }
+
+    .prayer-request-input-wrapper-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* three equal columns */
+        grid-template-areas: "firstname lastname email";
+        gap: 20px;
+    }
+
+     /* Sermons Details page */
+    .video-section {
+        height: 581px;
+        /* 581p */
+    }
+    .sermon-description {
+        font-size: 18px;
+    }
+    .action-buttons button {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .sermon-details h2 {
+        font-size: 32px;
+        font-weight: 700;
+        font-style: bold;
+    }
+    .chatroom-title {
+        font-size: 28px;
+    }
+    .chatroom-description {
+        font-size: 18px;
+    }
+    .btn-chatroom {
+        font-size: 18px;
+    }
+    .chatroom-icon img {
+        width: 204px;
+        height: 204px;
+    }
+    .sermons-cards {
+        margin-top: 45px;
+    }
+    .btn-chatroom {
+        padding: 12px 20px;
+    }
+    .play-button {
+        padding: 11.5px 53px;
+        border-radius: 10px;
+    }
+    .chatroom-section {
+        margin-top: 0;
+    }
+
+    /* Event page css */
+     .calendar-event {
+        gap: 0;
+    }
+    .event-list-item {
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+           min-height: 696px;
+        height: 100%;
+    }
+    .event-list-card {
+        height: fit-content;
+    }
+    .event-details {
+        padding: 48px 0;
+    }
+    .calendar-header {
+        margin-bottom: 36px;
+    }
+    .calendar-widget {
+        min-height: 696px;
+        height: fit-content;
+    }
+
+    .calendar-day-header {
+       padding: 0;
+    }
+    /* past event */
+    .past-event-date {
+        display: flex;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(242, 242, 242, 0.7);
+            color: rgba(27, 28, 30, 1);
+            padding: 4px 8px;
+            font-family: 'Lato', sans-serif;
+            border-radius: 100px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+         .event-list-inner h2 {
+        font-size: 22px;
+    }
+    .event-list-inner p {
+        font-size: 16px;
+    }
+    .past-event-image {
+        height: 248px;
+    }
+    .past-event-content {
+        margin-top: 32px;
+    }
+    .past-event-description {
+        font-size: 22px;
+    }
+
 }
 
 /* Desktops: xl (1200px - 1399px) */
@@ -2518,7 +3853,7 @@ form {
 
     .button {
         border-radius: 100px;
-        padding: 12px 20px;
+        padding: 12px 49px;
         border: none;
         cursor: pointer;
     }
@@ -2595,6 +3930,18 @@ form {
 
     .welcome-title {
         font-size: 3.5rem;
+    }
+
+    /* Testimonial section */
+    .testimonial-card {
+        border-radius: 34px;
+        padding: 32px;
+        margin: 16px 0;
+        height: 420px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     /* Dedication section */
@@ -2854,7 +4201,44 @@ form {
         opacity: 0.9;
     }
 
-    /* Community page cass */
+    /* REELS SECTION */
+
+    .image-container {
+        width: 193px;
+    }
+
+    .gallery-image {
+        width: 100%;
+        height: 280px;
+
+    }
+
+    /* REELS SECTION */
+
+
+    /* Community page css */
+    .get-involved-badge {
+        flex-direction: column;
+        position: absolute;
+        bottom: -60px;
+        right: 100px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        animation: spin 5s linear infinite;
+    }
+
+    .get-involved-badge-upper,
+    .get-involved-badge-lower {
+        width: 186px;
+        height: 187px;
+        opacity: 1;
+    }
+
     .grow-your-faith-section-header p {
         font-family: "Lato", sans-serif;
         color: rgba(255, 255, 255, 0.6);
@@ -2866,17 +4250,211 @@ form {
 
     .sermons-mission-group-para {
         display: flex;
-        font-family: 'Lato', sans-serif;
+        font-family: "Lato", sans-serif;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.6);
         font-size: 22px;
         line-height: 140%;
         letter-spacing: 0%;
         margin-top: 56px;
-
     }
 
+    /* Partners Section */
+    .partners-section {
+        /* padding: 117px 0; */
+        background: white;
+    }
+
+    .partner-title-header {
+        text-align: center;
+    }
+
+    .partner-title-header h2 {
+        font-size: 40px;
+    }
+
+    .partner-title-header p {
+        font-size: 18px;
+    }
+
+    .logo {
+        display: inline-block;
+        background: rgba(250, 250, 250, 1);
+        opacity: 1;
+        border-radius: 20px;
+        padding: 28px 34.5px;
+    }
+
+    .logo img {
+        width: 131px;
+        height: 31px;
+    }
+
+    .partner-logo {
+        display: flex;
+        /* instead of inline-flex */
+        flex-wrap: wrap;
+        /* allows wrapping on smaller screens */
+        gap: 12px;
+        /* add spacing between logos */
+    }
+
+    .partner-logo:hover {
+        transform: translateY(-5px);
+    }
+
+    .partner-logo i {
+        font-size: 2rem;
+        color: #666;
+    }
+
+    /* Partner section */
+
+    /* Grow your faith section */
+    .grow-your-faith-section {
+        background: var(--primary-bg);
+    }
+
+    .grow-your-faith-section-header p {
+        font-size: 22px;
+    }
+
+    .grow-your-faith-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .community-image-mobile {
+        display: none;
+    }
+
+    .community-image-desktop {
+        display: flex;
+        margin-top: 50px;
+    }
+
+    /* Grow your faith section ends  here*/
+
     /* Community page css */
+
+    /* Prayer page */
+    .form-button {
+        padding: 12px 69px;
+    }
+
+    .prayer-request-title {
+        font-size: 32px;
+    }
+
+    .prayer-request-input-wrapper-grid {
+        grid-template-columns: repeat(3, 1fr);/* three equal columns */
+        grid-template-areas: "firstname lastname email";
+        gap: 20px;
+    }
+
+     /* Sermons Details page */
+    .video-section {
+        height: 581px;
+    }
+    .sermon-description {
+        font-size: 18px;
+    }
+    .action-buttons button {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .sermon-details h2 {
+        font-size: 32px;
+        font-weight: 700;
+        font-style: bold;
+    }
+    .chatroom-title {
+        font-size: 28px;
+    }
+    .chatroom-description {
+        font-size: 18px;
+    }
+    .btn-chatroom {
+        font-size: 18px;
+    }
+    .chatroom-icon img {
+        width: 204px;
+        height: 204px;
+    }
+    .sermons-cards {
+        margin-top: 45px;
+    }
+    .btn-chatroom {
+        padding: 12px 20px;
+    }
+    .play-button {
+        padding: 11.5px 53px;
+        border-radius: 10px;
+    }
+    .chatroom-section {
+        margin-top: 0;
+    }
+
+    /* Event page css */
+    
+    /* Past event */
+    .calendar-event {
+        gap: 0;
+    }
+    .event-list-item {
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        min-height: 696px;
+        height: 100%;
+    }
+    .event-list-card {
+        height: fit-content;
+    }
+    .event-details {
+        padding: 48px 0;
+    }
+    .calendar-header {
+        margin-bottom: 36px;
+    }
+    .calendar-widget {
+        min-height: 696px;
+        height: fit-content;
+    }
+
+    .calendar-day-header {
+       padding: 0;
+    }
+
+    .past-event-date {
+        display: flex;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(242, 242, 242, 0.7);
+            color: rgba(27, 28, 30, 1);
+            padding: 4px 8px;
+            font-family: 'Lato', sans-serif;
+            border-radius: 100px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+         .event-list-inner h2 {
+        font-size: 22px;
+    }
+    .event-list-inner p {
+        font-size: 16px;
+    }
+    .past-event-image {
+        height: 248px;
+    }
+    .past-event-content {
+        margin-top: 32px;
+    }
+    .past-event-description {
+        font-size: 22px;
+    }
+
 }
 
 /* Large Desktops: xxl (1400px and up) */
@@ -2891,7 +4469,7 @@ form {
 
     .button {
         border-radius: 100px;
-        padding: 12px 20px;
+        padding: 12px 49px;
         border: none;
         cursor: pointer;
     }
@@ -2972,6 +4550,15 @@ form {
     }
 
     /* Home page starts here */
+
+    /* Testimonial section */
+    .testimonial-card {
+        border-radius: 34px;
+        padding: 32px;
+        margin: 16px 0;
+        height: 420px;
+
+    }
 
     /* A place for you section */
     .services-grid {
@@ -3247,7 +4834,42 @@ form {
         opacity: 0.9;
     }
 
+    /* REELS SECTION */
+    .image-container {
+        width: 193px;
+    }
+
+    .gallery-image {
+        width: 100%;
+        height: 280px;
+
+    }
+
+    /* REELS SECTION */
+
     /* Community page css */
+    .get-involved-badge {
+        flex-direction: column;
+        position: absolute;
+        bottom: -60px;
+        right: 100px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        animation: spin 5s linear infinite;
+    }
+
+    .get-involved-badge-upper,
+    .get-involved-badge-lower {
+        width: 186px;
+        height: 187px;
+        opacity: 1;
+    }
+
     .grow-your-faith-section-header p {
         font-family: "Lato", sans-serif;
         color: rgba(255, 255, 255, 0.6);
@@ -3259,17 +4881,202 @@ form {
 
     .sermons-mission-group-para {
         display: flex;
-        font-family: 'Lato', sans-serif;
+        font-family: "Lato", sans-serif;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.6);
         font-size: 22px;
         line-height: 140%;
         letter-spacing: 0%;
         margin-top: 72px;
-
     }
 
+    /* Partners Section */
+    .partners-section {
+        background: white;
+    }
+
+    .partner-title-header {
+        text-align: center;
+    }
+
+    .partner-title-header h2 {
+        font-size: 40px;
+    }
+
+    .partner-title-header p {
+        font-size: 18px;
+    }
+
+    .logo {
+        display: inline-block;
+        background: rgba(250, 250, 250, 1);
+        opacity: 1;
+        border-radius: 20px;
+        padding: 28px 34.5px;
+    }
+
+    .logo img {
+        width: 131px;
+        height: 31px;
+    }
+
+    .partner-logo {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .partner-logo:hover {
+        transform: translateY(-5px);
+    }
+
+    .partner-logo i {
+        font-size: 2rem;
+        color: #666;
+    }
+
+    /* Partner section */
+
+    /* Grow your faith section */
+    .grow-your-faith-section {
+        background: var(--primary-bg);
+    }
+
+    .grow-your-faith-section-header p {
+        font-size: 22px;
+    }
+
+    .grow-your-faith-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .community-image-mobile {
+        display: none;
+    }
+
+    .community-image-desktop {
+        display: flex;
+        margin-top: 50px;
+    }
+
+    /* Grow your faith section ends  here*/
+
     /* Community page css */
+
+    /* Prayer page */
+    .form-button {
+        padding: 12px 69px;
+    }
+
+    .prayer-request-title {
+        font-size: 32px;
+    }
+
+    .prayer-request-input-wrapper-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* three equal columns */
+        grid-template-areas: "firstname lastname email";
+        gap: 20px;
+    }
+
+     /* Sermons Details page */
+    .video-section {
+        height: 581px;
+        /* 581p */
+    }
+    .sermon-description {
+        font-size: 18px;
+    }
+    .action-buttons button {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .sermon-details h2 {
+        font-size: 32px;
+        font-weight: 700;
+        font-style: bold;
+    }
+    .chatroom-title {
+        font-size: 28px;
+    }
+    .chatroom-description {
+        font-size: 18px;
+    }
+    .btn-chatroom {
+        font-size: 18px;
+    }
+    .chatroom-icon img {
+        width: 204px;
+        height: 204px;
+    }
+    .sermons-cards {
+        margin-top: 45px;
+    }
+    .btn-chatroom {
+        padding: 12px 20px;
+    }
+    .play-button {
+        padding: 11.5px 53px;
+        border-radius: 10px;
+    }
+     .chatroom-section {
+        margin-top: 0;
+    }
+
+    /* Event page  */
+    .calendar-event {
+        gap: 0;
+    }
+    .event-list-item {
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        min-height: 696px;
+        height: 100%;
+    }
+    .event-list-card {
+        height: fit-content;
+    }
+    .event-details {
+        padding: 48px 0;
+    }
+    .calendar-header {
+        margin-bottom: 36px;
+    }
+    .calendar-widget {
+        min-height: 696px;
+        height: fit-content;
+    }
+
+    .past-event-date {
+        display: flex;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(242, 242, 242, 0.7);
+            color: rgba(27, 28, 30, 1);
+            padding: 4px 8px;
+            font-family: 'Lato', sans-serif;
+            border-radius: 100px;
+            font-weight: 400;
+            font-size: 14px;
+        }
+         .event-list-inner h2 {
+        font-size: 22px;
+    }
+    .event-list-inner p {
+        font-size: 16px;
+    }
+    .past-event-image {
+        height: 248px;
+    }
+    .past-event-content {
+        margin-top: 32px;
+    }
+    .past-event-description {
+        font-size: 22px;
+    }
 
 }
 

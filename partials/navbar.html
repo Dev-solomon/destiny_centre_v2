@@ -1,24 +1,76 @@
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <!-- Top Navigation (Desktop) -->
+    <nav class=" d-flex navbar-custom navbar-expand-lg fixed-top" role="navigation" aria-label="Main Navigation">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-cross"></i>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="d-flex justify-content-between align-items-center w-100 ">
+                <a class="navbar-brand" href="/index.html">
+                    <i class="fas fa-cross"></i> Fellowship Church
+                </a>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sermons">Sermons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#prayers">Prayers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#give">Give</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sermons.html">Sermons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/prayer.html">Prayers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/give.html">Give</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community.html">Community</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#chatroom">Chatroom</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Bottom Navigation (Mobile/Tablet) -->
+    <div class="bottom-nav" role="navigation" aria-label="Mobile Navigation">
+        <div class="nav-wrapper"></div>
+        <div class="nav-extended" id="navExtended">
+            <div class="nav-extended-container">
+                <a href="/give.html" class="nav-item-mobile">
+                    <i class="fas fa-heart"></i>
+                    <span>Give</span>
+                </a>
+                <a href="/gallery.html" class="nav-item-mobile">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="#events" class="nav-item-mobile">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Events</span>
+                </a>
+                <a href="/community.html" class="nav-item-mobile">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="#prayers" class="nav-item-mobile">
+                    <i class="fas fa-praying-hands"></i>
+                    <span>Chatroom</span>
+                </a>
+            </div>
+        </div>
+        <div class="nav-container" id="navContainer">
+            <a href="/index.html" class="nav-item-mobile nav-primary">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="/about.html" class="nav-item-mobile nav-primary">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="/sermons.html" class="nav-item-mobile nav-primary">
+                <i class="fas fa-book-open"></i>
+                <span>Sermons</span>
+            </a>
+            <a href="/prayer.html" class="nav-item-mobile">
+                <i class="fas fa-praying-hands"></i>
+                <span>Prayers</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navExtended"
+                aria-label="Toggle navigation menu">
+                <i class="fas fa-ellipsis-h" id="toggleIcon"></i>
+                <span id="toggleText">More</span>
+            </button>
+        </div>
+    </div>
+
+
+    <script src="/assets/js/navbar.js"></script>
