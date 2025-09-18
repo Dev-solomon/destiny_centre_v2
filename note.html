@@ -3,19 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events/Calendar - Church Website</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Community Chatroom</title>
     <style>
-        :root {
-            --primary-blue: #007bff;
-            --dark-bg: #1a1a1a;
-            --darker-bg: #0d1117;
-            --text-light: #ffffff;
-            --text-muted: #8b949e;
-            --border-color: #30363d;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -23,664 +12,825 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        .navbar {
-            background-color: var(--darker-bg) !important;
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 0;
-        }
-
-        .navbar-brand {
-            color: var(--text-light) !important;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .navbar-nav .nav-link {
-            color: var(--text-muted) !important;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            color: var(--text-light) !important;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 4rem 0;
-        }
-
-        .page-title {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .page-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-        }
-
-        /* Event Cards */
-        .event-card {
-            background-color: var(--darker-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            height: 100vh;
             overflow: hidden;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
-        }
-
-        .event-image {
+        /* Header Navigation */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 0.75rem 1.5rem;
+            position: fixed;
+            top: 0;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
-        .event-content {
-            padding: 1.5rem;
-        }
-
-        .event-time {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .event-description {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .google-calendar-btn {
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .google-calendar-btn:hover {
-            background-color: #0056b3;
-            color: white;
-        }
-
-        /* Calendar Widget */
-        .calendar-widget {
-            background-color: var(--darker-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            height: fit-content;
-        }
-
-        .calendar-header {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .calendar-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .calendar-nav {
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .calendar-nav:hover {
-            background-color: var(--border-color);
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .calendar-day-header {
-            text-align: center;
-            padding: 0.5rem;
-            font-weight: bold;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .calendar-day:hover {
-            background-color: var(--border-color);
-        }
-
-        .calendar-day.has-event {
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-
-        .calendar-day.has-event::after {
-            content: '✓';
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            color: var(--primary-blue);
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .calendar-day.other-month {
-            color: var(--text-muted);
-            opacity: 0.5;
-        }
-
-        .calendar-day.today {
-            background-color: var(--primary-blue);
+        .logo {
             color: white;
-            border-radius: 50%;
+            font-size: 1.25rem;
+            font-weight: bold;
         }
 
-        /* Event Details Panel */
-        .event-details {
-            background-color: var(--dark-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #4a90e2;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 20px;
+            height: 2px;
+            background: white;
+            margin: 2px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            height: 100vh;
+            padding-top: 60px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: rgba(30, 30, 30, 0.95);
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
             padding: 1rem;
-            margin-top: 1rem;
+            border-bottom: 1px solid #333;
         }
 
-        .event-details h6 {
-            color: var(--primary-blue);
+        .online-count {
+            color: #4a90e2;
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
 
-        .event-item {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border-color);
+        /* Users List */
+        .users-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.5rem;
         }
 
-        .event-item:last-child {
-            border-bottom: none;
+        .user-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        .event-item-title {
+        .user-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #4a90e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .user-name {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        /* Chat Area */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(20, 20, 20, 0.95);
+        }
+
+        .chat-header {
+            padding: 1rem 1.5rem;
+            background: rgba(30, 30, 30, 0.95);
+            border-bottom: 1px solid #333;
+        }
+
+        .chat-title {
+            color: white;
+            font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 0.25rem;
         }
 
-        .event-item-time {
-            color: var(--text-muted);
+        .chat-title .highlight {
+            color: #4a90e2;
+        }
+
+        .chat-subtitle {
+            color: #aaa;
             font-size: 0.9rem;
         }
 
-        /* Past Events */
-        .past-events {
-            margin-top: 4rem;
+        /* Messages Container */
+        .messages-container {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .past-events h2 {
-            font-size: 2.5rem;
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .message.own {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #4a90e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-weight: bold;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
+            flex-shrink: 0;
         }
 
-        .past-event-card {
-            background-color: var(--darker-bg);
-            border: 1px solid var(--border-color);
+        .message.own .message-avatar {
+            background: #28a745;
+        }
+
+        .message-content {
+            max-width: 70%;
+        }
+
+        .message-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .message.own .message-info {
+            flex-direction: row-reverse;
+        }
+
+        .message-sender {
+            color: #4a90e2;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .message.own .message-sender {
+            color: #28a745;
+        }
+
+        .message-time {
+            color: #777;
+            font-size: 0.75rem;
+        }
+
+        .message-text {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            padding: 0.75rem 1rem;
             border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 2rem;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        .message.own .message-text {
+            background: rgba(74, 144, 226, 0.2);
+        }
+
+        /* Message Input */
+        .message-input-container {
+            padding: 1rem;
+            background: rgba(30, 30, 30, 0.95);
+            border-top: 1px solid #333;
+        }
+
+        .message-input-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+
+        .message-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #444;
+            border-radius: 20px;
+            padding: 0.75rem 1rem;
+            color: white;
+            resize: none;
+            max-height: 120px;
+            min-height: 44px;
+            font-family: inherit;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        .message-input::placeholder {
+            color: #999;
+        }
+
+        .send-button {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #4a90e2;
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .send-button:hover {
+            background: #357abd;
+        }
+
+        .send-button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        /* Email Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup {
+            background: #2a2a2a;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.7);
             transition: transform 0.3s ease;
         }
 
-        .past-event-card:hover {
-            transform: translateY(-3px);
+        .popup-overlay.active .popup {
+            transform: scale(1);
         }
 
-        .past-event-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            position: relative;
-        }
-
-        .past-event-date {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: rgba(0, 0, 0, 0.8);
+        .popup h3 {
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
         }
 
-        .past-event-content {
-            padding: 1.5rem;
+        .popup p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
-        .past-event-description {
-            color: var(--text-muted);
-            line-height: 1.6;
+        .popup input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .popup input:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .popup-button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .popup-button.primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .popup-button.primary:hover {
+            background: #357abd;
+        }
+
+        .popup-button.secondary {
+            background: #666;
+            color: white;
+        }
+
+        .popup-button.secondary:hover {
+            background: #777;
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 250px;
+            }
+            
+            .nav-menu {
+                gap: 1rem;
+            }
+            
+            .nav-menu a {
+                font-size: 0.8rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .page-title {
-                font-size: 2rem;
+            .hamburger {
+                display: flex;
             }
             
-            .calendar-grid {
-                gap: 2px;
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 2rem;
+                padding-top: 2rem;
+                transition: left 0.3s;
             }
             
-            .calendar-day {
-                font-size: 0.9rem;
+            .nav-menu.active {
+                left: 0;
             }
+
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                height: calc(100vh - 60px);
+                z-index: 500;
+            }
+            
+            .sidebar.active {
+                transform: translateX(280px);
+            }
+
+            .chat-area {
+                width: 100%;
+            }
+            
+            .chat-title {
+                font-size: 1.25rem;
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.5rem 1rem;
+            }
+            
+            .main-container {
+                padding-top: 50px;
+            }
+            
+            .chat-header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .chat-title {
+                font-size: 1.1rem;
+            }
+            
+            .messages-container {
+                padding: 0.75rem;
+                gap: 0.75rem;
+            }
+            
+            .message-content {
+                max-width: 90%;
+            }
+            
+            .message-input-container {
+                padding: 0.75rem;
+            }
+            
+            .popup {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Custom Scrollbar */
+        .messages-container::-webkit-scrollbar,
+        .users-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages-container::-webkit-scrollbar-track,
+        .users-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .messages-container::-webkit-scrollbar-thumb,
+        .users-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-cross"></i>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sermons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Prayers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Give</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Community</a>
-                    </li>
-                </ul>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">⛪</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#sermons">Sermons</a></li>
+                <li><a href="#prayers">Prayers</a></li>
+                <li><a href="#give">Give</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#community" class="active">Community</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Main Content -->
-    <div class="container main-content">
-        <h1 class="page-title">Events/Calendar</h1>
-        <p class="page-subtitle">Stay connected and be a part of what God is doing in our community</p>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="online-count" id="onlineCount">45 members online</div>
+            </div>
+            <div class="users-list" id="usersList">
+                <!-- Users will be populated by JavaScript -->
+            </div>
+        </aside>
 
-        <div class="row">
-            <!-- Event List -->
-            <div class="col-lg-8">
-                <h3 class="mb-4">Event List</h3>
-                
-                <!-- Bible Study Event -->
-                <div class="event-card">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="/placeholder.svg?height=200&width=300" alt="Bible Study" class="event-image">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="event-content">
-                                <div class="event-time">08:00am - 09:00am</div>
-                                <h4 class="event-title">Bible Study</h4>
-                                <p class="event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>
-                                <a href="#" class="google-calendar-btn" onclick="addToGoogleCalendar('Bible Study', '2024-04-11T08:00:00', '2024-04-11T09:00:00', 'Weekly Bible study session')">
-                                    <i class="fab fa-google"></i>
-                                    Add to Google Calendar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sunday Worship Event -->
-                <div class="event-card">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="/placeholder.svg?height=200&width=300" alt="Sunday Worship" class="event-image">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="event-content">
-                                <div class="event-time">10:00am - 12:00pm</div>
-                                <h4 class="event-title">Sunday Worship</h4>
-                                <p class="event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>
-                                <a href="#" class="google-calendar-btn" onclick="addToGoogleCalendar('Sunday Worship', '2024-04-14T10:00:00', '2024-04-14T12:00:00', 'Weekly Sunday worship service')">
-                                    <i class="fab fa-google"></i>
-                                    Add to Google Calendar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Community Outreach Event -->
-                <div class="event-card">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="/placeholder.svg?height=200&width=300" alt="Community Outreach" class="event-image">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="event-content">
-                                <div class="event-time">02:00pm - 05:00pm</div>
-                                <h4 class="event-title">Community Outreach</h4>
-                                <p class="event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p>
-                                <a href="#" class="google-calendar-btn" onclick="addToGoogleCalendar('Community Outreach', '2024-04-20T14:00:00', '2024-04-20T17:00:00', 'Community outreach program')">
-                                    <i class="fab fa-google"></i>
-                                    Add to Google Calendar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Chat Area -->
+        <main class="chat-area">
+            <div class="chat-header">
+                <h1 class="chat-title">COMMUNITY <span class="highlight">CHATROOM</span></h1>
+                <p class="chat-subtitle">Connect with fellow members, share encouragement, ask questions, and grow together in faith through real-time conversations.</p>
             </div>
 
-            <!-- Calendar Widget -->
-            <div class="col-lg-4">
-                <div class="calendar-widget">
-                    <div class="calendar-header">
-                        <button class="calendar-nav" onclick="previousMonth()">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <h4 class="calendar-title" id="calendarTitle">April 2024</h4>
-                        <button class="calendar-nav" onclick="nextMonth()">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="calendar-grid" id="calendarGrid">
-                        <!-- Calendar will be generated by JavaScript -->
-                    </div>
+            <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be populated by JavaScript -->
+            </div>
 
-                    <div class="event-details">
-                        <h6 id="selectedDate">April 11 2024</h6>
-                        <div id="dayEvents">
-                            <div class="event-item">
-                                <div class="event-item-title">Bible Study</div>
-                                <div class="event-item-time">08:00am - 09:00am</div>
-                            </div>
-                            <div class="event-item">
-                                <div class="event-item-title">Sunday Worship</div>
-                                <div class="event-item-time">10:00am - 12:00pm</div>
-                            </div>
-                            <div class="event-item">
-                                <div class="event-item-title">Community Outreach</div>
-                                <div class="event-item-time">02:00pm - 05:00pm</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="message-input-container">
+                <div class="message-input-wrapper">
+                    <textarea 
+                        class="message-input" 
+                        id="messageInput" 
+                        placeholder="Write a message..."
+                        rows="1"
+                    ></textarea>
+                    <button class="send-button" id="sendButton" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
-        </div>
+        </main>
+    </div>
 
-        <!-- Past Events -->
-        <div class="past-events">
-            <h2>Past Events</h2>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="past-event-card">
-                        <div class="position-relative">
-                            <img src="/placeholder.svg?height=250&width=400" alt="Past Event" class="past-event-image">
-                            <div class="past-event-date">12 June, 2025</div>
-                        </div>
-                        <div class="past-event-content">
-                            <p class="past-event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feuglat lectus.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="past-event-card">
-                        <div class="position-relative">
-                            <img src="/placeholder.svg?height=250&width=400" alt="Past Event" class="past-event-image">
-                            <div class="past-event-date">12 June, 2025</div>
-                        </div>
-                        <div class="past-event-content">
-                            <p class="past-event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feuglat lectus.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="past-event-card">
-                        <div class="position-relative">
-                            <img src="/placeholder.svg?height=250&width=400" alt="Past Event" class="past-event-image">
-                            <div class="past-event-date">12 June, 2025</div>
-                        </div>
-                        <div class="past-event-content">
-                            <p class="past-event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feuglat lectus.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="past-event-card">
-                        <div class="position-relative">
-                            <img src="/placeholder.svg?height=250&width=400" alt="Past Event" class="past-event-image">
-                            <div class="past-event-date">12 June, 2025</div>
-                        </div>
-                        <div class="past-event-content">
-                            <p class="past-event-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feuglat lectus.</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Email Popup -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h3>Enter Email to Join the Conversation</h3>
+            <p>Be part of our community discussion, share content, and connect with like-minded people for spiritual growth.</p>
+            <input type="email" id="emailInput" placeholder="Email" required>
+            <div class="popup-buttons">
+                <button class="popup-button secondary" id="cancelButton">Cancel</button>
+                <button class="popup-button primary" id="submitButton">Submit</button>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Calendar functionality
-        let currentDate = new Date();
-        let currentMonth = currentDate.getMonth();
-        let currentYear = currentDate.getFullYear();
-
-        // Sample events data with blue tick dates
-        const events = {
-            '2024-04-11': [
-                { title: 'Bible Study', time: '08:00am - 09:00am' },
-                { title: 'Prayer Meeting', time: '07:00pm - 08:00pm' }
-            ],
-            '2024-04-14': [
-                { title: 'Sunday Worship', time: '10:00am - 12:00pm' }
-            ],
-            '2024-04-20': [
-                { title: 'Community Outreach', time: '02:00pm - 05:00pm' }
-            ],
-            '2024-04-25': [
-                { title: 'Youth Meeting', time: '06:00pm - 08:00pm' }
-            ],
-            '2024-04-28': [
-                { title: 'Bible Study', time: '08:00am - 09:00am' }
-            ]
-        };
-
-        const months = [
-            'January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'
+        // Sample data
+        const users = [
+            { name: "Martin", status: "online" },
+            { name: "Sandra", status: "online" },
+            { name: "David", status: "online" },
+            { name: "Kimberly", status: "online" },
+            { name: "Mary", status: "online" },
+            { name: "Daniel", status: "online" },
+            { name: "Patricia", status: "online" },
+            { name: "Thomas", status: "online" },
+            { name: "Linda", status: "online" },
+            { name: "Christopher", status: "online" },
+            { name: "Elizabeth", status: "online" },
+            { name: "Joshua", status: "online" },
+            { name: "Jessica", status: "online" },
+            { name: "Andrew", status: "online" },
+            { name: "Sarah", status: "online" },
+            { name: "Ryan", status: "online" },
+            { name: "Michelle", status: "online" },
+            { name: "Kevin", status: "online" },
+            { name: "Amanda", status: "online" },
+            { name: "Steven", status: "online" }
         ];
 
-        const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        const sampleMessages = [
+            { sender: "Thank you Chatroom!", time: "10:45 am", text: "", own: false },
+            { sender: "Sandra Thomas", time: "11:23 am", text: "Good afternoon everyone having a beautiful Saturday morning", own: false },
+            { sender: "You", time: "11:24 am", text: "Don't forget to pray for those who voted!", own: true },
+            { sender: "Lella Gonzalez", time: "12:14 pm", text: "How are all of being blessed with another beautiful Saturday morning", own: false },
+            { sender: "You", time: "12:15 pm", text: "Don't forget to pray before you sleep", own: true }
+        ];
 
-        function generateCalendar(month, year) {
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            const daysInMonth = lastDay.getDate();
-            const startingDayOfWeek = (firstDay.getDay() + 6) % 7; // Adjust for Monday start
+        // DOM Elements
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const sidebar = document.getElementById('sidebar');
+        const usersList = document.getElementById('usersList');
+        const messagesContainer = document.getElementById('messagesContainer');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const emailInput = document.getElementById('emailInput');
+        const submitButton = document.getElementById('submitButton');
+        const cancelButton = document.getElementById('cancelButton');
 
-            const calendarGrid = document.getElementById('calendarGrid');
-            const calendarTitle = document.getElementById('calendarTitle');
-            
-            calendarTitle.textContent = `${months[month]} ${year}`;
-            calendarGrid.innerHTML = '';
+        let currentUser = null;
 
-            // Add day headers
-            daysOfWeek.forEach(day => {
-                const dayHeader = document.createElement('div');
-                dayHeader.className = 'calendar-day-header';
-                dayHeader.textContent = day;
-                calendarGrid.appendChild(dayHeader);
-            });
-
-            // Add empty cells for days before the first day of the month
-            for (let i = 0; i < startingDayOfWeek; i++) {
-                const emptyDay = document.createElement('div');
-                emptyDay.className = 'calendar-day other-month';
-                const prevMonthLastDay = new Date(year, month, 0).getDate();
-                emptyDay.textContent = prevMonthLastDay - startingDayOfWeek + i + 1;
-                calendarGrid.appendChild(emptyDay);
-            }
-
-            // Add days of the current month
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayElement = document.createElement('div');
-                dayElement.className = 'calendar-day';
-                dayElement.textContent = day;
-                
-                const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                
-                // Check if this date has events (add blue tick)
-                if (events[dateString]) {
-                    dayElement.classList.add('has-event');
-                }
-                
-                // Check if this is today
-                const today = new Date();
-                if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
-                    dayElement.classList.add('today');
-                }
-                
-                dayElement.addEventListener('click', () => selectDate(year, month, day));
-                calendarGrid.appendChild(dayElement);
-            }
-
-            // Add days from next month to fill the grid
-            const totalCells = calendarGrid.children.length;
-            const remainingCells = 42 - totalCells; // 6 rows × 7 days = 42 cells
-            for (let day = 1; day <= remainingCells; day++) {
-                const nextMonthDay = document.createElement('div');
-                nextMonthDay.className = 'calendar-day other-month';
-                nextMonthDay.textContent = day;
-                calendarGrid.appendChild(nextMonthDay);
-            }
+        // Initialize
+        function init() {
+            populateUsers();
+            populateMessages();
+            setupEventListeners();
+            showEmailPopup();
         }
 
-        function selectDate(year, month, day) {
-            const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-            const selectedDateElement = document.getElementById('selectedDate');
-            const dayEventsElement = document.getElementById('dayEvents');
+        // Populate users list
+        function populateUsers() {
+            usersList.innerHTML = '';
+            users.forEach(user => {
+                const userElement = document.createElement('div');
+                userElement.className = 'user-item';
+                userElement.innerHTML = `
+                    <div class="user-avatar">${user.name.charAt(0)}</div>
+                    <div class="user-name">${user.name}</div>
+                `;
+                usersList.appendChild(userElement);
+            });
+        }
+
+        // Populate messages
+        function populateMessages() {
+            messagesContainer.innerHTML = '';
+            sampleMessages.forEach(message => {
+                if (message.text) {
+                    addMessageToChat(message.sender, message.text, message.time, message.own);
+                }
+            });
+            scrollToBottom();
+        }
+
+        // Add message to chat
+        function addMessageToChat(sender, text, time, isOwn = false) {
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${isOwn ? 'own' : ''}`;
             
-            selectedDateElement.textContent = `${months[month]} ${day} ${year}`;
+            const avatar = sender.charAt(0).toUpperCase();
             
-            if (events[dateString]) {
-                dayEventsElement.innerHTML = events[dateString].map(event => `
-                    <div class="event-item">
-                        <div class="event-item-title">${event.title}</div>
-                        <div class="event-item-time">${event.time}</div>
+            messageElement.innerHTML = `
+                <div class="message-avatar">${avatar}</div>
+                <div class="message-content">
+                    <div class="message-info">
+                        <span class="message-sender">${sender}</span>
+                        <span class="message-time">${time}</span>
                     </div>
-                `).join('');
-            } else {
-                dayEventsElement.innerHTML = '<div class="text-muted">No events scheduled for this day.</div>';
-            }
-        }
-
-        function previousMonth() {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            generateCalendar(currentMonth, currentYear);
-        }
-
-        function nextMonth() {
-            currentMonth++;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
-            generateCalendar(currentMonth, currentYear);
-        }
-
-        // Google Calendar integration
-        function addToGoogleCalendar(title, startTime, endTime, description) {
-            const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
-            const params = new URLSearchParams({
-                text: title,
-                dates: `${startTime.replace(/[-:]/g, '').replace('T', 'T')}Z/${endTime.replace(/[-:]/g, '').replace('T', 'T')}Z`,
-                details: description,
-                location: 'Church Address, City, State'
-            });
+                    <div class="message-text">${text}</div>
+                </div>
+            `;
             
-            window.open(`${baseUrl}&${params.toString()}`, '_blank');
+            messagesContainer.appendChild(messageElement);
+            scrollToBottom();
         }
 
-        // Initialize calendar
-        document.addEventListener('DOMContentLoaded', function() {
-            generateCalendar(currentMonth, currentYear);
-            // Select April 11 by default
-            selectDate(2024, 3, 11);
-        });
+        // Scroll to bottom
+        function scrollToBottom() {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Get current time
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Hamburger menu
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                sidebar.classList.toggle('active');
+            });
+
+            // Message input
+            messageInput.addEventListener('input', () => {
+                adjustTextareaHeight();
+                sendButton.disabled = !messageInput.value.trim();
+            });
+
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Send button
+            sendButton.addEventListener('click', sendMessage);
+
+            // Email popup
+            submitButton.addEventListener('click', handleEmailSubmit);
+            cancelButton.addEventListener('click', hideEmailPopup);
+            
+            popupOverlay.addEventListener('click', (e) => {
+                if (e.target === popupOverlay) {
+                    hideEmailPopup();
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.hamburger') && !e.target.closest('.nav-menu')) {
+                    navMenu.classList.remove('active');
+                }
+                
+                if (!e.target.closest('.sidebar') && !e.target.closest('.hamburger')) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        }
+
+        // Adjust textarea height
+        function adjustTextareaHeight() {
+            messageInput.style.height = 'auto';
+            messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + 'px';
+        }
+
+        // Send message
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (!text || !currentUser) return;
+
+            addMessageToChat(currentUser, text, getCurrentTime(), true);
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
+            sendButton.disabled = true;
+
+            // Simulate reply after a short delay
+            setTimeout(() => {
+                const randomUser = users[Math.floor(Math.random() * users.length)];
+                const replies = [
+                    "Amen! 🙏",
+                    "Thank you for sharing!",
+                    "God bless you!",
+                    "Praying for you too!",
+                    "Have a blessed day!",
+                    "Thank you for the encouragement!"
+                ];
+                const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                addMessageToChat(randomUser.name, randomReply, getCurrentTime(), false);
+            }, 1000 + Math.random() * 2000);
+        }
+
+        // Show email popup
+        function showEmailPopup() {
+            popupOverlay.classList.add('active');
+        }
+
+        // Hide email popup
+        function hideEmailPopup() {
+            popupOverlay.classList.remove('active');
+        }
+
+        // Handle email submit
+        function handleEmailSubmit() {
+            const email = emailInput.value.trim();
+            if (!email) return;
+
+            // Extract name from email
+            currentUser = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
+            
+            hideEmailPopup();
+            
+            // Welcome message
+            setTimeout(() => {
+                addMessageToChat("System", `Welcome ${currentUser}! You've joined the community chatroom.`, getCurrentTime(), false);
+            }, 500);
+        }
+
+        // Auto-resize textarea
+        messageInput.addEventListener('input', adjustTextareaHeight);
+
+        // Initialize the app
+        init();
+
+        // Simulate online users update
+        setInterval(() => {
+            const count = Math.floor(Math.random() * 10) + 40;
+            document.getElementById('onlineCount').textContent = `${count} members online`;
+        }, 30000);
     </script>
 </body>
 </html>

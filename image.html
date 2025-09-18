@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Power to Change Your Mind - Sermon Details</title>
+    <title>Community Chatroom - Church Website</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #3b82f6;
-            --text-light: #f8fafc;
-            --text-dark: #1e293b;
-            --bg-dark: #0f172a;
-            --bg-darker: #020617;
+            --primary-color: #007bff;
+            --dark-bg: #1a1a1a;
+            --darker-bg: #0d1117;
+            --chat-bg: #1e1e1e;
+            --message-bg: #2d2d2d;
+            --text-light: #ffffff;
+            --text-muted: #8b949e;
+            --online-green: #25d366;
+            --send-disabled: #4a4a4a;
+            --send-enabled: #007bff;
         }
 
         * {
@@ -25,16 +28,19 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--darker-bg);
             color: var(--text-light);
-            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
         }
 
         /* Navigation */
         .navbar {
-            background-color: var(--bg-darker);
+            background-color: var(--dark-bg) !important;
             padding: 1rem 0;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid #30363d;
+            position: relative;
+            z-index: 1000;
         }
 
         .navbar-brand {
@@ -44,814 +50,668 @@
         }
 
         .navbar-nav .nav-link {
-            color: var(--text-light) !important;
+            color: var(--text-muted) !important;
             margin: 0 1rem;
             transition: color 0.3s ease;
         }
 
-        .navbar-nav .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-
+        .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link.active {
-            color: var(--primary-color) !important;
+            color: var(--text-light) !important;
         }
 
-        /* Hero Video Section */
-        .hero-section {
-            position: relative;
-            height: 60vh;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop') center/cover;
-        }
-
-        .video-overlay {
-            position: absolute;
+        /* <CHANGE> Static header that stays at the top */
+        .chatroom-header {
+            background-color: var(--dark-bg);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .sermon-title {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #fbbf24;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            margin-bottom: 1rem;
-            max-width: 800px;
-        }
-
-        .sermon-speaker {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .play-button {
-            width: 80px;
-            height: 80px;
-            background-color: #dc2626;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .play-button:hover {
-            transform: scale(1.1);
-            background-color: #b91c1c;
-        }
-
-        .play-button i {
-            color: white;
-            font-size: 2rem;
-            margin-left: 5px;
-        }
-
-        /* Video Player */
-        .video-player {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-        }
-
-        .video-player video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-controls {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .control-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .control-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .progress-container {
-            flex: 1;
-            height: 6px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--primary-color);
-            border-radius: 3px;
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        .time-display {
-            color: white;
-            font-size: 0.9rem;
-            min-width: 100px;
-        }
-
-        .speed-selector {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-
-        /* Sermon Details */
-        .sermon-details {
-            padding: 3rem 0;
-        }
-
-        .sermon-meta {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .sermon-date {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #94a3b8;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn-custom {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary-custom {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary-custom:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline-custom {
-            background-color: transparent;
-            color: var(--text-light);
-            border: 2px solid #475569;
-        }
-
-        .btn-outline-custom:hover {
-            background-color: #475569;
-            color: white;
-        }
-
-        /* Chatroom Section */
-        .chatroom-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .chatroom-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
+            z-index: 999;
         }
 
         .chatroom-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .chatroom-description {
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn-chatroom {
-            background-color: white;
-            color: var(--primary-color);
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-chatroom:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Reels Section */
-        .reels-section {
-            padding: 3rem 0;
-        }
-
-        .section-title {
             font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 2rem;
-            color: var(--text-light);
-        }
-
-        .reel-card {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .reel-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .reel-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .reel-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 1rem;
-            color: white;
-        }
-
-        .reel-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Announcements */
-        .announcements-section {
-            padding: 3rem 0;
-        }
-
-        .announcement-card {
-            background-color: #1e293b;
-            padding: 1.5rem;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .announcement-card:hover {
-            transform: translateY(-3px);
-            background-color: #334155;
-        }
-
-        .announcement-title {
-            font-weight: bold;
             margin-bottom: 0.5rem;
+        }
+
+        .chatroom-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .community-text {
             color: var(--text-light);
         }
 
-        .announcement-date {
+        .chatroom-text {
             color: var(--primary-color);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
         }
 
-        .announcement-description {
-            color: #94a3b8;
-            font-size: 0.9rem;
+        /* Main Container */
+        .chatroom-container {
+            height: calc(100vh - 140px);
+            display: flex;
+            background-color: var(--chat-bg);
         }
 
-        /* Related Sermons */
-        .related-sermons {
-            padding: 3rem 0;
+        /* Members Sidebar */
+        .members-sidebar {
+            width: 300px;
+            background-color: var(--dark-bg);
+            border-right: 1px solid #30363d;
+            overflow-y: auto;
+            padding: 1rem 0;
         }
 
-        .sermon-card {
-            background-color: #1e293b;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .sermon-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .sermon-thumbnail {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .sermon-card-body {
-            padding: 1.5rem;
-        }
-
-        .sermon-card-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-        }
-
-        .sermon-card-speaker {
-            color: #94a3b8;
-            font-size: 0.9rem;
+        .members-header {
+            padding: 0 1rem 1rem;
+            border-bottom: 1px solid #30363d;
             margin-bottom: 1rem;
         }
 
-        .btn-listen {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
+        .members-count {
+            color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        .member-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        .btn-listen:hover {
-            background-color: var(--secondary-color);
+        .member-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            position: relative;
+        }
+
+        .online-indicator {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--online-green);
+            border-radius: 50%;
+            border: 2px solid var(--dark-bg);
+        }
+
+        .member-name {
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        /* Chat Area */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* <CHANGE> Message structure with avatar on left and name on top */
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            max-width: 70%;
+        }
+
+        .message.own {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .message-name {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .message.own .message-name {
+            text-align: right;
+            color: var(--online-green);
+        }
+
+        .message-bubble {
+            background-color: var(--message-bg);
+            padding: 0.75rem 1rem;
+            border-radius: 18px;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .message.own .message-bubble {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .message.own .message-time {
+            text-align: right;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Message Input */
+        .message-input-container {
+            padding: 1rem;
+            background-color: var(--dark-bg);
+            border-top: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .message-input {
+            flex: 1;
+            background-color: var(--message-bg);
+            border: none;
+            color: var(--text-light);
+            padding: 0.75rem 1rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .message-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* <CHANGE> Conditional send button styling */
+        .send-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .send-button.disabled {
+            background-color: var(--send-disabled);
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .send-button.enabled {
+            background-color: var(--send-enabled);
+            color: white;
+        }
+
+        .send-button.enabled:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* <CHANGE> Email popup that slides from top */
+        .email-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .email-popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .email-popup {
+            background-color: var(--dark-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            border: 1px solid #30363d;
+        }
+
+        .email-popup-overlay.show .email-popup {
+            transform: translateY(0);
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .popup-description {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .email-input {
+            width: 100%;
+            background-color: var(--message-bg);
+            border: 1px solid #30363d;
+            color: var(--text-light);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .email-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .email-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .submit-email-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-email-btn:hover {
+            background-color: #0056b3;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .sermon-title {
-                font-size: 2.5rem;
+            .navbar-nav {
+                display: none;
             }
 
-            .action-buttons {
-                flex-direction: column;
+            .chatroom-title {
+                font-size: 2rem;
             }
 
-            .sermon-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+            .members-sidebar {
+                width: 250px;
+            }
+
+            .message {
+                max-width: 85%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .chatroom-container {
+                height: calc(100vh - 120px);
+            }
+
+            .members-sidebar {
+                width: 200px;
+            }
+
+            .chatroom-title {
+                font-size: 1.5rem;
+            }
+
+            .message {
+                max-width: 90%;
+            }
+
+            .email-popup {
+                margin: 1rem;
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-  
-    <!-- Hero Video Section -->
-    <section class="hero-section">
-        <div class="video-container">
-            <div class="video-overlay" id="videoOverlay">
-                <button class="play-button" id="playButton">
-                    <i class="fas fa-play"></i>
-                </button>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-cross"></i>
+            </a>
+            <div class="navbar-nav ms-auto d-none d-md-flex">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="#">Sermons</a>
+                <a class="nav-link" href="#">Prayers</a>
+                <a class="nav-link" href="#">Give</a>
+                <a class="nav-link" href="#">Gallery</a>
+                <a class="nav-link" href="#">Events</a>
+                <a class="nav-link active" href="#">Community</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <CHANGE> Static Chatroom Header -->
+    <div class="chatroom-header">
+        <div class="container">
+            <h1 class="chatroom-title">
+                <span class="community-text">COMMUNITY</span> 
+                <span class="chatroom-text">CHATROOM</span>
+            </h1>
+            <p class="chatroom-subtitle">Connect with fellow members, share encouragement, ask questions, and grow together in faith through real-time conversations.</p>
+        </div>
+    </div>
+
+    <!-- Main Chatroom Container -->
+    <div class="chatroom-container">
+        <!-- Members Sidebar -->
+        <div class="members-sidebar">
+            <div class="members-header">
+                <h6 style="color: var(--text-light); margin-bottom: 0.5rem;">Online Members</h6>
+                <div class="members-count">45 members online</div>
             </div>
             
-            <div class="video-player" id="videoPlayer">
-                <video id="sermonVideo" preload="metadata">
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                
-                <div class="video-controls" id="videoControls">
-                    <button class="control-btn" id="playPauseBtn">
-                        <i class="fas fa-pause"></i>
-                    </button>
-                    <button class="control-btn" id="downloadBtn" title="Download Video">
-                        <i class="fas fa-download"></i>
-                    </button>
-                    <div class="progress-container" id="progressContainer">
-                        <div class="progress-bar" id="progressBar"></div>
-                    </div>
-                    <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
-                    <select class="speed-selector" id="speedSelector">
-                        <option value="0.5">0.5x</option>
-                        <option value="0.75">0.75x</option>
-                        <option value="1" selected>1x</option>
-                        <option value="1.25">1.25x</option>
-                        <option value="1.5">1.5x</option>
-                        <option value="2">2x</option>
-                    </select>
-                    <button class="control-btn" id="fullscreenBtn">
-                        <i class="fas fa-expand"></i>
-                    </button>
+            <div class="member-item">
+                <div class="member-avatar">
+                    M
+                    <div class="online-indicator"></div>
                 </div>
+                <div class="member-name">Martin</div>
+            </div>
+            
+            <div class="member-item">
+                <div class="member-avatar">
+                    E
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="member-name">Esther</div>
+            </div>
+            
+            <div class="member-item">
+                <div class="member-avatar">
+                    S
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="member-name">Sandra</div>
+            </div>
+            
+            <div class="member-item">
+                <div class="member-avatar">
+                    J
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="member-name">Joshua</div>
+            </div>
+            
+            <div class="member-item">
+                <div class="member-avatar">
+                    A
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="member-name">Adanna</div>
             </div>
         </div>
-    </section>
 
-    <!-- Sermon Details -->
-    <section class="sermon-details">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2 class="sermon-title" style="font-size: 2rem; color: var(--text-light);">The Power to Change Your Mind</h2>
-                    
-                    <div class="sermon-meta">
-                        <h5 style="color: var(--text-light);">Bishop T.D Jakes</h5>
-                        <div class="sermon-date">
-                            <i class="fas fa-calendar"></i>
-                            <span>August 12, 2023</span>
-                        </div>
-                    </div>
-
-                    <div class="action-buttons">
-                        <button class="btn-custom btn-primary-custom">
-                            <i class="fas fa-download me-2"></i>Download
-                        </button>
-                        <button class="btn-custom btn-outline-custom">
-                            <i class="fas fa-heart me-2"></i>Give
-                        </button>
-                        <button class="btn-custom btn-outline-custom">
-                            <i class="fas fa-share me-2"></i>Share
-                        </button>
-                    </div>
-
-                    <div class="sermon-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur sed bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div class="chat-messages" id="chatMessages">
+                <!-- <CHANGE> Messages with avatars and names -->
+                <div class="message">
+                    <div class="message-avatar">M</div>
+                    <div class="message-content">
+                        <div class="message-name">Martin</div>
+                        <div class="message-bubble">Thank you Chukwuemeka!</div>
+                        <div class="message-time">10:30 AM</div>
                     </div>
                 </div>
 
-                <div class="col-lg-4">
-                    <div class="chatroom-section">
-                        <div class="chatroom-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h3 class="chatroom-title">Chatroom</h3>
-                        <p class="chatroom-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p>
-                        <a href="#" class="btn-chatroom">
-                            <i class="fas fa-comments me-2"></i>Join Chatroom
-                        </a>
+                <div class="message">
+                    <div class="message-avatar">S</div>
+                    <div class="message-content">
+                        <div class="message-name">Sandra Theresa</div>
+                        <div class="message-bubble">Good morning everyone! Hope you all had a blessed week.</div>
+                        <div class="message-time">10:32 AM</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Reels Section -->
-    <section class="reels-section">
-        <div class="container">
-            <h2 class="section-title">REELS</h2>
-            <div class="row g-3">
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up">
-                    <div class="reel-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Reel" class="reel-image">
-                        <div class="reel-overlay">
-                            <div class="reel-title">The Power to Change Your Mind</div>
-                        </div>
+                <div class="message">
+                    <div class="message-avatar">J</div>
+                    <div class="message-content">
+                        <div class="message-name">Joshua</div>
+                        <div class="message-bubble">Good God is a merciful being and he will always bless us today.</div>
+                        <div class="message-time">10:35 AM</div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="reel-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Reel" class="reel-image">
-                        <div class="reel-overlay">
-                            <div class="reel-title">The Power to Change Your Mind</div>
-                        </div>
+
+                <div class="message own">
+                    <div class="message-avatar">Y</div>
+                    <div class="message-content">
+                        <div class="message-name">You</div>
+                        <div class="message-bubble">Good God Glory 🙏</div>
+                        <div class="message-time">10:36 AM</div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="reel-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Reel" class="reel-image">
-                        <div class="reel-overlay">
-                            <div class="reel-title">The Power to Change Your Mind</div>
-                        </div>
+
+                <div class="message">
+                    <div class="message-avatar">A</div>
+                    <div class="message-content">
+                        <div class="message-name">Adanna</div>
+                        <div class="message-bubble">Don't forget to pray before you sleep.</div>
+                        <div class="message-time">10:38 AM</div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="reel-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Reel" class="reel-image">
-                        <div class="reel-overlay">
-                            <div class="reel-title">The Power to Change Your Mind</div>
-                        </div>
+
+                <div class="message">
+                    <div class="message-avatar">E</div>
+                    <div class="message-content">
+                        <div class="message-name">Esther</div>
+                        <div class="message-bubble">Hello Everyone!</div>
+                        <div class="message-time">10:40 AM</div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="reel-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Reel" class="reel-image">
-                        <div class="reel-overlay">
-                            <div class="reel-title">The Power to Change Your Mind</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="reel-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" alt="Reel" class="reel-image">
-                        <div class="reel-overlay">
-                            <div class="reel-title">The Power to Change Your Mind</div>
-                        </div>
+
+                <div class="message">
+                    <div class="message-avatar">J</div>
+                    <div class="message-content">
+                        <div class="message-name">Joshua</div>
+                        <div class="message-bubble">How are all of doing today? I'm praying for each of you and believing God for a wonderful Saturday morning.</div>
+                        <div class="message-time">10:42 AM</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Announcements -->
-    <section class="announcements-section">
-        <div class="container">
-            <h2 class="section-title">ANNOUNCEMENT</h2>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="announcement-card">
-                        <div class="announcement-title">Guest speaker - This Sunday</div>
-                        <div class="announcement-date">This Sunday</div>
-                        <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a message on "Faith in Action"</div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="announcement-card">
-                        <div class="announcement-title">Food Drive - Ongoing</div>
-                        <div class="announcement-date">Ongoing</div>
-                        <div class="announcement-description">We're collecting non-perishable food items for local families in need. Drop off in the church lobby.</div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="announcement-card">
-                        <div class="announcement-title">Youth Conference - Sept 15-17</div>
-                        <div class="announcement-date">Sept 15-17</div>
-                        <div class="announcement-description">Join us for 3 days of worship, teaching, and fellowship.</div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="announcement-card">
-                        <div class="announcement-title">Women's Love Feast - Aug 21</div>
-                        <div class="announcement-date">Aug 21</div>
-                        <div class="announcement-description">Come with a heart filled with love as we dine, laugh and converse over the word of God.</div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="announcement-card">
-                        <div class="announcement-title">Youth Conference - Sept 15-17</div>
-                        <div class="announcement-date">Sept 15-17</div>
-                        <div class="announcement-description">Join us for 3 days of worship, teaching, and fellowship.</div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="announcement-card">
-                        <div class="announcement-title">Guest speaker - This Sunday</div>
-                        <div class="announcement-date">This Sunday</div>
-                        <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a message on "Faith in Action"</div>
-                    </div>
-                </div>
+            <!-- Message Input -->
+            <div class="message-input-container">
+                <input type="text" class="message-input" placeholder="Write a message..." id="messageInput" disabled>
+                <button class="send-button disabled" id="sendButton" disabled>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Related Sermons -->
-    <section class="related-sermons">
-        <div class="container">
-            <h2 class="section-title">RELATED SERMONS</h2>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="sermon-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop" alt="Sermon" class="sermon-thumbnail">
-                        <div class="sermon-card-body">
-                            <h5 class="sermon-card-title">The Power to Change Your Mind</h5>
-                            <p class="sermon-card-speaker">Bishop T.D Jakes</p>
-                            <a href="#" class="btn-listen">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="sermon-card">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616c27b40e2?w=400&h=200&fit=crop" alt="Sermon" class="sermon-thumbnail">
-                        <div class="sermon-card-body">
-                            <h5 class="sermon-card-title">While You Were Waiting</h5>
-                            <p class="sermon-card-speaker">Pastor Victoria Flemings</p>
-                            <a href="#" class="btn-listen">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="sermon-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=200&fit=crop" alt="Sermon" class="sermon-thumbnail">
-                        <div class="sermon-card-body">
-                            <h5 class="sermon-card-title">The Weapons Are In The House</h5>
-                            <p class="sermon-card-speaker">Pastor Robert Madu</p>
-                            <a href="#" class="btn-listen">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="sermon-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop" alt="Sermon" class="sermon-thumbnail">
-                        <div class="sermon-card-body">
-                            <h5 class="sermon-card-title">All Those Times You Didn't See</h5>
-                            <p class="sermon-card-speaker">Pastor Steven Furtick</p>
-                            <a href="#" class="btn-listen">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="sermon-card">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=200&fit=crop" alt="Sermon" class="sermon-thumbnail">
-                        <div class="sermon-card-body">
-                            <h5 class="sermon-card-title">This Is My Bible</h5>
-                            <p class="sermon-card-speaker">Bishop Benjamin Timothy</p>
-                            <a href="#" class="btn-listen">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="sermon-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=200&fit=crop" alt="Sermon" class="sermon-thumbnail">
-                        <div class="sermon-card-body">
-                            <h5 class="sermon-card-title">This Might Be My God Moment</h5>
-                            <p class="sermon-card-speaker">Pastor Steven Furtick</p>
-                            <a href="#" class="btn-listen">Listen Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- <CHANGE> Email Popup that slides from top -->
+    <div class="email-popup-overlay show" id="emailPopup">
+        <div class="email-popup">
+            <h3 class="popup-title">Enter Email to Join the Conversation</h3>
+            <p class="popup-description">Be part of our community discussion. Share, connect, and grow in faith - always practice love and respect.</p>
+            <input type="email" class="email-input" placeholder="Enter your email address" id="emailInput">
+            <button class="submit-email-btn" id="submitEmailBtn">Submit</button>
         </div>
-    </section>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Video Player Functionality
-        const playButton = document.getElementById('playButton');
-        const videoOverlay = document.getElementById('videoOverlay');
-        const videoPlayer = document.getElementById('videoPlayer');
-        const sermonVideo = document.getElementById('sermonVideo');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const progressContainer = document.getElementById('progressContainer');
-        const progressBar = document.getElementById('progressBar');
-        const timeDisplay = document.getElementById('timeDisplay');
-        const speedSelector = document.getElementById('speedSelector');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
-        const videoControls = document.getElementById('videoControls');
+        // Email popup functionality
+        const emailPopup = document.getElementById('emailPopup');
+        const emailInput = document.getElementById('emailInput');
+        const submitEmailBtn = document.getElementById('submitEmailBtn');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatMessages = document.getElementById('chatMessages');
 
-        let controlsTimeout;
+        let isEmailApproved = false;
 
-        // Play button click
-        playButton.addEventListener('click', () => {
-            videoOverlay.style.display = 'none';
-            videoPlayer.style.display = 'block';
-            sermonVideo.play();
-        });
-
-        // Play/Pause functionality
-        playPauseBtn.addEventListener('click', () => {
-            if (sermonVideo.paused) {
-                sermonVideo.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                sermonVideo.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        // <CHANGE> Tap screen to dismiss popup
+        emailPopup.addEventListener('click', function(e) {
+            if (e.target === emailPopup) {
+                emailPopup.classList.remove('show');
             }
         });
 
-        // Video click to play/pause
-        sermonVideo.addEventListener('click', () => {
-            if (sermonVideo.paused) {
-                sermonVideo.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        // Submit email functionality
+        submitEmailBtn.addEventListener('click', function() {
+            const email = emailInput.value.trim();
+            if (email && email.includes('@')) {
+                isEmailApproved = true;
+                emailPopup.classList.remove('show');
+                
+                // <CHANGE> Enable message input and update send button
+                messageInput.disabled = false;
+                messageInput.placeholder = "Write a message...";
+                updateSendButton();
+                
+                console.log('[v0] Email approved:', email);
             } else {
-                sermonVideo.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                alert('Please enter a valid email address');
             }
         });
 
-        // Download functionality
-        downloadBtn.addEventListener('click', () => {
-            const link = document.createElement('a');
-            link.href = sermonVideo.src;
-            link.download = 'The_Power_to_Change_Your_Mind.mp4';
-            link.click();
-        });
-
-        // Progress bar functionality
-        sermonVideo.addEventListener('timeupdate', () => {
-            const progress = (sermonVideo.currentTime / sermonVideo.duration) * 100;
-            progressBar.style.width = progress + '%';
+        // <CHANGE> Update send button state based on email approval and message content
+        function updateSendButton() {
+            const hasMessage = messageInput.value.trim().length > 0;
             
-            // Update time display
-            const currentMinutes = Math.floor(sermonVideo.currentTime / 60);
-            const currentSeconds = Math.floor(sermonVideo.currentTime % 60);
-            const durationMinutes = Math.floor(sermonVideo.duration / 60);
-            const durationSeconds = Math.floor(sermonVideo.duration % 60);
-            
-            timeDisplay.textContent = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')} / ${durationMinutes}:${durationSeconds.toString().padStart(2, '0')}`;
-        });
-
-        // Progress bar click
-        progressContainer.addEventListener('click', (e) => {
-            const rect = progressContainer.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            const width = rect.width;
-            const percentage = clickX / width;
-            sermonVideo.currentTime = percentage * sermonVideo.duration;
-        });
-
-        // Speed selector
-        speedSelector.addEventListener('change', () => {
-            sermonVideo.playbackRate = parseFloat(speedSelector.value);
-        });
-
-        // Fullscreen functionality
-        fullscreenBtn.addEventListener('click', () => {
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            if (isEmailApproved && hasMessage) {
+                sendButton.classList.remove('disabled');
+                sendButton.classList.add('enabled');
+                sendButton.disabled = false;
             } else {
-                videoPlayer.requestFullscreen();
-                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                sendButton.classList.remove('enabled');
+                sendButton.classList.add('disabled');
+                sendButton.disabled = true;
             }
-        });
-
-        // Auto-hide controls
-        function showControls() {
-            videoControls.style.opacity = '1';
-            clearTimeout(controlsTimeout);
-            controlsTimeout = setTimeout(() => {
-                if (!sermonVideo.paused) {
-                    videoControls.style.opacity = '0';
-                }
-            }, 3000);
         }
 
-        videoPlayer.addEventListener('mousemove', showControls);
-        videoPlayer.addEventListener('click', showControls);
+        // Listen for message input changes
+        messageInput.addEventListener('input', updateSendButton);
 
-        // Keyboard controls
-        document.addEventListener('keydown', (e) => {
-            if (videoPlayer.style.display === 'block') {
-                switch(e.code) {
-                    case 'Space':
-                        e.preventDefault();
-                        playPauseBtn.click();
-                        break;
-                    case 'ArrowLeft':
-                        sermonVideo.currentTime -= 10;
-                        break;
-                    case 'ArrowRight':
-                        sermonVideo.currentTime += 10;
-                        break;
-                    case 'KeyF':
-                        fullscreenBtn.click();
-                        break;
-                }
+        // Send message functionality
+        sendButton.addEventListener('click', function() {
+            if (!isEmailApproved || sendButton.disabled) return;
+            
+            const message = messageInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                messageInput.value = '';
+                updateSendButton();
+                
+                // Simulate response after 2 seconds
+                setTimeout(() => {
+                    const responses = [
+                        "Amen to that! 🙏",
+                        "Thank you for sharing!",
+                        "God bless you!",
+                        "Praying for you too!",
+                        "That's wonderful to hear!"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    const names = ['Martin', 'Sandra Theresa', 'Joshua', 'Adanna', 'Esther'];
+                    const randomName = names[Math.floor(Math.random() * names.length)];
+                    addMessage(randomResponse, false, randomName);
+                }, 2000);
             }
         });
 
-        // Initialize controls opacity
-        videoControls.style.opacity = '1';
+        // Enter key to send message
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !sendButton.disabled) {
+                sendButton.click();
+            }
+        });
+
+        // Add message to chat
+        function addMessage(text, isOwn, senderName = 'You') {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isOwn ? 'own' : ''}`;
+            
+            const avatar = isOwn ? 'Y' : senderName.charAt(0).toUpperCase();
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${avatar}</div>
+                <div class="message-content">
+                    <div class="message-name">${senderName}</div>
+                    <div class="message-bubble">${text}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Auto-scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Initialize send button state
+        updateSendButton();
     </script>
 </body>
 </html>

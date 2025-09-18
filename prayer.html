@@ -43,6 +43,7 @@
             <!-- testimony carousel -->
 
             <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+
                 <div class="carousel-inner">
 
                     <!-- Slide 1 -->
@@ -127,6 +128,7 @@
         </div>
     </section>
 
+
     <!-- Prayer request section -->
     <section class="prayer-request-section">
         <div class="section-container">
@@ -145,16 +147,16 @@
             <div class="prayer-request-cards">
 
                 <div class="prayer-request-card active" href="#prayer-request" onclick="prayer-request">
-                    
-                        <span class="prayer-request-icon">
-                            <img src="/assets/icons/navicons_prayers.svg" alt="sermon-icon" loading="lazy">
-                        </span>
-                        <h2>Prayer Requests</h2>
-                        <p>Whether you need prayer or want to celebrate God’s goodness,
-                            this is a place to share your heart and encourage others in
-                            faith.
-                        </p>
-                 
+
+                    <span class="prayer-request-icon">
+                        <img src="/assets/icons/navicons_prayers.svg" alt="sermon-icon" loading="lazy">
+                    </span>
+                    <h2>Prayer Requests</h2>
+                    <p>Whether you need prayer or want to celebrate God’s goodness,
+                        this is a place to share your heart and encourage others in
+                        faith.
+                    </p>
+
                 </div>
 
 
@@ -253,78 +255,6 @@
 
                         <div class="prayer-request-input-wrapper-grid">
 
-                            <div class="input-wrapper">
-                                <input type="text" name="firstname" id="firstname" placeholder="John" />
-                                <label for="firstname" class="floating-label">First Name</label>
-
-                                <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
-                                    <path
-                                        d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
-                                        fill="#6b7280"></path>
-                                </svg>
-                            </div>
-
-                            <div class="input-wrapper">
-                                <input type="text" name="lastname" id="lastname" placeholder="Doe" />
-                                <label for="lasttname" class="floating-label">Last Name</label>
-
-                                <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
-                                    <path
-                                        d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
-                                        fill="#6b7280"></path>
-                                </svg>
-                            </div>
-
-                            <div class="input-wrapper">
-                                <input type="email" name="email" id="email" placeholder="johndoe123@gmail.com" />
-                                <label for="email" class="floating-label">Email</label>
-
-                                <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
-                                    <path
-                                        d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
-                                        fill="#6b7280"></path>
-                                </svg>
-                            </div>
-
-
-                        </div>
-
-                        <div class="input-wrapper">
-                            <input type="date" name="date" id="date" placeholder="Select Date" />
-                            <label for="date" class="floating-label">Date</label>
-
-                            <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
-                                <path
-                                    d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
-                                    fill="#6b7280"></path>
-                            </svg>
-                        </div>
-
-                        
-
-                        <button class="button form-button">
-                            <a href="#">
-                                Submit
-                            </a>
-                        </button>
-                    </form>
-
-                </div>
-            </div>
-
-              <!-- Testimony Form -->
-            <div class="prayer-request-form" id="testimony">
-                <h2 class="prayer-request-title"> Share your testimony and contact info</h2>
-
-                <div class="form-container">
-                    <form method="post">
-                        <div class="input-message-wrapper">
-                            <textarea name="message" id="message" placeholder="Enter your testimony..."></textarea>
-                            <label for="message" class="message-label">What testimony do you want to share with us?</label>
-                        </div>
-
-                        <div class="prayer-request-input-wrapper-grid">
-
                             <div class="input-wrapper firstname">
                                 <input type="text" name="firstname" id="firstname" placeholder="John" />
                                 <label for="firstname" class="floating-label">First Name</label>
@@ -361,22 +291,140 @@
 
                         </div>
 
+                        <!-- Date input wrapper -->
+
+                        <div class="input-group-grid ">
+                            <div class="input-group ">
+                                <div class="input-wrapper">
+                                    <input type="text" name="date" id="dateInput" class="custom-input placeholder"
+                                        readonly />
+                                    <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8 2V5M16 2V5M3.5 9.09H20.5M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
+                                            stroke="#6b7280" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <label for="dateInput" class="floating-label ">Date</label>
+                                    <span class="placeholder-input">Select Date</span>
+                                    <div class="dropdown-arrow"></div>
+                                </div>
+
+                                <!-- Dropdown calendar -->
+                                <div class="dropdown" id="dateDropdown">
+                                    <div class="month-year-header">
+                                        <button class="nav-btn" id="prevMonth">&lt;</button>
+                                        <div class="month-year" id="monthYear"></div>
+                                        <button class="nav-btn" id="nextMonth">&gt;</button>
+                                    </div>
+                                    <div class="date-grid" id="dateGrid"></div>
+                                </div>
+                            </div>
+
+                            <!-- Time input -->
+                            <div class="input-group ">
+                                <div class="input-wrapper">
+                                    <input type="text" name="time" id="timeInput" class="custom-input placeholder"
+                                        readonly />
+                                    <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke="#6b7280" stroke-width="1.5" />
+                                        <polyline points="12,6 12,12 16,14" stroke="#6b7280" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <label for="timeInput" class="floating-label">Preferred Time</label>
+                                    <span class="placeholder-input">Enter your preferred time...</span>
+                                    <div class="dropdown-arrow"></div>
+                                </div>
+                                <div class="dropdown" id="timeDropdown"></div>
+                            </div>
+                        </div>
+
+
                         <button class="button form-button" href="#">
                             <a>
                                 Submit
                             </a>
                         </button>
-                    </form>
+
 
                 </div>
+
+
+                </form>
+
             </div>
+
+              <!-- Testimony Form -->
+        <div class="prayer-request-form" id="testimony">
+            <h2 class="prayer-request-title"> Share your testimony and contact info</h2>
+
+            <div class="form-container">
+                <form method="post">
+                    <div class="input-message-wrapper">
+                        <textarea name="message" id="message" placeholder="Enter your testimony..."></textarea>
+                        <label for="message" class="message-label">What testimony do you want to share with
+                            us?</label>
+                    </div>
+
+                    <div class="prayer-request-input-wrapper-grid">
+
+                        <div class="input-wrapper firstname">
+                            <input type="text" name="firstname" id="firstname" placeholder="John" />
+                            <label for="firstname" class="floating-label">First Name</label>
+
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
+                                <path
+                                    d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
+                                    fill="#6b7280"></path>
+                            </svg>
+                        </div>
+
+                        <div class="input-wrapper lastname">
+                            <input type="text" name="lastname" id="lastname" placeholder="Doe" />
+                            <label for="lasttname" class="floating-label">Last Name</label>
+
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
+                                <path
+                                    d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
+                                    fill="#6b7280"></path>
+                            </svg>
+                        </div>
+
+                        <div class="input-wrapper email">
+                            <input type="email" name="email" id="email" placeholder="johndoe123@gmail.com" />
+                            <label for="email" class="floating-label">Email</label>
+
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
+                                <path
+                                    d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
+                                    fill="#6b7280"></path>
+                            </svg>
+                        </div>
+
+
+                    </div>
+
+                    <button class="button form-button" href="#">
+                        <a>
+                            Submit
+                        </a>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+        </div>
 
         </div>
     </section>
 
     <script src="/assets/js/navbar.js"></script>
     <script src="/assets/js/include.js"></script>
+    <script src="/assets/js/date.js"></script>
     <script src="/assets/js/prayer.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

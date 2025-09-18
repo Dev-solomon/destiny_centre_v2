@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,117 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body style="background: #1b1c1e;">
-    
+
     <section class="gallery-section">
         <div class="section-container">
             <div class="mb-5">
                 <h2 class="welcome-title text-white">
-                GALLERY
+                    GALLERY
                 </h2>
 
                 <p class="welcome-subtitle mb-5">
                     A collection of cherished moments from our worship,
-                     outreach, and fellowship.
+                    outreach, and fellowship.
                 </p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be populated by JavaScript -->
             </div>
 
         </div>
     </section>
 
+    <!-- Share photos section -->
+    <section class="share-photos-section">
+        <div class="section-container">
+            <div class="mb-5">
+                <h2 class="welcome-title text-white">
+                    SHARE <span class="blue-highlight">PHOTOS</span>
+                </h2>
+
+                <p class="welcome-subtitle mb-5">
+                    Have photos to share?
+                    Send them to our media team and be part of our gallery.
+                </p>
+            </div>
+
+
+            <div class="form-container">
+                <form method="post">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📷</div>
+                        <div class="upload-text">Drag your photos here or 
+                            <span class="upload-subtext">click to <br> drag</span></div>
+                        <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                    </div>
+
+                   
+                    <div class="prayer-request-input-wrapper-grid" id="shareForm">
+
+                        <div class="input-wrapper firstname">
+                            <input type="text" name="firstname" id="firstname" placeholder="John" />
+                            <label for="firstname" class="floating-label">First Name</label>
+
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
+                                <path
+                                    d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
+                                    fill="#6b7280"></path>
+                            </svg>
+                        </div>
+
+                        <div class="input-wrapper lastname">
+                            <input type="text" name="lastname" id="lastname" placeholder="Doe" />
+                            <label for="lasttname" class="floating-label">Last Name</label>
+
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
+                                <path
+                                    d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
+                                    fill="#6b7280"></path>
+                            </svg>
+                        </div>
+
+                        <div class="input-wrapper email">
+                            <input type="email" name="email" id="email" placeholder="johndoe123@gmail.com" />
+                            <label for="email" class="floating-label">Email</label>
+
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
+                                <path
+                                    d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
+                                    fill="#6b7280"></path>
+                            </svg>
+                        </div>
+
+
+                    </div>
+
+                    <button type="submit" class="button form-button" href="#" form="shareForm">
+                        <a>
+                            Submit
+                        </a>
+                    </button>
+                </form>
+
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+        </div>
+    </div>
+
     <script src="/assets/js/include.js"></script>
-    <script src="/assets/js/calendar.js"></script>
+    <script src="/assets/js/gallery.js"></script>
     <script src="/assets/js/navbar.js"></script>
 </body>
+
 </html>
