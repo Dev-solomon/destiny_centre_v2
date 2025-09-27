@@ -11,82 +11,8 @@
 </head>
 
 <body style="background: #1b1c1e;">
-    
 
-    <!-- Top Navigation (Desktop) -->
-    <nav class=" d-flex navbar-custom navbar-expand-lg fixed-top" role="navigation" aria-label="Main Navigation">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center w-100 ">
-                <a class="navbar-brand" href="#home">
-                    <i class="fas fa-cross"></i> Fellowship Church
-                </a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active " href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sermons">Sermons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#prayers">Prayers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#give">Give</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#chatroom">Chatroom</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Bottom Navigation (Mobile/Tablet) -->
-    <div class="bottom-nav" role="navigation" aria-label="Mobile Navigation">
-        <div class="nav-wrapper"></div>
-        <div class="nav-extended" id="navExtended">
-            <div class="nav-extended-container">
-                <a href="#give" class="nav-item-mobile">
-                    <i class="fas fa-heart"></i>
-                    <span>Give</span>
-                </a>
-                <a href="#gallery" class="nav-item-mobile">
-                    <i class="fas fa-images"></i>
-                    <span>Gallery</span>
-                </a>
-                <a href="#events" class="nav-item-mobile">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Events</span>
-                </a>
-                <a href="#community" class="nav-item-mobile">
-                    <i class="fas fa-users"></i>
-                    <span>Community</span>
-                </a>
-                <a href="#prayers" class="nav-item-mobile">
-                    <i class="fas fa-praying-hands"></i>
-                    <span>Chatroom</span>
-                </a>
-            </div>
-        </div>
-        <div class="nav-container" id="navContainer">
-            <a href="#home" class="nav-item-mobile nav-primary">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="#about" class="nav-item-mobile nav-primary">
-                <i class="fas fa-info-circle"></i>
-                <span>About</span>
-            </a>
-            <a href="#sermons" class="nav-item-mobile nav-primary">
-                <i class="fas fa-book-open"></i>
-                <span>Sermons</span>
-            </a>
-            <a href="#prayers" class="nav-item-mobile">
-                <i class="fas fa-praying-hands"></i>
-                <span>Prayers</span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navExtended"
-                aria-label="Toggle navigation menu">
-                <i class="fas fa-ellipsis-h" id="toggleIcon"></i>
-                <span id="toggleText">More</span>
-            </button>
-        </div>
-    </div>
-
+    <div id="navbar"></div>
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="container">
@@ -128,33 +54,36 @@
                         pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur
                         vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia.
                     </p>
-                    <button class="button about-button">
-                        <a href="#about" class="about-button-text">Who we are</a>
+                    <button class="button about-button" href="/about.html">
+                        <a class="about-button-text">Who we are</a>
                     </button>
                 </div>
 
                 <div class="col-lg-6 order-2 order-lg-2">
                     <div class="globe-container fade-in">
                         <div class="globe"></div>
+
                         <div class="globe-scriptures">
-                            <span class="scripture-ref globe-scripture-1">
-                                2 corinthians 2:13
+                            <span class="scripture-ref globe-scripture-1" data-text="2 Corinthians 2:13">
+                                2 Corinthians 2:13
                             </span>
-                       
+                            <div id="tooltip" class="tooltip"></div>
                         </div>
-                        <div id="tooltip" class="tooltip"></div>
 
                         <div class="globe-scriptures-1">
-                            <span class="scripture-ref globe-scripture-1">
-                                2 corinthians 2:13
+                            <span class="scripture-ref globe-scripture-1" data-text="ahkdhkdks">
+                                2 corinthians 2:17
                             </span>
+                            <div id="tooltip" class="tooltip"></div>
                         </div>
                         <div class="globe-scriptures-2">
-                            <span class="scripture-ref globe-scripture-1">
+                            <span class="scripture-ref globe-scripture-1" data-text="kadkkd">
                                 2 corinthians 2:14
                             </span>
+                            <div id="tooltip" class="tooltip"></div>
                         </div>
-                        
+
+
                     </div>
                 </div>
 
@@ -218,16 +147,16 @@
                 <div class="service-box  ">
                     <h3>Music Ministry</h3>
                     <p>We give because God calls us to honor Him with our resources,
-                         trusting His provision in return.We give because God calls us to honor Him with our resources,
-                         trusting His provision in return.
+                        trusting His provision in return.We give because God calls us to honor Him with our resources,
+                        trusting His provision in return.
                     </p>
                 </div>
                 <div class="service-box  ">
                     <h3>Youth & Teens</h3>
                     <p>
-                        We give because God calls us to honor Him with our resources, 
+                        We give because God calls us to honor Him with our resources,
                         trusting His provision in return.We give because God calls us to honor
-                         Him with our resources, trusting His provision in return.
+                        Him with our resources, trusting His provision in return.
                     </p>
                 </div>
 
@@ -235,25 +164,25 @@
                 <div class="service-box ">
                     <h3>Outreach Teams</h3>
                     <p>
-                        We give because God calls us to honor Him with our resources, 
+                        We give because God calls us to honor Him with our resources,
                         trusting His provision in return.We give because God calls us to honor
-                         Him with our resources, trusting His provision in return.
+                        Him with our resources, trusting His provision in return.
                     </p>
                 </div>
                 <div class="service-box  ">
                     <h3>Adult Fellowship</h3>
                     <p>
-                        We give because God calls us to honor Him with our resources, 
+                        We give because God calls us to honor Him with our resources,
                         trusting His provision in return.We give because God calls us to honor
-                         Him with our resources, trusting His provision in return.
+                        Him with our resources, trusting His provision in return.
                     </p>
                 </div>
                 <div class="service-box  ">
                     <h3>Music Ministry</h3>
                     <p>
-                        We give because God calls us to honor Him with our resources, 
+                        We give because God calls us to honor Him with our resources,
                         trusting His provision in return.We give because God calls us to honor
-                         Him with our resources, trusting His provision in return.
+                        Him with our resources, trusting His provision in return.
                     </p>
                 </div>
 
@@ -280,8 +209,8 @@
                             joining a small group, or participating in community outreach—you’re always welcome to be a
                             part of what God is doing here.
                         </p>
-                        <button class="button about-button">
-                            <a href="/about.html" class="about-button-text">Plan  Your Visit</a>
+                        <button class="button dedication-button ">
+                            <a href="/about.html" class="about-button-text">Plan Your Visit</a>
                         </button>
                     </div>
 

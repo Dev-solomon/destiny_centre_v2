@@ -1,0 +1,461 @@
+<!-- Laptop Navigation bar -->
+<nav class="navbar-custom fixed-top">
+  <div class="navbar-container">
+    <a class="navbar-brand" href="#home">
+      <i class="fas fa-cross"></i> Fellowship Church
+    </a>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about.html">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/sermons.html">Sermons</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/prayer.html">Prayers</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="/give.html">Give</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="/gallery.html">Gallery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events.html">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/community.html">Community</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/chatroom.html">Chatroom</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Bottom Navigation (Mobile/Tablet) -->
+<div class="bottom-nav" role="navigation" aria-label="Mobile Navigation">
+  <div class="nav-wrapper"></div>
+  <div class="nav-extended" id="navExtended">
+    <div class="nav-extended-container">
+      <a href="/give.html" class="nav-item-mobile">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M17.7004 20.4H7.50039C4.44039 20.4 2.40039 18.9177 2.40039 15.4588V8.54118C2.40039 5.08236 4.44039 3.60001 7.50039 3.60001H17.7004C20.7604 3.60001 22.8004 5.08236 22.8004 8.54118V15.4588C22.8004 18.9177 20.7604 20.4 17.7004 20.4Z"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.49969"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M11.4004 15.6C13.0572 15.6 14.4004 14.2569 14.4004 12.6C14.4004 10.9432 13.0572 9.60001 11.4004 9.60001C9.74354 9.60001 8.40039 10.9432 8.40039 12.6C8.40039 14.2569 9.74354 15.6 11.4004 15.6Z"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.49969"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6 9.60001V14.4"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.49969"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M18 9.60001V14.4"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.49969"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span>Give</span>
+      </a>
+      <a href="/gallery.html" class="nav-item-mobile">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 22 21"
+          fill="none"
+        >
+          <path
+            d="M21 11.438C21 15.208 21 17.094 19.828 18.266C18.656 19.438 16.771 19.438 13 19.438H9C5.229 19.438 3.343 19.438 2.172 18.266C1.001 17.094 1 15.209 1 11.438C1 7.66699 1 5.77999 2.172 4.60899C3.344 3.43799 5.229 3.43799 9 3.43799H13C16.771 3.43799 18.657 3.43799 19.828 4.60899C20.492 5.27299 20.78 6.16499 20.904 7.49999"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M2.98828 4C3.10028 3.069 3.33528 2.426 3.82528 1.937C4.76528 1 6.27928 1 9.30728 1H12.5183C15.5463 1 17.0593 1 18.0003 1.937C18.4903 2.426 18.7253 3.069 18.8373 4"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+          />
+          <path
+            d="M16.5 9.43799C17.3284 9.43799 18 8.76642 18 7.93799C18 7.10956 17.3284 6.43799 16.5 6.43799C15.6716 6.43799 15 7.10956 15 7.93799C15 8.76642 15.6716 9.43799 16.5 9.43799Z"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+          />
+          <path
+            d="M1 11.938L2.752 10.405C3.19114 10.0211 3.75974 9.81834 4.34272 9.83783C4.9257 9.85733 5.47949 10.0976 5.892 10.51L10.182 14.8C10.515 15.1327 10.9547 15.3372 11.4237 15.3777C11.8927 15.4181 12.361 15.2918 12.746 15.021L13.045 14.811C13.6007 14.4209 14.2723 14.2309 14.95 14.2719C15.6277 14.313 16.2714 14.5827 16.776 15.037L20 17.937"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>Gallery</span>
+      </a>
+      <a href="/events.html" class="nav-item-mobile">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M8 2V5"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16 2V5"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M3.5 9.09H20.5"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.6947 13.7H15.7037"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.6947 16.7H15.7037"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M11.9955 13.7H12.0045"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M11.9955 16.7H12.0045"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.29431 13.7H8.30329"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.29431 16.7H8.30329"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span>Events</span>
+      </a>
+      <a href="/community.html" class="nav-item-mobile">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 22 20"
+          fill="none"
+        >
+          <path
+            d="M11.0003 1.59999C10.3637 1.59999 9.7533 1.85285 9.30321 2.30294C8.85312 2.75302 8.60027 3.36347 8.60027 3.99999C8.60027 4.63651 8.85312 5.24696 9.30321 5.69705C9.7533 6.14714 10.3637 6.39999 11.0003 6.39999C11.6368 6.39999 12.2472 6.14714 12.6973 5.69705C13.1474 5.24696 13.4003 4.63651 13.4003 3.99999C13.4003 3.36347 13.1474 2.75302 12.6973 2.30294C12.2472 1.85285 11.6368 1.59999 11.0003 1.59999ZM7.40027 3.99999C7.40027 3.04521 7.77955 2.12954 8.45468 1.45441C9.12981 0.779279 10.0455 0.399994 11.0003 0.399994C11.955 0.399994 12.8707 0.779279 13.5459 1.45441C14.221 2.12954 14.6003 3.04521 14.6003 3.99999C14.6003 4.95477 14.221 5.87045 13.5459 6.54558C12.8707 7.22071 11.955 7.59999 11.0003 7.59999C10.0455 7.59999 9.12981 7.22071 8.45468 6.54558C7.77955 5.87045 7.40027 4.95477 7.40027 3.99999ZM5.06387 9.99519C5.02307 10.1904 5.00267 10.392 5.00267 10.6V11.254L1.84547 12.1C1.69176 12.1411 1.56066 12.2415 1.481 12.3792C1.40134 12.517 1.37963 12.6807 1.42067 12.8344L2.19707 15.7324C2.42486 16.5811 2.95521 17.3172 3.68818 17.8019C4.42115 18.2867 5.3061 18.4866 6.17627 18.364C6.45227 18.736 6.77027 19.0768 7.12307 19.3756L6.91787 19.4356C6.30895 19.5989 5.67383 19.6407 5.04876 19.5586C4.4237 19.4764 3.82094 19.2719 3.27491 18.9568C2.72888 18.6417 2.25029 18.222 1.86645 17.7219C1.48261 17.2218 1.20106 16.6509 1.03787 16.042L0.261466 13.144C0.200315 12.9157 0.18474 12.6775 0.21563 12.4431C0.24652 12.2088 0.323271 11.9828 0.441499 11.7781C0.559728 11.5734 0.717119 11.394 0.904685 11.2501C1.09225 11.1062 1.30632 11.0007 1.53467 10.9396L5.06387 9.99519ZM17.0027 11.254V10.6C17.0019 10.392 16.9819 10.1904 16.9427 9.99519L20.4707 10.9408C20.9316 11.0645 21.3245 11.3663 21.5631 11.7796C21.8016 12.193 21.8662 12.6842 21.7427 13.1452L20.9663 16.0432C20.7984 16.6694 20.5054 17.2551 20.105 17.765C19.7046 18.2748 19.205 18.6983 18.6365 19.0098C18.0679 19.3214 17.4422 19.5145 16.7969 19.5775C16.1517 19.6406 15.5004 19.5723 14.8823 19.3768C15.2367 19.076 15.5523 18.7388 15.8291 18.3652C16.6992 18.4874 17.584 18.2872 18.3167 17.8022C19.0495 17.3173 19.5795 16.5811 19.8071 15.7324L20.5847 12.8344C20.6257 12.6807 20.604 12.517 20.5243 12.3792C20.4447 12.2415 20.3136 12.1411 20.1599 12.1L17.0027 11.254ZM17.0003 5.79999C17.0003 5.3226 17.1899 4.86477 17.5275 4.5272C17.865 4.18964 18.3229 3.99999 18.8003 3.99999C19.2777 3.99999 19.7355 4.18964 20.0731 4.5272C20.4106 4.86477 20.6003 5.3226 20.6003 5.79999C20.6003 6.27738 20.4106 6.73522 20.0731 7.07279C19.7355 7.41035 19.2777 7.59999 18.8003 7.59999C18.3229 7.59999 17.865 7.41035 17.5275 7.07279C17.1899 6.73522 17.0003 6.27738 17.0003 5.79999ZM18.8003 2.79999C18.0046 2.79999 17.2416 3.11606 16.6789 3.67867C16.1163 4.24128 15.8003 5.00434 15.8003 5.79999C15.8003 6.59564 16.1163 7.35871 16.6789 7.92131C17.2416 8.48392 18.0046 8.79999 18.8003 8.79999C19.5959 8.79999 20.359 8.48392 20.9216 7.92131C21.4842 7.35871 21.8003 6.59564 21.8003 5.79999C21.8003 5.00434 21.4842 4.24128 20.9216 3.67867C20.359 3.11606 19.5959 2.79999 18.8003 2.79999ZM3.20027 3.99999C2.72288 3.99999 2.26504 4.18964 1.92747 4.5272C1.58991 4.86477 1.40027 5.3226 1.40027 5.79999C1.40027 6.27738 1.58991 6.73522 1.92747 7.07279C2.26504 7.41035 2.72288 7.59999 3.20027 7.59999C3.67766 7.59999 4.13549 7.41035 4.47306 7.07279C4.81062 6.73522 5.00027 6.27738 5.00027 5.79999C5.00027 5.3226 4.81062 4.86477 4.47306 4.5272C4.13549 4.18964 3.67766 3.99999 3.20027 3.99999ZM0.200266 5.79999C0.200266 5.00434 0.516337 4.24128 1.07895 3.67867C1.64156 3.11606 2.40462 2.79999 3.20027 2.79999C3.99592 2.79999 4.75898 3.11606 5.32159 3.67867C5.8842 4.24128 6.20027 5.00434 6.20027 5.79999C6.20027 6.59564 5.8842 7.35871 5.32159 7.92131C4.75898 8.48392 3.99592 8.79999 3.20027 8.79999C2.40462 8.79999 1.64156 8.48392 1.07895 7.92131C0.516337 7.35871 0.200266 6.59564 0.200266 5.79999ZM8.00027 8.79999C7.52288 8.79999 7.06504 8.98964 6.72747 9.3272C6.38991 9.66477 6.20027 10.1226 6.20027 10.6V14.8C6.20027 16.073 6.70598 17.2939 7.60615 18.1941C8.50633 19.0943 9.72723 19.6 11.0003 19.6C12.2733 19.6 13.4942 19.0943 14.3944 18.1941C15.2946 17.2939 15.8003 16.073 15.8003 14.8V10.6C15.8003 10.1226 15.6106 9.66477 15.2731 9.3272C14.9355 8.98964 14.4777 8.79999 14.0003 8.79999H8.00027ZM7.40027 10.6C7.40027 10.4409 7.46348 10.2883 7.576 10.1757C7.68852 10.0632 7.84114 9.99999 8.00027 9.99999H14.0003C14.1594 9.99999 14.312 10.0632 14.4245 10.1757C14.5371 10.2883 14.6003 10.4409 14.6003 10.6V14.8C14.6003 15.7548 14.221 16.6704 13.5459 17.3456C12.8707 18.0207 11.955 18.4 11.0003 18.4C10.0455 18.4 9.12981 18.0207 8.45468 17.3456C7.77955 16.6704 7.40027 15.7548 7.40027 14.8V10.6Z"
+            fill="white"
+            fill-opacity="0.5"
+            stroke="currentColor"
+          />
+        </svg>
+        <span>Community</span>
+      </a>
+      <a href="/chatroom.html" class="nav-item-mobile">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M18.4698 16.83L18.8598 19.99C18.9598 20.82 18.0698 21.4 17.3598 20.97L13.1698 18.48C12.7098 18.48 12.2599 18.45 11.8199 18.39C12.5599 17.52 12.9998 16.42 12.9998 15.23C12.9998 12.39 10.5398 10.09 7.49985 10.09C6.33985 10.09 5.26985 10.42 4.37985 11C4.34985 10.75 4.33984 10.5 4.33984 10.24C4.33984 5.68999 8.28985 2 13.1698 2C18.0498 2 21.9998 5.68999 21.9998 10.24C21.9998 12.94 20.6098 15.33 18.4698 16.83Z"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M13 15.23C13 16.42 12.56 17.52 11.82 18.39C10.83 19.59 9.26 20.36 7.5 20.36L4.89 21.91C4.45 22.18 3.89 21.81 3.95 21.3L4.2 19.33C2.86 18.4 2 16.91 2 15.23C2 13.47 2.94 11.92 4.38 11C5.27 10.42 6.34 10.09 7.5 10.09C10.54 10.09 13 12.39 13 15.23Z"
+            stroke="currentColor"
+            stroke-opacity="0.5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span>Chatroom</span>
+      </a>
+    </div>
+    <div class="bottom-nav-text">
+      <h2>
+        Dorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
+        molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
+        fringilla accumsan.
+      </h2>
+    </div>
+  </div>
+
+  <div class="nav-container" id="navContainer">
+    <a href="/index.html" class="nav-item-mobile nav-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <path
+          d="M16 2.66669V8.00002M16 8.00002L11.3347 11.732C9.71067 13.0307 9.33333 13.8174 9.33333 15.8974V29.3334M16 8.00002L20.6653 11.732C22.2893 13.032 22.6667 13.816 22.6667 15.8974V29.3334M18.6667 5.33335H13.3333M22.6667 29.3334H9.33333M22.6667 29.3334H25.3333C26.5907 29.3334 27.2187 29.3334 27.6093 28.9427C28 28.552 28 27.924 28 26.6667V21.9627C28 20.3587 28 19.5574 27.6013 18.912C27.204 18.268 26.4867 17.9094 25.052 17.192L22.6667 16M9.33333 29.3334H6.66667C5.40933 29.3334 4.78133 29.3334 4.39067 28.9427C4 28.552 4 27.924 4 26.6667V21.964C4 20.36 4 19.5587 4.39867 18.912C4.796 18.268 5.51333 17.9094 6.948 17.192L9.33333 16"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13.334 29.3333V24C13.334 23.2927 13.6149 22.6145 14.115 22.1144C14.6151 21.6143 15.2934 21.3333 16.0007 21.3333C16.7079 21.3333 17.3862 21.6143 17.8863 22.1144C18.3864 22.6145 18.6673 23.2927 18.6673 24V29.3333"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M16.0093 14.6667H15.998"
+          stroke="#0F6AD9"
+          stroke-width="2.66667"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a href="/about.html" class="nav-item-mobile nav-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <path
+          d="M12.2134 14.4934C12.0801 14.48 11.9201 14.48 11.7734 14.4934C8.60008 14.3867 6.08008 11.7867 6.08008 8.58669C6.08008 5.32002 8.72008 2.66669 12.0001 2.66669C15.2667 2.66669 17.9201 5.32002 17.9201 8.58669C17.9067 11.7867 15.3867 14.3867 12.2134 14.4934Z"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M21.8784 5.33331C24.4651 5.33331 26.5451 7.42665 26.5451 9.99998C26.5451 12.52 24.5451 14.5733 22.0517 14.6666C21.9451 14.6533 21.8251 14.6533 21.7051 14.6666"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M5.54695 19.4133C2.32029 21.5733 2.32029 25.0933 5.54695 27.24C9.21362 29.6933 15.227 29.6933 18.8936 27.24C22.1203 25.08 22.1203 21.56 18.8936 19.4133C15.2403 16.9733 9.22695 16.9733 5.54695 19.4133Z"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M24.4531 26.6667C25.4131 26.4667 26.3198 26.08 27.0665 25.5067C29.1465 23.9467 29.1465 21.3734 27.0665 19.8134C26.3331 19.2534 25.4398 18.88 24.4931 18.6667"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>About</span>
+    </a>
+
+    <a href="/sermons.html" class="nav-item-mobile nav-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 22 22"
+        fill="none"
+      >
+        <path
+          d="M21 15.74V3.67001C21 2.47001 20.02 1.58001 18.83 1.68001H18.77C16.67 1.86001 13.48 2.93001 11.7 4.05001L11.53 4.16001C11.24 4.34001 10.76 4.34001 10.47 4.16001L10.22 4.01001C8.44 2.90001 5.26 1.84001 3.16 1.67001C1.97 1.57001 1 2.47001 1 3.66001V15.74C1 16.7 1.78 17.6 2.74 17.72L3.03 17.76C5.2 18.05 8.55 19.15 10.47 20.2L10.51 20.22C10.78 20.37 11.21 20.37 11.47 20.22C13.39 19.16 16.75 18.05 18.93 17.76L19.26 17.72C20.22 17.6 21 16.7 21 15.74Z"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>Sermons</span>
+    </a>
+
+    <a href="/prayer.html" class="nav-item-mobile">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 22 23"
+        fill="none"
+      >
+        <path
+          d="M21.0615 16.875L17.664 13.4766L14.2459 2.1994C14.1487 1.87828 13.9739 1.58608 13.7368 1.34868C13.4998 1.11128 13.2079 0.936 12.8869 0.838375C12.5659 0.740749 12.2258 0.723789 11.8967 0.788998C11.5677 0.854206 11.2597 0.999569 11.0002 1.21221C10.7408 0.999569 10.4328 0.854206 10.1037 0.788998C9.77465 0.723789 9.43456 0.740749 9.11359 0.838375C8.79263 0.936 8.50069 1.11128 8.26364 1.34868C8.0266 1.58608 7.85176 1.87828 7.75462 2.1994L4.33649 13.4775L0.938992 16.875C0.6579 17.1563 0.5 17.5377 0.5 17.9353C0.5 18.333 0.6579 18.7144 0.938992 18.9956L4.00368 22.0603C4.14297 22.1997 4.30835 22.3102 4.49036 22.3856C4.67237 22.461 4.86745 22.4998 5.06446 22.4998C5.26147 22.4998 5.45655 22.461 5.63857 22.3856C5.82058 22.3102 5.98595 22.1997 6.12524 22.0603L10.6515 17.5313C10.7769 17.4054 10.8934 17.271 11.0002 17.1291C11.1071 17.271 11.2236 17.4054 11.349 17.5313L15.8752 22.0613C16.0145 22.2006 16.1799 22.3111 16.3619 22.3865C16.5439 22.4619 16.739 22.5007 16.936 22.5007C17.133 22.5007 17.3281 22.4619 17.5101 22.3865C17.6921 22.3111 17.8575 22.2006 17.9968 22.0613L21.0615 18.9966C21.2008 18.8573 21.3113 18.6919 21.3867 18.5099C21.4621 18.3279 21.501 18.1328 21.501 17.9358C21.501 17.7388 21.4621 17.5437 21.3867 17.3617C21.3113 17.1797 21.2008 17.0143 21.0615 16.875Z"
+          stroke="currentColor"
+          stroke-opacity="0.7"
+        />
+        <path
+          d="M5.06399 21L2.00024 17.9363L3.18993 16.7466L6.25462 19.8113L5.06399 21Z"
+          stroke="currentColor"
+          stroke-opacity="0.7"
+        />
+        <path
+          d="M10.2502 14.8828C10.2517 15.1787 10.1945 15.4719 10.0819 15.7455C9.96921 16.0191 9.80338 16.2676 9.59399 16.4766L7.31399 18.75L4.25024 15.6863L5.52993 14.4056C5.61726 14.3183 5.68167 14.2107 5.71743 14.0925L9.18618 2.6344C9.22136 2.5069 9.30197 2.39667 9.4128 2.32448C9.52363 2.25229 9.65703 2.22314 9.78788 2.2425C9.91872 2.26187 10.038 2.32842 10.1231 2.42962C10.2083 2.53082 10.2535 2.65967 10.2502 2.7919V14.8828Z"
+          stroke="currentColor"
+          stroke-opacity="0.7"
+        />
+        <path
+          d="M12.4065 16.4766C12.1971 16.2676 12.0313 16.0191 11.9186 15.7455C11.806 15.4719 11.7487 15.1787 11.7502 14.8828V2.78909C11.7503 2.65919 11.797 2.53363 11.8818 2.43528C11.9667 2.33692 12.084 2.27232 12.2125 2.25323C12.341 2.23415 12.4721 2.26185 12.5818 2.3313C12.6916 2.40074 12.7728 2.50731 12.8106 2.63159L16.2793 14.0897C16.3151 14.2079 16.3795 14.3155 16.4668 14.4028L17.8252 15.7613L14.694 18.7613L12.4065 16.4766Z"
+          stroke="currentColor"
+          stroke-opacity="0.7"
+        />
+        <path
+          d="M16.9365 21L15.759 19.8216L18.8893 16.8216L20.0002 17.9363L16.9365 21Z"
+          stroke="currentColor"
+          stroke-opacity="0.7"
+        />
+      </svg>
+      <span>Prayers</span>
+    </a>
+
+    <!-- Repeat for other nav-item-mobile links, ensuring each <svg> is closed properly -->
+    <!-- ...existing code... -->
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-expanded="false"
+      aria-controls="navExtended"
+      aria-label="Toggle navigation menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        id="toggleIcon"
+      >
+        <path
+          d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M15.9965 12H16.0054"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M11.9955 12H12.0045"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M7.99451 12H8.00349"
+          stroke="currentColor"
+          stroke-opacity="0.5"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span id="toggleText">More</span>
+    </button>
+  </div>
+</div>

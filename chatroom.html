@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fellowship - Chatroom page</title>
-</head>
+    <title>Community Chatroom</title>
+    <link href="/assets/css/chatroom.css" rel="stylesheet">
+    </head>
+
 <body>
+    <div class="chat-header">
+        <h1 class="chat-title">COMMUNITY <span class="highlight">CHATROOM</span></h1>
+        <p class="chat-subtitle">Connect with fellow members, share encouragement, ask questions, and grow together in
+            faith through real-time conversations.</p>
+    </div>
     
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="online-count" id="onlineCount">45 members online</div>
+            </div>
+            <div class="users-list" id="usersList">
+                <!-- Users will be populated by JavaScript -->
+            </div>
+        </aside>
+
+        <!-- Chat Area -->
+        <main class="chat-area">
+
+
+            <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be populated by JavaScript -->
+            </div>
+
+            <button class="refresh-button" id="refreshButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none"
+                    class="refresh-icon" id="refreshIcon">
+                    <path
+                        d="M8.49967 2.13634C5.26128 2.13634 2.63604 4.76158 2.63604 7.99998C2.63604 11.2384 5.26128 13.8636 8.49967 13.8636C11.7381 13.8636 14.3633 11.2384 14.3633 7.99998C14.3633 7.64016 14.655 7.34846 15.0148 7.34846C15.3746 7.34846 15.6663 7.64016 15.6663 7.99998C15.6663 11.958 12.4577 15.1666 8.49967 15.1666C4.54163 15.1666 1.33301 11.958 1.33301 7.99998C1.33301 4.04194 4.54163 0.833313 8.49967 0.833313C9.9166 0.833313 11.2378 1.24488 12.3497 1.95437L13.1663 1.13776C13.2817 0.954836 13.4856 0.833313 13.7178 0.833313C14.0776 0.833313 14.3693 1.12501 14.3693 1.48483V3.5255C14.3693 4.3213 13.3805 4.68428 12.865 4.08507C11.7906 2.8879 10.2333 2.13634 8.49967 2.13634Z"
+                        fill="#C1DEFD" />
+                    <path
+                        d="M8.49967 2.13634C5.26128 2.13634 2.63604 4.76158 2.63604 7.99998C2.63604 9.12016 2.95015 10.167 3.4951 11.0572L2.48394 11.8967C1.75587 10.775 1.33301 9.43686 1.33301 7.99998C1.33301 4.04194 4.54163 0.833313 8.49967 0.833313C9.9166 0.833313 11.2378 1.24488 12.3497 1.95437L13.1663 1.13776C13.2817 0.954836 13.4856 0.833313 13.7178 0.833313C14.0776 0.833313 14.3693 1.12501 14.3693 1.48483V3.5255C14.3693 4.3213 13.3805 4.68428 12.865 4.08507C11.7906 2.8879 10.2333 2.13634 8.49967 2.13634Z"
+                        fill="#077BF8" />
+                </svg>
+                Click here to refresh chats
+            </button>
+            <div class="message-input-container">
+                <div class="message-input-wrapper">
+                    <textarea class="message-input" id="messageInput" placeholder="Write a message..." rows="1"
+                        disabled></textarea>
+                    <button class="users-button" id="usersButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" rx="20" fill="#0F6AD9" fill-opacity="0.24" />
+                            <path
+                                d="M26.0001 15.16C25.9401 15.15 25.8701 15.15 25.8101 15.16C24.4301 15.11 23.3301 13.98 23.3301 12.58C23.3301 11.15 24.4801 10 25.9101 10C27.3401 10 28.4901 11.16 28.4901 12.58C28.4801 13.98 27.3801 15.11 26.0001 15.16Z"
+                                stroke="#0F6AD9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M24.9704 22.44C26.3404 22.67 27.8504 22.43 28.9104 21.72C30.3204 20.78 30.3204 19.24 28.9104 18.3C27.8404 17.59 26.3104 17.35 24.9404 17.59"
+                                stroke="#0F6AD9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M13.9705 15.16C14.0305 15.15 14.1005 15.15 14.1605 15.16C15.5405 15.11 16.6405 13.98 16.6405 12.58C16.6405 11.15 15.4905 10 14.0605 10C12.6305 10 11.4805 11.16 11.4805 12.58C11.4905 13.98 12.5905 15.11 13.9705 15.16Z"
+                                stroke="#0F6AD9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M15.0004 22.44C13.6304 22.67 12.1204 22.43 11.0604 21.72C9.65043 20.78 9.65043 19.24 11.0604 18.3C12.1304 17.59 13.6604 17.35 15.0304 17.59"
+                                stroke="#0F6AD9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M20.0001 22.63C19.9401 22.62 19.8701 22.62 19.8101 22.63C18.4301 22.58 17.3301 21.45 17.3301 20.05C17.3301 18.62 18.4801 17.47 19.9101 17.47C21.3401 17.47 22.4901 18.63 22.4901 20.05C22.4801 21.45 21.3801 22.59 20.0001 22.63Z"
+                                stroke="#0F6AD9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M17.0897 25.78C15.6797 26.72 15.6797 28.26 17.0897 29.2C18.6897 30.27 21.3097 30.27 22.9097 29.2C24.3197 28.26 24.3197 26.72 22.9097 25.78C21.3197 24.72 18.6897 24.72 17.0897 25.78Z"
+                                stroke="#0F6AD9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="send-button" id="sendButton" disabled>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" rx="20" fill="#0F6AD9" fill-opacity="0.24" />
+                            <path
+                                d="M15.1104 13.96L24.1304 10.95C28.1804 9.59997 30.3804 11.81 29.0404 15.86L26.0304 24.88C24.0104 30.95 20.6904 30.95 18.6704 24.88L17.7804 22.2L15.1004 21.31C9.04039 19.3 9.04039 15.99 15.1104 13.96Z"
+                                fill="#0F6AD9" />
+                            <mask id="path-3-inside-1_357_3044" fill="white">
+                                <path d="M20.1201 19.63L23.9301 15.81L20.1201 19.63Z" />
+                            </mask>
+                            <path d="M20.1201 19.63L23.9301 15.81L20.1201 19.63Z" fill="#C1DEFD" />
+                            <path
+                                d="M20.1201 19.63L20.8282 20.3362L24.6382 16.5162L23.9301 15.81L23.2221 15.1038L19.4121 18.9238L20.1201 19.63Z"
+                                fill="#C1DEFD" mask="url(#path-3-inside-1_357_3044)" />
+                            <path
+                                d="M20.1196 20.38C19.9296 20.38 19.7396 20.31 19.5896 20.16C19.2996 19.87 19.2996 19.39 19.5896 19.1L23.3896 15.28C23.6796 14.99 24.1596 14.99 24.4496 15.28C24.7396 15.57 24.7396 16.05 24.4496 16.34L20.6496 20.16C20.4996 20.3 20.3096 20.38 20.1196 20.38Z"
+                                fill="#C1DEFD" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Email Popup -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h3>Enter Email to Join the Conversation</h3>
+            <p>Be part of our community discussion, share content, and connect with like-minded people for spiritual
+                growth.</p>
+            <input type="email" id="emailInput" placeholder="Email" required>
+            <div class="popup-buttons">
+                <button class="popup-button secondary" id="cancelButton">Cancel</button>
+                <button class="popup-button primary" id="submitButton">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/chat.js"></script>
 </body>
+
 </html>

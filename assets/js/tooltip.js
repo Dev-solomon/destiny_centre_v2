@@ -1,17 +1,20 @@
-const tooltip = document.getElementById('tooltip');
+document.addEventListener("DOMContentLoaded", () => {
+  const tooltip = document.getElementById("tooltip");
 
-document.querySelectorAll('.scripture').forEach(el => {
-  el.addEventListener('mouseenter', (e) => {
-    tooltip.textContent = el.dataset.passage;
-    tooltip.style.display = 'block';
-    
-    // Position tooltip
-    const rect = el.getBoundingClientRect();
-    tooltip.style.left = rect.left + window.scrollX + 'px';
-    tooltip.style.top = rect.top + window.scrollY - tooltip.offsetHeight - 8 + 'px';
-  });
+  document.querySelectorAll(".scripture-ref").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+      const text = el.getAttribute("data-text");
+      tooltip.textContent = text;
+      tooltip.style.display = "block";
 
-  el.addEventListener('mouseleave', () => {
-    tooltip.style.display = 'none';
+      // position tooltip directly above scripture
+      // const rect = el.getBoundingClientRect();
+      // tooltip.style.top = window.scrollY + rect.top - 8 + "px";
+      // tooltip.style.left = window.scrollX + rect.left + rect.width / 2 + "px";
+    });
+
+    el.addEventListener("mouseleave", () => {
+      tooltip.style.display = "none";
+    });
   });
 });

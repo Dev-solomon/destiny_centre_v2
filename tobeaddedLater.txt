@@ -1365,3 +1365,553 @@ img {
         font-size: 1.5rem;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellowship Church - Fixed Navbar</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+        }
+
+        /* Desktop Navigation */
+        .navbar-custom {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #4A90E2;
+            background: rgba(74, 144, 226, 0.1);
+        }
+
+        /* Bottom Navigation (Mobile/Tablet) */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            height: 3px;
+            background: linear-gradient(90deg, #4A90E2, #7B68EE, #FF6B6B);
+            width: 100%;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0.8rem 0.5rem;
+            background: rgba(26, 26, 26, 0.95);
+        }
+
+        .nav-item-mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            min-width: 60px;
+            position: relative;
+        }
+
+        .nav-item-mobile:hover,
+        .nav-item-mobile.active {
+            color: #4A90E2;
+            background: rgba(74, 144, 226, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .nav-item-mobile svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .nav-item-mobile span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Toggle Button */
+        .nav-toggle {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+
+        .nav-toggle:hover {
+            color: #4A90E2;
+            background: rgba(74, 144, 226, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+            stroke: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-toggle.expanded svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-toggle span {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Extended Navigation */
+        .nav-extended {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px 20px 0 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .nav-extended.show {
+            max-height: 400px;
+        }
+
+        .nav-extended-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            padding: 2rem 1rem 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-custom {
+                display: none;
+            }
+            
+            .bottom-nav {
+                display: block;
+            }
+            
+            body {
+                padding-top: 0;
+                padding-bottom: 100px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .bottom-nav {
+                display: none;
+            }
+            
+            body {
+                padding-top: 90px;
+            }
+        }
+
+        /* Demo Content */
+        .demo-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .demo-section h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .demo-section p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Desktop Navigation -->
+    <nav class="navbar-custom fixed-top">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="#home">
+                <span>⛪</span> Fellowship Church
+            </a>
+
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/sermons.html">Sermons</a></li>
+                <li class="nav-item"><a class="nav-link" href="/prayer.html">Prayers</a></li>
+                <li class="nav-item"><a class="nav-link" href="/give.html">Give</a></li>
+                <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="/events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="/community.html">Community</a></li>
+                <li class="nav-item"><a class="nav-link" href="/chatroom.html">Chatroom</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Bottom Navigation (Mobile/Tablet) -->
+    <div class="bottom-nav" role="navigation" aria-label="Mobile Navigation">
+        <div class="nav-wrapper"></div>
+        
+        <!-- Extended Navigation Menu -->
+        <div class="nav-extended" id="navExtended">
+            <div class="nav-extended-container">
+                <a href="/give.html" class="nav-item-mobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <path d="M17 20H7C4 20 2 18 2 15V9C2 6 4 4 7 4H17C20 4 22 6 22 9V15C22 18 20 20 17 20Z" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M6 9V15" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M18 9V15" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>Give</span>
+                </a>
+                
+                <a href="/gallery.html" class="nav-item-mobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>Gallery</span>
+                </a>
+                
+                <a href="/events.html" class="nav-item-mobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>Events</span>
+                </a>
+                
+                <a href="/community.html" class="nav-item-mobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>Community</span>
+                </a>
+                
+                <a href="/chatroom.html" class="nav-item-mobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M13 11h.01M9 11h.01M17 11h.01" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>Chatroom</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Navigation Container -->
+        <div class="nav-container" id="navContainer">
+            <a href="/index.html" class="nav-item-mobile nav-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 9L12 2L21 9V20A2 2 0 0 1 19 22H5A2 2 0 0 1 3 20V9Z" stroke="currentColor" stroke-width="1.5"/>
+                    <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span>Home</span>
+            </a>
+
+            <a href="/about.html" class="nav-item-mobile nav-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span>About</span>
+            </a>
+
+            <a href="/sermons.html" class="nav-item-mobile nav-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M6.5 2H20V22H6.5A2.5 2.5 0 0 1 4 19.5V4.5A2.5 2.5 0 0 1 6.5 2Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span>Sermons</span>
+            </a>
+
+            <a href="/prayer.html" class="nav-item-mobile">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 6.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span>Prayers</span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navExtended" aria-label="Toggle navigation menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" id="toggleIcon">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span id="toggleText">More</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <div class="demo-section">
+            <h2>Welcome to Fellowship Church</h2>
+            <p>This is a working demo of your mobile navigation. The navbar is now fully functional across all device sizes.</p>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Navigation Features</h2>
+            <p>• Responsive design that adapts to screen size<br>
+            • Working mobile bottom navigation<br>
+            • Expandable "More" menu<br>
+            • Smooth animations and hover effects<br>
+            • Proper ARIA accessibility attributes</p>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Instructions</h2>
+            <p>On mobile/tablet: Use the bottom navigation bar. Tap "More" to see additional menu items.<br>
+            On desktop: Use the top navigation bar with all menu items visible.</p>
+        </div>
+    </div>
+
+    <script>
+        // Clean, working navigation JavaScript
+        class MobileNavigation {
+            constructor() {
+                this.isExpanded = false;
+                this.navToggle = document.getElementById('navToggle');
+                this.navExtended = document.getElementById('navExtended');
+                this.toggleText = document.getElementById('toggleText');
+                
+                this.init();
+            }
+
+            init() {
+                if (!this.navToggle || !this.navExtended) {
+                    console.error('Navigation elements not found');
+                    return;
+                }
+
+                this.setupEventListeners();
+                this.setActiveLink();
+            }
+
+            setupEventListeners() {
+                // Toggle button click
+                this.navToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.toggleMenu();
+                });
+
+                // Close menu when clicking nav items
+                document.querySelectorAll('.nav-extended .nav-item-mobile').forEach(item => {
+                    item.addEventListener('click', () => {
+                        this.closeMenu();
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.bottom-nav') && this.isExpanded) {
+                        this.closeMenu();
+                    }
+                });
+
+                // Handle navigation clicks for active state
+                document.querySelectorAll('.nav-link, .nav-item-mobile').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        this.handleNavClick(e.target);
+                    });
+                });
+            }
+
+            toggleMenu() {
+                this.isExpanded = !this.isExpanded;
+                
+                if (this.isExpanded) {
+                    this.openMenu();
+                } else {
+                    this.closeMenu();
+                }
+            }
+
+            openMenu() {
+                this.navExtended.classList.add('show');
+                this.navToggle.classList.add('expanded');
+                this.navToggle.setAttribute('aria-expanded', 'true');
+                this.toggleText.textContent = 'Close';
+                this.isExpanded = true;
+            }
+
+            closeMenu() {
+                this.navExtended.classList.remove('show');
+                this.navToggle.classList.remove('expanded');
+                this.navToggle.setAttribute('aria-expanded', 'false');
+                this.toggleText.textContent = 'More';
+                this.isExpanded = false;
+            }
+
+            handleNavClick(clickedLink) {
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link, .nav-item-mobile').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                clickedLink.classList.add('active');
+            }
+
+            setActiveLink() {
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link, .nav-item-mobile').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && (href.includes(currentPage) || (currentPage === 'index.html' && href === '/index.html'))) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        // Initialize navigation when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileNavigation();
+        });
+    </script>
+</body>
+</html>
