@@ -51,6 +51,14 @@ class NavbarComponent {
         this.closeMenu();
       }
     });
+    // highlight "Sermons" link for both sermons.html & sermondetails.html
+const path = window.location.pathname;
+const sermonsLink = document.getElementById("nav-sermons");
+
+if (path.includes("sermons.html") || path.includes("sermonDetails.html")) {
+    sermonsLink.classList.add("active");
+}
+
 
     // Smooth scroll + active state for internal links
     this.navLinks.forEach((anchor) => {

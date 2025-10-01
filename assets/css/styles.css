@@ -114,7 +114,9 @@ form {
     font-size: 16px;
     margin-bottom: 16px;
 }
-
+input.search-input {
+    margin-bottom: 0;
+}
 .input-wrapper input:focus {
     border-color: rgba(15, 106, 217, 1);
     color: #fff;
@@ -236,7 +238,7 @@ form {
 }
 
 
-.input-group .input-wrapper .custom-input input {
+.input-group.input-group-grid.input-wrapper.custom-input input {
     background: rgba(27, 28, 30, 1);
 }
 
@@ -276,7 +278,7 @@ form {
 .placeholder-input {
     position: absolute;
     left: 40px;
-    top: 50%;
+    top: 36%;
     color: rgba(140, 140, 140, 1);
     font-size: 16px;
 }
@@ -349,6 +351,7 @@ form {
 
 .input-group .dropdown-option:hover {
     background-color: #f8f9fa;
+    color: #000;
 }
 
 .input-group .dropdown-option:active {
@@ -388,6 +391,7 @@ form {
 
 .date-cell:hover {
     background-color: #f0f4ff;
+    color: #000;
 }
 
 .date-cell.selected {
@@ -421,6 +425,7 @@ form {
 
 .nav-btn:hover {
     background-color: #f5f5f5;
+    color: #000;
 }
 
 .month-year {
@@ -973,14 +978,15 @@ a.nav-toggle.active {
     object-fit: cover;
 }
 
-.video-hours {
+.audio-hours {
     position: absolute;
     bottom: 12px;
     right: 12px;
     text-align: center;
     padding: 4px 10px;
     color: var(--white);
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
     background: rgba(242, 242, 242, 0.2);
     font-family: "Lato", sans-serif;
     border-radius: 100px;
@@ -1159,19 +1165,27 @@ a.nav-toggle.active {
     color: var(--primary-blue);
     margin-top: 50px;
     text-align: center;
+    
 }
 
 .hero-button-text {
     font-size: 18px;
     font-weight: 600;
+    margin: 0;
     text-transform: capitalize;
     font-style: normal;
 }
 
+.hero-button a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .hero-button:hover {
     background: var(--primary-blue);
-    color: var(--text-white);
+    color: #fff;
 }
+
 
 .about-button {
     background: var(--button-blue);
@@ -1191,12 +1205,16 @@ a.nav-toggle.active {
 
 .about-button:hover {
     background: #fff;
-    color: var(--button-blue);
+    color: #0d6efd;
 }
 
 a.about-button-text {
     color: #fff;
     text-decoration: none;
+}
+
+.about-button-text:hover {
+    color: var(--button-blue);
 }
 
 /* hero Rotating Globe */
@@ -1437,6 +1455,9 @@ a.about-button-text {
 }
 
 /* Leadership section */
+.leadership-section {
+    background: #fff;
+}
 .leadership-image-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1457,11 +1478,13 @@ a.about-button-text {
     height: auto;
     transition: transform 0.4s ease;
     display: block;
+    
 }
 
 /* On hover, scale up */
 .leadership-image:hover img {
     transform: scale(1.1);
+    box-shadow: 0 10px 5px rgba(0,0,0,0.3);
 }
 
 /* Optional: slight shadow when hovered */
@@ -1497,10 +1520,10 @@ a.about-button-text {
 .scrolling-text-container {
     display: flex;
     align-items: center;
-    animation: scroll-left 15s linear infinite;
+    /* animation: scroll-left 15s linear infinite; */
     white-space: nowrap;
+    will-change: transform;
 }
-
 /* Individual Text Item */
 .scrolling-text {
     font-family: "Anton", sans-serif;
@@ -1533,27 +1556,6 @@ a.about-button-text {
         1px 1px 0 #000;
 }
 
-/* Scroll Animation */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-/* Alternative faster scroll */
-.fast-scroll {
-    animation: scroll-left 8s linear infinite;
-}
-
-/* Pause on hover */
-.scrolling-text-container:hover {
-    animation-play-state: paused;
-}
-
 /* Add some visual effects */
 .scrolling-banner::before {
     content: "";
@@ -1570,24 +1572,9 @@ a.about-button-text {
     background-repeat: repeat-x;
 }
 
-/* 
-@keyframes scroll {
-    0% {
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
-} */
-
 /* mission group */
 .mission-group-section {
     background: var(--primary-bg);
-}
-
-.mission-group-cards {
-    width: 100%;
 }
 
 .mission-group-card {
@@ -1689,11 +1676,10 @@ a.about-button-text {
 .give-tabs-header {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: 100px;
-    gap: 10px;
-    padding: 10px 0 10px 0;
+    padding: 3px 0;
     margin-bottom: 1.5rem;
     background: rgba(249, 249, 249, 0.1);
 }
@@ -1703,14 +1689,15 @@ a.about-button-text {
     color: #fff;
     border: none;
     font-weight: 400;
-    font-size: 13px;
-    padding: 10px;
+    font-size: 11px;
     border-radius: 100px;
+    padding: 10px;
     cursor: pointer;
 }
 
 .give-tabs-header button.e,
-.give-tabs-header button:hover {
+.give-tabs-header button:hover,
+.give-tabs-header button.active {
     background: #0f6ad9;
 }
 
@@ -1857,7 +1844,8 @@ a.about-button-text {
 
 .payment-card {
     perspective: 1000px;
-    height: 156px;
+    min-height: 198px;
+    height: 100%;
     width: 100%;
 }
 
@@ -2196,28 +2184,27 @@ a.about-button-text {
     background: rgba(250, 250, 250, 1);
     opacity: 1;
     border-radius: 20px;
-    padding: 21px 16.7px;
-}
-
-.logo img {
-    width: 54px;
-    height: 13px;
-}
-
-.partner-logo {
-    display: flex;
-    /* instead of inline-flex */
-    flex-wrap: wrap;
-    /* allows wrapping on smaller screens */
-    gap: 20px;
-    /* add spacing between logos */
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
+    padding: 20px 16px;
     transition: transform 0.3s ease;
 }
 
-.partner-logo:hover {
+.logo img {
+    width: 36px;
+    height: 13px;
+}
+
+
+.partner-logo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.partner-logo .logo:hover {
     transform: translateY(-5px);
 }
 
@@ -2282,7 +2269,7 @@ a.about-button-text {
     background: rgba(249, 249, 249, 0.05);
 }
 
-.prayer-request-card .active {
+.prayer-request-card.active {
     border: 1px solid rgba(255, 255, 255, 1);
 }
 
@@ -2329,8 +2316,8 @@ button {
 
 /* Sermons Details page css */
 
-/* Hero Video Section */
-.video-section {
+/* Hero audio Section */
+.audio-section {
     position: relative;
     height: 220px;
     background: var(--primary-bg);
@@ -2340,7 +2327,7 @@ button {
     overflow: hidden;
 }
 
-.video-container {
+.audio-container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -2348,7 +2335,7 @@ button {
     border-radius: 8px;
 }
 
-.video-overlay {
+.audio-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -2371,9 +2358,8 @@ button {
 }
 
 .play-button {
-
     padding: 6.5px 29px;
-    background-color: #dc2626;
+    background-color: rgb(248, 24, 24);
     border-radius: 2px;
     display: flex;
     align-items: center;
@@ -2381,37 +2367,37 @@ button {
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
+    color: #fff;
 }
 
 .play-button:hover {
     transform: scale(1.1);
-    background-color: #b91c1c;
+    background-color: #fff;
+    color: rgb(248, 24, 24);
 }
 
 .play-button i {
-    color: white;
     font-size: 2rem;
     margin-left: 5px;
 }
 
-/* Video Player */
-.video-player {
+/* audio Player */
+.audio-player {
     display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: black;
 }
 
-.video-player video {
+.audio-player audio {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.video-controls {
+.audio-controls {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -2438,33 +2424,52 @@ button {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* .fullscreenBtn {
+    display: none;
+} */
+
 .progress-container {
     flex: 1;
     height: 6px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 3px;
     cursor: pointer;
+    position: relative;
+    width: 100%;
 }
 
-.progress-bar {
+.progress-container .progress-bar {
     height: 100%;
-    background-color: var(--primary-color);
+    background-color: #fff;
     border-radius: 3px;
-    width: 0%;
     transition: width 0.1s ease;
+    position: relative;
+    overflow: visible;
+}
+/* Round knob at the front */
+.progress-container .progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 10px;  /* ball size */
+  height: 10px;
+  border-radius: 100%;
+  background: #fff; /* same color as bar */
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
 }
 
 .time-display {
     color: white;
-    font-size: 0.9rem;
-    min-width: 100px;
+    font-size: 12px;
 }
 
 .speed-selector {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 4px 8px;
+    padding: 4px 4px;
     border-radius: 4px;
     font-size: 0.9rem;
 }
@@ -2512,8 +2517,10 @@ button {
 }
 
 .action-buttons button {
-    display: inline;
+    display: inline-flex;
     justify-content: space-around;
+    align-items: center;
+    gap: 4px;
     color: #ffffff;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
@@ -2531,6 +2538,11 @@ button {
     background: var(--button-blue);
     border: none;
 }
+button#downloadBtn:hover {
+    background: #fff;
+    color: var(--button-blue);
+    stroke: var(--button-blue);
+ }
 
 .btn-custom {
     display: inline;
@@ -2622,8 +2634,10 @@ button {
     transition: all 0.3s ease;
 }
 
-.btn-chatroom img {
-    padding-left: 8px;
+.btn-chatroom:hover {
+    background: #fff;
+    color: var(--button-blue);
+    stroke: var(--button-blue);
 }
 
 .btn-chatroom:hover {
@@ -2768,13 +2782,13 @@ button {
 }
 
 .event-button:hover {
-    color: #0f6ad9;
+    color: var(--button-blue);
     background: #ffffff;
 }
 
 .event-button a {
     text-decoration: none;
-    color: #ffffff;
+    color: inherit;
     box-shadow: none;
 }
 
@@ -2808,6 +2822,7 @@ button {
 
 .calendar-header {
     display: flex;
+    font-family: 'Lato', sans-serif;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
@@ -2822,7 +2837,7 @@ button {
 
 .calendar-title {
     color: rgba(255, 255, 255, 1);
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 18px;
     line-height: 140%;
@@ -3126,14 +3141,16 @@ button {
 }
 
 .lightbox-content {
-    max-width: 90%;
+    width: 40%;
+    max-width: 100%;
     max-height: 90%;
     border-radius: 12px;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .lightbox img {
-    width: 100%;
+    width: 200%;
     height: 100%;
     object-fit: contain;
 }
@@ -3269,7 +3286,6 @@ button {
 }
 
 .upload-icon {
-    background: url('/assets/icons/upload-icon.svg') no-repeat center;
     font-size: 3rem;
     margin-bottom: 1rem;
     color: #666;
@@ -3309,23 +3325,6 @@ button {
 .chatroom-header {
     background: #1b1c1e;
     padding: 20px;
-}
-
-/* Custom Scrollbar */
-.messages-container::-webkit-scrollbar,
-.users-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.messages-container::-webkit-scrollbar-track,
-.users-list::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.messages-container::-webkit-scrollbar-thumb,
-.users-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
 }
 
 
@@ -3531,10 +3530,12 @@ button {
     }
 
     .give-tabs-header {
-        display: flex;
-        justify-content: center;
+        flex: 0 0 auto;
+        width: 95%;
+        margin: 48px auto;
+        padding: 12px;
+        gap: 0;
     }
-
     .give-tabs-header button {
         background: none;
         color: #fff;
@@ -3542,7 +3543,7 @@ button {
         font-weight: 700;
         font-style: bold;
         font-size: 18px;
-        padding: 10px;
+        padding: 12px 20px;
         border-radius: 100px;
         cursor: pointer;
     }
@@ -3577,7 +3578,14 @@ button {
         margin-bottom: 2rem;
         opacity: 0.9;
     }
+    .time-display {
+    font-size: 0.9rem;
+    min-width: 100px;
+    }
 
+    .speed-selector {
+        padding: 4px 8px;
+    }
     /* REELS  SECTION */
     .image-gallery {
         overflow: visible;
@@ -3670,20 +3678,21 @@ button {
     }
 
     .logo img {
-        width: 131px;
+        width: 75.91px;
         height: 31px;
     }
 
     .partner-logo {
         display: flex;
-        /* instead of inline-flex */
+        flex: 0 0 auto;
+        width: 90%;
         flex-wrap: wrap;
-        /* allows wrapping on smaller screens */
-        gap: 20px;
-        /* add spacing between logos */
+        gap: 12px;
+        margin: auto;
     }
 
-    .partner-logo:hover {
+
+    .partner-logo .logo:hover {
         transform: translateY(-5px);
     }
 
@@ -3748,7 +3757,7 @@ button {
     }
 
     /* Sermons Details page */
-    .video-section {
+    .audio-section {
         height: 35vh;
         /* 581p */
     }
@@ -4044,7 +4053,7 @@ button {
         border-radius: 12px;
     }
 
-    .video-hours {
+    .audio-hours {
         right: 20px;
     }
 
@@ -4112,12 +4121,15 @@ button {
 
     .desktop-image {
         visibility: visible;
+        opacity: 15%;
     }
 
     /* core-belief -section */
 
     .core-belief-box {
-        width: 410px;
+        width: 100%;
+        min-width: 410px;
+        margin-bottom: 0;
     }
 
     .core-belief-boxes {
@@ -4133,7 +4145,7 @@ button {
     }
 
     .leadership-text h2 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .leadership-section {
@@ -4182,6 +4194,14 @@ button {
     /* About page css ends */
 
     /* Ways to give section */
+    
+    .give-tabs-header {
+        flex: 0 0 auto;
+        width: 76%;
+        margin: 64px auto;
+        padding: 12px;
+        gap: 0;
+    }
     .give-tabs-header button {
         background: none;
         color: #fff;
@@ -4189,24 +4209,14 @@ button {
         font-weight: 700;
         font-style: bold;
         font-size: 18px;
-        padding: 10px;
+        padding: 12px 20px;
         border-radius: 100px;
         cursor: pointer;
     }
 
-    /* Why we give section */
-    .give-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
 
-    /* Why we give cards */
-    .why-we-give-cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
-
+    /* why we give */
+    
     .why-we-give-image {
         position: absolute;
         bottom: 0;
@@ -4225,34 +4235,57 @@ button {
         overflow: hidden;
     }
 
+
+    .why-we-give-cards-desktop-layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    .why-we-give-cards-desktop-layout:nth-child(1) {
+        justify-content: flex-end;
+    }
+
+    .why-we-give-cards-desktop-layout:nth-child(2) {
+        justify-content: flex-start;
+    }
+
+    .why-we-give-card {
+        width: 100%;
+        max-width: 335px;
+        height: 264px;
+    }    
+    .why-we-give-text h2 {
+        font-size: 24px;
+    }
+
+    /* Why we give  */
+
+    /* Specfic payment */
+    .payment-card {
+        height: 100%;
+        min-height: 205px;
+    }
+    .card-front {
+        padding: 1rem;
+    }
+    .get-involved-in-doing-good-grid {
+        display: flex;
+        gap: 10px;
+    }   
     .pay-with-crypto-details {
         max-width: 100%;
-        width: 424px;
+        width: 324px;
     }
 
     .pay-with-crypto-details h2 {
         font-size: 20px;
     }
 
-    .give-tabs-header {
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        padding: 10px;
-    }
-
-    .give-tabs-header button {
-        font-family: "Lato", sans-serif;
-        font-weight: 700;
-        font-style: Bold;
-        line-height: 24px;
-        padding: 12px 20px;
-        letter-spacing: 0px;
-    }
-
+    
     .specific-payment-cards {
         grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        gap: 20px;
     }
 
     /* Sermons page */
@@ -4274,6 +4307,16 @@ button {
         margin-bottom: 2rem;
         opacity: 0.9;
     }
+
+     .time-display {
+    font-size: 0.9rem;
+    min-width: 100px;
+    }
+
+    .speed-selector {
+        padding: 4px 8px;
+    }
+   
 
     /* REELS SECTION */
     .image-container {
@@ -4359,14 +4402,15 @@ button {
 
     .partner-logo {
         display: flex;
-        /* instead of inline-flex */
+        flex: 0 0 auto;
+        width: 86%;
         flex-wrap: wrap;
-        /* allows wrapping on smaller screens */
-        gap: 20px;
-        /* add spacing between logos */
+        gap: 12px;
+        margin: auto;
     }
 
-    .partner-logo:hover {
+
+    .partner-logo .logo:hover {
         transform: translateY(-5px);
     }
 
@@ -4429,7 +4473,7 @@ button {
 
 
     /* Sermons Details page */
-    .video-section {
+    .audio-section {
         height: 581px;
         /* 581p */
     }
@@ -4508,7 +4552,6 @@ button {
     }
 
     .calendar-widget {
-        min-height: 696px;
         height: fit-content;
     }
 
@@ -4803,6 +4846,7 @@ button {
 
     .desktop-image {
         visibility: visible;
+        opacity: 10%;
     }
 
     /* core-belief -section */
@@ -4814,7 +4858,9 @@ button {
     }
 
     .core-belief-box {
-        width: 410px;
+        width: 100%;
+        min-width: 410px;
+        margin-bottom: 0;
     }
 
     .core-belief-boxes {
@@ -4876,6 +4922,13 @@ button {
     /* About page css ends */
 
     /* Ways to give */
+    .give-tabs-header {
+        flex: 0 0 auto;
+        width: 62%;
+        margin: 64px auto;
+        padding: 12px;
+        gap: 0;
+    }
     .give-tabs-header button {
         background: none;
         color: #fff;
@@ -4883,7 +4936,7 @@ button {
         font-weight: 700;
         font-style: bold;
         font-size: 18px;
-        padding: 10px;
+        padding: 12px 20px;
         border-radius: 100px;
         cursor: pointer;
     }
@@ -4893,13 +4946,14 @@ button {
         gap: 24px;
     }
 
-    /* why we give */
-    .why-we-give-cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+    
+    .pay-with-crypto-details {
+        max-width: 100%;
+        width: 456px;
     }
 
+    /* why we give */
+    
     .why-we-give-image {
         position: absolute;
         bottom: 0;
@@ -4918,11 +4972,42 @@ button {
         overflow: hidden;
     }
 
-    .pay-with-crypto-details {
-        max-width: 100%;
-        width: 524px;
+
+    .why-we-give-cards-desktop-layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
     }
 
+    .why-we-give-cards-desktop-layout:nth-child(1) {
+        /* padding-left: 569px; */
+        justify-content: flex-end;
+    }
+
+    .why-we-give-cards-desktop-layout:nth-child(2) {
+        /* padding-left: 50px; */
+        justify-content: flex-start;
+    }
+
+    .why-we-give-card {
+        width: 100%;
+        max-width: 357px;
+        height: 264px;
+    }    
+    .why-we-give-text h2 {
+        font-size: 24px;
+    }
+
+    /* Why we give  */
+
+    /* Specfic payment */
+    .card-front {
+        padding: 1rem;
+    }
+
+    .get-involved-in-doing-good-grid {
+        display: flex;
+    }
     /* Sermons page */
     /* hero sermons page */
     .sermons-page-hero-content h1 {
@@ -4942,6 +5027,16 @@ button {
         margin-bottom: 2rem;
         opacity: 0.9;
     }
+
+     .time-display {
+    font-size: 0.9rem;
+    min-width: 100px;
+    }
+
+    .speed-selector {
+        padding: 4px 8px;
+    }
+   
 
     /* REELS SECTION */
 
@@ -5034,14 +5129,15 @@ button {
 
     .partner-logo {
         display: flex;
-        /* instead of inline-flex */
+        flex: 0 0 auto;
+        width: 75%;
         flex-wrap: wrap;
-        /* allows wrapping on smaller screens */
         gap: 12px;
-        /* add spacing between logos */
+        margin: auto;
     }
 
-    .partner-logo:hover {
+
+    .partner-logo .logo:hover {
         transform: translateY(-5px);
     }
 
@@ -5104,7 +5200,7 @@ button {
 
 
     /* Sermons Details page */
-    .video-section {
+    .audio-section {
         height: 581px;
     }
 
@@ -5167,7 +5263,7 @@ button {
     .event-list-item {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        min-height: 696px;
+        min-height: 625px;
         height: 100%;
     }
 
@@ -5184,8 +5280,7 @@ button {
     }
 
     .calendar-widget {
-        min-height: 696px;
-        height: fit-content;
+       height: fit-content;
     }
 
     .calendar-day-header {
@@ -5492,16 +5587,19 @@ button {
 
     .desktop-image {
         visibility: visible;
+        opacity: 15%;
     }
 
     /* core-belief -section */
     .core-belief-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
 
     .core-belief-title {
-        width: 411px;
+        width: 100%;
+        min-width: 411px;
     }
 
     .core-belief-title h2 {
@@ -5515,7 +5613,9 @@ button {
     }
 
     .core-belief-box {
-        width: 410px;
+        width: 100%;
+        min-width: 410px;
+        border-radius: 16px;
     }
 
     /* Core belief section ednds here */
@@ -5558,6 +5658,13 @@ button {
         gap: 24px;
     }
 
+    .give-tabs-header {
+        flex: 0 0 auto;
+        width: 50%;
+        margin: 64px auto;
+        padding: 12px;
+        gap: 0;
+    }
     .give-tabs-header button {
         background: none;
         color: #fff;
@@ -5565,9 +5672,15 @@ button {
         font-weight: 700;
         font-style: bold;
         font-size: 18px;
-        padding: 10px;
+        padding: 12px 20px;
         border-radius: 100px;
         cursor: pointer;
+    }
+
+
+/* Why we give */
+    .why-we-give-cards {
+        padding: 0 163px;
     }
 
     .why-we-give-cards-desktop-layout {
@@ -5577,16 +5690,19 @@ button {
     }
 
     .why-we-give-cards-desktop-layout:nth-child(1) {
-        padding-left: 569px;
+        /* padding-left: 569px; */
+        justify-content: flex-end;
     }
 
     .why-we-give-cards-desktop-layout:nth-child(2) {
-        padding-left: 243px;
+        /* padding-left: 50px; */
+        justify-content: flex-start;
     }
 
     .why-we-give-card {
-        width: 302px;
-        height: 254px;
+        width: 100%;
+        max-width: 330px;
+        height: 264px;
     }
 
     .why-we-give-image {
@@ -5606,6 +5722,11 @@ button {
         opacity: 10%;
         overflow: hidden;
     }
+    .why-we-give-text h2 {
+        font-size: 24px;
+    }
+
+    /* Why we give  */
 
     .pay-with-crypto-details {
         max-width: 100%;
@@ -5636,6 +5757,15 @@ button {
         margin-bottom: 2rem;
         opacity: 0.9;
     }
+     .time-display {
+    font-size: 0.9rem;
+    min-width: 100px;
+    }
+
+    .speed-selector {
+        padding: 4px 8px;
+    }
+   
 
     /* REELS SECTION */
     .image-container {
@@ -5725,11 +5855,14 @@ button {
 
     .partner-logo {
         display: flex;
+        flex: 0 0 auto;
+        width: 70%;
         flex-wrap: wrap;
         gap: 12px;
+        margin: auto;
     }
 
-    .partner-logo:hover {
+    .partner-logo .logo:hover {
         transform: translateY(-5px);
     }
 
@@ -5791,7 +5924,7 @@ button {
     }
 
     /* Sermons Details page */
-    .video-section {
+    .audio-section {
         height: 581px;
         /* 581p */
     }

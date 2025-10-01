@@ -9,31 +9,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body style="background: #1b1c1e;">
-    
+
+    <div id="navbar"></div>
     <!-- Hero Video Section -->
     <section class="section-container">
-        <div class="video-section">
-            <div class="video-container">
-                <div class="video-overlay" id="videoOverlay">
+        <div class="audio-section">
+            <div class="audio-container">
+                <div class="audio-overlay" id="audioOverlay">
                     <button class="play-button" id="playButton">
-                        <i class="fas fa-play"></i>
+                        <i class="fas fa-headphones"></i>
                     </button>
                 </div>
 
-                <div class="video-player" id="videoPlayer">
-                    <video id="sermonVideo" preload="metadata">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                            type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="audio-player" id="audioPlayer">
+                    <audio id="sermonAudio" preload="metadata" style="display: none;">
+                        <source src="/images/audio-thai-monk-praying-43704.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
 
-                    <div class="video-controls" id="videoControls">
+                    <div class="audio-controls" id="audioControls">
                         <button class="control-btn" id="playPauseBtn">
                             <i class="fas fa-pause"></i>
-                        </button>
-                        <button class="control-btn" id="downloadBtn" title="Download Video">
-                            <i class="fas fa-download"></i>
                         </button>
                         <div class="progress-container" id="progressContainer">
                             <div class="progress-bar" id="progressBar"></div>
@@ -47,9 +45,6 @@
                             <option value="1.5">1.5x</option>
                             <option value="2">2x</option>
                         </select>
-                        <button class="control-btn" id="fullscreenBtn">
-                            <i class="fas fa-expand"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -66,20 +61,58 @@
                         <div class="sermon-meta">
                             <h5>Bishop T.D Jakes</h5>
                             <div class="sermon-date">
-                               <img src="/assets/icons/navicons-calendar.svg">
+                                <img src="/assets/icons/navicons-calendar.svg">
                                 <span>August 12, 2023</span>
                             </div>
                         </div>
 
                         <div class="action-buttons">
-                            <button class="btn-custom btn-primary-custom" id="downloadBtn">
-                                Download <img src="/assets/icons/downlaod-button/document-download.svg">
+                            <button class="btn-custom btn-primary-custom " id="downloadBtn">
+                                Download
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <path d="M7.2002 8.10001V12.6L9.0002 11.1" stroke="currentColor"
+                                        stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M7.1999 13.5L5.3999 11.7" stroke="currentColor" stroke-width="1.125"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M17.0998 7.92V11.745C17.0998 15.57 15.5698 17.1 11.7448 17.1H7.1548C3.3298 17.1 1.7998 15.57 1.7998 11.745V7.155C1.7998 3.33 3.3298 1.8 7.1548 1.8H10.9798"
+                                        stroke="currentColor" stroke-width="1.125" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M17.0998 8.1H13.9498C11.5873 8.1 10.7998 7.3125 10.7998 4.95V1.8L17.0998 8.1Z"
+                                        stroke="currentColor" stroke-width="1.125" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
                             </button>
                             <button class="btn-custom btn-outline-custom" href="/give.html">
-                                Give <img src="/assets/icons/give-button/money.svg">
+                                Give <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M17.7004 20.4H7.50039C4.44039 20.4 2.40039 18.9177 2.40039 15.4588V8.54118C2.40039 5.08236 4.44039 3.60001 7.50039 3.60001H17.7004C20.7604 3.60001 22.8004 5.08236 22.8004 8.54118V15.4588C22.8004 18.9177 20.7604 20.4 17.7004 20.4Z"
+                                        stroke="white" stroke-width="1.49969" stroke-miterlimit="10"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M11.4004 15.6C13.0572 15.6 14.4004 14.2569 14.4004 12.6C14.4004 10.9432 13.0572 9.60001 11.4004 9.60001C9.74354 9.60001 8.40039 10.9432 8.40039 12.6C8.40039 14.2569 9.74354 15.6 11.4004 15.6Z"
+                                        stroke="white" stroke-width="1.49969" stroke-miterlimit="10"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M6 9.60001V14.4" stroke="white" stroke-width="1.49969"
+                                        stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M18 9.60001V14.4" stroke="white" stroke-width="1.49969"
+                                        stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
                             </button>
                             <button class="btn-custom btn-outline-custom" id="shareBtn">
-                                Share <img src="/assets/icons/share-button/send-2.svg">
+                                Share 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <path
+                                        d="M5.95517 5.13394L12.4081 2.98341C15.304 2.01834 16.8773 3.59893 15.9196 6.49416L13.7686 12.9457C12.3245 17.2848 9.95312 17.2848 8.50899 12.9457L7.87054 11.0308L5.95517 10.3925C1.6152 8.94864 1.6152 6.58535 5.95517 5.13394Z"
+                                        stroke="white" stroke-width="1.12477" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M7.2002 9.9L9.9002 7.2" stroke="white" stroke-width="1.12477"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
                             </button>
                         </div>
 
@@ -107,11 +140,22 @@
                             <h3 class="chatroom-title">Chatroom</h3>
                             <p class="chatroom-description">
                                 Dorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                 Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, 
-                                metus nec fringilla accumsan, risus sem sollicitudin lacus, 
+                                Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
+                                metus nec fringilla accumsan, risus sem sollicitudin lacus,
                             </p>
-                            <a href="#" class="btn-chatroom button ">
-                                Join Chatroom <img src="/assets/icons/navicon_chatroom.svg">
+                            <a href="/chatroom.html" class="btn-chatroom button ">
+                                Join Chatroom
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M18.4698 16.83L18.8598 19.99C18.9598 20.82 18.0698 21.4 17.3598 20.97L13.1698 18.48C12.7098 18.48 12.2599 18.45 11.8199 18.39C12.5599 17.52 12.9998 16.42 12.9998 15.23C12.9998 12.39 10.5398 10.09 7.49985 10.09C6.33985 10.09 5.26985 10.42 4.37985 11C4.34985 10.75 4.33984 10.5 4.33984 10.24C4.33984 5.68999 8.28985 2 13.1698 2C18.0498 2 21.9998 5.68999 21.9998 10.24C21.9998 12.94 20.6098 15.33 18.4698 16.83Z"
+                                        stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M13 15.23C13 16.42 12.56 17.52 11.82 18.39C10.83 19.59 9.26 20.36 7.5 20.36L4.89 21.91C4.45 22.18 3.89 21.81 3.95 21.3L4.2 19.33C2.86 18.4 2 16.91 2 15.23C2 13.47 2.94 11.92 4.38 11C5.27 10.42 6.34 10.09 7.5 10.09C10.54 10.09 13 12.39 13 15.23Z"
+                                        stroke="currentColor" stroke-opacity="0.5" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -184,75 +228,75 @@
                 </h2>
             </div>
 
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="announcement-card">
-                            <div class="announcement-title">
-                                <h3 class="announcement-h3">Guest speaker - </h3>
-                                <h3 class="announcement-date"> This Sunday</h3>
-                            </div>
-                            <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a
-                                message on "Faith in Action"</div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="announcement-card">
+                        <div class="announcement-title">
+                            <h3 class="announcement-h3">Guest speaker - </h3>
+                            <h3 class="announcement-date"> This Sunday</h3>
                         </div>
+                        <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a
+                            message on "Faith in Action"</div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="announcement-card">
-                            <div class="announcement-title">
-                                <h3 class="announcement-h3">Food Drive - </h3>
-                                <h3 class="announcement-date">Ongoing</h3>
-                            </div>
-                            <div class="announcement-description">We're collecting non-perishable food items for local
-                                families in need. Drop off in the church lobby.</div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="announcement-card">
+                        <div class="announcement-title">
+                            <h3 class="announcement-h3">Food Drive - </h3>
+                            <h3 class="announcement-date">Ongoing</h3>
                         </div>
+                        <div class="announcement-description">We're collecting non-perishable food items for local
+                            families in need. Drop off in the church lobby.</div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="announcement-card">
-                            <div class="announcement-title">
-                                <h3 class="announcement-h3">Youth Conference - </h3>
-                                <h3 class="announcement-date">Sept 15-17</h3>
-                            </div>                            
-                            <div class="announcement-description">Join us for 3 days of worship, teaching, and
-                                fellowship.
-                            </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="announcement-card">
+                        <div class="announcement-title">
+                            <h3 class="announcement-h3">Youth Conference - </h3>
+                            <h3 class="announcement-date">Sept 15-17</h3>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="announcement-card">
-                            <div class="announcement-title">
-                                <h3 class="announcement-h3">Women's Love Feast - </h3>
-                                <h3 class="announcement-date">Aug 21</h3>
-                            </div>
-                            <div class="announcement-description">Come with a heart filled with love as we dine, laugh
-                                and converse over the word of God.</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">    
-                        <div class="announcement-card">
-                            <div class="announcement-title">
-                                <h3 class="announcement-h3">Youth Conference - </h3>
-                                <h3 class="announcement-date">Sept 15-17</h3>
-                            </div>
-                        
-                           <div class="announcement-description">Join us for 3 days of worship, teaching, and
-                                fellowship.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="announcement-card">
-                            <div class="announcement-title">
-                                <h3 class="announcement-h3">Guest speaker - </h3>
-                                <h3 class="announcement-date">This Sunday</h3>
-                            </div>
-                            <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a
-                                message on "Faith in Action"</div>
+                        <div class="announcement-description">Join us for 3 days of worship, teaching, and
+                            fellowship.
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="announcement-card">
+                        <div class="announcement-title">
+                            <h3 class="announcement-h3">Women's Love Feast - </h3>
+                            <h3 class="announcement-date">Aug 21</h3>
+                        </div>
+                        <div class="announcement-description">Come with a heart filled with love as we dine, laugh
+                            and converse over the word of God.</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="announcement-card">
+                        <div class="announcement-title">
+                            <h3 class="announcement-h3">Youth Conference - </h3>
+                            <h3 class="announcement-date">Sept 15-17</h3>
+                        </div>
+
+                        <div class="announcement-description">Join us for 3 days of worship, teaching, and
+                            fellowship.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="announcement-card">
+                        <div class="announcement-title">
+                            <h3 class="announcement-h3">Guest speaker - </h3>
+                            <h3 class="announcement-date">This Sunday</h3>
+                        </div>
+                        <div class="announcement-description">Pastor Olumuyiwa from Grace Chapel will be sharing a
+                            message on "Faith in Action"</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-     <!-- Sermons Section -->
+    <!-- Sermons Section -->
     <section class="sermons-section">
         <div class="section-container">
             <h2 class="welcome-title ">
@@ -266,7 +310,7 @@
                             <div class="sermon-image">
                                 <a href="#"><img src="/images/sermons-image1.png"></a>
                             </div>
-                            <div class="video-hours">1hr 3mins</div>
+                            <div class="audio-hours">1hr 3mins</div>
                         </div>
 
                         <div class="sermon-content">
@@ -283,7 +327,7 @@
                             <div class="sermon-image">
                                 <a href="#"><img src="/images/sermons-image2.png"></a>
                             </div>
-                            <div class="video-hours">1hr 3mins</div>
+                            <div class="audio-hours">1hr 3mins</div>
                         </div>
 
                         <div class="sermon-content">
@@ -300,7 +344,7 @@
                             <div class="sermon-image">
                                 <a href="#"><img src="/images/sermons-image3.png"></a>
                             </div>
-                            <div class="video-hours">1hr 3mins</div>
+                            <div class="audio-hours">1hr 3mins</div>
                         </div>
 
                         <div class="sermon-content">
@@ -318,7 +362,7 @@
                             <div class="sermon-image">
                                 <a href="#"><img src="/images/sermons-image4.png"></a>
                             </div>
-                            <div class="video-hours">1hr 3mins</div>
+                            <div class="audio-hours">1hr 3mins</div>
                         </div>
 
                         <div class="sermon-content">
@@ -337,7 +381,7 @@
                             <div class="sermon-image">
                                 <a href="#"><img src="/images/sermons-image5.png"></a>
                             </div>
-                            <div class="video-hours">1hr 3mins</div>
+                            <div class="audio-hours">1hr 3mins</div>
                         </div>
 
                         <div class="sermon-content">
@@ -356,7 +400,7 @@
                             <div class="sermon-image">
                                 <a href="#"><img src="/images/sermons-image6.png"></a>
                             </div>
-                            <div class="video-hours">1hr 3mins</div>
+                            <div class="audio-hours">1hr 3mins</div>
                         </div>
 
                         <div class="sermon-content">
@@ -377,7 +421,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/sermondetails.js"></script>
     <script src="/assets/js/reel.js"></script>
-    <script src="/assets/js/include.js"> </script>
     <script src="/assets/js/navbar.js"></script>
 </body>
 

@@ -24,11 +24,11 @@
         ];
 
         const sampleMessages = [
-            { sender: "Thank you Chatroom!", time: "10:45 am", text: "", own: false, date: "yesterday" },
-            { sender: "Sandra", time: "11:23 am", text: "Good afternoon everyone having a beautiful Saturday morning", own: false, date: "today" },
-            { sender: "Me", time: "11:24 am", text: "Don't forget to pray for those who voted!", own: true, date: "today" },
-            { sender: "Lella", time: "12:14 pm", text: "How are all of being blessed with another beautiful Saturday morning", own: false, date: "today" },
-            { sender: "Me", time: "12:15 pm", text: "Don't forget to pray before you sleep", own: true, date: "today" }
+            { sender: "Thank you Chatroom!", time: "10:45 am", text: "", own: false, date: "yesterday", },
+            { avatar: `/images/chat-image2.png`, sender: "Sandra", time: "11:23 am", text: "Good afternoon everyone having a beautiful Saturday morning", own: false, date: "today", image:"/images/chat-image2.png",},
+            { avatar: `/images/chat-image3.png`, sender: "Me", time: "11:24 am", text: "Don't forget to pray for those who voted!", own: true, date: "today", image:"/images/chat-image1.png", },
+            { avatar: `/images/chat-image1.png`, sender: "Lella", time: "12:14 pm", text: "How are all of being blessed with another beautiful Saturday morning", own: false, date: "today", image:"/images/chat-image2.png", },
+            { avatar: `/images/chat-image3.png`, sender: "Me", time: "12:15 pm", text: "Don't forget to pray before you sleep", own: true, date: "today", image:"/images/chat-image1.png", }
         ];
 
         // DOM Elements
@@ -43,7 +43,7 @@
         const popupOverlay = document.getElementById('popupOverlay');
         const emailInput = document.getElementById('emailInput');
         const submitButton = document.getElementById('submitButton');
-        const cancelButton = document.getElementById('cancelButton');
+        // const cancelButton = document.getElementById('cancelButton');
 
         let currentUser = null;
         let lastDateBadge = null;
@@ -79,7 +79,7 @@
             sampleMessages.forEach(message => {
                 if (message.text) {
                     addDateBadgeIfNeeded(message.date);
-                    addMessageToChat(message.sender, message.text, message.time, message.own);
+                    addMessageToChat(message.sender, message.text, message.time, message.own, message.avatar);
                 }
             });
             scrollToBottom();
@@ -97,31 +97,32 @@
         }
 
         // Add message to chat
-        function addMessageToChat(sender, text, time, isOwn = false) {
+        function addMessageToChat(sender, text, time, isOwn = false, avatar = null) {
             const messageElement = document.createElement('div');
             messageElement.className = `message ${isOwn ? 'own' : ''}`;
             
-            const avatar = sender.charAt(0).toUpperCase();
-            const displayName = isOwn ? "Me" : sender;
-            
-            messageElement.innerHTML = `
-                <div class="message-left">
+             
+             const displayName = isOwn ? "Me" : sender;
+                const avatarMarkup = avatar
+                    ? `<img src="${avatar}" alt="${displayName}'s avatar" class="message-avatar" />`
+                    : `<div class="message-avatar">${sender.charAt(0).toUpperCase()}</div>`;
+
+                messageElement.innerHTML = `
+                    <div class="message-left">
                     <span class="message-sender">${displayName}</span>
-                    <div class="message-avatar">${avatar}</div>
-                </div>
-                <div class="message-content">
-                    
+                    ${avatarMarkup}
+                    </div>
+                    <div class="message-content">
                     <div class="message-text">
                         ${text}
                         <div class="message-text-time">${time}</div>
                     </div>
-                </div>
-            `;
-            
-            messagesContainer.appendChild(messageElement);
-            scrollToBottom();
-        }
+                    </div>
+                `;
 
+                messagesContainer.appendChild(messageElement);
+                scrollToBottom();
+                }
         // Scroll to bottom
         function scrollToBottom() {
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -182,7 +183,7 @@
 
             // Email popup
             submitButton.addEventListener('click', handleEmailSubmit);
-            cancelButton.addEventListener('click', hideEmailPopup);
+            // cancelButton.addEventListener('click', hideEmailPopup);
             
             popupOverlay.addEventListener('click', (e) => {
                 if (e.target === popupOverlay) {
@@ -278,11 +279,30 @@
             document.getElementById('onlineCount').textContent = `${count} members online`;
         }, 30000);
 
-        function adjustForBottomNav() {
-    const navbar = document.getElementById('navbar');
-    const bottomNav = document.querySelector('.bottom-nav'); // Your bottom nav selector
-    const chatroomSection = document.querySelector('.chatroom-header-section');
-    const mainContainer = document.querySelector('.main-container');
+   function adjustForBottomNav() {
+  const bottomNav = document.querySelector('.bottom-nav');
+  const inputContainer = document.querySelector('.message-input-container');
+  const messagesContainer = document.getElementById('messagesContainer');
+
+  if (bottomNav && inputContainer && messagesContainer) {
+    const bottomNavHeight = bottomNav.offsetHeight;
+    const inputHeight = inputContainer.offsetHeight;
+
+    // Position input above bottom nav
+    inputContainer.style.bottom = `${bottomNavHeight}px`;
+    inputContainer.style.left = '0';
+    inputContainer.style.right = '0';
+    inputContainer.style.zIndex = '200';
+
+    // Add enough padding to messages container so last message is always visible
+    messagesContainer.style.paddingBottom = `${bottomNavHeight + inputHeight + 16}px`;
+    messagesContainer.style.boxSizing = 'border-box';
+    messagesContainer.style.overflowY = 'auto';
+    messagesContainer.style.height = `calc(100vh - ${inputHeight + bottomNavHeight + 60}px)`; // 60px for header
+    // if (messagesContainer) {
+    //   messagesContainer.style.paddingBottom = `${bottomNavHeight + inputContainer.offsetHeight}px`;
+    // }
+  }
     
     function calculateHeights() {
         const viewportHeight = window.innerHeight;
@@ -317,7 +337,7 @@
             // Add padding to messages container
             const messagesContainer = document.getElementById('messagesContainer');
             if (messagesContainer) {
-                messagesContainer.style.paddingBottom = `${bottomNavHeight + 100}px`;
+                messagesContainer.style.paddingBottom = `${bottomNavHeight + 400}px`;
             }
         }
         

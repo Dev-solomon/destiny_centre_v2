@@ -7,6 +7,7 @@
 document.querySelectorAll('.leadership-image img').forEach(img => {
     img.addEventListener('click', () => {
         openLightbox(img.src, img.alt || 'Leadership Image');
+        lightboxImage.classList.add('leadership-size')
     });
 });
 
