@@ -8,11 +8,13 @@
     <link href="/assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 
 <body style="background: #1b1c1e;">
     <div id="navbar"></div>
-    
+
     <!-- Hero section -->
     <section id="give" class="hero-section">
         <div class="container">
@@ -25,8 +27,10 @@
                 Every gift helps us spread the Gospel,
                 support our community, and bring hope to those in need.
             </p>
-            <button class="button hero-button text-center"> 
-                <a href="#waysToGiveSection"><h3 class="hero-button-text">Give Now</h3></a>
+            <button class="button hero-button text-center">
+                <a href="#waysToGiveSection">
+                    <h3 class="hero-button-text">Give Now</h3>
+                </a>
             </button>
         </div>
     </section>
@@ -133,16 +137,16 @@
                     — pick what works best for you.
                 </p>
             </div>
-             <div class="give-tabs-header">
-                    <button class="active" href="#bank-transfers" id="">Bank Transfers</button>
-                    <button>Pay with Card</button>
-                    <button>PayPal</button>
-                    <button>Pay with Crypto</button>
-                </div>
+            <div class="give-tabs-header">
+                <button class="active" href="#bank-transfers" id="">Bank Transfers</button>
+                <button>Pay with Card</button>
+                <button>PayPal</button>
+                <button>Pay with Crypto</button>
+            </div>
 
             <!-- row justify-content-center -->
             <div class="ways-to-give-tabs row justify-content-center">
-               
+
                 <!-- Bank Transfer Note: update with other payment information-->
                 <div class="give-cards " id="bank-transfers">
                     <!-- Access bank -->
@@ -381,8 +385,8 @@
                         <div class="card-front">
                             <h5>Tithe</h5>
                             <p>A freewill gift given to support the church’s ongoing ministries,
-                                 outreach programs,
-                                 and special projects that bless our community.
+                                outreach programs,
+                                and special projects that bless our community.
                             </p>
                         </div>
                         <div class="card-back">
@@ -500,11 +504,12 @@
                 </div>
 
                 <div class="form-container">
-                    <form method="post">
+                    <form method="post" id="sendMessageForm">
                         <div class="input-wrapper-grid">
                             <div class="input-wrapper">
-                                <input type="text" name="firstname" id="firstname" placeholder="" />
+                                <input type="text" name="firstname" id="firstname" placeholder="John" />
                                 <label for="firstname" class="floating-label">First Name</label>
+                                <span class="error-message" id="firstnameError"></span>
 
                                 <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
                                     <path
@@ -514,8 +519,9 @@
                             </div>
 
                             <div class="input-wrapper">
-                                <input type="text" name="lastname" id="lastname" placeholder="" />
+                                <input type="text" name="lastname" id="lastname" placeholder="Doe" />
                                 <label for="lasttname" class="floating-label">Last Name</label>
+                                <span class="error-message" id="lastnameError"></span>
 
                                 <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
                                     <path
@@ -527,9 +533,10 @@
 
 
                         <div class="input-wrapper">
-                            <input type="email" name="email" id="email" placeholder="" />
+                            <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" />
                             <label for="email" class="floating-label">Email</label>
-
+                            <span class="error-message" id="emailError"></span>
+                           
                             <svg class="input-icon" width="18" height="18" viewBox="0 0 344 384">
                                 <path
                                     d="M170.5 192q-35.5 0-60.5-25t-25-60.5T110 46t60.5-25T231 46t25 60.5t-25 60.5t-60.5 25zm0 43q31.5 0 69.5 9t69.5 29.5T341 320v43H0v-43q0-26 31.5-46.5T101 244t69.5-9z"
@@ -541,8 +548,9 @@
                             <textarea name="message" id="message" placeholder="Enter your message..."></textarea>
                             <label for="message" class="message-label">How would you like to get involved?</label>
                         </div>
+                        <span class="error-message" id="messageError"></span>
 
-                        <button class="button form-button">
+                        <button type="submit" class="button form-button" id="sendMessageBtn">
                             <a>
                                 Send Message
                             </a>
@@ -554,6 +562,8 @@
         </div>
 
     </section>
+
+     
 
 
     <script src="/assets/js/give.js"></script>
