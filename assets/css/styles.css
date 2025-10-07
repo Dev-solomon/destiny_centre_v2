@@ -831,7 +831,7 @@ a.nav-toggle.active {
 }
 
 .service-box {
-    max-width: 100%;
+    width: 100%;
     padding: 24px;
     min-height: 214px;
     height: 100%;
@@ -1144,19 +1144,20 @@ a.nav-toggle.active {
     background: #fff;
     color: rgba(15, 106, 217, 1);
     margin: 24px 0;
-}
-
-
-.footer-button a {
     font-family: "Lato", sans-serif;
-    text-decoration: none;
-    padding: 0 40px;
     text-transform: capitalize;
     font-weight: 700;
     font-style: bold;
     font-size: 16px;
     line-height: 24px;
+    transition: all 0.3s ease;
+}
 
+
+.footer-button a {
+    color: inherit;
+    padding: 0 40px;
+    text-decoration: none;
 }
 
 .footer-button:hover {
@@ -2209,7 +2210,6 @@ a.nav-toggle.active {
     flex-direction: column;
     position: absolute;
     bottom: -60px;
-
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -2225,6 +2225,7 @@ a.nav-toggle.active {
     width: 88px;
     height: 87px;
     opacity: 1;
+    transition: all 5s ease;
 }
 
 /* Partners Section */
@@ -4034,28 +4035,26 @@ z-index: 1000;
 
     .navbar-container {
         width: 100%;
-        margin: 0 auto;
-        /* center the whole container */
+        margin: 0 auto;/* center the whole container */
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        /* logo left, nav right */
+        justify-content: space-between;/* logo left, nav right */
         padding: 0 80px;
     }
 
-    .navbar-brand {
-        color: white !important;
-        font-size: 1.5rem;
-        font-weight: 700;
+    .navbar-brand  {
         display: flex;
         align-items: center;
+    }
+    .navbar-brand img {
+        width: 40px;
+        height: 40px;
     }
 
     .navbar-custom .navbar-nav {
         display: flex;
         flex-direction: row;
-        gap: 20px;
-        /* spacing between links */
+        gap: 20px;/* spacing between links */
         margin: 0;
         padding: 0;
         list-style: none;
@@ -4152,7 +4151,6 @@ z-index: 1000;
         border-radius: 34px;
         padding: 30px;
         height: 420px;
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -4775,11 +4773,13 @@ z-index: 1000;
     }
 
     .navbar-brand {
-        color: white !important;
-        font-size: 1.5rem;
-        font-weight: 700;
         display: flex;
         align-items: center;
+    }
+
+    .navbar-brand img{
+        width: 45px;
+        height: 45px;
     }
 
     .navbar-custom .navbar-nav {
@@ -4835,7 +4835,6 @@ z-index: 1000;
         padding: 32px;
         margin: 16px 0;
         height: 420px;
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -5486,34 +5485,32 @@ z-index: 1000;
         right: 0;
         width: 100%;
         background-color: rgba(0, 0, 0, 1);
-        padding: 22.5px 0;
+        padding: 20px 0;
         z-index: 1030;
     }
 
     .navbar-container {
         width: 100%;
-        margin: 0 auto;
-        /* center the whole container */
+        margin: 0 auto;/* center the whole container */
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        /* logo left, nav right */
+        justify-content: space-between; /* logo left, nav right */
         padding: 0 80px;
     }
 
     .navbar-brand {
-        color: white !important;
-        font-size: 1.5rem;
-        font-weight: 700;
         display: flex;
         align-items: center;
     }
-
+    
+    .navbar-brand img{
+        width: 50px;
+        height: 50px;
+    }
     .navbar-custom .navbar-nav {
         display: flex;
         flex-direction: row;
-        gap: 24px;
-        /* spacing between links */
+        gap: 24px; /* spacing between links */
         margin: 0;
         padding: 0;
         list-style: none;
@@ -5530,6 +5527,7 @@ z-index: 1000;
         transition: color 0.3s ease;
         font-family: 'Lato', sans-serif;
         font-weight: 500;
+        padding-bottom: 0.4rem;
 
     }
 
@@ -5564,7 +5562,6 @@ z-index: 1000;
         padding: 32px;
         margin: 16px 0;
         height: 420px;
-
     }
 
     /* A place for you section */
@@ -5803,7 +5800,7 @@ z-index: 1000;
 
 /* Why we give */
     .why-we-give-cards {
-        padding: 0 163px;
+        padding: 0 55px;
     }
 
     .why-we-give-cards-desktop-layout {
@@ -5824,7 +5821,7 @@ z-index: 1000;
 
     .why-we-give-card {
         width: 100%;
-        max-width: 330px;
+        max-width: 400px;
         height: 264px;
     }
 
@@ -5924,6 +5921,7 @@ z-index: 1000;
         width: 186px;
         height: 187px;
         opacity: 1;
+        transition: all 5s ease;
     }
 
     .grow-your-faith-section-header p {

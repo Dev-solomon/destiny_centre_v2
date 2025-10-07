@@ -29,90 +29,208 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Form submission or prayer request
-document.getElementById("prayerRequestForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  
-  let isValid = true;
-
-  // Clear previous errors
-  document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-
-  const firstname = document.getElementById("firstname").value.trim();
-  const lastname = document.getElementById("lastname").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const textarea = document.getElementById("message").value.trim();
-
-  // Regex patterns
-  const namePattern = /^[A-Za-z]+$/;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  // Validate firstname
-  if (!firstname) {
-    document.getElementById('firstnameError').innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> First name is required.`;
-    isValid = false;
-  } else if (!namePattern.test(firstname)) {
-    document.getElementById('firstnameError').innerHTML = `<i class="bi bi-x-circle-fill"></i> First name must contain only letters.`;
-
-    isValid = false;
-  }
-
-  // Validate lastname
-  if (!lastname) {
-    document.getElementById('lastnameError').innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Last name is required.`;
-    isValid = false;
-  } else if (!namePattern.test(lastname)) {
-    document.getElementById('lastnameError').innerHTML = `<i class="bi bi-x-circle-fill"></i> Last name must contain only letters.`;
-    isValid = false;
-  }
-
-  
-  // Validate email
-  if (!email) {
-    document.getElementById('emailError').innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Email is required.`;
-    isValid = false;
-  } else if (!emailPattern.test(email)) {
-    document.getElementById('emailError').innerHTML = `<i class="bi bi-x-circle-fill"></i> Please enter a valid email address.`;
-    isValid = false;
-  }
-
-  if(!textarea) {
-    document.getElementById("messageError").innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please write a word to us.`;
-    isValid = false 
-  }
-
-  // ✅ Only run this if all fields are valid
-  if (isValid) {
-  const sendMessageBtn = document.getElementById("sendMessageBtn");
-  sendMessageBtn.style.backgroundColor = "green";
-  sendMessageBtn.style.color = "white";
-  sendMessageBtn.innerHTML = `<i class="bi bi-check-circle-fill"></i>  Form submitted`; // ✅ bootstrap icon
-
-  showSuccessMessage();
 
 
-  // Reset form
-  e.target.reset();
 
-  // Reset button after 3 seconds
-  setTimeout(() => {
-    sendMessageBtn.style.backgroundColor = "";
-    sendMessageBtn.innerHTML = "Send Message";
-  }, 3000);
+
+
+
+
+
+
+// Form submission for all forms
+// === Date & Time Inputs === //
+const dateInput = document.getElementById("dateInput");
+const timeInput = document.getElementById("timeInput");
+const dateDropdown = document.getElementById("dateDropdown");
+const timeDropdown = document.getElementById("timeDropdown");
+
+// Handle date selection using event delegation on the parent dropdown
+if (dateDropdown && dateInput) {
+  dateDropdown.addEventListener("click", function (e) {
+    console.log("Clicked inside date dropdown", e.target);
+
+    // Find the clicked day element (check multiple possible selectors)
+    let dayElement = e.target;
+
+    // If clicked element isn't the day, check if parent is
+    if (!dayElement.classList.contains("day") && !dayElement.dataset.date) {
+      dayElement = e.target.closest(".day");
+    }
+
+    if (dayElement && dayElement.dataset && dayElement.dataset.date) {
+      // console.log("✅ Date selected:", dayElement.dataset.date);
+
+      // Convert ISO string to user-friendly format
+      const rawDate = dayElement.dataset.date.split("T")[0]; // e.g., "2025-10-08"
+      const date = new Date(rawDate);
+
+      // With day name: "Wednesday, October 8, 2025"
+      const formattedDate = date.toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      dateInput.value = formattedDate; // e.g., "October 8, 2025"
+      console.log("Formatted date:", formattedDate);
+
+      // Clear error
+      const errorEl = document.querySelector('[data-error-for="date"]');
+      if (errorEl) errorEl.textContent = "";
+
+      // Close dropdown
+      // dateDropdown.style.display = "none";
+    } else {
+      console.log("❌ No date found on clicked element");
+    }
+  });
 }
 
+// Handle time selection using event delegation on the parent dropdown
+if (timeDropdown && timeInput) {
+  timeDropdown.addEventListener("click", function (e) {
+    console.log("Clicked inside time dropdown", e.target);
+
+    // Find the clicked time element (check multiple possible selectors)
+    let timeElement = e.target;
+
+    // If clicked element isn't the time-option, check if parent is
+    if (
+      !timeElement.classList.contains("time-option") &&
+      !timeElement.dataset.time
+    ) {
+      timeElement = e.target.closest(".time-option");
+    }
+
+    if (timeElement && timeElement.dataset && timeElement.dataset.time) {
+      console.log("✅ Time selected:", timeElement.dataset.time);
+      timeInput.value = timeElement.dataset.time;
+
+      // Clear error
+      const errorEl = document.querySelector('[data-error-for="time"]');
+      if (errorEl) errorEl.textContent = "";
+
+      // Close dropdown
+      timeDropdown.style.display = "none";
+    } else {
+      console.log("❌ No time found on clicked element");
+    }
+  });
+}
+
+// Form submission for all forms
+document.querySelectorAll("form").forEach((form) => {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    console.log("=== FORM SUBMISSION STARTED ===");
+
+    let isValid = true;
+    const namePattern = /^[A-Za-z\s]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Clear old errors
+    form
+      .querySelectorAll(".error-message")
+      .forEach((el) => (el.textContent = ""));
+
+    // Validate each input
+    form.querySelectorAll("input, textarea").forEach((input) => {
+      const value = input.value.trim();
+      const errorEl = form.querySelector(`[data-error-for="${input.name}"]`);
+
+      if (!errorEl) return; // Skip if no error span exists
+
+      console.log(`Checking ${input.name}: "${value}"`);
+
+      if (!value) {
+        if (input.name === "date") {
+          errorEl.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select a date.`;
+          console.log("❌ Date is empty");
+        } else if (input.name === "time") {
+          errorEl.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select a preferred time.`;
+          console.log("❌ Time is empty");
+        } else {
+          errorEl.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> ${input.name} is required.`;
+          console.log(`❌ ${input.name} is empty`);
+        }
+        isValid = false;
+      } else if (input.name === "firstname" && !namePattern.test(value)) {
+        errorEl.innerHTML = `<i class="bi bi-x-circle-fill"></i> First name must contain only letters.`;
+        isValid = false;
+      } else if (input.name === "lastname" && !namePattern.test(value)) {
+        errorEl.innerHTML = `<i class="bi bi-x-circle-fill"></i> Last name must contain only letters.`;
+        isValid = false;
+      } else if (input.name === "email" && !emailPattern.test(value)) {
+        errorEl.innerHTML = `<i class="bi bi-x-circle-fill"></i> Invalid email address.`;
+        isValid = false;
+      } else {
+        console.log(`✅ ${input.name} is valid`);
+      }
+    });
+
+    console.log(
+      "=== VALIDATION RESULT:",
+      isValid ? "PASSED ✅" : "FAILED ❌",
+      "==="
+    );
+
+    if (isValid) {
+      showSuccessMessage(form.id);
+      if (dateInput) {
+        dateInput.value = "";
+        dateInput.textContent = "";
+        dateInput.classList.add("placeholder");
+        const placeholder =
+          dateInput.parentElement.querySelector(".placeholder-input");
+        if (placeholder) {
+          placeholder.style.display = "block"; // Show it again
+          placeholder.textContent = "Select Date";
+        }
+      }
+
+      if (timeInput) {
+        timeInput.value = "";
+        timeInput.textContent = "";
+        timeInput.classList.add("placeholder");
+        const placeholder =
+          timeInput.parentElement.querySelector(".placeholder-input");
+        if (placeholder) {
+          placeholder.style.display = "block"; // Show it again
+          placeholder.textContent = "Enter your preferred time...";
+        }
+      }
+      form.reset();
+    }
+  });
 });
 
 // Show success message
-function showSuccessMessage() {
-    document.getElementById("success-header").textContent = "Well Done!";
-    document.getElementById("success-para").textContent = "Form Submitted Successfully.";
+function showSuccessMessage(formId) {
+  const modal = document.getElementById("uploadSuccessMessage");
+  const title = document.getElementById("success-header");
+  const para = document.getElementById("success-para");
 
-  const message = document.getElementById("uploadSuccessMessage");
-  message.classList.add("show");
+  if (formId === "prayerRequestForm") {
+    title.textContent = "Prayer Request Sent!";
+    para.textContent = "We'll be praying for you 🙏.";
+  } else if (formId === "scheduleMeetingForm") {
+    title.textContent = "Meeting Scheduled!";
+    para.textContent = "We'll contact you soon with confirmation.";
+  } else if (formId === "testimonyForm") {
+    title.textContent = "Testimony Shared!";
+    para.textContent = "Thanks for encouraging others with your story.";
+  }
 
-  setTimeout(() => {
-    message.classList.remove("show");
-  }, 3000);
+  modal.classList.add("show");
+  setTimeout(() => modal.classList.remove("show"), 3000);
 }
 
+// Debug: Log when script loads
+console.log("📝 Form validation script loaded");
+console.log("Date input:", dateInput);
+console.log("Time input:", timeInput);
+console.log("Date dropdown:", dateDropdown);
+console.log("Time dropdown:", timeDropdown);

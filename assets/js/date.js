@@ -1,4 +1,3 @@
-
 // Date and Time
 class CustomDateTimeInput {
   constructor() {
@@ -108,6 +107,7 @@ class CustomDateTimeInput {
       .map((day) => `<div class="date-header">${day}</div>`)
       .join("");
 
+    // Find this section in renderCalendar:
     for (let i = 0; i < 42; i++) {
       const cellDate = new Date(startDate);
       cellDate.setDate(startDate.getDate() + i);
@@ -122,11 +122,15 @@ class CustomDateTimeInput {
       if (!isCurrentMonth) classes.push("other-month");
       if (isSelected) classes.push("selected");
 
-      html += `<div class="${classes.join(
-        " "
-      )}" data-date="${cellDate.toISOString()}">${cellDate.getDate()}</div>`;
-    }
+      // FIX: Store the date in a timezone-neutral format
+      const year = cellDate.getFullYear();
+      const month = String(cellDate.getMonth() + 1).padStart(2, "0");
+      const day = String(cellDate.getDate()).padStart(2, "0");
+      const dateString = `${year}-${month}-${day}`;
 
+      html += `<div class="${classes.join(" ")}" 
+    data-date="${dateString}">${cellDate.getDate()}</div>`;
+    }
     dateGrid.innerHTML = html;
   }
 
@@ -143,7 +147,11 @@ class CustomDateTimeInput {
 
     document.getElementById("dateGrid").addEventListener("click", (e) => {
       if (e.target.classList.contains("date-cell")) {
-        this.selectDate(new Date(e.target.dataset.date));
+        // FIX: Parse the date correctly
+        const dateString = e.target.dataset.date; // "2025-10-01"
+        const [year, month, day] = dateString.split("-").map(Number);
+        const date = new Date(year, month - 1, day); // Create in local timezone
+        this.selectDate(date);
       }
     });
 
@@ -158,19 +166,20 @@ class CustomDateTimeInput {
   selectDate(date) {
     this.selectedDate = date;
     const dateInput = document.getElementById("dateInput");
+
+    // FIX: Use the date object directly, don't re-parse the ISO string
     dateInput.textContent = date.toLocaleDateString("en-US", {
       weekday: "short",
       year: "numeric",
       month: "short",
       day: "numeric",
     });
-   
+
     dateInput.classList.remove("placeholder");
-    // Update placeholder-input text
     const placeholder =
       dateInput.parentElement.querySelector(".placeholder-input");
     if (placeholder) {
-      placeholder.textContent = ` ${dateInput.textContent}`;
+      placeholder.style.display = "none";
     }
     this.closeDropdown(dateInput, document.getElementById("dateDropdown"));
     this.renderCalendar();
@@ -185,7 +194,7 @@ class CustomDateTimeInput {
     const placeholder =
       timeInput.parentElement.querySelector(".placeholder-input");
     if (placeholder) {
-      placeholder.textContent = `${time}`;
+      placeholder.style.display = "none";
     }
     this.closeDropdown(timeInput, document.getElementById("timeDropdown"));
   }

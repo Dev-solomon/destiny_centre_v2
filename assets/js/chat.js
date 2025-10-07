@@ -104,7 +104,7 @@ const refreshIcon = document.getElementById("refreshIcon");
 const popupOverlay = document.getElementById("popupOverlay");
 const emailInput = document.getElementById("emailInput");
 const submitButton = document.getElementById("submitButton");
-// const cancelButton = document.getElementById('cancelButton');
+
 
 let currentUser = null;
 let lastDateBadge = null;

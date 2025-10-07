@@ -2,7 +2,7 @@
 <nav class="navbar-custom fixed-top">
   <div class="navbar-container">
     <a class="navbar-brand" href="/index.html">
-      <i class="fas fa-cross"></i> Fellowship Church
+      <img src="/images/dclogo_original.png" alt="Destiny Centre logo">
     </a>
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
