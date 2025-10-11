@@ -3,425 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Globe with Scriptures</title>
-    <style>
-        body {
-            background: #1a1a1a;
-            color: white;
-            font-family: Arial, sans-serif;
-            padding: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .col-lg-6 {
-            width: 100%;
-            max-width: 500px;
-        }
-
-        /* Globe Container */
-        .globe-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
-            perspective: 1000px;
-        }
-
-        /* Main Globe */
-        .globe {
-            width: 120%;
-            height: 120%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='586' height='586' viewBox='0 0 586 586'%3E%3Cg filter='url(%23filter0_ddi_333_2364)'%3E%3Cg clip-path='url(%23clip0_333_2364)'%3E%3Crect x='65' y='65' width='456' height='456' rx='228' fill='url(%23paint0_linear_333_2364)' /%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_ddi_333_2364'%3E%3CfeFlood flood-opacity='0'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0.166667 0 0 0 0 1 0 0 0 0.8 0'/%3E%3CfeBlend/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear_333_2364' x1='521' y1='65' x2='65' y2='521'%3E%3Cstop stop-color='%23CCEEFF'/%3E%3Cstop offset='0.773726' stop-color='%23001EB3'/%3E%3C/linearGradient%3E%3CclipPath id='clip0_333_2364'%3E%3Crect x='65' y='65' width='456' height='456' rx='228'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E") no-repeat center;
-            background-size: contain;
-            border-radius: 50%;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: spinHorizontal 20s linear infinite;
-            box-shadow: 
-                0 0 50px rgba(0, 43, 255, 0.6),
-                inset -30px -30px 60px rgba(0, 34, 204, 0.8);
-            cursor: pointer;
-            transition: animation-play-state 0.3s ease;
-        }
-
-        /* Pause animation on hover for easier clicking */
-        .globe:hover {
-            animation-play-state: paused;
-        }
-
-        /* Globe overlay for depth */
-        .globe::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle at 30% 30%,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.05) 30%,
-                rgba(0, 0, 0, 0.2) 100%
-            );
-            pointer-events: none;
-        }
-
-        /* Horizontal spinning animation */
-        @keyframes spinHorizontal {
-            from {
-                transform: rotateYz(0deg);
-            }
-            to {
-                transform: rotateY(360deg);
-            }
-        }
-
-        /* Scripture Points */
-        .scripture-point {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #0066ff;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-            animation: pulse 2s infinite;
-        }
-
-        .scripture-point:hover {
-            transform: scale(1.3);
-            background: #0066ff;
-            box-shadow: 0 0 15px rgba(0, 102, 255, 0.8);
-        }
-
-        .scripture-point.active {
-            background: #ff6b35;
-            border-color: #ff6b35;
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 5px rgba(0, 102, 255, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 15px rgba(0, 102, 255, 1);
-            }
-        }
-
-        /* Scripture Display */
-        .scripture-display {
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            max-width: 300px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 100;
-            border: 1px solid #0066ff;
-        }
-
-        .scripture-display.show {
-            opacity: 1;
-            visibility: visible;
-            top: -80px;
-        }
-
-        .scripture-display::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 8px solid transparent;
-            border-top-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .scripture-ref {
-            display: block;
-            font-weight: bold;
-            color: #0066ff;
-            margin-bottom: 5px;
-        }
-
-        .scripture-text {
-            font-style: italic;
-            line-height: 1.4;
-        }
-
-        /* Control Panel */
-        .controls {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .control-btn {
-            background: #0066ff;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            margin: 0 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .control-btn:hover {
-            background: #0052cc;
-        }
-
-        .control-btn.active {
-            background: #ff6b35;
-        }
-
-        /* Info Panel */
-        .info-panel {
-            position: absolute;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 102, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 102, 255, 0.3);
-            text-align: center;
-            font-size: 14px;
-            max-width: 280px;
-        }
-    </style>
+    <link href="/assets/css/globe.css" rel="stylesheet">
+    <title>Document</title>
 </head>
 <body>
-    <div class="col-lg-6 order-2 order-lg-2">
-        <div class="globe-container fade-in">
-            <div class="globe" id="globe">
-                <!-- Scripture Points -->
-                <div class="scripture-point" 
-                     style="top: 25%; left: 45%;" 
-                     data-ref="2 Corinthians 2:13"
-                     data-text="For I had no rest in my spirit, because I found not Titus my brother: but taking my leave of them, I went from thence into Macedonia.">
-                </div>
-                
-                <div class="scripture-point" 
-                     style="top: 60%; left: 70%;" 
-                     data-ref="2 Corinthians 2:14"
-                     data-text="Now thanks be unto God, which always causeth us to triumph in Christ, and maketh manifest the savour of his knowledge by us in every place.">
-                </div>
-                
-                <div class="scripture-point" 
-                     style="top: 80%; left: 30%;" 
-                     data-ref="2 Corinthians 2:17"
-                     data-text="For we are not as many, which corrupt the word of God: but as of sincerity, but as of God, in the sight of God speak we in Christ.">
-                </div>
 
-                <div class="scripture-point" 
-                     style="top: 40%; left: 85%;" 
-                     data-ref="Matthew 28:19"
-                     data-text="Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost.">
-                </div>
-
-                <div class="scripture-point" 
-                     style="top: 15%; left: 75%;" 
-                     data-ref="Acts 1:8"
-                     data-text="But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judaea, and in Samaria, and unto the uttermost part of the earth.">
-                </div>
-            </div>
-
-            <!-- Scripture Display Tooltip -->
-            <div class="scripture-display" id="scriptureDisplay">
-                <span class="scripture-ref" id="scriptureRef"></span>
-                <div class="scripture-text" id="scriptureText"></div>
-            </div>
-
-            <!-- Info Panel -->
-            <div class="info-panel">
-                <strong>Interactive Scripture Globe</strong><br>
-                Click on the glowing points to reveal scriptures about global ministry and evangelism.
-            </div>
-        </div>
-
-        <!-- Control Panel -->
-        <div class="controls">
-            <button class="control-btn" id="pauseBtn">Pause Rotation</button>
-            <button class="control-btn" id="speedBtn">Change Speed</button>
-            <button class="control-btn" id="resetBtn">Reset View</button>
-        </div>
-    </div>
-
-    <script>
-        class InteractiveGlobe {
-            constructor() {
-                this.globe = document.getElementById('globe');
-                this.scriptureDisplay = document.getElementById('scriptureDisplay');
-                this.scriptureRef = document.getElementById('scriptureRef');
-                this.scriptureText = document.getElementById('scriptureText');
-                this.pauseBtn = document.getElementById('pauseBtn');
-                this.speedBtn = document.getElementById('speedBtn');
-                this.resetBtn = document.getElementById('resetBtn');
-                
-                this.isPaused = false;
-                this.currentSpeed = 20; // seconds
-                this.activePoint = null;
-                
-                this.init();
-            }
-
-            init() {
-                this.setupScripturePoints();
-                this.setupControls();
-            }
-
-            setupScripturePoints() {
-                const points = document.querySelectorAll('.scripture-point');
-                
-                points.forEach(point => {
-                    point.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        this.showScripture(point);
-                    });
-
-                    point.addEventListener('mouseenter', () => {
-                        if (this.activePoint !== point) {
-                            point.style.transform = 'scale(1.2)';
-                        }
-                    });
-
-                    point.addEventListener('mouseleave', () => {
-                        if (this.activePoint !== point) {
-                            point.style.transform = 'scale(1)';
-                        }
-                    });
-                });
-
-                // Click outside to hide scripture
-                document.addEventListener('click', () => {
-                    this.hideScripture();
-                });
-            }
-
-            showScripture(point) {
-                // Remove active state from other points
-                document.querySelectorAll('.scripture-point').forEach(p => {
-                    p.classList.remove('active');
-                    if (p !== point) p.style.transform = 'scale(1)';
-                });
-
-                // Activate clicked point
-                point.classList.add('active');
-                point.style.transform = 'scale(1.3)';
-                this.activePoint = point;
-
-                // Update scripture display
-                const ref = point.dataset.ref;
-                const text = point.dataset.text;
-                
-                this.scriptureRef.textContent = ref;
-                this.scriptureText.textContent = text;
-                this.scriptureDisplay.classList.add('show');
-
-                // Pause rotation when showing scripture
-                this.globe.style.animationPlayState = 'paused';
-            }
-
-            hideScripture() {
-                this.scriptureDisplay.classList.remove('show');
-                
-                // Remove active states
-                document.querySelectorAll('.scripture-point').forEach(p => {
-                    p.classList.remove('active');
-                    p.style.transform = 'scale(1)';
-                });
-                
-                this.activePoint = null;
-
-                // Resume rotation if not manually paused
-                if (!this.isPaused) {
-                    this.globe.style.animationPlayState = 'running';
-                }
-            }
-
-            setupControls() {
-                this.pauseBtn.addEventListener('click', () => {
-                    this.togglePause();
-                });
-
-                this.speedBtn.addEventListener('click', () => {
-                    this.changeSpeed();
-                });
-
-                this.resetBtn.addEventListener('click', () => {
-                    this.resetView();
-                });
-            }
-
-            togglePause() {
-                this.isPaused = !this.isPaused;
-                
-                if (this.isPaused) {
-                    this.globe.style.animationPlayState = 'paused';
-                    this.pauseBtn.textContent = 'Resume Rotation';
-                    this.pauseBtn.classList.add('active');
-                } else {
-                    this.globe.style.animationPlayState = 'running';
-                    this.pauseBtn.textContent = 'Pause Rotation';
-                    this.pauseBtn.classList.remove('active');
-                }
-            }
-
-            changeSpeed() {
-                const speeds = [10, 20, 30, 40]; // seconds
-                const currentIndex = speeds.indexOf(this.currentSpeed);
-                const nextIndex = (currentIndex + 1) % speeds.length;
-                this.currentSpeed = speeds[nextIndex];
-                
-                this.globe.style.animationDuration = `${this.currentSpeed}s`;
-                this.speedBtn.textContent = `Speed: ${this.currentSpeed}s`;
-                
-                // Flash active state
-                this.speedBtn.classList.add('active');
-                setTimeout(() => {
-                    this.speedBtn.classList.remove('active');
-                }, 200);
-            }
-
-            resetView() {
-                this.hideScripture();
-                this.isPaused = false;
-                this.currentSpeed = 20;
-                
-                this.globe.style.animationPlayState = 'running';
-                this.globe.style.animationDuration = '20s';
-                this.pauseBtn.textContent = 'Pause Rotation';
-                this.pauseBtn.classList.remove('active');
-                this.speedBtn.textContent = 'Change Speed';
-                
-                // Flash reset button
-                this.resetBtn.classList.add('active');
-                setTimeout(() => {
-                    this.resetBtn.classList.remove('active');
-                }, 200);
-            }
-        }
-
-        // Initialize the interactive globe when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new InteractiveGlobe();
-        });
-    </script>
 </body>
+<canvas id="globe"></canvas>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js';
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#globe'), alpha: true });
+renderer.setSize(innerWidth, innerHeight);
+
+const texture = new THREE.TextureLoader().load('/assets/icons/Map.svg');
+const geometry = new THREE.SphereGeometry(2, 64, 64);
+const material = new THREE.MeshStandardMaterial({ 
+    map: texture,
+  emissive: 0x0066cc,
+            emissiveIntensity: 0.3,
+            roughness: 0.7,
+            metalness: 0.2
+
+});
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
+
+const light = new THREE.PointLight(0xffffff, 1);
+light.position.set(5, 3, 5);
+scene.add(light);
+
+camera.position.z = 5;
+
+function animate() {
+  requestAnimationFrame(animate);
+  sphere.rotation.x += 0.01; // spin on X-axis
+  sphere.rotation.y += 0.01; // spin on Y-axis
+  renderer.render(scene, camera);
+}
+
+animate();
+</script>
+
 </html>

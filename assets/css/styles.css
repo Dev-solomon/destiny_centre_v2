@@ -718,16 +718,32 @@ a.nav-toggle.active {
 }
 /* Hero Section */
 .hero-section {
+    position: relative;
     height: 100vh;
-    background: url("/images/bg-image.png");
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+}
+
+/* Background Video */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(60%); /* makes text readable */
+}
+
+/* Content overlay */
+.hero-section .container {
     position: relative;
+    z-index: 1;
 }
 
 .hero-title {
@@ -751,11 +767,11 @@ a.nav-toggle.active {
 
 /* Who we are section */
 .welcome-section {
-    background: var(--primary-bg);
     color: var(--text-light);
     padding: 5rem 0;
     position: relative;
 }
+
 
 .scripture-ref {
     position: relative;
@@ -892,8 +908,8 @@ a.nav-toggle.active {
     background: var(--white);
     text-align: center;
     align-items: center;
-    margin-top: 46px;
-    margin-bottom: 46px;
+    padding-top: 48px;
+    padding-bottom: 48px;
 
 }
 
@@ -912,6 +928,7 @@ a.nav-toggle.active {
 .dedication-title {
     font-family: "Lato", sans-serif;
     font-weight: 700;
+    margin-top: 1rem;
 }
 
 .dedication-para {
@@ -1042,10 +1059,10 @@ a.nav-toggle.active {
 }
 
 .testimonies-title-box img {
-    margin-right: 8px;
-    margin-left: 18px;
+    width: 80px;
+    /* margin-right: 8px;
+    margin-left: 18px; */
     margin-top: -4rem;
-    bottom: 8px;
 }
 
 .testimonies-para {
@@ -1263,14 +1280,7 @@ a.nav-toggle.active {
     color: #0d6efd;
 }
 /* hero Rotating Globe */
- .globe-container {
-    position: relative;
-    width: 300px;
-    perspective: 1000px;
-    height: 300px;
-    margin: 0 auto;
-}
-
+ 
 .globe {
     width: 120%;
     height: 120%;
@@ -1360,33 +1370,6 @@ a.nav-toggle.active {
         transform: rotate(360deg);
     }
 } 
-
-/* .globe-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-}
-
-.globe {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: url("https://upload.wikimedia.org/wikipedia/commons/8/80/Equirectangular_projection_SW.jpg")
-    repeat-x;
-  background-size: cover;
-  animation: spin 10s linear infinite;
-  box-shadow: inset -20px 0 40px rgba(0, 0, 0, 0.5);
-}
-
-@keyframes spin {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -800px 0; 
-  }
-} */
 
 /* About page css */
 
@@ -2216,6 +2199,7 @@ a.nav-toggle.active {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-self: center;
     text-align: center;
     animation: spin 5s linear infinite;
 }
@@ -3552,6 +3536,15 @@ z-index: 1000;
         grid-template-columns: repeat(2, 1fr);
     } */
 
+     /* Testimonial section */
+     
+.testimonies-title-box img {
+    width: 100px;
+    margin-right: 8px;
+    margin-left: 18px;
+    margin-top: -4rem;
+}
+
     .footer-section-inner {
         border-radius: 12px;
         padding: 64px;
@@ -4155,7 +4148,13 @@ z-index: 1000;
         flex-direction: column;
         justify-content: space-between;
     }
-
+     
+.testimonies-title-box img {
+    width: 100px;
+    margin-right: 8px;
+    margin-left: 18px;
+    margin-top: -4rem;
+}
     .dedication-section {
         padding: 126px 0;
     }
@@ -4458,7 +4457,7 @@ z-index: 1000;
     .get-involved-badge {
         flex-direction: column;
         position: absolute;
-        bottom: -60px;
+        bottom: -140px;
         right: 90px;
         width: 120px;
         height: 120px;
@@ -4839,6 +4838,13 @@ z-index: 1000;
         flex-direction: column;
         justify-content: space-between;
     }
+     
+.testimonies-title-box img {
+    width: 100px;
+    margin-right: 8px;
+    margin-left: 18px;
+    margin-top: -4rem;
+}
 
     /* Dedication section */
     .dedication-section {
@@ -5563,6 +5569,13 @@ z-index: 1000;
         margin: 16px 0;
         height: 420px;
     }
+     
+.testimonies-title-box img {
+    width: 100px;
+    margin-right: 8px;
+    margin-left: 18px;
+    margin-top: -4rem;
+}
 
     /* A place for you section */
     .services-grid {

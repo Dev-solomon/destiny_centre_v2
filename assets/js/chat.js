@@ -262,8 +262,7 @@ function setupEventListeners() {
 
   // Email popup
   submitButton.addEventListener("click", handleEmailSubmit);
-  // cancelButton.addEventListener('click', hideEmailPopup);
-
+  
   popupOverlay.addEventListener("click", (e) => {
     if (e.target === popupOverlay) {
       hideEmailPopup();
