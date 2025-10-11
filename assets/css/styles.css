@@ -854,6 +854,7 @@ a.nav-toggle.active {
     line-height: 24px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
 }
 
 .service-box:hover {
@@ -901,6 +902,67 @@ a.nav-toggle.active {
     background: var(--service-grid-bg-5);
 }
 
+
+ /* Animation states */
+        .service-box.animate-from-left {
+            animation: slideInFromLeft 0.8s ease-out forwards;
+        }
+
+        .service-box.animate-from-right {
+            animation: slideInFromRight 0.8s ease-out forwards;
+        }
+
+        .service-box.animate-from-top {
+            animation: slideInFromTop 0.8s ease-out forwards;
+        }
+
+        .service-box.animate-from-bottom {
+            animation: slideInFromBottom 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100vw) rotate(-10deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100vw) rotate(10deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-100vh) rotate(5deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(100vh) rotate(-5deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+        }
 /* services section */
 
 /* Dedication section */
@@ -1281,86 +1343,6 @@ a.nav-toggle.active {
 }
 /* hero Rotating Globe */
  
-.globe {
-    width: 120%;
-    height: 120%;
-    background: url("/images/Globe\ Component.svg") no-repeat center;
-    border-radius: 50%;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: spin 40s linear infinite;
-    box-shadow: 0 0 50px rgba(0, 43, 255, 0.8),
-        inset -20px -20px 50px rgba(0, 34, 204, 1);
-}
-
-.globe::before {
-    content: "";
-    position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 70%;
-    height: 70%;
-    background-size: contain;
-    animation: rotateGlobeContent 25s linear infinite reverse;
-}
-
-.globe-scripture-1 {
-    background: rgba(0, 0, 0, 0.7);
-}
-
-.globe-container .tooltip {
-    position: absolute;
-    bottom: 100%;
-    /* place above scripture */
-    left: 50%;
-    transform: translateX(-50%);
-    background: #2d2d2d;
-    color: #f3f4f6;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 14px;
-    max-width: 250px;
-    white-space: normal;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    display: none;
-    /* hidden by default */
-    z-index: 1000;
-}
-
-.globe-scriptures,
-.globe-scriptures-1,
-.globe-scriptures-2 {
-    white-space: normal;
-    /* text wraps instead of stretching */
-    max-width: 60%;
-    /* doesn’t extend past globe edges */
-    word-break: break-word;
-    /* long verses won’t force overflow */
-}
-
-.globe-scriptures {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    position: absolute;
-    top: 10%;
-    left: -20%;
-}
-
-.globe-scriptures-1 {
-    width: 100%;
-    position: absolute;
-    top: 40%;
-    left: 80%;
-}
-
-.globe-scriptures-2 {
-    width: 100%;
-    position: absolute;
-    top: 110%;
-    left: 70%;
-}
-
 @keyframes spin {
     from {
         transform: rotate(0deg);

@@ -53,6 +53,7 @@ const sampleMessages = [
     text: "",
     own: false,
     date: "yesterday",
+    avatar: `/images/chat-image1.png`,
   },
   {
     avatar: `/images/chat-image2.png`,
