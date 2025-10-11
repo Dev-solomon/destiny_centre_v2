@@ -7,12 +7,21 @@
             justify-items: center;
         }
 
+        /* Main globe container - position relative to contain absolute badges */
+        .globe-container {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            padding: 100px 0;
+        }
+
         .circle {
             width: 300px;
             height: 300px;
             overflow: hidden;
             border-radius: 50%;
             position: relative;
+            margin: 0 auto;
             top: 100px;
             transform: rotateZ(5.5deg);
             z-index: 1;
@@ -22,10 +31,6 @@
                 0 0 60px 0px rgba(0, 102, 255, 0.2);
         }
 
-        /* .globe-container {
-    position: relative;
-    margin: 0 auto;
-} */
 
         .earth {
             position: absolute;
@@ -70,7 +75,7 @@
         .one {
             top: 70px;
             left: 30px;
-            position: fixed;
+            position: absolute;
             width: 150px;
             height: 100px;
         }
@@ -78,7 +83,7 @@
         .two {
             top: 250px;
             left: 110px;
-            position: fixed;
+            position: absolute;
             width: 150px;
             height: 100px;
         }
@@ -86,7 +91,7 @@
         .three {
             top: 10px;
             left: 220px;
-            position: fixed;
+            position: absolute;
             width: 150px;
             height: 100px;
         }
@@ -94,7 +99,7 @@
         .four {
             top: 150px;
             left: 300px;
-            position: fixed;
+            position: absolute;
             width: 150px;
             height: 100px;
         }
@@ -139,7 +144,7 @@
         /* Scripture positioning around the globe */
         .scripture-badge {
             font-family: 'Lato', sans-serif;
-            position: fixed;
+            position: absolute;
             background:  rgba(0, 0, 0, 0.7);
             color: white;
             padding: 8px 16px;
@@ -166,12 +171,12 @@
 
         /* Tooltip */
         .tooltip {
-            position: fixed;
+            position: absolute;
             background: rgba(255, 255, 255, 0.98);
             color: #333;
             padding: 16px 20px;
             border-radius: 12px;
-            font-family: Georgia, serif;
+            font-family: 'Lato', sans-serif;
             font-size: 14px;
             line-height: 1.6;
             max-width: 300px;
@@ -199,22 +204,19 @@
         }
 
         /* Position badges around the globe */
-        .badge-top-left {
+        /* .badge-top-left {
             top: 170px;
             left: 50px;
-            position: fixed;
         }
 
         .badge-top-right {
             top: 240px;
-            position: fixed;
             right: 20px;
         }
 
         .badge-middle-right {
             top: 460px;
             right: 70px;
-            position: fixed;
         }
 
         .badge-bottom-center {
@@ -231,7 +233,40 @@
         .badge-middle-left {
             top: 300px;
             left: 100px;
+        } */
+         
+        /* Position badges around the globe - adjusted for absolute positioning */
+        .badge-top-left {
+            top: 170px;
+            left: calc(50% - 110px);
         }
+
+        .badge-top-right {
+            top: 250px;
+            left: calc(50% + 60px);
+        }
+
+        .badge-middle-right {
+            top: 490px;
+            left: calc(50% + 10px);
+        }
+
+        .badge-bottom-center {
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .badge-bottom-left {
+            bottom: 100px;
+            left: calc(50% - 350px);
+        }
+
+        .badge-middle-left {
+            top: 200px;
+            left: calc(50% - 400px);
+        }
+
     
         @media (min-width: 768px) and (max-width: 991px) {
             .circle {

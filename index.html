@@ -71,34 +71,38 @@
                     </button>
                 </div>
 
-                <div class="col-lg-6 order-2 order-lg-2 globe-con">
+                <div class="col-lg-6 order-2 order-lg-2 ">
 
-                    <div class="circle">
-                        <div class="earth" style="background-image: url('/assets/icons/Map.svg');"></div>
-                        <div class="glow"></div>
-                        <div class="content">
-                            <div class="continents">
-                                <div class="continent one">
-                                    <a id="n-a" href="#north-america" data-continent="northAmerica">North America</a>
-                                </div>
-                                <div class="continent two">
-                                    <a id="s-a" href="#south-america" data-continent="southAmerica">South America</a>
-                                </div>
-                                <div class="continent three">
-                                    <a id="eur" href="#europe" data-continent="europe">Europe</a>
-                                </div>
-                                <div class="continent four">
-                                    <a id="afr" href="#africa" data-continent="africa">Africa</a>
+                    <div class="globe-container">
+                        <div class="circle">
+                            <div class="earth" style="background-image: url('/assets/icons/Map.svg');"></div>
+                            <div class="glow"></div>
+                            <div class="content">
+                                <div class="continents">
+                                    <div class="continent one">
+                                        <a id="n-a" href="#north-america" data-continent="northAmerica">North
+                                            America</a>
+                                    </div>
+                                    <div class="continent two">
+                                        <a id="s-a" href="#south-america" data-continent="southAmerica">South
+                                            America</a>
+                                    </div>
+                                    <div class="continent three">
+                                        <a id="eur" href="#europe" data-continent="europe">Europe</a>
+                                    </div>
+                                    <div class="continent four">
+                                        <a id="afr" href="#africa" data-continent="africa">Africa</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Scripture badges container -->
+                        <div id="scripture-badges"></div>
+
+                        <!-- Tooltip -->
+                        <div id="tooltip" class="tooltip"></div>
                     </div>
-
-                    <!-- Scripture badges (will be populated by JS) -->
-                    <div id="scripture-badges" class="scripture-badges"></div>
-
-                    <!-- Tooltip -->
-                    <div id="tooltip" class="tooltip"></div>
 
 
                 </div>
@@ -205,7 +209,7 @@
                 </div>
 
             </div>
-            
+
         </div>
     </section>
 
