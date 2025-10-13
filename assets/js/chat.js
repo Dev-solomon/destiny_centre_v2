@@ -109,6 +109,8 @@ const submitButton = document.getElementById("submitButton");
 
 let currentUser = null;
 let lastDateBadge = null;
+let currentUserAvatar = null; // Store current user's avatar
+let isVerifying = false;
 
 // Initialize
 function init() {
@@ -176,9 +178,12 @@ function addMessageToChat(sender, text, time, isOwn = false, avatar = null) {
   messageElement.className = `message ${isOwn ? "own" : ""}`;
 
   const displayName = isOwn ? "Me" : sender;
-  const avatarMarkup = avatar
-    ? `<img src="${avatar}" alt="${displayName}'s avatar" class="message-avatar" />`
-    : `<div class="message-avatar">${sender.charAt(0).toUpperCase()}</div>`;
+  // Only show avatar if it's not a system message
+  const avatarMarkup = sender === "System"
+    ? `<div class="message-avatar">${sender.charAt(0).toUpperCase()}</div>` // No avatar for system
+    : avatar
+      ? `<img src="${avatar}" alt="${displayName}'s avatar" class="message-avatar" />`
+      : `<div class="message-avatar">${sender.charAt(0).toUpperCase()}</div>`;
 
   messageElement.innerHTML = `
                     <div class="message-left">
@@ -206,6 +211,85 @@ function getCurrentTime() {
   const now = new Date();
   return now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
+
+
+// Notification system
+function showNotification(message, type = 'info') {
+  // Remove existing notification if any
+  const existingNotification = document.querySelector('.notification');
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <span class="notification-icon">
+        ${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}
+      </span>
+      <span class="notification-message">${message}</span>
+    </div>
+  `;
+
+  // Add to popup
+  const popupContent = document.querySelector('.popup-content');
+  if (popupContent) {
+    popupContent.insertBefore(notification, popupContent.firstChild);
+  }
+
+  // Auto-remove after 5 seconds for error messages
+  if (type === 'error') {
+    setTimeout(() => {
+      if (notification.parentElement) {
+        notification.remove();
+      }
+    }, 5000);
+  }
+}
+
+// Backend verification function (replace with your actual API endpoint)
+async function verifyEmailWithBackend(email) {
+  // Replace this URL with your actual backend endpoint
+  const API_ENDPOINT = '/api/verify-email'; // or 'https://yourapi.com/verify-email'
+  
+  try {
+    const response = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email })
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    
+    // Assuming your API returns { registered: true/false }
+    return data.registered === true;
+    
+  } catch (error) {
+    console.error('Backend verification error:', error);
+    throw error; // Re-throw to be caught by handleEmailSubmit
+  }
+  
+  // TEMPORARY: For testing without backend
+  // Remove this section once you have a real backend
+  /*
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      // Simulate backend check - allow emails ending with specific domains
+      const testEmails = ['test@church.com', 'admin@church.com', 'member@church.com'];
+      resolve(testEmails.includes(email) || email.endsWith('@church.com'));
+    }, 1500); // Simulate network delay
+  });
+  */
+}
+
 
 // Setup event listeners
 function setupEventListeners() {
@@ -263,12 +347,7 @@ function setupEventListeners() {
 
   // Email popup
   submitButton.addEventListener("click", handleEmailSubmit);
-  
-  popupOverlay.addEventListener("click", (e) => {
-    if (e.target === popupOverlay) {
-      hideEmailPopup();
-    }
-  });
+
 
   // Close menu when clicking outside
   document.addEventListener("click", (e) => {
@@ -294,7 +373,7 @@ function sendMessage() {
   if (!text || !currentUser) return;
 
   addDateBadgeIfNeeded("today");
-  addMessageToChat(currentUser, text, getCurrentTime(), true);
+  addMessageToChat(currentUser, text, getCurrentTime(), true, currentUserAvatar);
   messageInput.value = "";
   messageInput.style.height = "auto";
   sendButton.disabled = true;
@@ -311,7 +390,7 @@ function sendMessage() {
       "Thank you for the encouragement!",
     ];
     const randomReply = replies[Math.floor(Math.random() * replies.length)];
-    addMessageToChat(randomUser.name, randomReply, getCurrentTime(), false);
+    addMessageToChat(randomUser.name, randomReply, getCurrentTime(), false, randomUser.avatar);
   }, 1000 + Math.random() * 2000);
 }
 
@@ -325,32 +404,84 @@ function hideEmailPopup() {
   popupOverlay.classList.remove("active");
 }
 
-// Handle email submit
-function handleEmailSubmit() {
+// Update handleEmailSubmit to set avatar
+async function handleEmailSubmit() {
   const email = emailInput.value.trim();
-  if (!email) return;
+  
+  // Basic email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email) {
+    showNotification('Please enter your email address', 'error');
+    return;
+  }
+  
+  if (!emailPattern.test(email)) {
+    showNotification('Please enter a valid email address', 'error');
+    return;
+  }
 
-  // Extract name from email
-  currentUser =
-    email.split("@")[0].charAt(0).toUpperCase() + email.split("@")[0].slice(1);
+  // Prevent multiple submissions
+  if (isVerifying) return;
+  
+  // Show loading state
+  isVerifying = true;
+  submitButton.disabled = true;
+  submitButton.textContent = 'Verifying...';
 
-  // Enable message input
-  messageInput.disabled = false;
-  messageInput.placeholder = "Write a message...";
+  try {
+    // Call backend API to verify email
+    const isRegistered = await verifyEmailWithBackend(email);
+    
+    if (isRegistered) {
+      // Email is registered - proceed with login
+      currentUser = email.split("@")[0].charAt(0).toUpperCase() + email.split("@")[0].slice(1);
+      
+      // Assign avatar
+      const defaultAvatars = ["/images/chat-image3.png"];
+      currentUserAvatar = defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
 
-  hideEmailPopup();
+      // Enable message input
+      messageInput.disabled = false;
+      messageInput.placeholder = "Write a message...";
 
-  // Welcome message
-  setTimeout(() => {
-    addDateBadgeIfNeeded("today");
-    addMessageToChat(
-      "System",
-      `Welcome ${currentUser}! You've joined the community chatroom.`,
-      getCurrentTime(),
-      false
-    );
-  }, 500);
+      // Show success notification
+      showNotification('Email verified successfully! Welcome to the chatroom.', 'success');
+      
+      // Hide popup after short delay
+      setTimeout(() => {
+        hideEmailPopup();
+        
+        // Welcome message
+        setTimeout(() => {
+          addDateBadgeIfNeeded("today");
+          addMessageToChat(
+            "System",
+            `Welcome ${currentUser}! You've joined the community chatroom.`,
+            getCurrentTime(),
+            false,
+            null
+          );
+        }, 300);
+      }, 1500);
+      
+    } else {
+      // Email not registered
+      showNotification('Email not registered. Please contact an administrator to register.', 'error');
+      // Keep popup open
+    }
+    
+  } catch (error) {
+    // Network or server error
+    showNotification('Unable to verify email. Please check your connection and try again.', 'error');
+    console.error('Verification error:', error);
+  } finally {
+    // Reset button state
+    isVerifying = false;
+    submitButton.disabled = false;
+    //submitButton.textContent = 'Join Chatroom';
+  }
 }
+
 
 // Auto-resize textarea
 messageInput.addEventListener("input", adjustTextareaHeight);
@@ -382,14 +513,12 @@ function adjustForBottomNav() {
     inputContainer.style.zIndex = "200";
 
     // Add enough padding to messages container so last message is always visible
-    messagesContainer.style.paddingBottom = `${
-      bottomNavHeight + inputHeight + 16
-    }px`;
+    messagesContainer.style.paddingBottom = `${bottomNavHeight + inputHeight + 16
+      }px`;
     messagesContainer.style.boxSizing = "border-box";
     messagesContainer.style.overflowY = "auto";
-    messagesContainer.style.height = `calc(100vh - ${
-      inputHeight + bottomNavHeight + 60
-    }px)`; // 60px for header
+    messagesContainer.style.height = `calc(100vh - ${inputHeight + bottomNavHeight + 60
+      }px)`; // 60px for header
     // if (messagesContainer) {
     //   messagesContainer.style.paddingBottom = `${bottomNavHeight + inputContainer.offsetHeight}px`;
     // }

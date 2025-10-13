@@ -35,10 +35,22 @@ playPauseBtn.addEventListener('click', () => {
 
 // Download functionality
 downloadBtn.addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.href = sermonAudio.src;
-    link.download = 'The_Power_to_Change_Your_Mind.mp3';
-    link.click();
+  const audioSrc = sermonAudio.querySelector('source').src || sermonAudio.src;
+  
+  if (!audioSrc) {
+    alert("No audio available to download.");
+    return;
+  }
+
+  // Extract file name from URL (fallback to 'sermon.mp3' if none)
+  const fileName = audioSrc.split('/').pop().split('?')[0] || 'sermon.mp3';
+
+  const link = document.createElement('a');
+  link.href = audioSrc;
+  link.setAttribute('download', fileName);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 });
 
 // Progress bar functionality
@@ -47,12 +59,21 @@ sermonAudio.addEventListener('timeupdate', () => {
     progressBar.style.width = progress + '%';
     
     // Update time display
-    const currentMinutes = Math.floor(sermonAudio.currentTime / 60);
+    const currentHours  = Math.floor(sermonAudio.currentTime / 3600);
+    const currentMinutes = Math.floor((sermonAudio.currentTime % 3600) / 60);
     const currentSeconds = Math.floor(sermonAudio.currentTime % 60);
-    const durationMinutes = Math.floor(sermonAudio.duration / 60);
+
+    const durationHours = Math.floor(sermonAudio.duration / 3600);
+    const durationMinutes = Math.floor((sermonAudio.duration % 3600) / 60);
     const durationSeconds = Math.floor(sermonAudio.duration % 60);
     
-    timeDisplay.textContent = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')} / ${durationMinutes}:${durationSeconds.toString().padStart(2, '0')}`;
+     // Format: HH:MM:SS or MM:SS if less than 1 hour
+    const format = (h, m, s) => 
+        (h > 0 ? `${h}:` : '') +
+        `${m.toString().padStart(2, '0')}:` +
+        `${s.toString().padStart(2, '0')}`;
+
+    timeDisplay.textContent = `${format(currentHours, currentMinutes, currentSeconds)} / ${format(durationHours, durationMinutes, durationSeconds)}`;
 });
 
 // When audio ends, show overlay + reset play button

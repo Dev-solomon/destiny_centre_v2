@@ -165,7 +165,7 @@ function handleFiles(files) {
           }),
         });
 
-        // Optional: show a preview inside upload area
+        // Show a preview inside upload area
         const preview = document.createElement("img");
         preview.src = e.target.result;
         preview.classList.add("upload-preview");

@@ -74,7 +74,7 @@ if (path.includes("sermons.html") || path.includes("sermonDetails.html")) {
         }
       });
     });
-
+  
     // Highlight active section on scroll
     window.addEventListener("scroll", () => this.highlightOnScroll());
   }
@@ -149,7 +149,7 @@ if (path.includes("sermons.html") || path.includes("sermonDetails.html")) {
   highlightOnScroll() {
     const scrollPos = window.scrollY + 100;
     this.navLinks.forEach((link) => {
-      const section = document.querySelector(link.getAttribute("href"));
+      const section = document.querySelector(link.getAttribute(".nav-link"));
       if (
         section &&
         section.offsetTop <= scrollPos &&

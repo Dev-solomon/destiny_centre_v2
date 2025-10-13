@@ -17,6 +17,7 @@ document.getElementById("searchInput").addEventListener("input", function (e) {
   });
 });
 
+
 // Paginations
 class CustomPagination {
     constructor() {
@@ -118,18 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Reels Section
 
-// Device detection and display
-function updateDeviceInfo() {
-  const width = window.innerWidth;
-
-  if (width <= 575) {
-    console.log(`Mobile: ${width}px (Horizontal Scroll)`);
-  } else if (width <= 991) {
-    console.log(`Tablet: ${width}px (Grid Layout)`);
-  } else {
-    console.log(`Desktop: ${width}px (Horizontal Scroll)`);
-  }
-}
 
 // Intersection Observer for scroll-in animation
 const observerOptions = {
@@ -147,7 +136,6 @@ const observer = new IntersectionObserver((entries) => {
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
-  updateDeviceInfo();
 
   // Observe all image containers
   const imageContainers = document.querySelectorAll(".image-container");
@@ -165,8 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Update device info on resize
-window.addEventListener("resize", updateDeviceInfo);
 
 // Optional: Add touch/swipe navigation for better mobile experience
 let isDown = false;
