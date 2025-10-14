@@ -106,20 +106,20 @@
     </div>
 
     <!-- Email Popup -->
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup">
-            <h3>Enter Email to Join the Conversation</h3>
-            <p>
-                Be part of our community chatroom. Share, connect, and grow in faith—simply provide your email to get
-                started.
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup">
+        <div class="popup-content" id="popupContent">
+            <!-- Notifications will appear here -->
+            
+            <h3 id="popupTitle">Enter Email to Join the Conversation</h3>
+            <p id="popupDescription">
+                Be part of our community chatroom. Share, connect, and grow in faith—simply provide your email to get started.
             </p>
-            <form method="post">
-
-
+            
+            <form id="emailForm" method="post">
                 <div class="input-wrapper">
-                    <input type="email" name="email" id="emailInput" placeholder="johndoe@example.com" />
+                    <input type="email" name="email" id="emailInput" placeholder="johndoe@example.com" required />
                     <label for="email" class="floating-label">Email</label>
-
                     <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                         viewBox="0 0 18 18" fill="none">
                         <path
@@ -132,16 +132,13 @@
                     </svg>
                 </div>
 
+                <div class="popup-buttons">
+                    <button type="submit" class="popup-button primary" id="submitButton">Submit</button>
+                </div>
             </form>
-
-            <!--            
-            <input type="email" id="emailInput" placeholder="Email" required> -->
-            <div class="popup-buttons">
-                <!-- <button class="popup-button secondary" id="cancelButton">Cancel</button> -->
-                <button class="popup-button primary" id="submitButton">Submit</button>
-            </div>
         </div>
     </div>
+</div>
 
 
     <script src="/assets/js/navbar.js"></script>

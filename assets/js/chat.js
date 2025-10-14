@@ -106,6 +106,11 @@ const popupOverlay = document.getElementById("popupOverlay");
 const emailInput = document.getElementById("emailInput");
 const submitButton = document.getElementById("submitButton");
 
+const popupContent = document.getElementById('popupContent');
+const emailForm = document.getElementById('emailForm');
+const popupTitle = document.getElementById('popupTitle');
+const popupDescription = document.getElementById('popupDescription');
+
 
 let currentUser = null;
 let lastDateBadge = null;
@@ -213,73 +218,76 @@ function getCurrentTime() {
 }
 
 
-// Notification system
+// Show notification function
 function showNotification(message, type = 'info') {
-  // Remove existing notification if any
-  const existingNotification = document.querySelector('.notification');
-  if (existingNotification) {
-    existingNotification.remove();
-  }
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
 
-  // Create notification element
-  const notification = document.createElement('div');
-  notification.className = `notification notification-${type}`;
-  notification.innerHTML = `
-    <div class="notification-content">
-      <span class="notification-icon">
-        ${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}
-      </span>
-      <span class="notification-message">${message}</span>
-    </div>
-  `;
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <span class="notification-icon">
+            ${type === 'success' ? '✓' : '✕'}
+        </span>
+        <span class="notification-message">${message}</span>
+    `;
 
-  // Add to popup
-  const popupContent = document.querySelector('.popup-content');
-  if (popupContent) {
     popupContent.insertBefore(notification, popupContent.firstChild);
-  }
 
-  // Auto-remove after 5 seconds for error messages
-  if (type === 'error') {
+    if (type === 'error') {
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }
+        }, 5000);
+    }
+}
+
+// Update popup content with transition
+function updatePopupContent(title, description) {
+    popupContent.classList.add('fade-out');
+
     setTimeout(() => {
-      if (notification.parentElement) {
-        notification.remove();
-      }
-    }, 5000);
-  }
+        popupTitle.textContent = title;
+        popupDescription.textContent = description;
+        popupContent.classList.remove('fade-out');
+    }, 300);
 }
 
 // Backend verification function (replace with your actual API endpoint)
 async function verifyEmailWithBackend(email) {
   // Replace this URL with your actual backend endpoint
-  const API_ENDPOINT = '/api/verify-email'; // or 'https://yourapi.com/verify-email'
+  // const API_ENDPOINT = '/api/verify-email'; // or 'https://yourapi.com/verify-email'
   
-  try {
-    const response = await fetch(API_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: email })
-    });
+  // try {
+  //   const response = await fetch(API_ENDPOINT, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ email: email })
+  //   });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
+  //   if (!response.ok) {
+  //     throw new Error('Network response was not ok');
+  //   }
 
-    const data = await response.json();
+  //   const data = await response.json();
     
     // Assuming your API returns { registered: true/false }
-    return data.registered === true;
+    //return data.registered === true;
     
-  } catch (error) {
-    console.error('Backend verification error:', error);
-    throw error; // Re-throw to be caught by handleEmailSubmit
-  }
+  //} catch (error) {
+    //console.error('Backend verification error:', error);
+    //throw error; // Re-throw to be caught by handleEmailSubmit
+  //}
   
   // TEMPORARY: For testing without backend
   // Remove this section once you have a real backend
-  /*
+ 
   return new Promise((resolve) => {
     setTimeout(() => {
       // Simulate backend check - allow emails ending with specific domains
@@ -287,9 +295,8 @@ async function verifyEmailWithBackend(email) {
       resolve(testEmails.includes(email) || email.endsWith('@church.com'));
     }, 1500); // Simulate network delay
   });
-  */
+  
 }
-
 
 // Setup event listeners
 function setupEventListeners() {
@@ -361,12 +368,6 @@ function setupEventListeners() {
   });
 }
 
-// Adjust textarea height
-function adjustTextareaHeight() {
-  messageInput.style.height = "auto";
-  messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + "px";
-}
-
 // Send message
 function sendMessage() {
   const text = messageInput.value.trim();
@@ -405,7 +406,9 @@ function hideEmailPopup() {
 }
 
 // Update handleEmailSubmit to set avatar
-async function handleEmailSubmit() {
+async function handleEmailSubmit(e) {
+  e.preventDefault();
+
   const email = emailInput.value.trim();
   
   // Basic email validation
@@ -426,7 +429,7 @@ async function handleEmailSubmit() {
   // Show loading state
   isVerifying = true;
   submitButton.disabled = true;
-  submitButton.textContent = 'Verifying...';
+  submitButton.innerHTML = '<span class="spinner"></span> Verifying...';
 
   try {
     // Call backend API to verify email
@@ -466,7 +469,8 @@ async function handleEmailSubmit() {
       
     } else {
       // Email not registered
-      showNotification('Email not registered. Please contact an administrator to register.', 'error');
+      showNotification('Email not registered. Please check your email to register.', 'error');
+      submitButton.innerHTML = 'Submit';
       // Keep popup open
     }
     
@@ -482,7 +486,6 @@ async function handleEmailSubmit() {
   }
 }
 
-
 // Auto-resize textarea
 messageInput.addEventListener("input", adjustTextareaHeight);
 
@@ -496,6 +499,12 @@ setInterval(() => {
     "onlineCount"
   ).textContent = `${count} members online`;
 }, 30000);
+
+// Adjust textarea height
+function adjustTextareaHeight() {
+  messageInput.style.height = "auto";
+  messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + "px";
+}
 
 function adjustForBottomNav() {
   const bottomNav = document.querySelector(".bottom-nav");
