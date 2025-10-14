@@ -52,12 +52,12 @@ class NavbarComponent {
       }
     });
     // highlight "Sermons" link for both sermons.html & sermondetails.html
-const path = window.location.pathname;
-const sermonsLink = document.getElementById("nav-sermons");
+    const path = window.location.pathname;
+    const sermonsLink = document.getElementById("nav-sermons");
 
-if (path.includes("sermons.html") || path.includes("sermonDetails.html")) {
-    sermonsLink.classList.add("active");
-}
+    if (path.includes("sermons.html") || path.includes("sermonDetails.html")) {
+        sermonsLink.classList.add("active");
+    }
 
 
     // Smooth scroll + active state for internal links
@@ -65,7 +65,7 @@ if (path.includes("sermons.html") || path.includes("sermonDetails.html")) {
       anchor.addEventListener("click", (e) => {
         if (anchor.getAttribute("href").startsWith("#")) {
           e.preventDefault();
-          const target = document.querySelector(anchor.getAttribute("href"));
+          const target = document.querySelector(anchor.getAttribute(".nav-link"));
           if (target) {
             const offsetTop = target.offsetTop - 80;
             window.scrollTo({ top: offsetTop, behavior: "smooth" });
