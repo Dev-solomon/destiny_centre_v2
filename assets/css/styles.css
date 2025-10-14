@@ -539,11 +539,24 @@ input:-webkit-autofill:focus {
     min-height: 300px;
     margin-bottom: 56px;
     color: #6c757d;
+    transition: opacity 0.2s ease;
 }
 
 .sermons-pagination {
     background: var(--primary-bg);
 }
+.no-content {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+        font-size: 18px;
+    }
+    
+    .disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
 
 /* Pagination css ends here */
 /* =========================
@@ -821,7 +834,7 @@ a.nav-toggle.active {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    text-transform: start;
+    text-align: start;
 }
 
 .scripture-ref:hover .scripture-tooltip,

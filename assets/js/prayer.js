@@ -48,7 +48,6 @@ const timeDropdown = document.getElementById("timeDropdown");
 // Handle date selection using event delegation on the parent dropdown
 if (dateDropdown && dateInput) {
   dateDropdown.addEventListener("click", function (e) {
-    console.log("Clicked inside date dropdown", e.target);
 
     // Find the clicked day element (check multiple possible selectors)
     let dayElement = e.target;
@@ -74,7 +73,6 @@ if (dateDropdown && dateInput) {
       });
 
       dateInput.value = formattedDate; // e.g., "October 8, 2025"
-      console.log("Formatted date:", formattedDate);
 
       // Clear error
       const errorEl = document.querySelector('[data-error-for="date"]');
@@ -83,7 +81,7 @@ if (dateDropdown && dateInput) {
       // Close dropdown
       // dateDropdown.style.display = "none";
     } else {
-      console.log("❌ No date found on clicked element");
+      // console.log("❌ No date found on clicked element");
     }
   });
 }
@@ -91,7 +89,6 @@ if (dateDropdown && dateInput) {
 // Handle time selection using event delegation on the parent dropdown
 if (timeDropdown && timeInput) {
   timeDropdown.addEventListener("click", function (e) {
-    console.log("Clicked inside time dropdown", e.target);
 
     // Find the clicked time element (check multiple possible selectors)
     let timeElement = e.target;
@@ -105,7 +102,6 @@ if (timeDropdown && timeInput) {
     }
 
     if (timeElement && timeElement.dataset && timeElement.dataset.time) {
-      console.log("✅ Time selected:", timeElement.dataset.time);
       timeInput.value = timeElement.dataset.time;
 
       // Clear error
@@ -115,7 +111,7 @@ if (timeDropdown && timeInput) {
       // Close dropdown
       timeDropdown.style.display = "none";
     } else {
-      console.log("❌ No time found on clicked element");
+      //console.log("❌ No time found on clicked element");
     }
   });
 }
@@ -125,7 +121,6 @@ document.querySelectorAll("form").forEach((form) => {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    console.log("=== FORM SUBMISSION STARTED ===");
 
     let isValid = true;
     const namePattern = /^[A-Za-z\s]+$/;
@@ -143,18 +138,14 @@ document.querySelectorAll("form").forEach((form) => {
 
       if (!errorEl) return; // Skip if no error span exists
 
-      console.log(`Checking ${input.name}: "${value}"`);
 
       if (!value) {
         if (input.name === "date") {
           errorEl.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select a date.`;
-          console.log("❌ Date is empty");
         } else if (input.name === "time") {
           errorEl.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> Please select a preferred time.`;
-          console.log("❌ Time is empty");
         } else {
           errorEl.innerHTML = `<i class="bi bi-exclamation-circle-fill"></i> ${input.name} is required.`;
-          console.log(`❌ ${input.name} is empty`);
         }
         isValid = false;
       } else if (input.name === "firstname" && !namePattern.test(value)) {
@@ -167,15 +158,16 @@ document.querySelectorAll("form").forEach((form) => {
         errorEl.innerHTML = `<i class="bi bi-x-circle-fill"></i> Invalid email address.`;
         isValid = false;
       } else {
-        console.log(`✅ ${input.name} is valid`);
+        //console.log(`✅ ${input.name} is valid`);
       }
     });
 
-    console.log(
-      "=== VALIDATION RESULT:",
-      isValid ? "PASSED ✅" : "FAILED ❌",
-      "==="
-    );
+    //Console check
+    // console.log(
+    //   "=== VALIDATION RESULT:",
+    //   isValid ? "PASSED ✅" : "FAILED ❌",
+    //   "==="
+    // );
 
     if (isValid) {
       showSuccessMessage(form.id);
@@ -229,8 +221,8 @@ function showSuccessMessage(formId) {
 }
 
 // Debug: Log when script loads
-console.log("📝 Form validation script loaded");
-console.log("Date input:", dateInput);
-console.log("Time input:", timeInput);
-console.log("Date dropdown:", dateDropdown);
-console.log("Time dropdown:", timeDropdown);
+// console.log("📝 Form validation script loaded");
+// console.log("Date input:", dateInput);
+// console.log("Time input:", timeInput);
+// console.log("Date dropdown:", dateDropdown);
+// console.log("Time dropdown:", timeDropdown);

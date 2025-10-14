@@ -408,7 +408,6 @@
     </a>
 
     <!-- Repeat for other nav-item-mobile links, ensuring each <svg> is closed properly -->
-    <!-- ...existing code... -->
     <button
       class="nav-toggle"
       id="navToggle"
