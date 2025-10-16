@@ -7,7 +7,6 @@ const progressContainer = document.getElementById('progressContainer');
 const progressBar = document.getElementById('progressBar');
 const timeDisplay = document.getElementById('timeDisplay');
 const speedSelector = document.getElementById('speedSelector');
-const fullscreenBtn = document.getElementById('fullscreenBtn');
 const audioControls = document.getElementById('audioControls');
 const sermonAudio = document.getElementById("sermonAudio");
 
@@ -165,9 +164,6 @@ document.addEventListener('keydown', (e) => {
                 break;
             case 'ArrowRight':
                 sermonAudio.currentTime += 10;
-                break;
-            case 'KeyF':
-                fullscreenBtn.click();
                 break;
         }
     }
