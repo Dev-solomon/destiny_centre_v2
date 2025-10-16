@@ -138,17 +138,6 @@ speedSelector.addEventListener('change', () => {
     sermonAudio.playbackRate = parseFloat(speedSelector.value);
 });
 
-// Fullscreen functionality (for the player container, not audio)
-fullscreenBtn.addEventListener('click', () => {
-    if (document.fullscreenElement) {
-        document.exitFullscreen();
-        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-    } else {
-        audioPlayer.requestFullscreen();
-        fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
-    }
-});
-
 // Auto-hide controls
 function showControls() {
     audioControls.style.opacity = '1';

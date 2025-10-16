@@ -350,7 +350,7 @@
       <span>About</span>
     </a>
 
-    <a href="/sermons.html" class="nav-item-mobile nav-primary">
+    <a href="/sermons.html" class="nav-item-mobile nav-primary" id="nav-sermons">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"

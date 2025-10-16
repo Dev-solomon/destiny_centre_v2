@@ -520,17 +520,17 @@ input:-webkit-autofill:focus {
 /* Animation for number appearance */
 
 .page-number.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 .page-number {
-  opacity: 1;
-  visibility: visible;
-  animation: fadeIn 0.3s ease-in-out;
-  transition: opacity 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 0.3s ease-in-out;
+    transition: opacity 0.3s ease;
 }
 
 
@@ -558,18 +558,19 @@ input:-webkit-autofill:focus {
 .sermons-pagination {
     background: var(--primary-bg);
 }
+
 .no-content {
-        text-align: center;
-        padding: 40px;
-        color: #666;
-        font-size: 18px;
-    }
-    
-    .disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        pointer-events: none;
-    }
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 18px;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 
 /* Pagination css ends here */
 /* =========================
@@ -840,7 +841,7 @@ a.nav-toggle.active {
     font-size: 14px;
     line-height: 1.6;
     max-width: 600px;
-    width: 500px;
+    width: 200px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(95, 95, 95, 1);
     z-index: 100;
@@ -853,7 +854,7 @@ a.nav-toggle.active {
 .scripture-ref:hover .scripture-tooltip,
 .scripture-ref:focus .scripture-tooltip {
     opacity: 1;
-    width: 500px;
+    width: 200px;
 }
 
 
@@ -1173,6 +1174,7 @@ a.nav-toggle.active {
     justify-content: space-between;
     padding: 16px 0px;
 }
+
 .sermon-content .button {
     margin-right: auto;
 }
@@ -3286,7 +3288,7 @@ button#downloadBtn:hover {
     width: 200%;
     height: 100%;
     object-fit: contain;
-    
+
 }
 
 .lightbox-close {
@@ -3534,6 +3536,7 @@ button#downloadBtn:hover {
         display: none;
     }
 
+
     .nav-container {
         padding-left: 160px;
         padding-right: 160px;
@@ -3601,6 +3604,18 @@ button#downloadBtn:hover {
         margin-top: 64px;
     }
 
+    .scripture-tooltip {
+        max-width: 500px;
+        width: 500px;
+    }
+
+    .scripture-ref:hover .scripture-tooltip,
+    .scripture-ref:focus .scripture-tooltip {
+        opacity: 1;
+        width: 500px;
+    }
+
+
     .dedication-section {
         padding: 60px 0;
     }
@@ -3610,7 +3625,7 @@ button#downloadBtn:hover {
         margin-top: 32px;
     }
 
-    
+
     /* Testimonial section */
 
     .testimonies-title-box img {
@@ -3803,7 +3818,7 @@ button#downloadBtn:hover {
         margin-bottom: 0;
     }
 
-       /* Sermons page */
+    /* Sermons page */
 
     /* Community page css */
     .get-involved-badge {
@@ -4181,6 +4196,18 @@ button#downloadBtn:hover {
         font-size: 72px;
     }
 
+    .scripture-tooltip {
+        max-width: 500px;
+        width: 500px;
+    }
+
+    .scripture-ref:hover .scripture-tooltip,
+    .scripture-ref:focus .scripture-tooltip {
+        opacity: 1;
+        width: 500px;
+    }
+
+
     .services-grid {
         display: inline-block;
         grid-gap: 1.5rem;
@@ -4269,9 +4296,11 @@ button#downloadBtn:hover {
     .sermon-image {
         border-radius: 12px;
     }
+
     .sermon-content .button {
         margin-top: 15px;
     }
+
     .audio-hours {
         right: 20px;
     }
@@ -4928,6 +4957,17 @@ button#downloadBtn:hover {
         font-size: 3.5rem;
     }
 
+    .scripture-tooltip {
+        max-width: 500px;
+        width: 500px;
+    }
+
+    .scripture-ref:hover .scripture-tooltip,
+    .scripture-ref:focus .scripture-tooltip {
+        opacity: 1;
+        width: 500px;
+    }
+
     /* Testimonial section */
     .testimonial-card {
         border-radius: 34px;
@@ -5259,6 +5299,7 @@ button#downloadBtn:hover {
         margin-bottom: 2rem;
         opacity: 0.9;
     }
+
     .sermon-content .button {
         margin-top: 30px;
     }
@@ -5671,6 +5712,18 @@ button#downloadBtn:hover {
         font-size: 4rem;
     }
 
+    .scripture-tooltip {
+        max-width: 500px;
+        width: 500px;
+    }
+
+    .scripture-ref:hover .scripture-tooltip,
+    .scripture-ref:focus .scripture-tooltip {
+        opacity: 1;
+        width: 500px;
+    }
+
+
     /* Home page starts here */
 
     /* Testimonial section */
@@ -5759,6 +5812,7 @@ button#downloadBtn:hover {
         gap: 24px;
         width: 100%;
     }
+
     .sermon-content .button {
         margin-top: 30px;
     }
