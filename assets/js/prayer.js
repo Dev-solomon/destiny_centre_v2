@@ -1,3 +1,4 @@
+// Prayer Cards Animation 
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".prayer-request-card");
   const forms = document.querySelectorAll(".prayer-request-form");
