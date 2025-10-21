@@ -1121,7 +1121,6 @@ a.nav-toggle.active {
     flex-direction: column;
     justify-content: space-between;
     background: none;
-    border-radius: 25px;
     overflow: hidden;
     color: white;
     text-align: start;
@@ -1138,7 +1137,6 @@ a.nav-toggle.active {
 /* Make sermon-image and its img responsive */
 .sermon-image {
     width: 100%;
-    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 8px;
     flex-shrink: 0;
@@ -1152,13 +1150,13 @@ a.nav-toggle.active {
 
 .audio-hours {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 8px;
+    right: 10px;
     border-bottom: 0.1px solid white;
     text-align: center;
-    padding: 4px 10px;
+    padding: 2px 8px;
     color: var(--white);
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
     background: rgba(242, 242, 242, 0.2);
     font-family: "Lato", sans-serif;
@@ -3789,6 +3787,27 @@ button#downloadBtn:hover {
         opacity: 0.9;
     }
 
+    .sermon-image {
+        border-radius: 12px;
+    }
+
+    .audio-hours {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        border-bottom: 0.1px solid white;
+        text-align: center;
+        padding: 4px 10px;
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 600;
+        background: rgba(242, 242, 242, 0.2);
+        font-family: "Lato", sans-serif;
+        border-radius: 100px;
+        z-index: 2;
+        box-shadow: inset 0px 0.9px white;
+    }
+
     .sermon-content .button {
         margin-top: 20px;
     }
@@ -4560,6 +4579,27 @@ button#downloadBtn:hover {
         opacity: 0.9;
     }
 
+    .sermon-image {
+        border-radius: 12px;
+    }
+
+    .audio-hours {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        border-bottom: 0.1px solid white;
+        text-align: center;
+        padding: 4px 10px;
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 600;
+        background: rgba(242, 242, 242, 0.2);
+        font-family: "Lato", sans-serif;
+        border-radius: 100px;
+        z-index: 2;
+        box-shadow: inset 0px 0.9px white;
+    }
+
     .time-display {
         font-size: 0.9rem;
         min-width: 100px;
@@ -5298,6 +5338,27 @@ button#downloadBtn:hover {
         color: var(--white);
         margin-bottom: 2rem;
         opacity: 0.9;
+    }
+
+    .sermon-image {
+        border-radius: 12px;
+    }
+
+    .audio-hours {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        border-bottom: 0.1px solid white;
+        text-align: center;
+        padding: 4px 10px;
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 600;
+        background: rgba(242, 242, 242, 0.2);
+        font-family: "Lato", sans-serif;
+        border-radius: 100px;
+        z-index: 2;
+        box-shadow: inset 0px 0.9px white;
     }
 
     .sermon-content .button {
@@ -6060,6 +6121,28 @@ button#downloadBtn:hover {
         color: var(--white);
         margin-bottom: 2rem;
         opacity: 0.9;
+    }
+
+
+    .sermon-image {
+        border-radius: 12px;
+    }
+
+    .audio-hours {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        border-bottom: 0.1px solid white;
+        text-align: center;
+        padding: 4px 10px;
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 600;
+        background: rgba(242, 242, 242, 0.2);
+        font-family: "Lato", sans-serif;
+        border-radius: 100px;
+        z-index: 2;
+        box-shadow: inset 0px 0.9px white;
     }
 
     .time-display {
