@@ -2077,12 +2077,10 @@ a.nav-toggle.active {
 .get-involved-in-doing-good-section {
     background: var(--primary-bg);
 }
-
 /* Give page css */
 
-/* Sermons page css */
 
-/* Hero Section */
+/* Sermons page css */
 .sermons-page-hero-section {
     position: relative;
     min-height: 70vh;
@@ -2096,9 +2094,8 @@ a.nav-toggle.active {
     position: absolute;
     height: 100%;
     width: 100%;
-    justify-content: center;
+    object-fit: cover;
     background-position: center;
-    background-size: cover;
 }
 
 .sermons-page-hero-title {
@@ -2468,10 +2465,16 @@ button {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('/static/images/sermons-image1.png') center/cover no-repeat;
     border-radius: 8px;
 }
 
+.sermon-audio-image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-position: center;
+}
 .audio-overlay {
     position: absolute;
     top: 0;

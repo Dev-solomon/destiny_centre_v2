@@ -21,6 +21,7 @@
     <section class="section-container">
         <div class="audio-section">
             <div class="audio-container">
+                <img src="../static/images/sermons-image1.png" alt="Sermon Image" class="sermon-audio-image">
                 <div class="audio-overlay" id="audioOverlay">
                     <button class="play-button" id="playButton">
                         <i class="fas fa-headphones"></i>
@@ -89,7 +90,8 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </button>
-                            <button class="btn-custom btn-outline-custom" href="/giving.html">
+                            <a class="btn-custom btn-outline-custom" href="{{ url_for('giving') }}">
+
                                 Give <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                     fill="none">
                                     <path
@@ -105,7 +107,7 @@
                                     <path d="M18 9.60001V14.4" stroke="white" stroke-width="1.49969"
                                         stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                            </button>
+                            </a>
                             <button class="btn-custom btn-outline-custom" id="shareBtn">
                                 Share 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
@@ -147,7 +149,7 @@
                                 Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
                                 metus nec fringilla accumsan, risus sem sollicitudin lacus,
                             </p>
-                            <a href="/chatroom.html" class="btn-chatroom button ">
+                            <a href="{{ url_for('chatroom') }}" class="btn-chatroom button ">
                                 Join Chatroom
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
