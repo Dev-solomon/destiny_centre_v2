@@ -5,22 +5,25 @@ class NavbarComponent {
   }
 
   async init() {
-    await this.loadNavbar();
+    //await this.loadNavbar();
     this.cacheElements();
     this.setupEventListeners();
     this.setActiveLink();
   }
 
   //  Load navbar partial
-  async loadNavbar() {
-    try {
-      const response = await fetch("/templates/navbars.html");
-      const html = await response.text();
-      document.getElementById("navbar").innerHTML = html;
-    } catch (error) {
-      console.error("Error loading navbar:", error);
-    }
-  }
+//   async loadNavbar() {
+//     try {
+//       const response = await fetch("./navbars.html");
+//       const html = await response.text();
+//       console.log("Navbar target:", document.getElementById("navbar"));
+// console.log("Fetched HTML:", html);
+
+//       document.getElementById("navbar").innerHTML = html;
+//     } catch (error) {
+//       console.error("Error loading navbar:", error);
+//     }
+//   }
 
   // Cache elements after navbar loads
   cacheElements() {
@@ -196,5 +199,6 @@ class NavbarComponent {
 
 // Initialize navbar
 document.addEventListener("DOMContentLoaded", () => {
-  new NavbarComponent();
+  const navbar = new NavbarComponent();
+  navbar.init();
 });
