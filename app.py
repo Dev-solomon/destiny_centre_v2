@@ -42,7 +42,7 @@ def chatroom():
 
 @app.route('/sermon-details/<int:sermon_id>')
 def sermon_details(sermon_id):
-    return render_template('sermon_details.html', sermon_id=sermon_id)
+    return render_template('sermonDetails.html', sermon_id=sermon_id)
 
 
 if __name__ == '__main__':

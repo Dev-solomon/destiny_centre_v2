@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fellowship Church - Event</title>
-    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link href="../static/assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -13,7 +13,10 @@
 <body style="background: #1b1c1e;">
 
     <!-- Navbar will be injected here -->
-    <div id="navbar"></div>
+    <!-- <div id="navbar"></div> -->
+
+    <!-- ✅ Include navbar dynamically -->
+    {% include 'navbars.html' %}
 
     <section class="calender-section">
         <div class="section-container">
@@ -96,7 +99,7 @@
 
                             <div class="event-list-card">
                                 <div class="event-list-item-image">
-                                    <img src="/images/event-list-image1/Frame 1597883193.png" loading="lazy"
+                                    <img src="../static/images/event-list-image1/Frame 1597883193.png" loading="lazy"
                                         alt="Bible Study image">
                                 </div>
 
@@ -115,7 +118,7 @@
 
                             <div class="event-list-card">
                                 <div class="event-list-item-image">
-                                    <img src="images/event-list-image2/Frame 1597883193.png" loading="lazy"
+                                    <img src="../static/images/event-list-image2/Frame 1597883193.png" loading="lazy"
                                         alt="Bible Study image">
                                 </div>
 
@@ -134,7 +137,7 @@
 
                             <div class="event-list-card">
                                 <div class="event-list-item-image">
-                                    <img src="/images/event-list-image3/Frame 1597883195.png" loading="lazy"
+                                    <img src="../static/images/event-list-image3/Frame 1597883195.png" loading="lazy"
                                         alt="Bible Study image">
                                 </div>
 
@@ -172,7 +175,7 @@
                     
                     <div class="past-event-card">
                         <div class="position-relative">
-                            <img src="/images/past-events-image1/Frame 1597883308.png" alt="Past Event"
+                            <img src="../static/images/past-events-image1/Frame 1597883308.png" alt="Past Event"
                                 class="past-event-image">
                             <div class="past-event-date">12 June, 2025</div>
                         </div>
@@ -199,7 +202,7 @@
                 <div class="col-md-6 mb-4 col-lg-6">
                     <div class="past-event-card">
                         <div class="position-relative">
-                            <img src="/images/past-event-image2/Frame 1597883309.png" alt="Past Event"
+                            <img src="../static/images/past-event-image2/Frame 1597883309.png" alt="Past Event"
                                 class="past-event-image">
                             <div class="past-event-date">12 June, 2025</div>
                         </div>
@@ -226,7 +229,7 @@
                 <div class="col-md-6 mb-4 col-lg-6">
                     <div class="past-event-card">
                         <div class="position-relative">
-                            <img src="/images/past-event-image3/Frame 1597883308.png" alt="Past Event"
+                            <img src="../static/images/past-event-image3/Frame 1597883308.png" alt="Past Event"
                                 class="past-event-image">
                             <div class="past-event-date">12 June, 2025</div>
                         </div>
@@ -253,7 +256,7 @@
                 <div class="col-md-6 mb-4 col-lg-6">
                     <div class="past-event-card">
                         <div class="position-relative">
-                            <img src="/images/past-event-image4.jpg" alt="Past Event" class="past-event-image">
+                            <img src="../static/images/past-event-image4.jpg" alt="Past Event" class="past-event-image">
                             <div class="past-event-date">12 June, 2025</div>
                         </div>
                         <div class="past-event-content">
@@ -281,8 +284,8 @@
         </div>
     </section>
 
-    <script src="/assets/js/calendar.js"></script>
-    <script src="/assets/js/navbar.js"></script>
+    <script src="../static/assets/js/calendar.js"></script>
+    <script src="../static/assets/js/navbar.js"></script>
 </body>
 
 </html>

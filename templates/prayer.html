@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prayer & Testimony page</title>
-    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link href="../static/assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -13,8 +13,12 @@
 </head>
 
 <body style="background: #1b1c1e;">
-    <!-- Navbar will be added here -->
-    <div id="navbar"></div>
+
+    <!-- <div id="navbar"></div> -->
+
+    <!-- ✅ Include navbar dynamically -->
+    {% include 'navbars.html' %}
+
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
@@ -27,7 +31,7 @@
 
         <div class="container">
             <div class="fellowship-badge-bg badge-font">
-                <img src="/assets/icons/glory-notes-gems.svg" class="glory-notes-gems" alt="Glory notes gems">
+                <img src="../static/assets/icons/glory-notes-gems.svg" class="glory-notes-gems" alt="Glory notes gems">
                 <span>GLORY NOTES</span>
             </div>
             <h1 class="hero-title">LIFT IT UP IN PRAYER</h1>
@@ -129,10 +133,10 @@
                 <!-- Controls -->
                 <div class="carousel-controls  mt-3">
                     <button class="btn btn-light me-2" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                        <img src="/assets/icons/next-icon.svg" alt="previous">
+                        <img src="../static/assets/icons/next-icon.svg" alt="previous">
                     </button>
                     <button class="btn btn-light" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                        <img src="/assets/icons/previous-icon.svg" alt="next">
+                        <img src="../static/assets/icons/previous-icon.svg" alt="next">
                     </button>
                 </div>
             </div>
@@ -160,7 +164,7 @@
                 <div class="prayer-request-card active" href="#prayer-request-form" onclick="prayer-request-form">
 
                     <span class="prayer-request-icon">
-                        <img src="/assets/icons/navicons_prayers.svg" alt="sermon-icon" loading="lazy">
+                        <img src="../static/assets/icons/navicons_prayers.svg" alt="sermon-icon" loading="lazy">
                     </span>
                     <h2>Prayer Requests</h2>
                     <p>Whether you need prayer or want to celebrate God’s goodness,
@@ -173,7 +177,7 @@
 
                 <div class="prayer-request-card" href="#schedule-meeting-form">
                     <span class="prayer-request-icon">
-                        <img src="/assets/icons/navicons-calendar.svg" alt="sermon-icon" loading="lazy">
+                        <img src="../static/assets/icons/navicons-calendar.svg" alt="sermon-icon" loading="lazy">
                     </span>
                     <h2>Schedule a Meeting</h2>
                     <p>We’re collecting non-perishables for
@@ -183,7 +187,7 @@
 
                 <div class="prayer-request-card" href="#testimony-form">
                     <span class="prayer-request-icon">
-                        <img src="/assets/icons/testimony-icon.svg" alt="sermon-icon" loading="lazy">
+                        <img src="../static/assets/icons/testimony-icon.svg" alt="sermon-icon" loading="lazy">
                     </span>
                     <h2>Testimony</h2>
                     <p>Whether you need prayer or want to celebrate God’s goodness,
@@ -450,9 +454,9 @@
     </div>
 
 
-    <script src="/assets/js/navbar.js"></script>
-    <script src="/assets/js/dateAndTimeDropdown.js"></script>
-    <script src="/assets/js/prayer.js"> </script>
+    <script src="../static/assets/js/navbar.js"></script>
+    <script src="../static/assets/js/dateAndTimeDropdown.js"></script>
+    <script src="../static/assets/js/prayer.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
