@@ -14,7 +14,7 @@ class NavbarComponent {
   // Load navbar partial
   async loadNavbar() {
     try {
-      const response = await fetch("/partials/navbar.xml"); // ✅ adjust path if navbar is in /partials/
+      const response = await fetch("partials/navbar.xml");
       const html = await response.text();
       document.getElementById("navbar").innerHTML = html;
     } catch (error) {
