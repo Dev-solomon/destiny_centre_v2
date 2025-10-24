@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Chatroom</title>
-    <link href="/assets/css/styles.css" rel="stylesheet">
-    <link href="/assets/css/chatroom.css" rel="stylesheet">
+    <link href="../static/assets/css/styles.css" rel="stylesheet">
+    <link href="../static/assets/css/chatroom.css" rel="stylesheet">
 </head>
 
 <body style="background: rgba(0, 4, 9, 1);"> 
 
-    <div id="navbar"></div>
+    <!-- <div id="navbar"></div> -->
+
+    <!-- ✅ Include navbar dynamically -->
+    {% include 'navbars.html' %}
 
     <div class="chat-header">
         <h1 class="chat-title">COMMUNITY <span class="blue-highlight">CHATROOM</span></h1>
@@ -141,8 +144,8 @@
 </div>
 
 
-    <script src="/assets/js/navbar.js"></script>
-    <script src="/assets/js/chat.js"></script>
+    <script src="../static/assets/js/navbar.js"></script>
+    <script src="../static/assets/js/chat.js"></script>
 </body>
 
 </html>
