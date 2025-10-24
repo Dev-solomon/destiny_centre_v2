@@ -20,6 +20,9 @@
 
     <!-- Sermons Hero section -->
     <section class="sermons-page-hero-section">
+
+        
+                <img class="sermon-page-hero-image" src="../static/images/sermons-hero-image.png" alt="hero-image">    
         <div class="sermons-page-hero-content">
             <div class="sermons-page-hero-title">
                 <h1>NOT AS LONG<br>AS MY SONG!</h1>
@@ -86,7 +89,8 @@
                                 <h5>The Power to Change Your Mind</h5>
                                 <p>Bishop T.D Jakes</p>
                                 <button class="button about-button">
-                                    <a href="./sermonDetails" class="about-button-text"> Listen Now</a></button>
+                                    <a href="{{ url_for('sermon_details', sermon_id=1) }}" class="about-button-text">Listen Now</a>
+                                </button>
                             </div>
                         </div>
                     </div>

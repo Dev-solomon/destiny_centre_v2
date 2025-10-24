@@ -51,15 +51,7 @@ class NavbarComponent {
         this.closeMenu();
       }
     });
-
-    // highlight "Sermons" link for both sermons.html & sermondetails.html
-    const path = window.location.pathname;
-
-    if (path.includes("sermons") || path.includes("sermonDetails")) {
-      document
-        .querySelectorAll("#nav-sermons")
-        .forEach((link) => link.classList.add("active"));
-    }
+    
 
     // Smooth scroll + active state for internal links
     this.navLinks.forEach((anchor) => {
@@ -136,11 +128,21 @@ class NavbarComponent {
     if (link) link.classList.add("active");
   }
 
+  // ...existing code...
   setActiveLink() {
-    // normalize current path (no trailing slash)
     const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
     const currentHash = window.location.hash || "";
-    
+    const routeSegment = (currentPath.split("/")[1] || "").toLowerCase();
+
+    // Special-case routes that should activate the "Sermons" nav item for sermons and sermon-details page
+    if (routeSegment === "sermon-details" || routeSegment === "sermon_details") {
+      document.querySelectorAll("#nav-sermons").forEach((l) => l.classList.add("active"));
+      // still continue to ensure other nav items are cleared
+      document.querySelectorAll(".nav-link, .nav-item-mobile").forEach((link) => {
+        if (!link.matches("#nav-sermons")) link.classList.remove("active");
+      });
+      return;
+    }
 
     document.querySelectorAll(".nav-link, .nav-item-mobile").forEach((link) => {
       const href = (link.getAttribute("href") || "").trim();
@@ -149,23 +151,22 @@ class NavbarComponent {
       // hash links
       if (href.startsWith("#")) {
         if (href === currentHash) link.classList.add("active");
+        else link.classList.remove("active");
         return;
       }
 
-      // create absolute pathname for comparison (handles relative/absolute)
+      // normalize link path
       let linkPath;
       try {
-        const url = new URL(
-          href,
-          window.location.origin + window.location.pathname
-        );
+        const url = new URL(href, window.location.origin + window.location.pathname);
         linkPath = url.pathname.replace(/\/$/, "");
       } catch {
         linkPath = href.replace(/\/$/, "");
       }
-      // exact match (e.g. /about === /about) OR last segment matches (e.g. about, about.html)
-      const currentLast = currentPath.split("/").pop();
-      const linkLast = linkPath.split("/").pop();
+
+      // compare last segment (remove .html)
+      const currentLast = currentPath.split("/").pop().replace(/\.html$/, "");
+      const linkLast = linkPath.split("/").pop().replace(/\.html$/, "");
 
       if (linkPath === currentPath || linkLast === currentLast) {
         link.classList.add("active");
@@ -174,6 +175,7 @@ class NavbarComponent {
       }
     });
   }
+// ...existing code...
 
   highlightOnScroll() {
     const scrollPos = window.scrollY + 120; // adjusted offset

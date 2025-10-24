@@ -1,15 +1,15 @@
 // Sample sermons data
 const sermonsData = [
-  { title: "While You Were Waiting", pastor: "Pastor Victor Flemming", image: "sermons-image2.png", audio: 1, link: "/sermonDetails" },
-  { title: "The Weapons Are In The House", pastor: "Pastor Robert Madu", image: "sermons-image3.png", audio: 2, link: "/sermonDetails" },
-  { title: "The Power to Change Your Mind", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 1, link: "/sermonDetails" },
-  { title: "This is My Bible", pastor: "Bishop Champion Timothy", image: "sermons-image5.png", audio: 3, link: "/sermonDetails" },
-  { title: "This Might be My God Moment", pastor: "Pastor Steven Furtick ", image: "sermons-image6.png", audio: 1, link: "/sermonDetails" },
-  { title: "All Those Times You Didn't See", pastor: "Pastor Steven Furtick", image: "sermons-image4.png", audio: 2, link: "/sermonDetails" },
-  { title: "Love never fails", pastor: "Pastor Grace", image: "sermons-image2.png", audio: 1, link: "/sermonDetails" },
-  { title: "The power of prayer", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 2, link: "/sermonDetails" },
-  { title: "Hope in Christ", pastor: "Pastor Michael", image: "sermons-image1.png", audio: 1, link: "/sermonDetails" },
-  { title: "Renewed strength", pastor: "Pastor Jennifer", image: "sermons-image2.png", audio: 3, link: "/sermonDetails" },
+  { id:1, title: "While You Were Waiting", pastor: "Pastor Victor Flemming", image: "sermons-image2.png", audio: 1, },
+  { id:2, title: "The Weapons Are In The House", pastor: "Pastor Robert Madu", image: "sermons-image3.png", audio: 2, },
+  { id:3, title: "The Power to Change Your Mind", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 1, },
+  { id:4, title: "This is My Bible", pastor: "Bishop Champion Timothy", image: "sermons-image5.png", audio: 3, },
+  { id:5, title: "This Might be My God Moment", pastor: "Pastor Steven Furtick ", image: "sermons-image6.png", audio: 1, },
+  { id:6, title: "All Those Times You Didn't See", pastor: "Pastor Steven Furtick", image: "sermons-image4.png", audio: 2, },
+  { id:7, title: "Love never fails", pastor: "Pastor Grace", image: "sermons-image2.png", audio: 1, },
+  { id:8, title: "The power of prayer", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 2, },
+  { id:9, title: "Hope in Christ", pastor: "Pastor Michael", image: "sermons-image1.png", audio: 1, },
+  { id:10, title: "Renewed strength", pastor: "Pastor Jennifer", image: "sermons-image2.png", audio: 3, },
 ];
 
 const ITEMS_PER_PAGE = 6;
@@ -139,6 +139,7 @@ class CustomPagination {
         
         setTimeout(() => {
             this.contentArea.innerHTML = content || '<div class="no-content">No sermons found</div>';
+            this.attachDetailHandlers();
             // Fade in
             this.contentArea.style.opacity = '1';
         }, 200);
@@ -154,11 +155,13 @@ class CustomPagination {
         }
 
         // Generate HTML for all items on this page
-        const sermonsHTML = pageItems.map(sermon => `
-            <div class="sermon-card fade-in">
+        const sermonsHTML = pageItems.map(sermon => {
+            const detailUrl = `/sermon-details/${sermon.id}`; // correct Flask route
+            return `
+            <div class="sermon-card fade-in" data-sermon-id="${sermon.id}">
                 <div class="sermon">
                     <div class="sermon-image">
-                        <a href="${sermon.link}">
+                        <a href="${detailUrl}">
                             <img src="../static/images/${sermon.image}" alt="${sermon.title}">
                         </a>
                     </div>
@@ -167,12 +170,12 @@ class CustomPagination {
                 <div class="sermon-content">
                     <h5>${sermon.title}</h5>
                     <p>${sermon.pastor}</p>
-                    <button class="button about-button">
-                        <a href="${sermon.link}" class="about-button-text">Listen Now</a>
+                    <button class="button about-button" data-sermon-id="${sermon.id}">
+                        Listen Now
                     </button>
                 </div>
             </div>
-        `).join('');
+        `}).join('');
 
         return `
             <div class="sermons-cards-spacing">
@@ -182,7 +185,19 @@ class CustomPagination {
             </div>
         `;
     }
+    // new helper: attach click handlers for detail navigation
+    attachDetailHandlers() {
+        // buttons
+        this.contentArea.querySelectorAll('.about-button').forEach(btn => {
+            btn.removeEventListener('click', btn._navHandler);
+            const id = btn.getAttribute('data-sermon-id');
+            const handler = () => { window.location.href = `/sermon-details/${id}`; };
+            btn._navHandler = handler;
+            btn.addEventListener('click', handler);
+        });
 
+        // images/links already have correct hrefs; no extra handling needed
+    }
     scrollToTop() {
         // Smooth scroll to content area
         if (this.contentArea) {
@@ -214,7 +229,4 @@ class CustomPagination {
 document.addEventListener('DOMContentLoaded', () => {
     // Store instance globally if you need to access it later
     window.paginationInstance = new CustomPagination();
-    
-    // Log page info (optional, for debugging)
-    console.log('Pagination initialized:', window.paginationInstance.getPageInfo());
 });
