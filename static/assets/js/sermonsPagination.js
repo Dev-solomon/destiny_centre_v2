@@ -1,15 +1,15 @@
 // Sample sermons data
 const sermonsData = [
-  { title: "While You Were Waiting", pastor: "Pastor Victor Flemming", image: "sermons-image2.png", audio: 1, link: "/sermonDetails.html" },
-  { title: "The Weapons Are In The House", pastor: "Pastor Robert Madu", image: "sermons-image3.png", audio: 2, link: "/sermonDetails.html" },
-  { title: "The Power to Change Your Mind", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 1, link: "/sermonDetails.html" },
-  { title: "This is My Bible", pastor: "Bishop Champion Timothy", image: "sermons-image5.png", audio: 3, link: "/sermonDetails.html" },
-  { title: "This Might be My God Moment", pastor: "Pastor Steven Furtick ", image: "sermons-image6.png", audio: 1, link: "/sermonDetails.html" },
-  { title: "All Those Times You Didn't See", pastor: "Pastor Steven Furtick", image: "sermons-image4.png", audio: 2, link: "/sermonDetails.html" },
-  { title: "Love never fails", pastor: "Pastor Grace", image: "sermons-image2.png", audio: 1, link: "/sermonDetails.html" },
-  { title: "The power of prayer", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 2, link: "/sermonDetails.html" },
-  { title: "Hope in Christ", pastor: "Pastor Michael", image: "sermons-image1.png", audio: 1, link: "/sermonDetails.html" },
-  { title: "Renewed strength", pastor: "Pastor Jennifer", image: "sermons-image2.png", audio: 3, link: "/sermonDetails.html" },
+  { title: "While You Were Waiting", pastor: "Pastor Victor Flemming", image: "sermons-image2.png", audio: 1, link: "/sermonDetails" },
+  { title: "The Weapons Are In The House", pastor: "Pastor Robert Madu", image: "sermons-image3.png", audio: 2, link: "/sermonDetails" },
+  { title: "The Power to Change Your Mind", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 1, link: "/sermonDetails" },
+  { title: "This is My Bible", pastor: "Bishop Champion Timothy", image: "sermons-image5.png", audio: 3, link: "/sermonDetails" },
+  { title: "This Might be My God Moment", pastor: "Pastor Steven Furtick ", image: "sermons-image6.png", audio: 1, link: "/sermonDetails" },
+  { title: "All Those Times You Didn't See", pastor: "Pastor Steven Furtick", image: "sermons-image4.png", audio: 2, link: "/sermonDetails" },
+  { title: "Love never fails", pastor: "Pastor Grace", image: "sermons-image2.png", audio: 1, link: "/sermonDetails" },
+  { title: "The power of prayer", pastor: "Bishop T.D Jakes", image: "sermons-image1.png", audio: 2, link: "/sermonDetails" },
+  { title: "Hope in Christ", pastor: "Pastor Michael", image: "sermons-image1.png", audio: 1, link: "/sermonDetails" },
+  { title: "Renewed strength", pastor: "Pastor Jennifer", image: "sermons-image2.png", audio: 3, link: "/sermonDetails" },
 ];
 
 const ITEMS_PER_PAGE = 6;
@@ -159,7 +159,7 @@ class CustomPagination {
                 <div class="sermon">
                     <div class="sermon-image">
                         <a href="${sermon.link}">
-                            <img src="/images/${sermon.image}" alt="${sermon.title}">
+                            <img src="../static/images/${sermon.image}" alt="${sermon.title}">
                         </a>
                     </div>
                     <div class="audio-hours">${sermon.audio}hr 16min</div>

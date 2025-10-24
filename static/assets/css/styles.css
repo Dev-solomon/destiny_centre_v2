@@ -2086,7 +2086,7 @@ a.nav-toggle.active {
     position: relative;
     height: 60vh;
     width: 100%;
-    background: url("/images/sermons-hero-image.png") center/cover no-repeat;
+    background: url("/static/images/sermons-hero-image.png") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
