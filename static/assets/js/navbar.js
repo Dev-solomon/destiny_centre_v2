@@ -11,10 +11,10 @@ class NavbarComponent {
     this.setActiveLink();
   }
 
-  // Load navbar partial
+  //  Load navbar partial
   async loadNavbar() {
     try {
-      const response = await fetch("partials/navbar.xml");
+      const response = await fetch("/templates/navbars.html");
       const html = await response.text();
       document.getElementById("navbar").innerHTML = html;
     } catch (error) {
@@ -55,26 +55,29 @@ class NavbarComponent {
     // highlight "Sermons" link for both sermons.html & sermondetails.html
     const path = window.location.pathname;
 
-    if (path.includes("sermons.html") || path.includes("sermonDetails.html")) {
-    document.querySelectorAll("#nav-sermons").forEach(link => link.classList.add("active"));
-}
-
+    if (path.includes("sermons") || path.includes("sermonDetails")) {
+      document
+        .querySelectorAll("#nav-sermons")
+        .forEach((link) => link.classList.add("active"));
+    }
 
     // Smooth scroll + active state for internal links
     this.navLinks.forEach((anchor) => {
-      anchor.addEventListener("click", (e) => {
-        if (anchor.getAttribute("href").startsWith("#")) {
+      const href = anchor.getAttribute("href") || "";
+      if (href.startsWith("#")) {
+        anchor.addEventListener("click", (e) => {
           e.preventDefault();
-          const target = document.querySelector(anchor.getAttribute(".nav-link"));
+          const target = document.querySelector(href);
           if (target) {
             const offsetTop = target.offsetTop - 80;
             window.scrollTo({ top: offsetTop, behavior: "smooth" });
+            history.replaceState(null, "", href); // update hash without jumping
             this.setActive(anchor);
           }
-        }
-      });
+        });
+      }
     });
-  
+
     // Highlight active section on scroll
     window.addEventListener("scroll", () => this.highlightOnScroll());
   }
@@ -134,22 +137,50 @@ class NavbarComponent {
   }
 
   setActiveLink() {
-    const currentPage =
-      window.location.pathname.split("/").pop() || "index.html";
-    const currentHash = window.location.hash;
+    // normalize current path (no trailing slash)
+    const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+    const currentHash = window.location.hash || "";
+    
 
     document.querySelectorAll(".nav-link, .nav-item-mobile").forEach((link) => {
-      const href = link.getAttribute("href");
-      if (href === currentHash || href.includes(currentPage)) {
+      const href = (link.getAttribute("href") || "").trim();
+      if (!href) return;
+
+      // hash links
+      if (href.startsWith("#")) {
+        if (href === currentHash) link.classList.add("active");
+        return;
+      }
+
+      // create absolute pathname for comparison (handles relative/absolute)
+      let linkPath;
+      try {
+        const url = new URL(
+          href,
+          window.location.origin + window.location.pathname
+        );
+        linkPath = url.pathname.replace(/\/$/, "");
+      } catch {
+        linkPath = href.replace(/\/$/, "");
+      }
+      // exact match (e.g. /about === /about) OR last segment matches (e.g. about, about.html)
+      const currentLast = currentPath.split("/").pop();
+      const linkLast = linkPath.split("/").pop();
+
+      if (linkPath === currentPath || linkLast === currentLast) {
         link.classList.add("active");
+      } else {
+        link.classList.remove("active");
       }
     });
   }
 
   highlightOnScroll() {
-    const scrollPos = window.scrollY + 100;
+    const scrollPos = window.scrollY + 120; // adjusted offset
     this.navLinks.forEach((link) => {
-      const section = document.querySelector(link.getAttribute(".nav-link"));
+      const href = (link.getAttribute("href") || "").trim();
+      if (!href || !href.startsWith("#")) return;
+      const section = document.querySelector('nav-links');
       if (
         section &&
         section.offsetTop <= scrollPos &&
