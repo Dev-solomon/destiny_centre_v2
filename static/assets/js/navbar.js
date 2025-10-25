@@ -5,26 +5,12 @@ class NavbarComponent {
   }
 
   async init() {
-    //await this.loadNavbar();
     this.cacheElements();
     this.setupEventListeners();
     this.setActiveLink();
   }
 
-  //  Load navbar partial
-//   async loadNavbar() {
-//     try {
-//       const response = await fetch("./navbars.html");
-//       const html = await response.text();
-//       console.log("Navbar target:", document.getElementById("navbar"));
-// console.log("Fetched HTML:", html);
-
-//       document.getElementById("navbar").innerHTML = html;
-//     } catch (error) {
-//       console.error("Error loading navbar:", error);
-//     }
-//   }
-
+  
   // Cache elements after navbar loads
   cacheElements() {
     this.navToggle = document.getElementById("navToggle");
