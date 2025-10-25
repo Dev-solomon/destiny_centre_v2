@@ -105,7 +105,7 @@ const refreshIcon = document.getElementById("refreshIcon");
 const popupOverlay = document.getElementById("popupOverlay");
 const emailInput = document.getElementById("emailInput");
 const submitButton = document.getElementById("submitButton");
-
+const navMenu = document.querySelector(".users-button");
 const popupContent = document.getElementById('popupContent');
 const emailForm = document.getElementById('emailForm');
 const popupTitle = document.getElementById('popupTitle');
@@ -440,7 +440,7 @@ async function handleEmailSubmit(e) {
       currentUser = email.split("@")[0].charAt(0).toUpperCase() + email.split("@")[0].slice(1);
       
       // Assign avatar
-      const defaultAvatars = ["/images/chat-image3.png"];
+      const defaultAvatars = ["../static/images/chat-image3.png"];
       currentUserAvatar = defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
 
       // Enable message input
@@ -507,70 +507,49 @@ function adjustTextareaHeight() {
 }
 
 function adjustForBottomNav() {
+  const navbar = document.getElementById("navbar");
   const bottomNav = document.querySelector(".bottom-nav");
   const inputContainer = document.querySelector(".message-input-container");
   const messagesContainer = document.getElementById("messagesContainer");
+
+  // elements used for layout adjustments (safe fallbacks)
+  const chatroomSection = document.querySelector(".chatroom-section") || document.getElementById("chatroomSection");
+  const mainContainer = document.querySelector(".main-container") || document.querySelector(".chat-area");
+
+  if (inputContainer) inputContainer.style.zIndex = "200";
 
   if (bottomNav && inputContainer && messagesContainer) {
     const bottomNavHeight = bottomNav.offsetHeight;
     const inputHeight = inputContainer.offsetHeight;
 
-    // Position input above bottom nav
-    inputContainer.style.bottom = `${bottomNavHeight}px`;
-    inputContainer.style.left = "0";
-    inputContainer.style.right = "0";
-    inputContainer.style.zIndex = "200";
-
-    // Add enough padding to messages container so last message is always visible
-    messagesContainer.style.paddingBottom = `${bottomNavHeight + inputHeight + 16
-      }px`;
+    messagesContainer.style.paddingBottom = `${bottomNavHeight + inputHeight + 16}px`;
     messagesContainer.style.boxSizing = "border-box";
     messagesContainer.style.overflowY = "auto";
-    messagesContainer.style.height = `calc(100vh - ${inputHeight + bottomNavHeight + 60
-      }px)`; // 60px for header
-    // if (messagesContainer) {
-    //   messagesContainer.style.paddingBottom = `${bottomNavHeight + inputContainer.offsetHeight}px`;
-    // }
+    messagesContainer.style.height = `calc(100vh - ${inputHeight + bottomNavHeight + 60}px)`; // 60px header
   }
 
   function calculateHeights() {
     const viewportHeight = window.innerHeight;
     const navbarHeight = navbar ? navbar.offsetHeight : 0;
     const bottomNavHeight = bottomNav ? bottomNav.offsetHeight : 0;
-    const headerHeight =
-      document.querySelector(".chatroom-header")?.offsetHeight || 0;
+    const headerHeight = document.querySelector(".chatroom-header")?.offsetHeight || 0;
 
-    // Calculate available space
     const availableHeight = viewportHeight - navbarHeight - bottomNavHeight;
     const chatAreaHeight = availableHeight - headerHeight;
 
-    // Apply heights
-    if (chatroomSection) {
-      chatroomSection.style.height = `${availableHeight}px`;
-    }
+    if (chatroomSection) chatroomSection.style.height = `${availableHeight}px`;
+    if (mainContainer) mainContainer.style.height = `${Math.max(chatAreaHeight, 300)}px`;
 
-    if (mainContainer) {
-      mainContainer.style.height = `${Math.max(chatAreaHeight, 300)}px`;
-    }
-
-    // Adjust message input for mobile
     if (window.innerWidth <= 768) {
-      const messageInputContainer = document.querySelector(
-        ".message-input-container"
-      );
+      const messageInputContainer = document.querySelector(".message-input-container");
       if (messageInputContainer) {
         messageInputContainer.style.position = "fixed";
-        messageInputContainer.style.bottom = `${bottomNavHeight}px`;
-        messageInputContainer.style.left = "0";
-        messageInputContainer.style.right = "0";
+        messageInputContainer.style.bottom = `${bottomNav ? bottomNav.offsetHeight : 0}px`;
+        //messageInputContainer.style.left = "0";
+        //messageInputContainer.style.right = "0";
         messageInputContainer.style.zIndex = "100";
       }
-
-      // Add padding to messages container
-      const messagesContainer = document.getElementById("messagesContainer");
-      if (messagesContainer) {
-        messagesContainer.style.paddingBottom = `${bottomNavHeight + 400}px`;
-      }
+      if (messagesContainer) messagesContainer.style.paddingBottom = `${(bottomNav ? bottomNav.offsetHeight : 0) + 400}px`;
     }
 
     console.log("Heights calculated:", {
@@ -582,21 +561,18 @@ function adjustForBottomNav() {
     });
   }
 
-  // Run on load and resize
+  // initial run
   calculateHeights();
 
-  // Use ResizeObserver for better performance
+  // Observe / listeners (use defined navbar variable)
   if (window.ResizeObserver) {
     const resizeObserver = new ResizeObserver(calculateHeights);
     if (bottomNav) resizeObserver.observe(bottomNav);
     if (navbar) resizeObserver.observe(navbar);
   }
 
-  // Fallback for older browsers
   window.addEventListener("resize", calculateHeights);
-  window.addEventListener("orientationchange", () => {
-    setTimeout(calculateHeights, 100);
-  });
+  window.addEventListener("orientationchange", () => setTimeout(calculateHeights, 100));
 }
 
 // Alternative: Use CSS Custom Properties

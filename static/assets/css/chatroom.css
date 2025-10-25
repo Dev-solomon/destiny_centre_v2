@@ -139,7 +139,7 @@ body {
     padding: 1rem;
     overflow-y: auto;
     height: calc(100vh - 60px - 56px - 80px);
-    padding-bottom: 170px;
+    padding-bottom: 250px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -669,7 +669,7 @@ body {
         position: fixed;
         left: 260px;
         width: calc(100% - 260px);
-        bottom: 0;
+        bottom: 0 !important;
         z-index: 200;
         margin-left: 0;
     }

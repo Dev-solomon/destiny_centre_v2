@@ -84,6 +84,7 @@ class NavbarComponent {
 
     if (this.isExpanded) {
       // Inline SVG for close
+      this.navExtended.style.zIndex = "60";
       this.toggleIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
 <path d="M23.0256 12C23.0256 5.9111 18.0895 0.975037 12.0006 0.975037C5.91165 0.975037 0.975586 5.9111 0.975586 12C0.975586 18.089 5.91165 23.025 12.0006 23.025C18.0895 23.025 23.0256 18.089 23.0256 12Z"
  stroke="currentColor" stroke-opacity="0.5" stroke-width="1.8" stroke-miterlimit="10"/>
@@ -103,6 +104,7 @@ class NavbarComponent {
 <path d="M7.99451 12H8.00349" stroke="currentColor" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
       `;
+      this.navExtended.style.zIndex = "0";
       this.toggleText.textContent = "More";
       this.navExtended.style.maxHeight = "0";
     }
@@ -200,5 +202,4 @@ class NavbarComponent {
 // Initialize navbar
 document.addEventListener("DOMContentLoaded", () => {
   const navbar = new NavbarComponent();
-  navbar.init();
 });
