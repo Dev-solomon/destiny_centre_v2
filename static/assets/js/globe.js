@@ -46,6 +46,7 @@ const scriptureData = {
                 badge.textContent = scripture.ref;
                 badge.dataset.passage = scripture.passage;
 
+
                 badge.addEventListener('mouseenter', (e) => showTooltip(e, scripture.passage));
                 badge.addEventListener('mouseleave', hideTooltip);
                 badge.addEventListener('mousemove', (e) => updateTooltipPosition(e));
@@ -114,19 +115,9 @@ const scriptureData = {
             });
         });
 
-// Hide badges when scrolling
-window.addEventListener("scroll", () => {
-  hideBadges();
-  currentContinent = null;
-});
-
-// Hide badges when clicking outside continent links or badges
-document.addEventListener("click", (e) => {
-  const isContinentLink = e.target.closest(".continent a");
-  const isBadge = e.target.closest(".scripture-badge");
-
-  if (!isContinentLink && !isBadge) {
-    hideBadges();
-    currentContinent = null;
-  }
+        //shows scripture badges data
+window.addEventListener("DOMContentLoaded", () => {
+  const defaultContinent = "africa";
+  createBadges(defaultContinent);
+  currentContinent = defaultContinent;
 });
