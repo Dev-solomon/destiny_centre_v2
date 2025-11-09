@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os
 
 app = Flask(__name__, static_folder='web/static', template_folder='web/templates')
 
@@ -46,4 +47,4 @@ def sermon_details(sermon_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, PORT = int(os.environ.get('PORT')))
